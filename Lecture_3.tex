@@ -1,0 +1,143 @@
+\subsection{Комплексная дифференцируемость, единственность производной}
+
+\begin{opr}\label{комп.дефф.} % Определение комплексной дифференцируемости
+	Отображение $f \colon \Omega \subset \cc \to \cc$ \quad {\small($\Omega$ --- открытое множество)}\quad называется 
+	\urlybox{https://www.youtube.com/live/4EMkUsyQQec?si=DVTVXU1Y68gxg7SA&t=7758}{комплексно}\vspace{5pt plus 1pt minus 1pt}
+	 \urlybox{https://www.youtube.com/live/4EMkUsyQQec?si=DVTVXU1Y68gxg7SA&t=7758}{дефференцируемым}
+	  в точке $a \in \Omega$, если\E число $\lambda \in \cc$ такое, что 
+	\[f(a + h) = f(a) + \lambda h + o(h) \quad \text{ при } h \to 0\]
+	или 
+	\[\E \lim_{h \to 0} \frac{f(a + h) - f(a)}{h} = \lambda\]
+\end{opr} % Конец определения комплексной дифференцируемости
+
+\begin{zam}[https://www.youtube.com/live/4EMkUsyQQec?si=5ErXIDLgaXeqGr0c&t=8050]
+	Отображение $\rr^2 \to \rr^2$ вещественно дефференцироемое (т.е. как в \ref{вещ.дефф.}) будет комплексно дефференцируемым как отображение $\cc \to \cc$ только если матрица его производного оператора будет имеет вид $
+	\begin{pmatrix}
+		a & -b \\
+		b & a
+	\end{pmatrix}$, т.к. в \ref{комп.дефф.} 
+	$\lambda h = (\lambda_1 + \lambda_2i)(h_1 + h_2i)={}$ 
+	\vspace{5pt plus 1pt minus 1pt}\linebreak
+	${}= (\lambda_1h_1 - \lambda_2h_2) + (\lambda_1h_2 + \lambda_2h_1)i$,\quad т.е. $
+	\begin{pmatrix}
+		h_1 \\
+		h_2
+	\end{pmatrix} \to
+	\begin{pmatrix}
+		\lambda_1h_1 - \lambda_2h_2\\
+		\lambda_1h_2 + \lambda_2h_1
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		\lambda_1 & -\lambda_2 \\
+		\lambda_2 & \lambda_1
+	\end{pmatrix}
+	\begin{pmatrix}
+		h_1 \\
+		h_2
+	\end{pmatrix}$
+\end{zam} % Конец замечание про комплексную и вещественную дифференцируемость
+
+\begin{utv}[https://www.youtube.com/live/4EMkUsyQQec?si=0fMr1jMMAaXiihPe&t=8668]
+	В определении дифференцируемости отображения $f \colon E \subset \rmm \to \rr^n$ (\ref{вещ.дефф.}) оператор $f'(a)$ определён однозначно
+\end{utv} % Конец утверждения про однозначность производной
+
+\begin{prf} % Доказательство утверждения про однозначность производной
+	Пусть\quad $h = t \cdot u,\quad u \in \rmm,\quad t \in \rr$,\quad тогда определение можно записать
+	\[f(a + t\cdot u) = f(a) + t\, Lu + o(t \cdot u) \quad \text{ при } t \to 0\]
+	Так как $u$ --- фиксированный вектор, $o(t\cdot u) = o(t)$. Можно выразить $Lu$, перенеся остальное в другую часть и сделав предельный переход при $t \to 0$:
+	\[Lu = \frac{f(a + t\cdot u) - f(a)}{t} + \frac{o(t)}{t}, \quad t \to 0\]
+	\[Lu = \lim_{t \to 0} \frac{f(a + t\cdot u) - f(a)}{t}\]
+\end{prf} % Конец доказательства утверждения про однозначность производной
+
+\begin{zam}[https://www.youtube.com/live/4EMkUsyQQec?si=AKhiCvQ6hFwjJs53&t=8943]\label{дефф.1}
+	Определение дифференцируемости (\ref{вещ.дефф.}) при $n = 1$ $\bigr(\text{тогда } L=(l_1, l_2, \dots, l_m)\bigl)$:
+	\[f\bigl((x_1, x_2, \dots, x_m)\bigr) = f\bigl((a_1, a_2, \dots a_m)\bigr) + \bigl(l_1(x_1 - a_1) + l_2(x_2 - a_2) + \dots + l_m(x_m - a_m)\bigr) + o(x - a)\]
+\end{zam}% Конец замечания для n = 1
+
+\subsection{Дифферецируемость координатных функций, частная производная}
+
+\begin{lem}[https://www.youtube.com/live/4EMkUsyQQec?si=Yn2iSTItfMzy3zqh&t=9366]{о дифференцируемости отображения и дифференцируемости его координатных функций}
+\label{дефф.коорд.ф.}
+	$f \colon E \subset \rmm \to \rr^n,\quad a \in \Int E,\quad f = (f_1, f_2, \dots, f_n)$,\quad тогда
+	\begin{enumerate}
+		\item Отображение $f$ дифференцируемо \eq\ все $f_i$ дифференцируемы 
+		
+		\item Строки матрицы оператора $f'(a)$ это матрицы операторов $f_1'(a), f_2'(a), \dots, f_m'(a)$
+	\end{enumerate}
+\end{lem}% Конец леммы про дифференцируемость отображений и координатных функций
+
+\begin{prf}% Доказательство леммы про дифференцируемость отображений и координатных функций
+	\begin{enumerate}
+		\item \rproof\ Из \ref{вещ.дефф.}
+		\[
+		\begin{pmatrix}
+			f_1(a + h)\\
+			f_2(a + h)\\
+			\dots\\
+			f_n(a + h)\\
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			f_1(a)\\
+			f_2(a)\\
+			\dots\\
+			f_n(a)\\
+		\end{pmatrix}
+		+
+		\begin{pmatrix}
+			l_{11}h_1 + l_{12}h_2 +\dots + l_{1m}h_m\\
+			l_{21}h_1 + l_{22}h_2 +\dots + l_{2m}h_m\\
+			\dots \\
+			l_{n1}h_1 + l_{n2}h_2 +\dots + l_{nm}h_m\\
+		\end{pmatrix}
+		+
+		\begin{pmatrix}
+			\alpha_1(h) \cdot \|h\|\\
+			\alpha_2(h) \cdot \|h\|\\
+			\dots\\
+			\alpha_m(h) \cdot \|h\|\\
+		\end{pmatrix}
+		\]
+		В первой строке записано определение дифференцируемости $f_1$, во второй --- $f_2$ и т.д.\\[5pt]
+		\lproof\ Если сначала написать определения дифференцируемости координатных функций\linebreak $f_1, f_2, \dots, f_m$, и потом записать их в одну формулу как в предыдущем пункте, то получится определение дифференцируемости $f$
+		
+		\item Матрицы операторов $f_1'(a), f_2'(a), \dots, f_n'(a)$ имеют размер $1 \times m$, т.е. строки. Они записаны во втором слагаемом выше и вместе образуют оператор матрицы $f'(a)$.
+	\end{enumerate}
+\end{prf} % Конец доказательства леммы про дифференцируемость отображений и координатных функций
+
+\pagebreak
+
+\begin{zam}[https://www.youtube.com/live/4EMkUsyQQec?si=cueUh21MoVTF1M0v&t=9813]
+	\begin{enumerate} % Примеры дифференцируемых отображений
+		\item Если $f = const$, то $f' \equiv 0_{m \times n}$ и $o(h) \equiv 0_{\rr^n}$
+		
+		\item Если $\mathcal{A} \colon \rmm \to \rr^n$ --- линейное отображение c матрицей $A$, тогда $\A x \in \rmm \quad \mathcal{A}'(x) = A$ (т.к. из-за линейности $\mathcal{A}(x + h) = \mathcal{A}(x) + \unbr{Ah}{\mathcal A(h)} \uns{{}+0}$ --- то есть $A$ это и есть производная по \ref{вещ.дефф.})
+		
+		\item Если $\mathcal{A} \colon \rmm \to \rr^n$, $A$ --- его матрица, и отображение задано так: $x \mapsto u + Ax$ --- называется аффинное отображение \uns{(линейное со сдвигом)}, то тоже $\mathcal{A}'(x) = A$ (т.к. $\mathcal{A}(x + h) =$\linebreak $= u + A\,(x+h) = u + Ax + Ah = \mathcal{A}(x) + Ah + 0$)
+	\end{enumerate}
+\end{zam} % Конец примеров дифференцируемых отображений
+
+\begin{opr}\label{част.пр.} % Определение частной производной
+	Пусть\quad 
+	$f \colon E \subset \rmm \to \rr,\quad a \in \Int E,\quad k \in \{1, 2, \dots, m\}$,\quad
+	$\varphi_k \colon U(a_k) \to \rr$,\quad 
+	$\varphi_k(u) = f(a_1, a_2, \dots,$ $a_{k-1}, u, a_{k + 1}, \dots, a_m)$,
+	тогда $\varphi_k'(a_k)$
+	\uns{${}= \lim\limits_{t \to 0}\cfrac{\varphi(a_k + t) - \varphi(a_k)}{t}$
+	\small(если этот предел существует)}
+	называется
+	\urlybox{https://www.youtube.com/live/4EMkUsyQQec?si=_iiNjRP3x45kw_S-&t=10195}{$k$-ой частной производной}
+	функции $f$ в точке $a$.
+	Обозначение: $\cfrac{\partial f}{\partial x_k}(a)$
+\end{opr} % Конец определения частной производной
+
+\begin{zam}[https://www.youtube.com/live/4EMkUsyQQec?si=V4xWyxg3uuE68Ibm&t=10683] % Замечание про производные и непрерывность
+	Пусть $f \colon E \subset \rmm \to \rr^n$ --- дифференцируемо в точке $a$, 
+	\href{https://www.youtube.com/live/4EMkUsyQQec?si=J-Nr1tj9UMjpNZiU&t=9125}{тогда $f$ --- непрерывно}
+	 в точке $a$ (т.е. $\lim\limits_{x \to a} f(x) = f(a))$. Т.к. переходя к пределу в определении дефференцируемости при $h \to 0$ получаем $\lim\limits_{h\to0} f(a + h) = f(a)$. Но если существуют все частные производные, то функция может быть не непрерывной, например
+	\[f\colon \rr^2 \to \rr, \quad f(x, y) = \begin{cases}
+		\frac{2xy}{x^2 + y^2},\quad(x, y)\ne(0,0)\\
+		0,\qquad\ \ \,(x, y) = (0, 0)
+	\end{cases}\]
+	Здесь\quad $\cfrac{\partial f}{\partial x}(0, 0) = \lim\limits_{t \to 0}\cfrac{f(0+t, 0) - f(0, 0)}{t} = 0$\quad и\quad $\cfrac{\partial f}{\partial y}(0, 0) = \lim\limits_{t \to 0}\cfrac{f(0, 0 + t) - f(0, 0)}{t} = 0$, но предел в точке $0$ вдоль прямой $y = x$: $\lim\limits_{t \to 0}f(t,t) = 1$, а вдоль прямой $y = 2x$: $\lim\limits_{t \to 0}f(t, 2t) = \cfrac45$. То есть у $f$ не существует предела в нуле.
+\end{zam} % Конец заменчаний про производную и непрерывность

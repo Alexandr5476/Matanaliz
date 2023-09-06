@@ -1,0 +1,115 @@
+\subsection{Матрица якоби, необходимое, достаточное условия дифференцируемости, правила дифференцирования}
+
+\begin{opr}
+	Матрица оператора $f'(a)$, $a \in \Int E$ отображения $f \colon E \subset \rmm \to \rr^n$ \uns{\small(если $f$ --- дифференцируемо)} называется \urlybox{https://www.youtube.com/live/9KZRjeVTXNY?si=RUIUUSO5mIOmepUr&t=6609}{матрицой якоби} отображения $f$ в точке $a$.
+\end{opr}
+
+\begin{teor}[https://www.youtube.com/live/9KZRjeVTXNY?si=SCHLM5BcHQKABteV&t=6413]{необходимое условие дифференцируемости}
+	Пусть отображение $f \colon E \subset \rmm \to \rr^n$ --- дифференцируемо в точке $a \in \Int E$, тогда существуют все частные производные всех его координатных функций и 
+	\[\begin{pmatrix}\displaystyle
+		\pfrac{f_1}{x_1}(a) &\displaystyle \pfrac{f_1}{x_2}(a) & \dots &\displaystyle \pfrac{f_1}{x_m}(a)\\[12pt]
+		\displaystyle\pfrac{f_2}{x_1}(a) &\displaystyle \pfrac{f_2}{x_2}(a) & \dots &\displaystyle \pfrac{f_2}{x_m}(a)\\[12pt]
+		\vdots & \vdots & \ddots & \vdots\\[5pt]
+		\displaystyle\pfrac{f_n}{x_1}(a) & \displaystyle\pfrac{f_n}{x_2}(a) & \dots & \displaystyle\pfrac{f_n}{x_m}(a)\\
+	\end{pmatrix} \text{ --- матрица якоби отображения $f$ в точке $a$}\]
+\end{teor} % Конец теоремы о необходимом условии дифференцируемости
+
+\begin{prf} % Доказательство теоремы о необходимом условии дифференцируемости
+	$\A i \in \{1, 2, \dots, n\}$ рассмотрим координатную функцию $f_i$. 
+	\begin{align*}
+		\pfrac{f_i}{x_k} \stackrel{\text{\ref{част.пр.}}}{=}& \lim_{t\to0} \frac{f_i(a_1, a_2, \dots,a_{k-1}, a_k+t, a_{k+1}, \dots, a_m) - f_i(a)}{t} =\\
+		\stackrel{\text{\ref{дефф.1}}}{=}& \lim_{t\to0} \frac{f_i(a) + l_k(a_k + t - a_k) - f_i(a) + o(t)}{t} = l_k\\
+	\end{align*}
+	\uns{$k\in \{1, 2, \dots, m\}, l_k$ --- $k$-ая компонетна матрицы якоби функции $f_i$ \small(размер матрицы --- $1 \times m$).}\linebreak
+	То есть компонентами $l_k$ матриц якоби координатных функций $f_i$ в точке $a$ являются соответствующие частные производные $\pfrac{f_i}{x_k}$ координатных функций $f_i$ в точке $a$. И по лемме \ref{дефф.коорд.ф.} строки матрицы якоби отображения $f$ состоят из матриц якоби координатных функций.
+\end{prf} % Конец доказательства теоремы о необходимом условии дифференцируемости
+
+\begin{teor}[https://www.youtube.com/live/9KZRjeVTXNY?si=iCflPfdznvnvoohO&t=7174]{достаточное условие дифференцируемости}
+	$f\colon E \subset \rmm \to \rr,\quad a \in \Int E,\quad \E r : \text{в шаре }\B{a, r}\subset E \E$все частные производные $ \displaystyle\pfrac{f}{x_k}$\linebreak ({\small$k \in \{1, 2, \dots, m\}$}) и они непрерывны в точке $a$. Тогда функция $f$ --- дифференцируема в точке~$a$
+\end{teor} % Конец теоремы  о достаточном условии дифференцируемости
+
+\begin{prf} % Доказательство теоремы  о достаточном условии дифференцируемости
+	При $m = 2$. \[f(x_1, x_2) - f(a_1, a_2) = \bigl(f(x_1, x_2) - f(x_1, a_2)\bigr) + \bigl(f(x_1, a_2) - f(a_1, a_2)\bigr) = \]
+	\palka{%
+		Пусть $g(x_2) = f(x_1, x_2),\ x_1$ --- фиксировано. Тогда $f(x_1, x_2) - f(x_1, a_2) = g(x_2) - g(a_2)$.\linebreak
+		Функция $g$ --- дифференцируема на $[a_2, x_2]$ ($g' = \pfrac{f}{x_2}$) $\Rightarrow$ по теореме Лагранжа\linebreak$\E x_0\text{ между $x_2$ и $a_2$}  : g(x_2) - g(a_2) = g'(x_0)(x_2 - a_2) = \pfrac{f}{x_2}(x_0)(x_2 - a_2)$. Поэтому:}
+	\begin{gather*}= \pfrac{f}{x_2}(x_1, x_0)\,(x_2 - a_2) + \pfrac{f}{x_1}(\bar x_0, a_2)\,(x_1 - a_1) = \\ 
+		= \pfrac{f}{x_1}(a)\,(x_1 - a_1) + \pfrac{f}{x_2}\,(x_2 - a_2) +\\
+		+\left(\pfrac{f}{x_1}(a) - \pfrac{f}{x_1}(\bar x_0, a_2)\right)(x_1 - a_1) +\left(\pfrac{f}{x_2}(x_1, x_0)- \pfrac{f}{x_2}(a)\right)(x_2 - a_2) 
+	\end{gather*}
+	Домножим и поделим на $\|x - a\|$ последнюю строку.
+	{\footnotesize$\left(\displaystyle\pfrac{f}{x_1}(a) - \pfrac{f}{x_1}(\bar x_0, a_2)\right)
+	\xrightarrow[x \to a]{}0$}, т.к. $x_0$ между $x_1$ и $a_1$; и {\small$\left|\cfrac{x_1 - a_1}{\|x - a\|}\right| \< 1$}. Аналогично во втором слагаемом этой строки. \smallskip Значит теперь в ней написано \textit{б.м.}${}\cdot \|x-a\|$, то есть $o(x-a)$. Получилось определение дифференцируемости $f$. 
+\end{prf} % Конец доказательства теоремы  о достаточном условии дифференцируемости
+
+\addtocontents{toc}{\medskip\hrule\smallskip\hspace{7.5cm} \small\sffamily\bfseries\protect\rom{3} семестр \textdownarrow\normalfont\strut\hrule\medskip}
+
+\subsection{Правила дифференцирования}
+
+\begin{enumerate} % Линейность
+	\item \href{https://www.youtube.com/live/9KZRjeVTXNY?si=Hcxa5JDA7wVkfMRg&t=7995}{\textbf{Линейность:}}
+	$f, g\colon E\subset\rmm \to \rr^n$ --- дифференцируемы в точке $a \in \Int E$,
+	тогда отображения $f + g$, $\lambda g$ --- тоже дифференцируемы в точке $a$ 
+	и их производные операторы равны: 
+	$(f + g)'(a) = f'(a) + g'(a)$, 
+	$(\lambda g)'(a) = \lambda g'(a)$.
+\end{enumerate}
+
+\begin{lem}[https://www.youtube.com/live/9KZRjeVTXNY?si=-WLmW4M02oNemOzS&t=8181]{об оценке нормы линейного оператора}\label{оц.нормы}
+	$f\colon \rmm \to \rr^n$ --- линейное отображение с матрицей $A$. Тогда $\A x \in \rmm$ $\|Ax\|\< C_A \|x\|$, где $C_A = \sqrt{\sum\limits_{i, j = 1}^{n, m}a_{ij}^2}\ ,\ a_{ij}$ --- элементы матрицы $A$
+\end{lem} % Конец леммы об оценке нормы линейного оператора
+
+\begin{prf} % Доказательство леммы об оценке нормы линейного оператора
+	\[\|Ax\| = \sqrt{\sum_{i = 1}^{n}\left(\sum_{j = 1}^{m} a_{ij}x_j\right)^2} \< \sqrt{\sum_{i = 1}^{n}\left(\sum_{j=1}^{m}a_{ij}^2\right)\left(\sum_{j = 1}^{m}x_j^2\right)} = \|x\|\sqrt{\sum_{i, j = 1}^{n, m}a_{ij}^2}\]
+\end{prf} % Конец доказательства леммы об оценке нормы линейного оператора
+\begin{enumerate}
+	\setcounter{enumi}{1}
+	
+	\item \href{https://www.youtube.com/live/9KZRjeVTXNY?si=r5unaEu1pKHe5bBm&t=8637}{\textbf{Дифференцируемость композиции:}}
+	$f\colon E \subset \rmm \to \rr^l$, $g\colon I \subset \rr^l \to \rr^n$, 
+	$f$ --- диффиренцируемо в точке $a \in \Int E $, $g$ --- диффиренцируемо в точке $b = f(a) \in \Int I$.
+	Тогда отображение $g \circ f$ --- дифференцируемо в точке $a$ и его производный оператор $g(f(a))' = g'(f(a))\,f'(a)$\linebreak
+	\textbf{Доказательство:} определения дифференцируемости отображений $f$ и $g$:
+	\[f(a + h) = f(a) + f'(a)\,h + \alpha(h)\,\|h\|,\quad \alpha(h) \xrightarrow[h\to 0_{\rmm}]{}0_{\rr^l}\] 
+	\[g(b + k) = g(b) + g'(b)\,k + \beta(k)\,\|k\|,\quad \beta(k) \xrightarrow[k\to 0_{\rr^l}]{}0_{\rr^n}\]
+	Получаем, что отображение $g \circ f$ дифференцируемо по определению:
+	\begin{gather*}
+		g\bigl(f(a + h)\bigr) - g\bigl(f(a)\bigr) = g\bigl(\unbr{f(a)}{b} + \unbr{f'(a)\,h + \alpha(h)\,\|h\|}{\rtext{k}}\bigr) - g\bigl(f(a)\bigr) =\\
+		= g\bigl(f(a)\bigr) + g'\bigl(f(a)\bigr) \,\bigl(\rtext{f'(a)\,h + \alpha(h)\,\|h\|}\bigr) + \beta\bigl(\rtext{f'(a)\,h + \alpha(h)\,\|h\|}\bigr)\, \bigl\|\rtext{f'(a)\,h + \alpha(h)\,\|h\|}\bigr\| - g\bigl(f(a)\bigr) =\\[4pt minus 1pt]
+		= g'\bigl(f(a)\bigr)\, f'(a)\,h + \unbr{g'\bigl(f(a)\bigr)\, \alpha(h)\,\|h\|}{\rom{1}} + \unbr{\beta\bigl(\rtext{f'(a)\,h + \alpha(h)\,\|h\|}\bigr)\, \bigl\|\rtext{f'(a)\,h + \alpha(h)\,\|h\|}\bigr\|}{\rom{2}}
+	\end{gather*}
+	\begin{itemize}
+		\item[$\|\rom{1}\|$]$ = \|g'\bigl(f(a)\bigr)\, \alpha(h)\| \cdot \|h\| \stackrel{\text{лемма \ref{оц.нормы}}}{\<} \unbr{\|\alpha(h)\|}{\makebox[0pt][c]{\footnotesize\textit{б.м.} при $h\to 0_{\rmm}$}}\, C_{g'(f(a))}\, \|h\|$
+		
+		\item[$\|\rom{2}\|$]$= \bigl\|\beta\bigl(f'(a)\,h + \alpha(h)\,\|h\|\bigr)\bigr\|\cdot \bigl\|f'(a)\,h + \alpha(h)\,\|h\|\bigr\| 
+		\stackrel{\text{нер-во тр-ка}}{\<} 
+		\bigl\|\beta\bigl(f'(a)\,h + \alpha(h)\, \|h\|\bigr) \bigr\|\cdot \|f'(a)\,h\| +{}$ \rule[-2.5ex]{0pt}{4ex} \linebreak
+		${}+\bigl\|\beta\bigl(f'(a)\,h + \alpha(h)\, \|h\|\bigr) \bigr\| \cdot \bigl\| \alpha(h)\, \|h\| \bigr\| \stackrel{\text{лемма \ref{оц.нормы}}}{\<} \text{\textit{б.м.}} \cdot \|h\|\,C_{f'(a)} + \text{\textit{б.м.}}\cdot \text{\textit{б.м.}}\cdot\|h\|$ \quad при $h \to 0_{\rmm}$ 
+	\end{itemize}
+		Тогда $\rom{1} + \rom{2}$ это \textit{б.м.}${}\cdot \|h\|\Rightarrow$ получилось определение дифференцируемости отображения $g \circ f$.
+	% Конец дифференцируемости композиции
+	
+	\item  \href{https://www.youtube.com/live/9KZRjeVTXNY?si=_NtmCaxF_H4MnOV3&t=11178}{\textbf{Дифференцирование произведений:}}
+	Отображения $f, g \colon E\subset \rmm \to \rr^n, \quad \lambda\colon E \to \rr$ --- дифференцируемы в точке $a \in \Int E$.
+	Тогда отображения $\lambda f(x)= \lambda(x)f(x)$ и $\scal{f, g}(x)={}$\linebreak ${}=\scal{f(x), g(x)}$ дифференцируемы в точке $a$ . Они действуют на вектор $h \in \rmm$ так:
+	\begin{itemize}
+		\item[\circled{1}] $(\lambda f)'(a) \cdot h  = \bigl(\lambda'(a) \cdot h \bigr) \cdot f(a) + \lambda(a) \cdot f'(a) \cdot h$
+		
+		\item[\href{https://www.youtube.com/live/oWtiSJdhQV8?si=KdwGqFX3YRIYdGr9&t=117}{\circled{2}}] $\scal{f, g}'(a)\cdot h = \scal{f'(a) \cdot h, g(a)} + \scal{f(a), g'(a) \cdot h}$
+	\end{itemize}
+	\textbf{Доказательство:} % Доказательство про дифференцируемость произведений
+	\begin{enumerate}[label=\protect\circled{\arabic*}]
+		\item $\lambda(a+h) f(a+h) \stackrel{\text{\ref{вещ.дефф.}}}{=} \bigl(\lambda(a) + \lambda'(a)\, h + o(h)\bigr) \bigl(f(a) + f'(a)\, h + o(h)\bigr) = \lambda(a) f(a) + \lambda(a)f'(a)\,h +{}$
+		\linebreak
+		${}+\lambda'(a)\,h\,f(a) + o(h)$ --- определение дифференцируемости $\lambda f$ в точке $a$.
+		
+		\item $\scal{f, g}'(a)\cdot h = \left(\sum\limits_{i=1}^{n} f_i g_i\right)' (a) \cdot h \stackrel{\text{лин.}}{=} \sum\limits_{i=1}^{n} (f_i g_i)' (a)\cdot h \stackrel{\text{\circl{1}}}{=} \sum\limits_{i=1}^{n} (\unbr{f_i'(a) \cdot h}{\makebox[0pt][c]{\footnotesize$i$-ая координата $F'(a) \cdot h$}}) \cdot g_i(a) + f_i(a) \cdot g_i'(a) \cdot h = {}$ \linebreak ${}= \scal{f'(a) \cdot h, g(a)} + \scal{f(a), g'(a) \cdot h}$
+	\end{enumerate} % Конец доказательства про дифференцируемость призведений
+\end{enumerate} % Конец правил дифференцируемости
+
+\begin{zam}[https://www.youtube.com/live/9KZRjeVTXNY?si=yUlxrO_ZzIAcIDOX&t=10779]
+	\textit{Общее правило дифференцирования функции одной переменной:}\\[5pt]
+	$f\colon \rr \to \rr$ --- дифференцируема, задаётся формулой $f(x)$. $f(x) \leadsto F(x_1, x_2, \dots, x_n)$, $n$ --- количество $x$-ов в формуле (т.е. нужно пронумеровать все $x$-ы). Тогда \[f'(x) = \sum_{i=1}^{n}\pfrac{F}{x_i}(x, x, \dots, x)\]
+	\textit{Доказательство:} Определение дифференцируемости $F$:
+	\[\unbr{F(x+h, \dots, x+h)}{f(x + h)} = \unbr{F(x, \dots, x)}{f(x)} + \unbr{\sum_{i=1}^{n} \pfrac{F}{x_i}(x, x, \dots, x)}{\text{число }\Rightarrow\text{ это } f'(x)} \cdot h + o(h) \qquad \text{при } h \to 0\]
+\end{zam} % Конец замечания про общее правило дифференцирования

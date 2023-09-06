@@ -1,0 +1,35 @@
+\subsection{Бесконечно малое отображение, $o(h)$, отображение дифференцируемое в точке}
+
+\begin{opr} % Определение бесконечно малого отображения
+	Отображение $\varphi \colon E \subset \rmm \to \rr^n$ называется 
+	\urlybox{https://www.youtube.com/live/YWYyW3pvi4I?si=-cV0C-mPKTeuFLBO&t=9761}{бесконечно малым} 
+	в точке $x_0 \in~\! \Int E$, если $\varphi(x) \xrightarrow[x \to x_0]{} 0_{\rr^n}$ 
+\end{opr} % Конеу определения бесконечно малого отображения
+
+\begin{opr} % Определение o(h)
+	Пусть $E \subset \rmm : 0_{\rmm} \in \Int E$,\quad $\varphi \colon E \to \rr^n$,\quad $h \in E$. Говорят, что \urlybox{https://www.youtube.com/live/YWYyW3pvi4I?si=RYtnOxXttGVXFwDz&t=9912}{$\varphi(h) = o(h)$}
+	при $h \to 0_{\rmm}$, если $\cfrac{\varphi(h)}{\|h\|} \xrightarrow[h \to 0_{\rmm}]{} 0_{\rr^n}$ \uns{(бесконечно малое в точке $0_{\rmm}$)}.
+	\vspace{11pt plus 1 pt minus 2 pt}
+	\palka{\footnotesize
+		Определение в \rr\ было: $f, g \colon E \subset \rr \to \rr$, $x_0$ --- предельная точка $E$, говорят, что $f(x) = o(g(x))$ при $x\to x_0$, если $\cfrac{f(x)}{g(x)} \xrightarrow[x \to x_0]{} 0$ \uns{($g(x) \ne 0$ в некоторой проколотой окрестности точки $x_0$)}}
+\end{opr} % Конец определения o(h)
+
+\smallskip
+
+\begin{opr}\label{вещ.дефф.} % Определение дифференцируемости отображения
+	Отображение $f \colon E \subset \rmm \to \rr^n$ называется 
+	\urlybox{https://www.youtube.com/live/YWYyW3pvi4I?si=uXGZIuzUGlBA4c28&t=10030}{диффиренцируемым} 
+	в точке \linebreak $a \in \int E$, если\E линейный оператор из \rmm\ в $\rr^n$ c матрицей $L$ и\E бесконечно малое отображение в точке $0_{\rmm}$\quad$\alpha \colon U(0_{\rmm}) \to \rr^n$ такие, что
+	\[f(a + h) = f(a) + Lh + \alpha(h)\cdot \|h\| \quad \text{ при } h\to0_{\rmm}\]
+	или
+	\[f(x) = f(a) + L(x - a) + \alpha (x - a) \cdot \|x - a\| \quad \text{ при } x \to a\]
+	
+	Этот линейный оператор (с матрицей $L$) называется 
+	\urlybox{https://www.youtube.com/live/YWYyW3pvi4I?si=k7q1v_MKEjrSv-sR&t=10481}{производным оператором} 
+	отображения $f$ в точке $a$, обозначается $f'(a)$. Получается, что отображение $f'$ действует из \rmm\ в пространство линейных операторов.
+	\vspace{11pt plus 1pt minus 2pt}
+	\palka{\footnotesize
+		Определение в \rr\ было: Функция $f \colon \scal{a, b} \to \rr$ дифференцируема в точке $a \in \scal{a,b}$, если\E число $A \in \rr$ такое, что 
+		\[f(a + h) = f(a) + Ah + o(h) \quad \text{ при } h \to 0\]
+		В определении в \rmm\ можно писать $o(h)$ вместо $\alpha(h) \cdot \|h\|$ и $o(x - a)$ вместо $\alpha(x - a) \cdot \|x - a\|$}
+\end{opr} % Конец определения дифференцируемости отображения

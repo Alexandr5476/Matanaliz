@@ -1,0 +1,220 @@
+\documentclass[a4paper, 12pt]{article} % Установка размера бумаги, размера шрифта и типа документа
+
+% Пакеты для работы русского языка
+\usepackage[english, russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[usenames]{color} % Пакет для цветного текста и фонов
+\usepackage{xcolor} % Ещё пакет для цвета
+\usepackage{hyperref} % Пакет для ссылок
+
+\definecolor{linkcolor}{rgb}{0, 0, 0} % цвет ссылок
+\definecolor{urlcolor}{rgb}{0, 0.2, 0.49} % цвет гиперссылок
+\definecolor{urlcolorin}{rgb}{0, 0, 0} % цвет гиперссылок в цветных прямоугольниках
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+\parindent=0pt % Без абзацного отступа
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools} % Пакеты от Американского математического общества (ams) - нужны
+
+\usepackage{geometry} % Пакет для изменения размеров полей
+\geometry{top = 15mm}
+\geometry{bottom = 15mm}
+\geometry{left = 15mm}
+\geometry{right = 10mm}
+
+\usepackage{titleps} % Пакет для колонтитулов
+\newpagestyle{main}{ % Создаём стиль с названием main
+	\setfoot{}{}{\thepage} % Текст снизу (page - счётчик страниц)
+}
+
+\pagestyle{main} % Установка этого стиля
+
+\usepackage{enumitem} % Для изменения пометок в списках через необязательные параметры
+\usepackage{multicol} % Для набора текста в несколько колонок
+
+\usepackage{tikz} 
+% Команда для символов в кружочке
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1.5pt] (char) {\footnotesize#1};}}
+\newcommand*\circl[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=.5pt] (char) {\tiny#1};}}
+	
+\renewcommand{\labelenumii}{\theenumii)} % Переопределение вида нумерации в нумерованном списке на втором уровне вложенности
+
+\makeatletter % Делает @ буквой
+
+% Новые команды
+\newcommand*{\rr}{\ensuremath{\mathbb R}}
+\newcommand*{\cc}{\ensuremath{\mathbb{C}}}
+\newcommand*{\eqdef}{\ensuremath{\stackrel{\mathrm{def}}{=}}}
+\newcommand*{\eps}{\ensuremath{\varepsilon}}
+\newcommand*{\A}{\ensuremath{\forall \,}}
+\newcommand*{\E}{\ensuremath{\hspace{7pt plus 1pt minus 2pt} \exists \,}}
+\newcommand*{\eq}{\ensuremath{\Leftrightarrow}}
+\newcommand*{\<}{\ensuremath{\leqslant}}
+\newcommand*{\biger}{\ensuremath{\geqslant}}
+\newcommand*{\scal}[1]{\ensuremath{\left<#1\right>}}
+\newcommand*{\bscal}[1]{\ensuremath{\bigl<#1\bigr>}}
+\newcommand{\uns}[1]{\textcolor[rgb]{0.52,0.52,0.52}{#1}}
+\newcommand*{\rtext}[1]{\textcolor[rgb]{1, 0.463, 0.463}{#1}}
+\newcommand{\ybox}[1]{\colorbox[rgb]{0.973, 1, 0.588}{#1}}
+\newcommand*{\urlybox}[2]{\hypersetup{urlcolor=urlcolorin}\colorbox[rgb]{0.973, 1, 0.588}{\href{#1}{#2}}\hypersetup{urlcolor=urlcolor}}
+\newcommand*{\metr}[1]{\ensuremath{\rho\left(#1\right)}}
+\newcommand*{\B}[1]{\ensuremath{\mathrm B(#1)}}
+\newcommand*{\no}{\ensuremath{\varnothing}}
+\newcommand*{\rproof}{\fboxsep=2pt\raisebox{1pt}[9pt][1pt]{\fbox{\raisebox{-.5pt}[1ex][0pt]{\ensuremath{\Rightarrow}}}}}
+\newcommand*{\lproof}{\fboxsep=2pt\raisebox{1pt}[9pt][1pt]{\fbox{\raisebox{-.5pt}[1ex][0pt]{\ensuremath{\Leftarrow}}}}}
+\newcommand*{\rmm}{\ensuremath{\mathbb R^m}}
+\newcommand*{\vp}[2][]{\ensuremath{\big|_{#2}^{#1}}}
+\newcommand*{\pfrac}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand*{\Int}{\ensuremath{\mathrm{Int}\,}}
+\newcommand*{\unbr}[2]{\uns{\ensuremath{\underbrace{\color[rgb]{0,0,0}{#1}}_{#2}}}}
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\newlength{\shirina} % Параметр \shirina со здачением длины
+\newlength{\raznost} % Параметр \raznost со здачением длины
+\newcommand{\palka}[1]{% Новая команда
+~\\[-5pt plus 2pt minus 1pt]% "Отступ"
+\shirina=0.9\textwidth% Присваеваем в \shirina 90% от ширины текста
+\settowidth{\raznost}{\vrule\hspace{.5em}}% Присваемваем в \raznost сколько места занимает линейка и отступ
+\addtolength{\shirina}{-\raznost}% Вычитаем \raznost из \shirina
+\noindent\hbox{%
+	\vrule\hspace{.5em}\parbox{\shirina}{#1}}% Сам абзац и линейка
+\vspace{5pt plus 2 pt minus 1pt}% Отступ после
+}
+
+
+\renewcommand{\@listI}{% Команда, которая выполняется при входе в списки
+	\leftmargin=20pt % Отступ слева 20pt
+	\addtolength{\leftmargin}{\hangindent} % Плюс значение, которое установлено для дополнительного отступа у всех строк абзаца
+	\rightmargin=0pt % Без отсутпа справа
+	\labelsep=5pt % Расстояние между концом заколовка элемента списка и самим элементом
+	\labelwidth=20pt % Место по горизонтали, отводимое для заголовка по умолчанию
+	\itemindent=0pt % Без дополнительного сдвига заголовка вправо
+	\topsep=8pt plus 2pt minus 4pt % Вертикальные отступы до и после списка
+	\partopsep=2pt plus 1pt minus 1pt % Дополнительные вертикальные отступы до и после списка, если список начинает абзац
+	\parsep=2pt plus 1pt minus 2pt % Вертикальный отступ между абзацами внутри одного элемента списка
+	\itemsep=3pt plus 1pt minus 2pt % Расстояние по вертикали, отделяющее элементы списка (дополнительно к \parsep)
+}
+
+
+\newcounter{opr} % Создание нового счётчика opr
+\renewcommand{\p@opr}{опр.~} % Изменение ссылочного префикса для счётчика opr
+\newenvironment{opr}{% Создание нового окружения opr (для определений)
+	\refstepcounter{opr}% Увеличение счётчика opr на 1
+	\par % Новый абзац 
+	\vspace{7pt plus 2pt minus 2pt}% Отступ до определения
+	
+	\hangindent=20pt% Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+	\colorbox[rgb]{0.973, 1, 0.588}{\sffamily\itshape Определение \theopr:}% Текст на жёлтом фоне
+}
+{\par\vspace{5pt plus 2pt minus 3pt}} % Новый абзац и отступ
+
+
+\newcounter{utv} % Создание нового счётчика utv
+\renewcommand{\p@utv}{утв.~} % Изменение ссылочного префикса для счётчика utv
+\NewDocumentEnvironment{utv}{o}{% Создание нового окружения utv (для утверждений)
+	\refstepcounter{utv}% Увеличение счётчика utv на 1 
+	\par % Новый абзац
+	\vspace{7pt plus 2pt minus 2pt}% Отступ до утверждения
+	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+	\IfNoValueTF{#1}%
+	{\colorbox[rgb]{0.718,0.984,1}{\sffamily\itshape Утверждение \theutv:}}% Текст на голубом фоне, если нет необязательного аргумента 
+	{%
+	\hypersetup{urlcolor=urlcolorin}% Ссылка без цвета
+	\colorbox[rgb]{0.718,0.984,1}{\sffamily\itshape\href{#1}{Утверждение \theutv:}}% Текст с сылкой на голубом фоне, если есть необязательный аргумент
+	\hypersetup{urlcolor=urlcolor}% Возвращение цвета ссылок
+	}%
+}
+{\par\vspace{5pt plus 2pt minus 2pt}} % Новый абзац и отступ
+
+
+\newcounter{slv} % Создание нового счётчика slv 
+\NewDocumentEnvironment{slv}{o}{% Создание нового окружения slv (для следствий)
+	\refstepcounter{slv} % Увеличение счётчика slv на 1
+	\par % Новый абзац 
+	\vspace{7pt plus 2pt minus 2pt} % Отступ до следствия
+	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+	\IfNoValueTF{#1}%
+	{\colorbox[rgb]{0.89,0.714,1}{\sffamily\itshape Следствие \theslv:}}% Текст на фиолетовом фоне, если нет необязательного аргумента
+	{%
+	\hypersetup{urlcolor=urlcolorin}% Ссылка без цвета
+	\colorbox[rgb]{0.89,0.714,1}{\sffamily\itshape\href{#1}{Следствие \theslv:}}% Текст с сылкой на голубом фоне, если есть необязательный аргумент
+	\hypersetup{urlcolor=urlcolor}% Возвращение цвета ссылок
+	}%
+}
+{\par\vspace{5pt plus 2pt minus 2pt}} % Новый абзац и отступ
+ 
+ 
+\newenvironment{prf}{% Создание нового окружения prf (для доказательств)
+	\par % Новый абзац
+	\vspace{7pt plus 2pt minus 2 pt}
+	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+	\colorbox[rgb]{0.718,1,0.769}{\sffamily\itshape Доказательство:}% Текст на зелёном фоне
+}
+{\qed\par\vspace{5pt plus 2pt minus 2pt}} % Квадратик, который обозначает конец доказательства, и новый абзац
+
+
+\newcounter{teor} % Создание нового счётчика teor
+\NewDocumentEnvironment{teor}{o m}{% Создание нового окружения teor (для теорем)
+	\refstepcounter{teor} % Увеличение счётчика teor на 1
+	\par % Новый абзац 
+	\vspace{7pt plus 2pt minus 3pt} % Отступ до теоремы
+	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+	\IfNoValueTF{#1}%
+	{\colorbox[rgb]{0.89,0.714,1}{\sffamily\itshape Теорема \theteor:}}% Текст на оранжевом фоне, если нет необязательного аргумента
+	{%
+		\hypersetup{urlcolor=urlcolorin}% Ссылка без цвета
+		\colorbox[rgb]{1, 0.784, 0.376}{\sffamily\itshape\href{#1}{{Теорема \theteor \normalfont\textit{ (#2)}\sffamily\itshape:}}}% Текст с сылкой на оранжевом фоне, если есть необязательный аргумент
+		\hypersetup{urlcolor=urlcolor}% Возвращение цвета ссылок
+	}%
+	\\[4pt plus 1pt minus 2pt]% Новая строка
+}
+{\par\vspace{5pt plus 2pt minus 2pt}} % Новый абзац и отступ
+
+
+\newcounter{zam} % Создание нового счётчика zam
+\renewcommand{\p@zam}{зам.~} % Изменение ссылочного префикса для счётчика zam
+\NewDocumentEnvironment{zam}{o}{% Создание нового окружения zam (для замечаний)
+	\refstepcounter{zam} % Увеличение счётчика zam на 1
+	\vspace{7pt plus 2pt minus 3 pt}% Отступ до замечания
+	\par % Новый абзац 
+	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+	\IfNoValueTF{#1}
+	{\colorbox[rgb]{1,0.745,0.953}{\sffamily\itshape Замечание \thezam:}}% Текст на розовом фоне, если нет необязательного аргумента
+	{%
+	\hypersetup{urlcolor=urlcolorin}% Ссылка без цвета
+	\colorbox[rgb]{1,0.745,0.953}{\sffamily\itshape\href{#1}{Замечание \thezam:}}% Текст c ссылкой на розовом фоне, если есть необязательный аргумент
+	\hypersetup{urlcolor=urlcolor}% Возвращение цвета ссылок
+	}%
+}
+{\par\vspace{5pt plus 2pt minus 2 pt}} % Новый абзац и отступ
+ 
+ 
+\newcounter{lem} % Создание нового счётчика lem
+\NewDocumentEnvironment{lem}{o m}{% Создание нового окружения lem (для лемм)
+	\refstepcounter{lem} % Увеличение счётчика lem на 1
+	\par % Новый абзац 
+	\vspace{7pt plus 2pt minus 3 pt}
+	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+	\IfNoValueTF{#1}
+	{\colorbox[rgb]{0.82,1,0.58}{\sffamily\itshape Лемма \thelem\normalfont\textit{\small\ (#2)}\sffamily\itshape:}}% Текст на зелёном фоне, если нет необязательного аргумента
+	{%
+	\hypersetup{urlcolor=urlcolorin}% Ссылка без цвета
+	\colorbox[rgb]{0.82,1,0.58}{\sffamily\itshape\href{#1}{Лемма \thelem\normalfont\textit{\small\ (#2)}\sffamily\itshape:}}% Текст c ссылкой на зелёном фоне, если есть необязательный аргумент
+	\hypersetup{urlcolor=urlcolor}% Возвращение цвета ссылок
+	}%
+	\\% Новая строка
+	
+}
+{\par\vspace{5pt plus 2pt minus 2 pt}} % Новый абзац и отступ
+
+
+\makeatother % Перестаём считать @ буквой
+
+\hfuzz=2pt
+
+

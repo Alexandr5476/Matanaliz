@@ -1,0 +1,149 @@
+\subsection{Определения в \rmm, покоординатная сходимость, двойной и повторый предел}
+
+\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+\ybox{\sffamily\itshape \href{https://www.youtube.com/live/46TKmI9S1Nw?si=9FTMbO2kZ6Bbg9PP&t=6178}{Напоминание определений:}} % Текст на жёлтом фоне
+т.к. $\rmm$ --- метрическое пространство, можно определить $\uns{\left(a \in \rmm, r \in \rr\right)}$
+\begin{enumerate} % Список определений
+	\setcounter{enumi}{\value{opr}} % Установка счётчика в списке на значение счётчика определений
+	\renewcommand{\labelenumi}{\ybox{\sffamily\itshape\theenumi:}} % Переопределение вида нумерации списка
+	
+	\item \href{https://www.youtube.com/live/46TKmI9S1Nw?si=p4w1eFmhpSTJ5deQ&t=6214}{Шар (открытый)} с центром в точке $a$ и радиусом $r$ --- $\B{a,r} = \{\, x \mid \, \|x - a\| < r \,\}$
+	
+	\item \href{https://www.youtube.com/live/46TKmI9S1Nw?si=C4Wy0NbbE8qfgqWD&t=6238}{Сфера} с центром в точке $a$ и радиусом $r$ --- $\mathrm S(a, r) = \{\, x \mid \, \|x - a\| = r \,\}$
+	
+	\item \href{https://www.youtube.com/live/46TKmI9S1Nw?si=Ba0hdH7lY09ipScu&t=6247}{Замкнутый шар} с центром в точке $a$ и радиусом $r$ --- $\overline{\B{a,r}} = \{\, x \mid \, \|x - a\| \< r \,\}$
+	
+	\item \href{https://www.youtube.com/live/46TKmI9S1Nw?si=WJ2RP5nsaOw9qmKT&t=6260}{\eps-окрестность} точки $a$ --- это $\B{a, \eps}$ $\uns{(\eps \in \rr)}$
+	
+	\item Проколотая \eps-окрестность точки $a$ --- это $\mathrm{\dot B}(a, \eps) = \B{a, \eps} \setminus \{a\}$
+	
+	\item Множество $G \uns{{}\subset \rmm}$ называется \href{https://www.youtube.com/live/46TKmI9S1Nw?si=jblKXtIbaiCuIAtQ&t=6281}{открытым}, если $ \A x \in G \E \eps_a \uns{{}\in \rr}: \B{a,\eps_a} \subset G$. Если множество $G$ --- открытое, то $G = \bigcup\limits_{a \in G} \B{a, \eps_a}$:
+	
+	\palka{\footnotesize % Открытое множество - объединение открытых множеств
+		\begin{description}
+			\item[$G \subset \bigcup\limits_{a \in G} \B{a, \eps_a}$\textbf:] Пусть $x \in G$, тогда, т.к. $G$ --- открытое$\E \B{x, r} \subset G$, т.е. $x \in \bigcup\limits_{a \in G} \B{a, \eps_a}$
+			
+			\item[$G \supset \bigcup\limits_{a \in G} \B{a, \eps_a}$\textbf:] Пусть $x \in \bigcup\limits_{a \in G} \B{a, \eps_a}$, тогда$\E a: x \in \B{a,\eps_a} \subset G$\qed
+	\end{description}}% Конец доказательства про объединение открытых множеств
+	
+	\item Точка $x$ называется \href{https://www.youtube.com/live/46TKmI9S1Nw?si=-3C39S3n4DDVXber&t=6412}{предельной точкой} множества $D \uns{{}\subset \rmm}$, если $\A \eps > 0\ \mathrm{\dot B}(a, \eps) \cap D \ne \no$
+	
+	\item Множество $F \uns{{}\subset \rmm}$ называется \href{https://www.youtube.com/live/46TKmI9S1Nw?si=7XXeuy_-4gAd9GLQ&t=6385}{замкнутым}, если оно содержит все свои предельные точки \eq $\E G$ --- открытое множество${}: F = \rmm \setminus G$
+	
+	\palka{\footnotesize % Равносильность определений замкнутого множества
+		\begin{itemize}
+			\item[\rproof] Пусть $x \in \rmm \setminus F$, тогда$\E \eps > 0 : \B{a, \eps} \cap F = \no$, то есть дополнение $F$ открыто
+			
+			\item[\lproof] Пусть $x$ --- предельная точка $F$ и $x \notin F$, тогда $x \in G$ и любая \eps-окрестность $x$ пересекается с $F$, то есть $G$ не открыто --- противоречие\qed
+	\end{itemize}}% Конец доказательства равносильности определений замкнутого множества
+	
+	\item Точка $a \in \rmm$ называется \href{https://www.youtube.com/live/46TKmI9S1Nw?si=NrhDHSIOVo3tVROx&t=6491}{пределом последовательности} $x^{(n)}$, если 
+	\[\A \eps > 0 \E N : \A n > N\ \left\|x^{(n)} - a\right\| < \eps\]
+	
+	\item Точка $L \in \rr^n$ называется \href{https://www.youtube.com/live/46TKmI9S1Nw?si=EUxabE2DbLetRqzr&t=6568}{пределом отображения} $f \colon D \subset \rmm \to \rr^n$ при $x \to a$\uns{\small${}\in\rmm$}, $a$ --- предельная точка $D$, если 
+	\[\A \eps > 0 \E \delta > 0 : \A x \in D \text{ если } 0 < \|x - a\| < \delta\text{, то } \left\|f(x) - L\right\| < \eps\]
+	Равносильное определение (\href{https://www.youtube.com/live/46TKmI9S1Nw?si=bRd_IedJhywBwnqd&t=6697}{по Гейне}):
+	\[\A \text{ последовательтости } x^{(k)} : \parbox[t]{2cm}{\small$x^{(k)} \to a$ \\ $x^{(k)} \ne a$ \\ $x^{(k)} \in D$} \text{выполнено }f(x^{(k)}) \to L \]
+	
+	\setcounter{opr}{\value{enumi}} % Установка счётчика определений на значение счётчика списка
+\end{enumerate} % Конец списка напоминающихся определений
+
+\begin{utv}[https://www.youtube.com/live/46TKmI9S1Nw?si=NM7QKNlkedLtg16C&t=6749]
+	Сходимость последовательности в {\small\rmm} равносильна покоординатной сходимости
+	\[x^{(n)} \to a \, \eq \, \A i \in \{1, 2, \dots, m\}\ x^{(n)}_i \to a_i\]
+\end{utv} % Утверждение про покоординатную сходимость
+
+\begin{prf} % Доказательство утверждения про покоординатную сходимость
+	\begin{itemize}
+		\item[\rproof] {\small $\A i \in \{1, 2, \dots, m\}$} 
+		$\left|x^{(n)}_i - a_i\right| \< \sqrt{\sum\limits_{j=1}^m \left(x^{(n)}_j - a_j\right)^2}
+		= \left\|x^{(n)} - a\right\|$ и $\left\|x^{(n)} - a\right\| \to 0 
+		\Rightarrow x^{(n)}_i \to a_i$
+		
+		\item[\lproof] Пусть $\alpha^{(n)} =\max\limits_{j=1, 2, \dots, m} \left|x_j^{(n)} - a_j\right|$, 
+		тогда $\alpha^{(n)} \to 0$
+		и $\left\|x^{(n)} - a\right\| 
+		= \sqrt{\sum\limits_{j=1}^m \left(x^{(n)}_j - a_j\right)^2} 
+		\<$\linebreak$\< \max\limits_{j=1, 2, \dots, m} \left|x_j^{(n)} - a_j\right| \sqrt{m} 
+		= \sqrt{m}\, \alpha^{(n)} \to 0 
+		\Rightarrow \left\|x^{(n)} - a\right\| \to 0$ 
+	\end{itemize}
+\end{prf} % Конец доказательства про покоординатную сходимость
+
+\begin{slv}[https://www.youtube.com/live/46TKmI9S1Nw?si=ijDDMXWDNAVdX70b&t=7070] % Следствие про покоординатную сходимость отображения
+	Из определения предела отображения по Гейне \uns{$f \colon D \subset \rmm \to \rr^n$}
+	\[\lim_{x \to a}f(x) = L\, \eq \, \A i \in \{1, 2, \dots, n\}\ \lim_{x \to a}f_i(x) = L_i\]
+\end{slv} % Конец следствия про покоординатную сходимость отображения
+
+\pagebreak
+
+\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+\ybox{\sffamily\itshape Ещё напоминание определений:} % Текст на жёлтом фоне
+\begin{enumerate} % Список  напоминающихся определений
+	\setcounter{enumi}{\value{opr}} % Устанавливка счётчик в списке на значение счётчика определений
+	\renewcommand{\labelenumi}{\ybox{\sffamily\itshape\theenumi:}} % Переопределение вида нумерации списка
+	
+	\item $f \colon D \subset \rmm \to \rr^n$, 
+	$f(x) = (f_1(x), f_2(x), \dots, f_n(x))$; \uns{\small$\A i \in \{1, 2, \dots, n\}$} $f_i(x)$ 
+	называются координатными функциями функции $f(x)$
+	
+	\item Метрическое пространство $X$ называется \href{https://www.youtube.com/live/46TKmI9S1Nw?si=UsqPvUj_7v3c-eL7&t=7247}{компактным}, если из любого покрытия открытыми множествами множно выбрать конечное подпокрытие:
+	\[\A \left\{G_{\alpha}\right\} \text{ --- окрытое покрытие} \E G_{{\alpha}_1}, G_{{\alpha}_2}, \dots, G_{{\alpha}_n} \text{ --- открытое подпокрытие } X\] 
+	Подмножество $D \subset \rmm$ --- компактно \eq\ $D$ --- замкнуто и ограничено \eq\ $D$ --- секвенциально компактно \eq\ $\A \eps > 0 \E$ конечная \eps-сеть ($D$ --- сверхограничено) и замкнуто
+		
+	\begin{itemize}[leftmargin=10pt]\small % Ещё всякие определения
+		\item $D$ называется ограниченным, если$\E \B{a,r} \subset \rmm : D \subset \B{a,r}$
+		
+		\item$D$ назвается секвинциально комактным, если из любой последовательности \uns{элементов этого множества} можно выбрать сходящуся подпоследовательность \uns{(к элементу этого множества)}
+		
+		\item $N \subset D$ называется \eps-сетью, если $\A x \in D \E y \in N: \metr{x,y} < \eps$ (конечной \eps-сетью, если $N$ --- конечно)
+		
+		\item Последовательность $x^{(n)}$ --- фундоментальная, если $\A \eps > 0 \E N : \A m, k > N\quad \metr{x^{(m)}, x^{(k)}} < \eps$
+		
+		\item Метрическое пространство $X$ называется полным, если в нём любая фундоментальная последовательность сходится. В \rmm\ полное \eq\ замкнутое
+	\end{itemize} 
+	
+	\setcounter{opr}{\value{enumi}} % Установка счётчика определений на значение счётчика у списка
+\end{enumerate} % Конец списка напоминающихся определений
+
+\begin{opr} % Определение двойного и повторного пределов
+	$D_1, D_2 \subset \rr$, $a_1$ --- предельная точка $D_1$, $a_2$ --- предельная точка $D_2$, $D\subset \rr^2$ --- множество${}: \bigl(D_1 \setminus \left\{a_1\right\}\bigr) \times \bigl(D_2 \setminus \left\{a_2\right\}\bigr) \subset D$, $f \colon D \to \rr$
+	\begin{enumerate} % Список определений
+		\item Пусть $\varphi(x_1) = \lim\limits_{x_2 \to a_2} f(x_1, x_2)$ (если этот предел существует), тогда $\lim\limits_{x_1 \to a_1} \varphi(x_1)$ называется \urlybox{https://www.youtube.com/live/46TKmI9S1Nw?si=33LMEIZNFmIfZf9V&t=7684}{повторным пределом}
+		
+		\item Пусть $\psi(x_2) = \lim\limits_{x_1 \to a_1} f(x_1, x_2)$ (если этот предел существует), тогда $\lim\limits_{x_2 \to a_2} \psi(x_2)$ тоже называется \urlybox{https://www.youtube.com/live/46TKmI9S1Nw?si=33LMEIZNFmIfZf9V&t=7684}{повторным пределом}
+		
+		\item $L = \lim\limits_{\substack{x_1 \to a_1 \\ x_2 \to a_2}} f(x_1, x_2 )$ называется \urlybox{https://www.youtube.com/live/46TKmI9S1Nw?si=33LMEIZNFmIfZf9V&t=7684}{двойным пределом}, если
+		\[\A U(L) \text{\footnotesize\ --- окрестность точки $L$}\E \parbox[t]{1cm}{\small$V_1(a_1)\\ V_2(a_2)$} \text{ \footnotesize\ --- } \parbox[t]{1.95cm}{\footnotesize окрестности точек $a_1, a_2$}{}: \text{\small если } 			\parbox[t]{2.9cm}{\small$x_1 \in \dot V_1(a_1) \cap D_1\\ x_2 \in \dot V_2(a_2) \cap D_2$} \text{\small, то } f(x_1, x_2) \in U(L) \]
+	\end{enumerate} % Конец списка определений
+\end{opr} % Определение двойного и повторного пределов
+
+\begin{opr} % Определение предела по множеству
+	Отображение $f\colon D \subset X \to Y$ \uns{\small $X, Y$ --- метрические пространства}, $G \subset D$, $a$ --- пре\-дель\-ная точка $G$. Предел сужения отображения $\lim\limits_{x \to a}f\vp{G} (x)$ называется \urlybox{https://www.youtube.com/live/46TKmI9S1Nw?si=iDDJPhb2sguyjIZ2&t=8957}{пределом по множеству}
+	Если $f \colon D \subset \rr^2 \to \rr$ и $C \subset \rr^2$ --- кривая, то $\lim\limits_{x \to a}f\vp{C} (x)$ называется \urlybox{https://www.youtube.com/live/46TKmI9S1Nw?si=iDDJPhb2sguyjIZ2&t=8957}{пределом по кривой}.
+\end{opr} % Конец определения предела по множеству
+
+\begin{utv}[https://www.youtube.com/live/46TKmI9S1Nw?si=6339JArx-sTchEaR&t=9263] % Утверждение без доказательства
+	Пусть $D_1, D_2 \subset \rr$,\quad$a_1$ --- предельная точка $D_1$,\quad $a_2$ --- предельная точка $D_2$, $D\subset \rr^2$ --- множество${}: \bigl(D_1 \setminus \left\{a_1\right\}\bigr) \times \bigl(D_2 \setminus \left\{a_2\right\}\bigr) \subset D$, $f \colon D \to \rr$, тогда
+	\begin{enumerate}
+		\item Из того, что $\A \text{кривой } C \in C^1(D) : C' \ne 0\E \lim\limits_{x \to a} f \vp{C}(x) = L$ следует$\E \lim\limits_{x \to a} f(x) = L$
+		
+		\item Из того, что $\A \text{кривой } C \in C^2(D) : C' \ne 0\E \lim\limits_{x \to a} f \vp{C}(x) = L$ \textbf{не} следует$\E \lim\limits_{x \to a} f(x) = L$
+	\end{enumerate}
+\end{utv} % Конец утверждения без доказательства
+
+\begin{prf}
+	Его нету.
+\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/46TKmI9S1Nw?si=Ab3YyE7RP2tH1k1m&t=10204]{О двойном и повторном пределе}
+	Пусть $D_1, D_2 \subset \rr$, $a_1${\small\ --- предельная точка} $D_1$, $a_2${\small\ --- предельная точка} $D_2$, $D\subset \rr^2$ --- множество${}: \bigl(D_1 \setminus \left\{a_1\right\}\bigr) \times \bigl(D_2 \setminus \left\{a_2\right\}\bigr) \subset D$, $f \colon D \to \rr$,\E\ двойной предел $\lim\limits_{\substack{x_1 \to a_1 \\ x_2 \to a_2}} f(x_1, x_2 ) = A \in \overline{\rr}$, и $\A x_1 \in~\!D_1 \setminus \left\{a_1\right\}$\E\ конечный $\varphi(x_1) = \lim\limits_{x_2 \to a_2} f(x_1, x_2)$, тогда\E\ повторный предел $\lim\limits_{x_1 \to a_1} \varphi(x_1) =~\!A$
+\end{teor} % Конец теоремы о двойном и повторном пределе
+\pagebreak
+\begin{prf} % Доказательство теоремы о двойном и повторном пределе
+	Пусть $A \in \rr$. Так как существует двойной предел, выполнено:
+	\[\A \eps > 0\E \parbox[t]{1cm}{\small$V_1(a_1)\\ V_2(a_2)$} \text{ \footnotesize\ --- } \parbox[t]{1.95cm}{\footnotesize окрестности точек $a_1, a_2$}{}: \text{\small если } \parbox[t]{2.9cm}{\small$x_1 \in \dot V_1(a_1) \cap D_1\\ x_2 \in \dot V_2(a_2) \cap D_2$} \text{\small, то } \|f(x_1, x_2) - A\| < \frac{\eps}{2} \]
+	Делая предельный переход в последнем неравенстве при $x_2 \to a_2$ получаем
+	\[\A \eps > 0\E V_1(a_1) \text{ \footnotesize\ --- } \parbox[t]{1.95cm}{\footnotesize окрестность точки $a_1$}{}: \text{\small если } x_1 \in \dot V_1(a_1) \cap D_1 \text{\small, то } \|\varphi(x_1) - A\| \< \frac{\eps}{2} < \eps \]
+	Аналогично при $A = \pm\infty$
+\end{prf} % Конец доказательства теоремы о двойном и повторном пределе

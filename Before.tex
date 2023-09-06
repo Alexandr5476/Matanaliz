@@ -1,0 +1,208 @@
+\subsection{Линейное пространство}
+
+\begin{opr} % Определение линейного пространства
+	Множество $X$ называется \ybox{линейным пространством} (или векторным) над полем $K$, если заданы две операции\\[5pt]
+	\begin{tabular}{ll}
+		Сложение: & $X \times X \to X$ \quad {\small $\bigl((x, y) \mapsto x + y\bigr)$}\\
+		Умножение на скаляр: & $K \times X \to X$ \quad {\small$\bigl((\alpha, x\bigr) \mapsto \alpha \cdot x)$}\\
+	\end{tabular},
+	удовлетворяющие аксиомам:
+	\begin{enumerate} % Аксиомы ленейного пространства
+		\item[]\hspace{-2em}\vspace{-.75em}
+		\raisebox{0pt}[0pt][0pt]%
+		{%
+			\rule[2pt]{4.843cm}{0.1pt}% Горизонтальная линейка до текста в рамке
+			\fboxrule=0.1pt%
+			\fboxsep=2.5pt%
+			\fbox{\uns{\scriptsize$(X, +)$ --- абелева группа по сложению}}%
+			\rule[2pt]{4.843cm}{0.1pt}% Горизонтальная линейка после текста в рамке
+		}%
+		\vspace{.4em}
+		\item \uns{\footnotesize$\A x, y \in X$} \ $x + y = y + x$ 
+		\quad {\footnotesize(коммутативность сложения)}
+		
+		\item \uns{\footnotesize$\A x, y, z \in X$} \ $(x + y) + z = x + (y + z)$
+		\quad{\footnotesize(ассоциативность сложения)}
+		
+		\item \uns{\footnotesize$\A x \in X$}$\E 0_X : x + 0_X = x$
+		\quad{\footnotesize(существование нейтрольного элемента по сложению)}
+		
+		\item \uns{\footnotesize$\A x \in X$}$\E (-x) : x + (-x) = 0_X $
+		\quad{\footnotesize(существование обратного элемента по сложению)}
+		
+		\vspace{-1.6ex}\hspace{-2em}
+		\raisebox{0pt}[0pt][0pt]%
+		{%
+			\rule[2pt]{0.1pt}{2.55cm}% Левая линейка
+			\rule[2pt]{15.1cm}{0.2pt}% Нижняя линейка
+			\rule[2pt]{0.1pt}{2.55cm}% Правая линейка
+		}%
+		\vspace{-.9ex}
+		
+		\item \uns{\footnotesize$\A x \in X, \A \alpha, \beta \in K$} \  $(\alpha + \beta) \cdot x =\alpha \cdot x + \beta \cdot x$
+		
+		\item \uns{\footnotesize$\A x, y \in X, \A \alpha \in K$} \  $\alpha \cdot (x + y) = \alpha \cdot x + \alpha \cdot y$
+		
+		\item \uns{\footnotesize$\A x \in X, \A \alpha, \beta \in K$} \  $(\alpha \beta) \cdot x = \alpha \cdot (\beta \cdot x)$
+		
+		\item \uns{\footnotesize$\A x \in X$} \  $1_X \cdot x = x$, где $1_X \in K$ --- нейтральный элемент по умножению 
+	\end{enumerate} % Конец аксиом линейного пространства
+\end{opr} % Конец определения линейного пространства
+
+\subsection{Скалярное произведение, норма}
+
+\begin{opr} % Определение скалярного произведения
+	Пусть $X$ --- линейное пространство над \rr. Отображение $X \times X \to \rr$ \ {\small $\bigl((x, y) \mapsto~\scal{x,y}\bigr)$} называется \ybox{скалярным произведением}, если оно удовлетворяет аксиомам:
+	\begin{enumerate} % Аксиомы скалярного произведения
+		\item \uns{\footnotesize$\A x, y \in X$} 
+		$\scal{x, y} = \scal{y,x}$
+		\quad{\footnotesize(симметричность)}
+		
+		\item\label{скал:лин.} \uns{\footnotesize$\A x, y, z \in X, \A \alpha \in \rr$} 
+		$\scal{x + \alpha\cdot y, z} = \scal{x, z} + \alpha\scal{y,z}$
+		\ {\footnotesize(линейность)}
+		
+		\item\label{скал:пол.опр.} \uns{\footnotesize$\A x \in X$}
+		$\scal{x, x} \biger 0$, \quad $\scal{x, x} = 0 \eq x = 0_X$
+		\ {\footnotesize(положительная определённость)}
+	\end{enumerate} % Конец аксиом скалярного произведения
+\end{opr} % Конец определения скалярного произведения
+
+\begin{opr} % Определение нормы
+	Отображение $X \to \rr$ \ {\small($x \mapsto \|x\|$)} называется \ybox{нормой} {\small($X$ --- линейное пространство над \rr)}, если оно удовлетворяет аксиомам:
+	\begin{enumerate} % Аксиомы нормы
+		\item\label{норма:пол.опр.} \uns{\footnotesize$\A x \in X$}
+		$\|x\| \biger 0$, \quad $\|x\| = 0 \eq x = 0_X$
+		\ {\footnotesize(положительная определённость)}
+		
+		\item \uns{\footnotesize$\A x \in X, \A \alpha \in \rr$}
+		$\|\alpha \cdot x\| = |\alpha|\,\|x\|$
+		\ {\footnotesize(положительная однородность)}
+		
+		\item\label{норма:нер.тр.} \uns{\footnotesize$\A x, y\in X$}
+		$\|x + y\| \< \|x\| + \|y\|$
+		\ {\footnotesize(неравенство треугольника для нормы)}
+	\end{enumerate} % Конец аксиом нормы
+\end{opr} % Конец определения нормы
+
+\begin{utv}\label{норма:скал.пр.} % Норма через скалярное произведение
+	Отображение $X \to \rr$, \ $x \mapsto \sqrt{\scal{x, x}}$ --- норма {\small($X$ --- линейное пространство над \rr)}
+\end{utv}
+
+\begin{prf}
+	\uns{проверка аксиом нормы:}
+	\begin{enumerate}
+		\item Аксиома \ref{скал:пол.опр.} скалярного произведения
+		
+		\item По аксиоме \ref{скал:лин.} скалярного произведения $\sqrt{\scal{\alpha \cdot x, \alpha \cdot x}} = \sqrt{\alpha^2\scal{x, x}} = |\alpha|\sqrt{\scal{x, x}} $
+		
+		\item Нужно доказать, что \uns{\footnotesize$\A x, y\in X$}
+		$\sqrt{\scal{x + y, x + y}} \< \sqrt{\scal{x, x}} + \sqrt{\scal{y, y}}$. Обе части положительные, поэтому это неравенство равносильно неравенству
+		\[\scal{x, x} + 2\scal{x, y} + \scal{y, y} \< \scal{x, x} + 2\sqrt{\scal{x, x}\scal{y, y}} + \scal{y, y}\]
+		\[\scal{x, y} \< \sqrt{\scal{x, x}\scal{y, y}}\]
+		Рассмотрим функцию $f \colon \rr \to \rr, (\alpha \mapsto \scal{x + \alpha \cdot y, x + \alpha \cdot y})$. 
+		\begin{multline*}
+			\uns{\A \alpha \in \rr} \quad f(\alpha) = \scal{x, x + \alpha \cdot y} + \scal{\alpha \cdot y, x + \alpha \cdot y} = \\ 
+			= \scal{x, x} + \scal{x, \alpha \cdot y} + \scal{\alpha \cdot y, x} + \scal{\alpha \cdot y, \alpha \cdot y} =\\ 
+			= \scal{x, x} + 2 \alpha \scal{x, y} + \alpha^2 \scal{y, y} 
+		\end{multline*}
+		Также $f(\alpha) \biger 0\ \uns{\A \alpha \in \rr}$ (по аксиоме \ref{скал:пол.опр.} скалярного произведения) $\Rightarrow$ дискриминант $\< 0$:
+		$\bigl(2\scal{x, y}\bigr)^2 - 4\scal{y, y}\scal{x, x} \< 0$, \, то есть\, $\scal{x, y}^2 \< \scal{x, x}\scal{y, y}$ или $|\scal{x, y}|\< \sqrt{\scal{x, x}\scal{y, y}}$
+	\end{enumerate} % Конец проверки аксиом нормы
+\end{prf}
+\pagebreak
+\begin{slv}
+	Из доказательства \ref{норма:скал.пр.} следует неравенство Коши-Буняковского. Разные виды его записи:
+	\begin{multicols}{2}
+	\begin{enumerate}
+		\item $|\scal{x, y}| \< \sqrt{\scal{x, x}}\,\sqrt{\scal{y, y}}$
+		
+		\item $|\scal{x, y}|\< \|x\|\, \|y\|$ 
+		
+		\item $\scal{x, y}^2 \< \scal{x, x}\scal{y, y}$
+
+		\item $\left(\sum\limits_{i=1}^m x_iy_i\right)^2 \< \sum\limits_{i = 1}^m x_i^2 \, \sum\limits_{i = 1}^m y_i^2$\quad(при $x, y \in \rmm$)
+		
+		\item  $\left|\sum\limits_{i=1}^m x_iy_i\right| \< \sqrt{\sum\limits_{i = 1}^m x_i^2} \, \sqrt{\sum\limits_{i = 1}^m y_i^2}$\quad(при $x, y \in \rmm$)
+	\end{enumerate}
+	\end{multicols}
+	
+\end{slv}
+
+\subsection{Метрика}
+
+\begin{opr} % Определение метрики
+	Пусть $X$ --- множество. Отображение $\rho\colon X \times X \to \rr$ называется \ybox{метрикой}, если оно удовлетворяет аксиомам:
+	\begin{enumerate} % Аксиомы метрики
+		\item \uns{\footnotesize$\A x, y \in X$} 
+		$\metr{x,y} = \metr{y,x}$
+		\ {\footnotesize(симметричность)}
+		
+		\item \uns{\footnotesize$\A x, y \in X$} 
+		$\metr{x,y}\biger 0, \quad \metr{x,y} = 0 \eq x = y$
+		\ {\footnotesize(невырожденность)}
+		
+		\item \uns{\footnotesize$\A x, y, z \in X$} 
+		$\metr{x,y} \< \metr{x,z} + \metr{z,y}$
+		\ {\footnotesize(неравенство треугольника для метрики)}
+	\end{enumerate} % Конец аксиом метрики
+\end{opr} % Конец определения метрики
+
+\begin{utv}\label{метр.:норма} % Метрика через норму
+	Пусть $X$ --- линейное пространство над \rr. Отображение $\rho\colon X \times X \to \rr$, \uns{\footnotesize$\A x, y \in X$} $\metr{x,y} = \|x-y\|$ --- метрика
+\end{utv}
+
+\begin{prf}
+	\uns{проверка аксиом метрики:}
+	\begin{enumerate}
+		\item \uns{\footnotesize$\A x, y \in X$} 
+		$\|x - y\| = \|(-1)\cdot (y - x)\| = |-1|\,\|y - x\| = \|y - x\|$
+		
+		\item Аксиома \ref{норма:пол.опр.} нормы
+		
+		\item По \ref{норма:нер.тр.} аксиоме нормы \uns{\footnotesize$\A x, y, z \in X$} 
+		$\|x - y\| = \|x - y + z - z\| = \|(x - z) + (z - y)\| \< \|x - z\| + \|z - y\|$ 
+	\end{enumerate} % Конец проверки аксиом метрики
+\end{prf}
+
+\subsection{Скалярное произведение, норма, метрика в $\rmm$}
+
+\begin{opr} % Определение Rm
+	\ybox{$\rmm$}${} = \{\,\underbrace{\rr \times \rr \times \dots \times \rr}_{\text{m раз}}\,\} = \left\{\, (x_1, x_2, \dots, x_m) \mid x_i \in \rr \,\right\}$ 
+\end{opr} % Конец определения Rm
+
+\begin{utv}
+	$\rmm$ --- линейное пространство над \rr{} с покоординатным сложением и покоординатным умножением на скаляр
+\end{utv}
+
+\begin{prf}
+	Очевидно.
+\end{prf}
+
+\begin{utv} % Стандартное скалярное произведение в Rm
+	Отображение $\rmm \times \rmm \to \rr, \quad (x,y) \mapsto \sum\limits_{i=1}^m x_i y_i$ --- скалярное произведение в $\rmm$ 
+\end{utv}
+
+\begin{prf}
+	\uns{проверка аксиом скалярного произведения:}
+	\begin{enumerate}
+		\item \uns{\footnotesize$\A x, y \in \rmm$}
+		$ \sum\limits_{i=1}^m x_i y_i = \sum\limits_{i=1}^m y_i x_i$
+		
+		\item \uns{\footnotesize$\A x, y, z \in \rmm, \A \alpha \in \rr$}
+		$\sum\limits_{i=1}^m (x_i + \alpha y_i)z_i = \sum\limits_{i=1}^m (x_i z_i + \alpha y_i z_i) = \sum\limits_{i=1}^m x_i z_i + \alpha\sum\limits_{i=1}^m y_i z_i$
+		
+		\item \uns{\footnotesize$\A x\in \rmm$}
+		$ \sum\limits_{i=1}^m x_i^2 \biger 0$,\quad и \ $\sum\limits_{i=1}^m x_i^2 = 0 \eq \A i\uns{{}\in{\text{\small$\{1, 2, \dots, m\}$}}}\ \ x_i^2 = 0 \eq x_i = 0 \eq x = 0$	 
+	\end{enumerate} % Конец проверки аксиом скалярного произведения
+\end{prf}
+
+\begin{slv} % Следствие: норма в Rm
+	По \ref{норма:скал.пр.} \uns{$\A x \in \rmm$} $\|x\| = \sqrt{\scal{x, x}} = \sqrt{\sum\limits_{i=1}^m x_i^2} = \sqrt{x_1^2 + x_2^2 + \dots x_m^2}$ --- норма в $\rmm$
+\end{slv}
+
+\begin{slv} % Следствие: метрика в Rm
+	По \ref{метр.:норма} \uns{$\A x, y \in \rmm$} $\metr{x,y} = \|x - y\| = \sqrt{\sum\limits_{i=1}^m (x_i - y_i)^2}$ --- метрика в $\rmm$
+\end{slv}
+
+\addtocontents{toc}{\medskip\hrule\smallskip\hspace{7cm} \small\sffamily\bfseries Конец \protect\rom{2} семестра \textdownarrow\normalfont\strut\hrule\medskip}
