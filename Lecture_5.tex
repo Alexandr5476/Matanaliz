@@ -1,4 +1,4 @@
-\subsection{Теорема Лагранжа, градиент, производная по вектору}
+\subsection{Теорема Лагранжа, градиент, производная по вектору, по направлению, экстремальное свойство градиента}
 
 \begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=c7uqK7x7CuZSChAM&t=866]{Лагранжа для векторонозначных функций}
 	$f\colon [a, b] \subset \rr \to \rmm$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$. Тогда$\E c \in (a, b):$ \[\|f(b) - f(a)\| \< \|f'(c)\|\cdot\|(b-a)\|\]
@@ -15,16 +15,25 @@
 \begin{opr} % Определение градиента
 	Пусть функция $f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$. Тогда матрица якоби функции $f$ имеет размер $1 \times m$ (строка). Если её транспонировать и считать, что это вектор из \rmm, то определение дифференцирцемости можно записать так:
 	\[f(a + h) = f(a) + \scal{f'(a), h} + o(h), \quad \text{ при } h \to 0_{\rmm} \]
-	и тогда вектор $f'(a) \in \rmm$ называется \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=0R7V2OPxS-nBZmFw&t=1658}{градиентом} функции $f$ в точке $a$, обозначается $\mathrm{grad}f(a)$. 
+	и тогда вектор $f'(a) \in \rmm$ называется \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=0R7V2OPxS-nBZmFw&t=1658}{градиентом} функции $f$ в точке $a$, обозначается $\grad f(a)$. 
 \end{opr} % Конец определения градиента
 
 \begin{opr} % Определение производной по верктору
 	\urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=rxn2tFpsv1v4kt0u&t=1943}{Производной по вектору} $h \in \rmm$ функции $f\colon E \subset \rmm \to \rr$ в точке $a$ называется
 	\[\lim_{t \to 0} \frac{f(a + th) - f(a)}{t}\]
-	обозначение: $\displaystyle\pfrac{f}{h}(a)$. \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=veALxjYiQ6bewYkp&t=2054}{Напрвлением} в \rmm\ называется вектор $l \in \rmm : \|l\| = 1$. 
+	обозначение: $\displaystyle\pfrac{f}{h}(a)$. \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=veALxjYiQ6bewYkp&t=2054}{Напрвлением} в \rmm\ называется вектор $l \in \rmm : \|l\| = 1$. Можно\smallskip\ рассматривать производную по направлению.
 \end{opr} % Конец определения производной по ветору
 
 \begin{zam}[https://www.youtube.com/live/oWtiSJdhQV8?si=yPj-7gaxv1RXGnDk&t=2189]
 	$f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$, тогда
-	\[\pfrac{f}{h}(a) = \lim_{t \to 0} \frac{f(a + th) - f(a)}{t} \stackrel{\text{опр. дифф-сти}}{=}\lim_{t \to 0} \frac{\pfrac{f}{x_1}(a)\,th_1 + \dots + \pfrac{f}{x_m}(a)\,th_m + o(t)}{t}  = \scal{\mathrm{grad}f(a), h}\]
+	\[\pfrac{f}{h}(a) = \lim_{t \to 0} \frac{f(a + th) - f(a)}{t} \stackrel{\text{опр. дифф-сти}}{=}\lim_{t \to 0} \frac{\pfrac{f}{x_1}(a)\,th_1 + \dots + \pfrac{f}{x_m}(a)\,th_m + o(t)}{t}  = \scal{\grad f(a), h}\]
 \end{zam}
+
+\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=nwBS8xFjs_GBMoRl&t=2418]{Экстремальное свойство градиента}
+	$f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$,\quad$\grad f(a) \ne 0$, пусть {$l = \small\cfrac{\grad f(a)}{\|\grad f(a) \|}$ \uns{--- направление в \rmm}}. Тогда $l$ --- направление наискорейшего возрастания функции $f$, т.е.
+	\[\A h \in \rmm \text{, у которого } \|h\| = 1\text{ выполнено}\qquad -\|\grad f(a)\| \< \pfrac{f}{h}(a) \< \|\grad f(a)\|\]
+	а равенство достигается при $h = l$ (справа) и $h = -l$ (слева)
+\end{teor}
+\begin{prf}
+	содержимое...
+\end{prf}
