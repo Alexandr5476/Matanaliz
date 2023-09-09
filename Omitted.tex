@@ -1,0 +1,11 @@
+\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=c7uqK7x7CuZSChAM&t=866]{Лагранжа для векторонозначных функций}
+	$f\colon [a, b] \subset \rr \to \rmm$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$. Тогда$\E c \in (a, b):$ \[\|f(b) - f(a)\| \< \|f'(c)\|\cdot\|(b-a)\|\]
+\end{teor} % Конец теоремы Лагранжа для векторнозначных функций
+
+\begin{prf} % Доказательство теоремы Лагранжа для векторнозначных функций
+	Пусть $\varphi \colon [a, b] \to \rr $,\quad$\varphi(t) = \bscal{f(b) - f(a), f(t) - f(a)}$. \smallskip Тогда $\varphi$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$ и $\varphi(a) = 0,\  \varphi(b) = \|f(b) - f(a)\|^2$. Поэтому
+	\begin{gather*} \|f(b) - f(a)\|^2 = \varphi(b) - \varphi(a) \stackrel{\parbox{2.35cm}{\tiny \uns{по обычной теореме Лагранжа$\hspace{-3.5pt}\E c \in~\!\!(a, b)$}}}{=} \varphi'(c)(b - a) \stackrel{\text{\circl{2}}}{=} \bscal{f(b) - f(a), f'(c)}(b-a) \stackrel{\parbox{1.57cm}{\tiny \uns{нер-во Коши-\\Буняковского}}}{\<}\\
+		\<\|f(b) - f(a)\|\cdot \|f'(c)\| \cdot (b - a)
+	\end{gather*}
+	Теперь, деля на $\|f(b) - f(a)\|$ \uns{(при $f(b) = f(a)$ доказываемое неравенство очевидно)} получаем то, что нужно. 
+\end{prf} % Конец доказательства теоремы Лагранжа для векторнозначных функций

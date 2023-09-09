@@ -8,11 +8,15 @@
 \usepackage[usenames]{color} % Пакет для цветного текста и фонов
 \usepackage{xcolor} % Ещё пакет для цвета
 \usepackage{hyperref} % Пакет для ссылок
+\usepackage{xfrac}
 
 \definecolor{linkcolor}{rgb}{0, 0, 0} % цвет ссылок
 \definecolor{urlcolor}{rgb}{0, 0.2, 0.49} % цвет гиперссылок
 \definecolor{urlcolorin}{rgb}{0, 0, 0} % цвет гиперссылок в цветных прямоугольниках
 \hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+\usepackage[babel=true,tracking=true]{microtype}
+\SetTracking{encoding = *}{100}
 
 \parindent=0pt % Без абзацного отступа
 
@@ -41,6 +45,8 @@
 \newcommand*\circl[1]{\tikz[baseline=(char.base)]{
 		\node[shape=circle,draw,inner sep=.5pt] (char) {\tiny#1};}}
 	
+\usepackage{tikz-cd}
+	
 \renewcommand{\labelenumii}{\theenumii)} % Переопределение вида нумерации в нумерованном списке на втором уровне вложенности
 
 \makeatletter % Делает @ буквой
@@ -61,8 +67,10 @@
 \newcommand*{\rtext}[1]{\textcolor[rgb]{1, 0.463, 0.463}{#1}}
 \newcommand{\ybox}[1]{\colorbox[rgb]{0.973, 1, 0.588}{#1}}
 \newcommand*{\urlybox}[2]{\hypersetup{urlcolor=urlcolorin}\colorbox[rgb]{0.973, 1, 0.588}{\href{#1}{#2}}\hypersetup{urlcolor=urlcolor}}
-\newcommand*{\metr}[1]{\ensuremath{\rho\left(#1\right)}}
+\newcommand*{\metr}[2][]{\ensuremath{\rho_{#1}\left(#2\right)}}
+\newcommand*{\bmetr}[2][]{\ensuremath{\rho_{#1}\bigl(#2\bigr)}}
 \newcommand*{\B}[1]{\ensuremath{\mathrm B(#1)}}
+\newcommand*{\BB}[1]{\ensuremath{\mathrm B\bigl(#1\bigr)}}
 \newcommand*{\no}{\ensuremath{\varnothing}}
 \newcommand*{\rproof}{\fboxsep=2pt\raisebox{1pt}[9pt][1pt]{\fbox{\raisebox{-.5pt}[1ex][0pt]{\ensuremath{\Rightarrow}}}}}
 \newcommand*{\lproof}{\fboxsep=2pt\raisebox{1pt}[9pt][1pt]{\fbox{\raisebox{-.5pt}[1ex][0pt]{\ensuremath{\Leftarrow}}}}}
@@ -134,6 +142,7 @@
 
 
 \newcounter{slv} % Создание нового счётчика slv 
+\renewcommand{\p@slv}{сл.~}
 \NewDocumentEnvironment{slv}{o}{% Создание нового окружения slv (для следствий)
 	\refstepcounter{slv} % Увеличение счётчика slv на 1
 	\par % Новый абзац 
@@ -166,7 +175,7 @@
 	\vspace{7pt plus 2pt minus 3pt} % Отступ до теоремы
 	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
 	\IfNoValueTF{#1}%
-	{\colorbox[rgb]{0.89,0.714,1}{\sffamily\itshape Теорема \theteor:}}% Текст на оранжевом фоне, если нет необязательного аргумента
+	{\colorbox[rgb]{1, 0.784, 0.376}{\sffamily\itshape Теорема \theteor\normalfont\textit{ (#2)}\sffamily\itshape:}}% Текст на оранжевом фоне, если нет необязательного аргумента
 	{%
 		\hypersetup{urlcolor=urlcolorin}% Ссылка без цвета
 		\colorbox[rgb]{1, 0.784, 0.376}{\sffamily\itshape\href{#1}{{Теорема \theteor \normalfont\textit{ (#2)}\sffamily\itshape:}}}% Текст с сылкой на оранжевом фоне, если есть необязательный аргумент
@@ -194,25 +203,23 @@
 }
 {\par\vspace{5pt plus 2pt minus 2 pt}} % Новый абзац и отступ
  
- 
-\newcounter{lem} % Создание нового счётчика lem
-\NewDocumentEnvironment{lem}{o m}{% Создание нового окружения lem (для лемм)
-	\refstepcounter{lem} % Увеличение счётчика lem на 1
-	\par % Новый абзац 
-	\vspace{7pt plus 2pt minus 3 pt}
-	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
-	\IfNoValueTF{#1}
-	{\colorbox[rgb]{0.82,1,0.58}{\sffamily\itshape Лемма \thelem\normalfont\textit{\small\ (#2)}\sffamily\itshape:}}% Текст на зелёном фоне, если нет необязательного аргумента
-	{%
-	\hypersetup{urlcolor=urlcolorin}% Ссылка без цвета
-	\colorbox[rgb]{0.82,1,0.58}{\sffamily\itshape\href{#1}{Лемма \thelem\normalfont\textit{\small\ (#2)}\sffamily\itshape:}}% Текст c ссылкой на зелёном фоне, если есть необязательный аргумент
-	\hypersetup{urlcolor=urlcolor}% Возвращение цвета ссылок
-	}%
-	\\% Новая строка
-	
-}
-{\par\vspace{5pt plus 2pt minus 2 pt}} % Новый абзац и отступ
 
+\newcounter{lem} % Создание нового счётчика teor
+\NewDocumentEnvironment{lem}{o m}{% Создание нового окружения teor (для теорем)
+	\refstepcounter{lem} % Увеличение счётчика teor на 1
+	\par % Новый абзац 
+	\vspace{7pt plus 2pt minus 3pt} % Отступ до теоремы
+	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+	\IfNoValueTF{#1}%
+	{\colorbox[rgb]{0.82,1,0.58}{\sffamily\itshape Лемма \thelem\normalfont\textit{ (#2)}\sffamily\itshape:}}% Текст на оранжевом фоне, если нет необязательного аргумента
+	{%
+		\hypersetup{urlcolor=urlcolorin}% Ссылка без цвета
+		\colorbox[rgb]{0.82,1,0.58}{\sffamily\itshape\href{#1}{{Лемма \thelem \normalfont\textit{ (#2)}\sffamily\itshape:}}}% Текст с сылкой на оранжевом фоне, если есть необязательный аргумент
+		\hypersetup{urlcolor=urlcolor}% Возвращение цвета ссылок
+	}%
+	\\[4pt plus 1pt minus 2pt]% Новая строка
+}
+{\par\vspace{5pt plus 2pt minus 2pt}} % Новый абзац и отступ
 
 \makeatother % Перестаём считать @ буквой
 

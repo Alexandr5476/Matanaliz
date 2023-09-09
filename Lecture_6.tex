@@ -1,0 +1,64 @@
+\subsection{Последовательность функций, поточечная и равномерная сходимсть}
+
+\begin{opr} % Определение последовательности функций
+	\urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=2FLP54qNNy38b76F&t=8739}{Последовательность функций} --- это отображение из $\mathbb{N}$ в множество функций.  
+\end{opr} % Конец определения последовательности функций
+
+\begin{opr} % Определение поточечной сходимости
+	Пусть $X$ --- множество, $Y$ --- метрическое пространство, $f, f_1, f_2, \dots \colon X \to Y$, последовательность отображений $f_n$
+	\urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=DUpMyEo3A_0XinWZ&t=8777}{сходится поточечно}
+	к отображению $f$ на множестве $E \subset X$ означает, что 
+	$\A x_0 \in E\ f_n(x_0) \xrightarrow[n \to \infty]{} f(x_0)$, т.е.
+	\[\A x_0 \in E\ \ \A \eps > 0 \E N : \A n > N \text{ выполнено } \bmetr{f_n(x_0), f(x_0)} < \eps\]
+\end{opr} % Конец опредления поточечной сходимости
+
+\begin{opr} % Определение равномерной сходимости
+	Последовательность отображений $f_n$ \urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=xiWWx6bJ14dtlytn&t=9762}{сходится равномерно} к отображению $f$ на множестве $E$ если 
+	$\sup\limits_{x \in E} \metr{f_n(x_0), f(x_0)} \xrightarrow[n \to \infty]{} 0$, т.е.
+	\[\A \eps > 0 \E N : \A n > N\ \ \A x \in E \text{ выполнено } \bmetr{f_n(x), f(x)} < \eps\] 
+	Обозначение: \begin{tikzcd}
+		f_n \ar[yshift=2pt]{r}{E}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & f
+	\end{tikzcd}
+\end{opr} % Конец определения равномерной сходимости
+
+\begin{zam}[https://www.youtube.com/live/oGN0SkfpZME?si=Xt7wgIwZyTC3gAy9&t=10296] % Замечания про равномерную сходимость
+	\begin{enumerate}
+		\item Из равномерной сходимости следует поточечная сходимость \uns{(наоборот нет)}
+		
+		\item Если \begin{tikzcd}
+			f_n \ar[yshift=2pt]{r}{E}
+			\ar[yshift=-2pt]{r}[swap]{n \to \infty} & f
+		\end{tikzcd} и $E_0 \subset E$, то \begin{tikzcd}
+		f_n \ar[yshift=2pt]{r}{E_0}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & f
+		\end{tikzcd}
+	\end{enumerate}
+\end{zam} % Конец замечаний про равномерную сходимость
+
+\begin{lem}[https://www.youtube.com/live/oGN0SkfpZME?si=v9AomZJHSzhlMvMm&t=10556]{или следующий пункт замечания}
+	Пусть $X$ ---множество, $Y$ --- метрическое пространство,\quad 
+	$\mathcal F = \{\, f \colon X \to Y \mid f\text{ --- ограничено}\,\}$ \linebreak 
+	({\small$f$ --- ограничено означает, что$\E y_0 \in Y, r \in \rr : \A x \in X$ выполнено $f(x) \subset \B{y_0, r}$}). 
+	Тогда функция $\rho_{\mathcal F} \colon \mathcal{F} \times \mathcal{F} \to \rr$ такая, что 
+	$\metr[\mathcal F]{f_1, f_2} = \sup\limits_{x \in X} \bmetr{f_1(x), f_2(x)}$ 
+	является метрикой на $\mathcal F$.
+\end{lem} % Конец леммы про метрику
+	
+\begin{prf} % Доказательство леммы про метрику
+	Выполнение \smallskip первых двух аксиом метрики (\ref{опр:метр.}) следует из их выполнения в метрике на $Y$. Неравенство треугольника: при любом $x \in X$ выполнено
+	\[\bmetr{f_1(x), f_2(x)} \< \bmetr{f_1(x), g(x)} + \bmetr{g(x), f_2(x)} \< \metr[\mathcal F]{f_1, g} + \metr[\mathcal F]{g, f_2} \qquad \A f_1, f_2, g \in \mathcal F\]
+	Правая часть неравенства не зависит от $x$, поэтому она является верхней границей (для множества чисел $\{\,\bmetr{f_1(x), f_2(x)} \mid x \in X\,\}$), тогда она больше \smallskip либо равна точной верхней границы  $\Rightarrow \metr[\mathcal F]{f_1, f_2} \< \metr[\mathcal F]{f_1, g} + \metr[\mathcal F]{g, f_2}$
+\end{prf} % Конец доказательства леммы про метрику
+
+\begin{teor}[https://www.youtube.com/live/oGN0SkfpZME?si=rzyEi2Hd6nOeRw-i&t=11638]{Стокса-Зайдля}
+	Функция $f$ и последовательность функций $f_n$ действуют $X \to \rr$, где $X$ --- метрическое пространство. Пусть все функции из последовательнсти непрерывны в точке $c \in X$ и\begin{tikzcd}
+		f_n \ar[yshift=2pt]{r}{X}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & f
+	\end{tikzcd}\!. Тогда $f$ непрервна в точке $c$.
+\end{teor} % Конец доказательства теоремы Стокса-Зайдля
+
+\begin{prf}
+	
+\end{prf}
+	

@@ -1,39 +1,156 @@
-\subsection{Теорема Лагранжа, градиент, производная по вектору, по направлению, экстремальное свойство градиента}
-
-\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=c7uqK7x7CuZSChAM&t=866]{Лагранжа для векторонозначных функций}
-	$f\colon [a, b] \subset \rr \to \rmm$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$. Тогда$\E c \in (a, b):$ \[\|f(b) - f(a)\| \< \|f'(c)\|\cdot\|(b-a)\|\]
-\end{teor} % Конец теоремы Лагранжа для векторнозначных функций
-
-\begin{prf} % Доказательство теоремы Лагранжа для векторнозначных функций
-	Пусть $\varphi \colon [a, b] \to \rr $,\quad$\varphi(t) = \bscal{f(b) - f(a), f(t) - f(a)}$. \smallskip Тогда $\varphi$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$ и $\varphi(a) = 0,\  \varphi(b) = \|f(b) - f(a)\|^2$. Поэтому
-	\begin{gather*} \|f(b) - f(a)\|^2 = \varphi(b) - \varphi(a) \stackrel{\parbox{2.35cm}{\tiny \uns{по обычной теореме Лагранжа$\hspace{-3.5pt}\E c \in~\!\!(a, b)$}}}{=} \varphi'(c)(b - a) \stackrel{\text{\circl{2}}}{=} \bscal{f(b) - f(a), f'(c)}(b-a) \stackrel{\parbox{1.57cm}{\tiny \uns{нер-во Коши-\\Буняковского}}}{\<}\\
-		\<\|f(b) - f(a)\|\cdot \|f'(c)\| \cdot (b - a)
-	\end{gather*}
-	Теперь, деля на $\|f(b) - f(a)\|$ \uns{(при $f(b) = f(a)$ доказываемое неравенство очевидно)} получаем то, что нужно. 
-\end{prf} % Конец доказательства теоремы Лагранжа для векторнозначных функций
+\subsection{Градиент, производная по вектору, по направлению, экстремальное свойство градиента}
 
 \begin{opr} % Определение градиента
-	Пусть функция $f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$. Тогда матрица якоби функции $f$ имеет размер $1 \times m$ (строка). Если её транспонировать и считать, что это вектор из \rmm, то определение дифференцирцемости можно записать так:
+	Пусть функция $f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$. Тогда матрица якоби функции $f$ имеет размер $1 \times m$ (строка). Если её транспонировать и считать, что это вектор из \rmm, то определение дифференцируемости можно записать так:
 	\[f(a + h) = f(a) + \scal{f'(a), h} + o(h), \quad \text{ при } h \to 0_{\rmm} \]
 	и тогда вектор $f'(a) \in \rmm$ называется \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=0R7V2OPxS-nBZmFw&t=1658}{градиентом} функции $f$ в точке $a$, обозначается $\grad f(a)$. 
 \end{opr} % Конец определения градиента
 
-\begin{opr} % Определение производной по верктору
+\begin{opr}\label{опр:произв.по_вект.} % Определение производной по верктору
 	\urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=rxn2tFpsv1v4kt0u&t=1943}{Производной по вектору} $h \in \rmm$ функции $f\colon E \subset \rmm \to \rr$ в точке $a$ называется
 	\[\lim_{t \to 0} \frac{f(a + th) - f(a)}{t}\]
-	обозначение: $\displaystyle\pfrac{f}{h}(a)$. \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=veALxjYiQ6bewYkp&t=2054}{Напрвлением} в \rmm\ называется вектор $l \in \rmm : \|l\| = 1$. Можно\smallskip\ рассматривать производную по направлению.
+	обозначение: $\displaystyle\pfrac{f}{h}(a)$. \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=veALxjYiQ6bewYkp&t=2054}{Напрвлением} в \rmm\ называется вектор $l \in \rmm : \|l\| = 1$.
+	Можно\smallskip\ рассматривать производную по направлению.
 \end{opr} % Конец определения производной по ветору
 
-\begin{zam}[https://www.youtube.com/live/oWtiSJdhQV8?si=yPj-7gaxv1RXGnDk&t=2189]
+\begin{zam}[https://www.youtube.com/live/oWtiSJdhQV8?si=yPj-7gaxv1RXGnDk&t=2189]\label{зам:произв.по_вект.}
 	$f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$, тогда
-	\[\pfrac{f}{h}(a) = \lim_{t \to 0} \frac{f(a + th) - f(a)}{t} \stackrel{\text{опр. дифф-сти}}{=}\lim_{t \to 0} \frac{\pfrac{f}{x_1}(a)\,th_1 + \dots + \pfrac{f}{x_m}(a)\,th_m + o(t)}{t}  = \scal{\grad f(a), h}\]
-\end{zam}
+	\[\pfrac{f}{h}(a)
+	\stackrel{\text{\ref{опр:произв.по_вект.}}}{=}
+	\lim_{t \to 0} \frac{f(a + th) - f(a)}{t}
+	\stackrel{\textls[-50]{\text{\ref{вещ.дефф.} и т. \ref{необх.усл.дефф.}}}}{=}\lim_{t \to 0}
+	\frac{\pfrac{f}{x_1}(a)\,th_1 + \dots + \pfrac{f}{x_m}(a)\,th_m + o(t)}{t}  
+	= \scal{\grad f(a), h}\]
+\end{zam} % Конец замечания про выражение производной по вектору через градиент
 
 \begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=nwBS8xFjs_GBMoRl&t=2418]{Экстремальное свойство градиента}
-	$f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$,\quad$\grad f(a) \ne 0$, пусть {$l = \small\cfrac{\grad f(a)}{\|\grad f(a) \|}$ \uns{--- направление в \rmm}}. Тогда $l$ --- направление наискорейшего возрастания функции $f$, т.е.
-	\[\A h \in \rmm \text{, у которого } \|h\| = 1\text{ выполнено}\qquad -\|\grad f(a)\| \< \pfrac{f}{h}(a) \< \|\grad f(a)\|\]
-	а равенство достигается при $h = l$ (справа) и $h = -l$ (слева)
-\end{teor}
+	Пусть $f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$\quad и\quad$\grad f(a) \ne 0$. 
+	Тогда \linebreak$l =$ {\small$\cfrac{\grad f(a)}{\|\grad f(a) \|}$} 
+	\uns{\small(направление в \rmm)} 
+	--- направление наискорейшего возрастания\medskip\ функции $f$, 
+	т.е. $\A h \in \rmm$ такого, что $\|h\| = 1$ выполнено:
+	\[\uns{-\|\grad f(a)\| ={}} -\pfrac{f}{l} \< \pfrac{f}{h}(a) \< \pfrac{f}{l} \uns{{} = \|\grad f(a)\|}\]
+	и равенство достигается при $h = l$ (справа) и $h = -l$ (слева)
+\end{teor} % Конец теоремы об экстремальном свойстве градиента
+
+\begin{prf} % Доказательство теоремы об экстремальном свойстве градиента
+	Так как {\small$\displaystyle\pfrac{f}{h}$} $= \scal{\grad f(a), h}$ (\ref{зам:произв.по_вект.}), 
+	то из неравенства Коши-Буняковского (\ref{кош.-бун.}) следует доказываемое неравенство: 
+	$-\|\grad f(a)\| \cdot 1 \< \scal{\grad f(a), h} \< \|\grad f(a)\| \cdot 1$.
+	Если в неравенстве Коши-Буняковского \uns{\small$|\scal{x, y}| \< \|x\| \cdot \|y\|$} $y = \alpha x$, 
+	то достигается равенство. В нашем случае, если  
+	$h = l$, то $\alpha$ это $\sfrac{1}{\|\grad f(a)\|}$.
+\end{prf} % Доказательство теоремы об экстремальном свойстве градиента
+
+\subsection{Производные высших порядков, их независимость от порядка дифференцирования, класс $C^r(E)$, мультииндекс, полиномиальная формула}
+
+\begin{opr}
+	$f\colon E \subset \rmm \to \rr$. Пусть$\E k \in \{1, 2, \dots, m\}$ и$\E U(a)$ --- окрестность точки $a \in \Int E$\linebreak
+	такие, что можно определить функцию $g\colon U(a) \to \rr$ так, что $g(x) ={}${\small$\displaystyle\pfrac{f}{x_k}(x)$}.
+	Тогда, если$\E i\in \{1, 2, \dots, m\}$ такое, что\E {\small$\displaystyle\pfrac{g}{x_i}(a)$}, то эта частная производная называется
+	\urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=o6Vmd7iGIA0VEC_3&t=3508}{частной производной}
+	\urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=o6Vmd7iGIA0VEC_3&t=3508}{\rom{2} порядка}
+	функции $f$ в точке $a$.  \smallskip 
+	Обозначение: {\small$\displaystyle\pfrac{^2f}{x_i\partial x_k}(a)$}
+	или $f''_{x_kx_i}(a)$\\
+	По индукции определяется {\small$\displaystyle\pfrac{^kf}{x_{i_1} \partial x_{i_2} \dots \partial x_{i_n}}(a) =
+	\pfrac{}{x_{i_1}}\left( \pfrac{^{k-1}f}{x_{i_2} \partial x_{i_3} \dots \partial x_{i_n}}\right)(a) $}
+	
+\end{opr}
+
+\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=YUdpoEusMGWZikUh&t=3917]{о независимости частной производной от порядка дифференцирования}
+	Пусть $f\colon E \subset \rr^2 \to \rr$, точка $(x_0, y_0) \in E, \E r > 0 :{}$ в шаре $\BB{(x_0, y_0), r} \E f''_{xy}$, $f''_{yx}$
+	и они непрерывны в точке $(x_0, y_0)$. Тогда$f''_{xy}(x_0, y_0) = f''_{yx}(x_0, y_0)$
+\end{teor} % Конец теоремы о независимости часнтой производной от порядка дифференцирования
+
+\begin{prf} % Доказательство теоремы о независимости часнтой производной от порядка дифференцирования
+	Пусть $\varDelta^2f(h, k) = f(x_0, y_0) + f(x_0 + h, y_0 + k) - f(x_0, y_0 + k) - f(x_0 + h, y_0)$.
+	При фиксированном $k$ определим функцию $\alpha(h) = \varDelta^2f(h, k)$.
+	\uns{И пусть обе функции заданы так, чтобы аргументы $f$ попадали в шар $\BB{(x_0, y_0), r}$, т.е. $\varDelta^2f \colon \BB{(0, 0), \sfrac{r}{\sqrt2}} \to \rr$ и $\alpha \colon [0, \sfrac{r}{\sqrt2}) \to \rr$.}
+	Тогда $\alpha$ непрерывна и дифференцируема \uns{на $[0, \sfrac{r}{\sqrt2})$} и $\alpha(0) = 0$, поэтому, применяя теорему Лагранжа сначала к функции $\alpha$, затем при фиксированной первой переменной к функции $f$ получаем
+	\[\alpha(h) = \alpha(h) - \alpha(0) = \alpha'(\bar h)\cdot h = \bigl(f'_x(x_0 + \bar h, y_0 + k) - f'_x(x_0 + \bar h, y_0)\bigr)\cdot h = \bigl(f''_{xy}(x_0 + \bar h, y_0 + \bar k)\bigr) \cdot hk\]
+	Аналогично, при фиксированном $h$ можно определить функцию $\beta(k) = \varDelta^2f(h, k)$ и 
+	\[\beta(k) = \beta(k) - \beta(0) = \beta'(\hat k)\cdot k = \bigl(f'_y(x_0 + h, y_0 + \hat k) - f'_y(x_0, y_0 + \hat k)\bigr)\cdot k = \bigl(f''_{yx}(x_0 + \hat h, y_0 + \hat k)\bigr) \cdot hk\]
+	Так как при фиксированных $k$ и $h$ \quad$\alpha(h) = \beta(k) \uns{{}=\varDelta^2f(h, k)}$, 
+	то имеем равенство \[f''_{xy}(x_0 + \bar h, y_0 + \bar k) = f''_{yx}(x_0 + \hat h, y_0 + \hat k)\bigr)\]
+	и делая в нём предельный переход при $h \to 0$ и $k \to 0$ получаем, что $f''_{xy}(x_0, y_0) = f''_{yx}(x_0, y_0)$,
+	так как $\bar h, \hat h \in (0, h)$, и $\bar k, \hat k \in (0, k)$, то есть $\bar h, \hat h, \bar k, \hat k$ стремятся к нулю при $h \to 0$ и $k \to 0$).
+\end{prf} % Конец доказательство теоремы о независимости часнтой производной от порядка дифференцирования
+
+\begin{opr} % Определение класса Cr
+	Пусть множество $E \subset \rmm$ --- открытое, $r \in \mathbb N$, тогда
+	\urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=zMQOzR1WkX6NOiHN&t=4842}{класс $C^r(E)$}
+	 --- это множество всех функций $f\colon E \to \rr$ таких, что у них\E все возможные частные производные порядка $r$ и все эти производные непрерывны. 
+	\quad$C(E) \varsupsetneq C^1(E) \varsupsetneq C^2(E) \varsupsetneq \ldots$\\
+	\ybox{$C^{\infty}(E)$} \eqdef $\bigcap\limits_{r=1}^{\infty}C^r(E)$  
+\end{opr} % Конец определения класса Cr
+
+\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=LFgYagKyLkzC1ud5&t=5714]{\small общая теорема о независимости частной производной от порядка дефференцирования}
+	Пусть функция $f \in C^r(E)$, $E \subset \rmm$, $r, k \in \mathbb{N}$, $k \< r$, и наборы индексов $i_1, i_2, \dots i_k$ и $j_1, j_2, \dots j_k$ оnличаются друг от друга перестановкаой. Тогда
+	\[\pfrac{^rf}{x_{i_k}, \partial x_{i_{k-1}}, \dots, \partial x_{i_1}} =
+	\pfrac{^rf}{x_{j_k}, \partial x_{j_{k-1}}, \dots, \partial x_{j_1}}\qquad \text{на множестве }E\]
+\end{teor} % Конец общей теоремы о независимости частной производной от порядка дифференцирования
+
 \begin{prf}
-	содержимое...
+	Сводится к предыдущей теореме, так как любую перестановку можно получить транспозицией соседних элементов.
 \end{prf}
+
+\begin{zam}[https://www.youtube.com/live/oWtiSJdhQV8?si=qeunLkiJvv3wlB5T&t=6011]
+	Классы $ C^r(E), r \in \mathbb{N}$ замкнуты относительно сложения, умножения на скаляр (и образуют линейное пространство) и композиции.
+\end{zam} % Конец замечания о классах Cr
+\pagebreak
+\begin{opr}\label{мульт.} % Определение мультииндекса
+	Вектор $k = (k_1, k_2, \dots, k_m) \in \rmm$, где все $k_i \in \mathbb{Z}, k_i \biger 0$ называется \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=LbLURPgdsm3mJ5cq&t=6178}{мультииндексом}
+	\begin{enumerate}
+		\item $|k| \eqdef k_1 + k_2 + \ldots + k_m$ --- называется \ybox{высотой мультииндекса}
+		
+		\item $\ybox{\ensuremath{k!}} \eqdef k_1! \cdot k_2! \cdot \ldots \cdot k_m!$ % Факториал
+		
+		\item $\ybox{\ensuremath{x^k}} \eqdef x_1^{k_1} \cdot x_2^{k_2} \cdot \ldots \cdot x_m^{k_m}$,\quad где $x = (x_1, x_2, \ldots, x_m)$ --- вектор из \rmm % Вектор в степени мультииндекса
+		
+		\item \ybox{\small$\displaystyle\pfrac{^{|k|}f}{x^k}$} \eqdef {\small$\cfrac{\partial^{|k|}f}{(\partial x_1)^{k_1} (\partial x_2)^{k_2} \dots (\partial x_m)^{k_m}}$} \qquad
+		$(\partial x_i)^{k_i}$ ознчает, \medskip что по переменной $x_i$ частная производная берётся $k_i$ раз \uns{(это общее обозначение; не только для мультииндекса)} % Производная
+	\end{enumerate}
+\end{opr} % Конец определения мультииндекса
+
+\begin{lem}[https://www.youtube.com/live/oWtiSJdhQV8?si=ZUudcpGU4TMfwAMh&t=6500]{полиномиальная формула}
+	Пусть $r \in \mathbb{N},\ a_1, a_2, \dots, a_m \in \rr$, т.е $a = (a_1, a_2, \dots, a_m) \in \rmm$, тогда
+	\begin{gather*}
+		(a_1 + a_2 + \dots a_m)^r 
+		\uns{{}= \sum_{n_1 = 1}^{m} \sum_{n_2 = 1}^{m} \dots \sum_{n_r = 1}^{m} a_{n_1} \cdot a_{n_2} \cdot \ldots \cdot a_{n_r}}= \\
+		= \sum_{\substack{j \, : \, |j| = r \\ \makebox[35pt]{\scriptsize$j$ --- мультииндекс}}} \frac{r!}{j!}\cdot a^j \;
+		\stackrel{\text{\ref{мульт.}}}{=}
+		\sum_{\substack{(j_1, \dots, j_m) \\ j_1 + \ldots + j_m = r}}\frac{r!}{j_1! \cdot j_2! \cdot \ldots \cdot j_m!} \cdot a_1^{j_1} \cdot a_2^{j_2} \cdot \ldots \cdot a_m^{j_m}   
+	\end{gather*}
+\end{lem} % Конец леммы про полиномиальную формулу
+
+\begin{prf} % Доказательство леммы про полиномиальную формулу
+	Индукция по $r$. Обозначим $S_r = \sum \frac{r!}{j!}\cdot a^j$, тогда 
+	\begin{description}[itemindent=0pt, leftmargin=25pt, labelsep=5pt]
+		\item[\hfill База:] при $r = 1$ \[S_1 = \sum\limits_{\substack{(0, \dots, 0, 1, 0, \dots, 0)\\ \makebox[35pt]{\scriptsize$1$ стоит на месте $i$}\\ i \in \{1, \dots, m\}}} \frac{1!}{0! \cdot \ldots \cdot 0! \cdot 1! \cdot 0! \cdot \ldots \cdot 0!} \cdot a_1^0 \cdot \ldots \cdot a_{i - 1}^0 \cdot a_i^1 \cdot a_{i + 1}^0 \cdot \ldots \cdot a_m^0 = (a_1 + a_2 + \dots a_m)^1\]
+		
+		\item[\hfill Переход:] от $r$ к $r + 1$. Раскроем скобки в выражении $S_{r+1} = (a_1 + a_2 + \ldots +a_m)\cdot S_r$ : 
+		\begin{equation*}
+			\sum_{j \, : \, |j| = r} \frac{r!}{j_1! \cdot j_2! \cdot \ldots \cdot j_m!} \cdot a_1^{j_1 + 1} \cdot a_2^{j_2} \cdot \ldots \cdot a_m^{j_m} + \ldots +
+			\sum_{j \, : \, |j| = r} \frac{r!}{j_1! \cdot j_2! \cdot \ldots \cdot j_m!} \cdot a_1^{j_1} \cdot a_2^{j_2} \cdot \ldots \cdot a_m^{j_m + 1}
+		\end{equation*}
+		Домножим и поделим каждую сумму на соответствующее $j_i + 1$ :
+		\small
+		\begin{equation*}
+			\sum_{j \, : \, |j| = r} \frac{r! \cdot (j_1 + 1)}{(j_1 + 1)! \cdot j_2! \cdot \ldots \cdot j_m!} \cdot a_1^{j_1 + 1} \cdot a_2^{j_2} \cdot \ldots \cdot a_m^{j_m} + \ldots
+			+ \sum_{j \, : \, |j| = r} \frac{r! \cdot (j_m + 1)}{j_1! \cdot j_2! \cdot \ldots \cdot (j_m + 1)!} \cdot a_1^{j_1} \cdot a_2^{j_2} \cdot \ldots \cdot a_m^{j_m + 1}
+		\end{equation*}
+		\normalsize
+		Изменим в пределе суммирования высоту мультииндекса на $r + 1$, учитывая, что тогда в каждой сумме соответствующее $j_i$ должно быть $\biger 1$ :
+		\begin{equation*}
+			\sum_{\substack{j \, : \, |j| = r + 1, \\ j_1 \biger 1}} \frac{r! \cdot j_1}{j_1! \cdot j_2! \cdot \ldots \cdot j_m!} \cdot a_1^{j_1} \cdot a_2^{j_2} \cdot \ldots \cdot a_m^{j_m} + \ldots
+			+ \sum_{\substack{j \, : \, |j| = r + 1, \\ j_m \biger 1}} \frac{r! \cdot j_m}{j_1! \cdot j_2! \cdot \ldots \cdot j_m!} \cdot a_1^{j_1} \cdot a_2^{j_2} \cdot \ldots \cdot a_m^{j_m}
+		\end{equation*}
+		Каждая сумма умножается на соответствующее $j_i$, поэтому условие $j_i \biger 1$ не нужно, так как соответствующие слагаемые при $j_i = 0$ будут равны нулю. Вынесем за скобки общий множитель:
+		\begin{equation*}
+		\sum_{j \, : \, |j| = r + 1} \frac{r! \cdot (j_1 + j_2 + \dots + j_m)}{j_1! \cdot j_2! \cdot \ldots \cdot j_m!} \cdot a_1^{j_1} \cdot a_2^{j_2} \cdot \ldots \cdot a_m^{j_m}
+		\end{equation*}
+		
+		Множитель $(j_1 + j_2 + \dots + j_m)$ это по определению высота мультииндекса, то есть он равен $r + 1$. Значит последняя полученная сумма и есть $S_{r + 1}$
+	\end{description}
+\end{prf} % Конец доказательства леммы про полиномиальную формулу
