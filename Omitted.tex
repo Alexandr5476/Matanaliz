@@ -9,3 +9,29 @@
 	\end{gather*}
 	Теперь, деля на $\|f(b) - f(a)\|$ \uns{(при $f(b) = f(a)$ доказываемое неравенство очевидно)} получаем то, что нужно. 
 \end{prf} % Конец доказательства теоремы Лагранжа для векторнозначных функций
+
+
+
+\begin{teor}{о предельном пререходе под знаком производной}
+	Пусть $f_n \in C^1\scal{a, b}$, $f_n \xrightarrow[n \to \infty]{} f_0$ поточечно на \scal{a, b},\begin{tikzcd}
+		f'_n \ar[yshift=2pt]{r}{\scal{a, b}}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & \varphi
+	\end{tikzcd}\!, тогда $f_0 \in C^1\scal{a, b}$ и $f'_0 = \varphi$ на \scal{a, b}
+\end{teor}
+
+\begin{prf}
+	$\A [x_0, x_1] \subset \scal{a, b}$ по теореме \ref{пер.под инт.} $\int_{x_0}^{x_1} f'_n \xrightarrow[n \to \infty]{} \int_{x_0}^{x_1} \varphi$, то есть $f'_n(x_1) - f'_n(x_0) \xrightarrow[n \to \infty]{} \int_{x_0}^{x_1} \varphi$, а по условию $f'_n(x_1) - f'_n(x_0) \xrightarrow[n \to \infty]{} f_0(x_1) - f_0(x_0)$, значит $f_0(x_1) - f_0(x_0) = \int_{x_0}^{x_1} \varphi$, то есть $f_0$ --- первообразная $\varphi$
+\end{prf}
+
+\begin{opr}
+	Пусть $f_n \colon X \to \rr$, где $X$ --- множество, тогда \raisebox{0pt}[0pt][0pt]{$\sum\limits_{n = 1}^{\infty}$}$f_n(x)$ называется \ybox{функциональным} \ybox{рядом}. $S_k = \sum\limits_{n = 1}^{k}f_n(x)$ называется \ybox{частичной суммой} функционального ряда, $R_n = \sum\limits_{k = n + 1}^{\infty}f_k(x)$ называется \ybox{остатком} функционального ряда.
+\end{opr}
+
+\begin{opr}
+	Ряд $\sum\limits_{n = 1}^{\infty} f_n(x)$ \ybox{сходится поточечно} на $E \subset X$, если $\A x_0 \in E$ сходится числовой ряд  \raisebox{0pt}[10pt][0pt]{$\sum\limits_{n = 1}^{\infty}f_n(x_0)$}, то есть
+	\[\A x_0 \in E\ \A \eps > 0 \E N : \A n > N \text{ выполнено } \left| \sum_{k = 1}^{n}f_k(x_0) - S_k \right| < \eps\] 
+\end{opr}
+
+\begin{opr}
+	Ряд $\sum\limits_{n = 1}^{\infty} f_n(x)$ \ybox{сходится равномерно} на $E \subset X$, если
+\end{opr}

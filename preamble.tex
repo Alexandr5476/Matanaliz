@@ -10,6 +10,9 @@
 \usepackage{hyperref} % Пакет для ссылок
 \usepackage{xfrac}
 
+\usepackage{pifont}
+
+\definecolor{mygray}{rgb}{0.52,0.52,0.52}
 \definecolor{linkcolor}{rgb}{0, 0, 0} % цвет ссылок
 \definecolor{urlcolor}{rgb}{0, 0.2, 0.49} % цвет гиперссылок
 \definecolor{urlcolorin}{rgb}{0, 0, 0} % цвет гиперссылок в цветных прямоугольниках
@@ -64,7 +67,9 @@
 \newcommand*{\scal}[1]{\ensuremath{\left<#1\right>}}
 \newcommand*{\bscal}[1]{\ensuremath{\bigl<#1\bigr>}}
 \newcommand{\uns}[1]{\textcolor[rgb]{0.52,0.52,0.52}{#1}}
+\newcommand*{\rselection}[1]{\textcolor[rgb]{1, 0.318, 0.318}{#1}}
 \newcommand*{\rtext}[1]{\textcolor[rgb]{1, 0.463, 0.463}{#1}}
+
 \newcommand{\ybox}[1]{\colorbox[rgb]{0.973, 1, 0.588}{#1}}
 \newcommand*{\urlybox}[2]{\hypersetup{urlcolor=urlcolorin}\colorbox[rgb]{0.973, 1, 0.588}{\href{#1}{#2}}\hypersetup{urlcolor=urlcolor}}
 \newcommand*{\metr}[2][]{\ensuremath{\rho_{#1}\left(#2\right)}}

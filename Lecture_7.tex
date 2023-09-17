@@ -1,0 +1,61 @@
+\subsection{Лемма о дифференцировании <<сдвига>>, формула Тейлора, n-ый дифференциал}
+
+\begin{lem}[https://www.youtube.com/live/oWtiSJdhQV8?si=ldUCi49yVsxTBWWR&t=7819]{о дифференцировании <<сдвига>>} \label{лем. для форм. тейл.}
+	$E \subset \rmm$, $f \in C^r(E)$ \uns{($f \colon E \to \rr$)}, $a \in E$. 
+	Пусть $h \in \rmm : {}$  при $t \in [-1, 1]$ вектор $a + th \in E$, определим функцию $\varphi(t) = f(a + th)$, тогда $\varphi \in C^r([-1, 1])$ и $\A k \< r$
+	\begin{equation*}\label{формула}
+	\varphi^{(k)}(t) = \sum_{\substack{j : |j| = k \\ \text{\makebox[4em]{$j$ --- мультииндекс}}}} \frac{k!}{j!} \cdot h^j \cdot \pfrac{^k f}{x^j} (a + th) \tag{\ding{107}}
+	\end{equation*}
+\end{lem} % Конец леммы о дифференцировании сдвига
+
+\begin{prf} % Доказательство леммы о дифференцировании сдвига
+	Найдём первую производную функции $\varphi$ как производную композиции:
+	\[\varphi'(t) = f'(a + th) \cdot h = f'_{x_1}(a+th)\cdot h_1 + f'_{x_2}(a+th)\cdot h_2 + \ldots + f'_{x_m}(a+th)\cdot h_m \]
+	Это формула \eqref{формула} при $k = 1$. Вторая производная функции $\varphi$:
+	\begin{gather*}
+		\varphi''(t) = \left( \sum_{i = 1}^m f'_{x_i}(a + th) \cdot h_i \right)' =  \sum_{i = 1}^m \bigl(f'_{x_i}(a + th)\bigr)' \cdot h_i = \sum_{i = 1}^m \sum_{j = 1}^m f''_{x_i x_j}(a + th) \cdot h_i h_j \uns{{}={}} \\ 
+		\uns{{} = \sum_{i = 1}^m f''_{x_i x_i}(a + th) \cdot h_i^2 + 2 \cdot 
+		\sum_{\substack{j = 1 \\ i < j}}^m f''_{x_i x_j}(a + th) \cdot h_i h_j}
+	\end{gather*}
+	\uns{\hypersetup{linkcolor=mygray}%
+	В первом слагаемом написано то, что получается в формуле \eqref{формула} при k = 2 в случае, когда мультииндекс выглядит как $(0, \ldots, 0, 2, 0 \ldots, 0)$, во втором слогаемом --- как $(0, \ldots, 0, 1, 0 \ldots, 0, 1, 0, \ldots 0)$.} 
+	Тогда $k$-ая производная функции $\varphi$:
+	\[\sum_{i_1 = 1}^m \sum_{i_2 = 1}^m \dots \sum_{i_k = 1}^m f_{x_{i_1} x_{i_2} \ldots x_{i_k}}^{(k)}(a + th) \cdot h_{i_1}h_{i_2} \ldots h_{i_k} \stackrel{\text{лемма \ref{полин.форм.}}}{=} \sum_{\substack{j : |j| = k \\ \text{\makebox[4em]{$j$ --- мультииндекс}}}} \frac{k!}{j!} \cdot h^j \cdot \pfrac{^k f}{x^j} (a + th)\]
+	Лемма \ref{полин.форм.} объединяет слагаемые, которые отличаются перестановкой множителей. В левой части последнего равенства каждое такое слагаемое домножено на соответствующую частную производную $k$-го порядка и эти производные так же отличаются друг от друга только порядком дифференцирования, значит они равны (так как непрерывны на $E$ по условию). Поэтому слагаемые, которые объединяет лемма домножены на одно и тоже число, и его можно дописать множетелем при соответствующем слагаемом.
+\end{prf} % Конец доказательства леммы о дифференцировании сдвига
+
+\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=fe296ectftwZMums&t=8945]{формула Тейлора c остатком в форме Лагранжа}
+	Пусть $E \subset \rmm$, \uns{($f \colon E \to \rr$)} $f \in C^{r + 1}(E)$, \uns{точка $a \in E$, $R \in \rr : \B{a, R} \subset E$,} $x \in \B{a, R}$, $h = x - a$, тогда$\E \theta \in (0, 1)$ такое, что:
+	\[f(x) = \sum_{\substack{k : |k| \< r \\ \text{\makebox[4em]{$k$ --- мультииндекс}}}} \frac{f^{(k)}(a)}{k!} \cdot h^k + \sum_{\substack{k : |k| = r + 1 \\ \text{\makebox[4em]{$k$ --- мультииндекс}}}} \frac{f^{(k)}(a + \theta h)}{k!} \cdot h^k\]
+	$f^{(k)}$ --- это другое обозначение для \small $\displaystyle\pfrac{^{|k|}f}{x^k}$
+\end{teor} % Конец теоремы формулы Тейлора
+
+\begin{prf} % Доказательство формулы Тейлора
+	Определим \smallskip функцию $\varphi \colon [0, 1] \to \rr$ \quad $\varphi(t) = f(a + th)$. 
+	Тогда $\varphi \in C^{r + 1}([0, 1])$. Формула Тейлора  c центром в точке 0 с остатком в форме Лагранжа для функции $\varphi$ в единице:
+	\[\varphi(1) = \sum_{n = 1}^{r} \frac{\varphi^{(n)}(0)}{n!}\cdot1^n + \frac{\varphi^{(r + 1)}(\theta)}{(r + 1)!} \cdot 1^{(r + 1)}, \qquad \theta \in (0, 1)\]
+	$\varphi(1) = f(a + h) = f(x)$. Используя лемму \ref{лем. для форм. тейл.}, заменяем производные функции $\varphi$. Тогда
+	\[f(x) = \sum_{n = 1}^{r} \frac{1}{n!} \cdot \sum_{\substack{k : |k| = n \\ \text{\makebox[4em]{$k$ --- мультииндекс}}}}
+	\frac{n!}{k!} \cdot h^k \cdot f^{(k)}(a) + \sum_{\substack{k : |k| = r + 1\\ \text{\makebox[4em]{$k$ --- мультииндекс}}}}
+	\frac{1}{(r + 1)!}\cdot \frac{(r + 1)!}{k!} \cdot h^k \cdot f^{(r + 1)}(a + \theta h)\]
+	Упрощая, получаем доказываемую формулу.
+\end{prf} % Конец доказательства формулы Тейлора
+
+\begin{zam}[https://www.youtube.com/live/oWtiSJdhQV8?si=QwJuUT96h1pqP5L-&t=9800]
+	Явный вид многочлена Тейлора порядка $r$ функции $f$ в точке $a$: \small
+	\[T_r(f, a)(x) = \sum_{k = 1}^{r} \sum_{\substack{(i_1, \ldots, i_m) \\ i_1 + \ldots + i_m = k \\ i_1, \ldots, i_m \biger 0}} \frac{1}{i_1! \cdot \ldots \cdot i_m!}\, \cdot \, \frac{\partial^kf}{(\partial x_1)^{i_1} (\partial x_2)^{i_2} \ldots (\partial x_m)^{i_m}}(a) \cdot (x_1 - a_1)^{i_1} \cdot (x_2 - a_2)^{i_2} \cdot \ldots \cdot (x_m - a_m)^{i_m}\]
+\end{zam} % Конец замечания про явный вид многочлена Тейлора
+
+\begin{slv}[https://www.youtube.com/live/oWtiSJdhQV8?si=a7IMjQUmD4SoBs75&t=10102]
+	В остатке формулы Тейлора есть множитель
+	\[h^k = \left(\frac{h_1}{\|h\|}\right)^{k_1} \cdot \left(\frac{h_2}{\|h\|}\right)^{k_2} \cdot \ldots \cdot \left(\frac{h_m}{\|h\|}\right)^{k_m} \cdot  \|h\|^{r + 1}\] 
+	А производная $f^k(a + \theta h)$
+    ограничена в некоторой окрестности точки $a$, замыкание которой сожержится в $E$, потому что $f^{(k)}$ непрерывна на $E$. Значит остаток в формуле Тейлора это \textit{огр.}${} \cdot \|h\|^r \cdot \|h\| = o\bigl(\|h\|^r\bigr)$, при $x \to a$. Он называется остатком в форме Пеано.
+\end{slv} % Конец следствия про остаток в форме Пеано
+
+\begin{opr}
+	Однородный многочлен от $h$ степени $n$ 
+	\[d^{\,n} f(a, h) = \sum_{\substack{(i_1, \ldots, i_m) \\ i_1 + \ldots + i_m = k \\ i_1, \ldots, i_m \biger 0}} \frac{n!}{i_1! \cdot i_2! \cdot \ldots \cdot i_m!}\, \cdot \, \frac{\partial^nf}{(\partial x_1)^{i_1} (\partial x_2)^{i_2} \ldots (\partial x_m)^{i_m}} (a) \cdot h_1^{i_1} \cdot h_2^{i_2} \cdot \ldots \cdot h_m^{i_m}\] называется \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=im2RytH_7KDpHR2U&t=10235}{$n$-ым дифференциалом} функции $f$ в точке $a$.
+\end{opr} % Конец определения n-го дифференциала
+ 
+Тогда формулу Тейлора можно записать в виде $\displaystyle f(x) = f(a) + \sum_{k = 1}^r \frac{d^kf(a, x - a)}{k!} + o\bigl(\|h\|^r\bigl)$
