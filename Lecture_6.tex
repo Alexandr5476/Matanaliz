@@ -1,4 +1,4 @@
-\subsection{Последовательность функций, поточечная и равномерная сходимсть, теорема Стокса-Зайдля}
+\subsection{Последовательность функций, поточечная и равномерная сходимсть}
 
 \begin{opr} % Определение последовательности функций
 	\urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=2FLP54qNNy38b76F&t=8739}{Последовательность функций} --- это отображение из $\mathbb{N}$ в множество функций.  
@@ -21,7 +21,7 @@
 		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & f
 	\end{tikzcd}
 \end{opr} % Конец определения равномерной сходимости
-\pagebreak
+
 \begin{zam}[https://www.youtube.com/live/oGN0SkfpZME?si=Xt7wgIwZyTC3gAy9&t=10296] % Замечания про равномерную сходимость
 	\begin{enumerate}
 		\item Из равномерной сходимости следует поточечная сходимость \uns{(наоборот нет)}
@@ -51,7 +51,9 @@
 	Правая часть неравенства не зависит от $x$, поэтому она является верхней границей (для множества чисел $\{\,\bmetr{f_1(x), f_2(x)} \mid x \in X\,\}$), тогда она больше \smallskip либо равна точной верхней границы  $\Rightarrow \metr[\mathcal F]{f_1, f_2} \< \metr[\mathcal F]{f_1, g} + \metr[\mathcal F]{g, f_2}$
 \end{prf} % Конец доказательства леммы про метрику
 
-\begin{teor}[https://www.youtube.com/live/oGN0SkfpZME?si=rzyEi2Hd6nOeRw-i&t=11638]{Стокса-Зайдля}\label{ст-зд}
+\subsection{Tеорема Стокса-Зайдля}
+
+\begin{teor}[https://www.youtube.com/live/oGN0SkfpZME?si=rzyEi2Hd6nOeRw-i&t=11638]{Стокса-Зайдля о непрерывности предельной функции}\label{ст-зд}
 	Отображение $f$ и последовательность отображений $f_n$ действуют $X \to Y$, где $X, Y$ --- метрические пространства. Пусть все отображения из последовательнсти непрерывны в точке $c \in X$ и\begin{tikzcd}
 		f_n \ar[yshift=2pt]{r}{X}
 		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & f

@@ -1,11 +1,75 @@
-\subsection{Линейные отображения}
+\subsection{Следствия для рядов, признаки Вейерштрасса, Больцано-Коши равномерной сходимости функционального ряда}
 
-\begin{opr}
-	\ybox{$Lin(X, Y)$} --- множество линейных отображений из $X$ в $Y$. $X, Y$ --- линейные пространства обычно над \rr. $Lin(X, Y)$ является линейным пространством. Обозначение: пусть $A \in Lin(\rmm, \rr^n)$, тогда \ybox{$\|A\|$} ${}\stackrel{\text{или}}{=} \|A\|_{m, n} \eqdef \sup\limits_{x \in \rmm, \|x\| = 1} \|Ax\|$
+\begin{opr}\label{опр:равн.сх.ряда}
+	Пусть $u_n \colon X \to \rr$, где $X$ --- множество, тогда
+	\urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=ZMomj6U3_OK2CNNm&t=7696}{функциональный ряд}
+	{\small $\sum\limits_{n = 1}^{\infty} u_n(x)$}
+	\urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=KXds3sSFWT4pzL1I&t=7859}{сходится равномерно}
+	(\urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=29zAxmSsStGu0Xpn&t=7734}{поточечно}),
+	если сходится равномерно (поточечно) функциональная последовательность из
+	\urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=YcMbU0tF5Akx5h-C&t=7850}{частичных сумм}
+	{\small$S_k(x) = \sum\limits_{n = 1}^{k}u_n(x)$}. Функция $S(x) = \lim\limits_{k \to \infty} S_k(x)$ называется суммой функционального ряда. То есть ряд сходится равномерно, если
+	\[\A \eps > 0 \E N : \A k > N\ \ \A x \in X \text{ выполнено } |S(x) - S_k(x)| < \eps\]
+	$R_n(x) = S(x) - S_k(x) ={}$ {\small$\sum\limits_{k = n + 1}^{\infty}u_n(x)$} называется
+	\urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=zc86BXEg-dBqU_h2&t=7990}{остатком}
+	функционального ряда.
 \end{opr}
 
-\begin{zam}
-	\begin{enumerate}
-		\item $\|A\| \in \rr$ (конечное), т.к. из леммы \ref{оц.нормы} $\|Ax\| \< C_A\|x\|$, где $C_A = \sqrt{\sum\limits_{i, j = 1}^{n, m}a_{ij}^2}\ ,\ a_{ij}$ --- элементы матрицы $A$.
-	\end{enumerate}
+\sbox{\rav}{\begin{tikzcd}[ampersand replacement=\&]
+		R_n(x) \ar[yshift=2pt]{r}{E}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} \& 0	\end{tikzcd}}
+
+\begin{zam}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=yY3d19C42v_Bhy6E&t=7907]\label{зам:равн.сх.ряда}\begin{enumerate}
+	\item Ряд равномерно сходится на $E$ \eq\raisebox{0pt}[15pt][0pt]{\usebox{\rav}} \uns{\small(следует прямо из определения)}
+	
+	\item Eсли ряд $\sum\limits_{n = 1}^{\infty} u_n(x)$ равномерно сходится на $E$, то\begin{tikzcd}
+		u_n(x) \ar[yshift=2pt]{r}{E}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & 0
+	\end{tikzcd} \uns{\small(т. к. $u_k(x) = R_{k - 1}(x) - R_k(x)$)}	
+\end{enumerate}\end{zam}
+\pagebreak
+\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=vIjDFMc8UzpC7diY&t=8564]{признак Вейерштрасса}
+	Пусть $u_n\colon X \to \rr$ \uns{(X --- множество)}, $C_n \in \rr : |u_n| \< C_n\ \uns{\A n \in \mathbb N}$ и  \raisebox{0pt}[0pt]{$\sum\limits_{n = 1}^{\infty} C_n$} --- сходится. Тогда функциональный ряд \raisebox{0pt}[0pt][0pt]{$\sum\limits_{n = 1}^{\infty} u_n(x)$} --- сходится равномерно на $X$.
+\end{teor}
+
+\begin{prf} 
+	Чтобы доказать равномерную сходимость функционального ряда, можно проверить сходится ли равномерно остататок ряда к нулю (\ref{зам:равн.сх.ряда}.1)
+	\[\sup_{x \in X}\left|\sum_{k = n + 1}^{\infty} u_k(x) \right| \< \sup_{x \in X} \sum_{k = n + 1}^{\infty} |u_k(x)| \< \sum_{k = n + 1}^{\infty} C_n \xrightarrow[k \to \infty]{} 0\]
+\end{prf}
+
+\begin{zam}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=0lZiyn6N9I6rSJEM&t=9401]
+	\textit{Критерий Больцано-Коши:} ряд $\sum\limits_{n = 1}^{\infty} u_n(x)$ равномерно сходится \eq
+	\[\A \eps > 0 \E N : \A n > N,\ \A k \in \mathbb N \text{ выполнено } |u_{n + 1}(x) + u_{n + 2}(x) + \ldots + u_{n + k}(x)| < \eps \]
+	Тогда ряд не сходится равномерно \eq
+	\[\E \eps > 0 : \A N \E n > N, k \in \mathbb N : \text{ выполнено } |u_{n + 1}(x) + u_{n + 2}(x) + \ldots + u_{n + k}(x)| > \eps \]
 \end{zam}
+
+\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=p-ZJAVhu-jWLePNZ&t=10612]{Стокса-Зайдля для рядов}
+	Пусть $u_n \colon X \to \rr$ --- непрерывны в точке $x_0 \in X$ \uns{($X$ --- метрическое пространство)} и  $\sum\limits_{n = 1}^{\infty}u_n(x)$ сходится равномерно к функции $S(x)$. Тогда $S(x)$ --- непрерывна в точке $x_0$
+\end{teor}
+
+\begin{prf}
+	Частичная сумма $S_k(x) = \sum\limits_{n = 1}^{k}u_n(x)$ --- непрерывна в точке $x_0$ и\begin{tikzcd}
+		S_k(x) \ar[yshift=2pt]{r}{X}
+		\ar[yshift=-2pt]{r}[swap]{k \to \infty} & S(x)
+	\end{tikzcd}\! по определению равномерной сходимости ряда (\ref{опр:равн.сх.ряда}). Тогда по теореме Стокса-Зайдля для последовательностей (т. \ref{ст-зд}) $S(x)$ непрерывна в точке $x_0$. 
+\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=GEu4QG3yGOvet_UK&t=10772]{об интегрировании функционального ряда}
+	Пусть $u_n \in C[a, b]$ \uns{($u_n \colon [a, b] \to \rr$)}, ряд $\sum\limits_{n = 1}^{\infty}u_n(x)$ сходится равномерно к функции $S(x)$, тогда \[\sum_{n = 1}^{\infty} \int_a^b u_n(x) = \int_a^b S(x)\]
+\end{teor}
+
+\begin{prf}
+		Частичная сумма $S_k(x) = \sum\limits_{n = 1}^{k}u_n(x) \in C[a, b]$ и\begin{tikzcd}
+			S_k(x) \ar[yshift=2pt]{r}{X}
+			\ar[yshift=-2pt]{r}[swap]{k \to \infty} & S(x)
+		\end{tikzcd}\! по определению равномерной сходимости ряда (\ref{опр:равн.сх.ряда}). Тогда по теореме \ref{пер.под инт.} $\int_a^b S_k(x) \xrightarrow[k \to \infty]{} \int_a^b S(x)$. Значит, делая предельный переход при $k \to \infty$ в равенстве $\sum\limits_{n = 1}^{k}\int_a^b u_n(x) = \int_a^b S_k(x)$, получаем доказываемую формулу. \uns{\hypersetup{linkcolor=mygray} По теореме \ref{ст-зд} $\int_a^bS(x)$ имеет смысл, т.к. $S_K$ непрерывны и сходятся равномерно к $S(x)$.\linebreak}
+\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=VKzpWKydqsZrl_u4&t=12003]{о дифференцировании ряда по параметру}
+	Пусть $u_n\in C^1 \scal{a, b}$, ряд $\sum\limits_{n = 1}^{\infty} u_n(x)$ сходится поточечно к $S(x)$ на \scal{a, b}, и $\sum\limits_{n = 1}^{\infty} u'_n(x)$ равномерно сходится к $\varphi(x)$ на \scal{a, b}. Тогда $S(x) \in C^1\scal{a,b}$ и $S'(x) = \varphi$.
+\end{teor}
+
+\begin{prf}
+	Частичная сумма $S(x) = \sum\limits_{n = 1}^{k}u_n(x) \in C^1\scal{a, b}$ и сходится поточечно к $S(x)$, а\linebreak функция \raisebox{0pt}[11pt][14pt]{$\sum\limits_{n = 1}^{k} u'_n(x)$} сходится равномерно к $\varphi(x)$, значит из теоремы \ref{пер.под призв.} получаем $S(x) \in C^1\scal{a, b}$ и $S'(x) = \varphi(x)$. 
+\end{prf}

@@ -1,4 +1,4 @@
-\subsection{Полнота пространства непрерывных функций на компакте, предельный переход под знаком интеграла для последовательностей, правило Лейбница}
+\subsection{Полнота пространства непрерывных функций на компакте}
 
 \begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=gnLVjEHuJSf6Zyq_&t=8043]{о полноте пространства непрерывных функций на компакте}
 	Пусть $K$ --- компактное метрическое пространство, тогда $C(K) \uns{{} = \{\, f \colon K \to \rr \mid f  \text{ --- непрерывно\,\}}}$ есть полное метрическое пространство относительно метрики $\metr{f_1, f_2} = \sup_K|f_1(x) - f_2(x)|$\bigskip
@@ -18,9 +18,9 @@
 	Получилось \rselection{определение фундаментальности}.
 	\end{enumerate}} % Конец напоминания определений
 \end{teor} % Конец теоремы о полноте пространства непрерывных функций на компакте
-
+\pagebreak
 \begin{prf} % Доказательство теоремы о полноте пространства непрерывных функций на компакте
-	Нужно доказать, что любая фундаментальная последовательность сходится. Возьмём фундаментальную последовательность $f_n$, то есть для которой выполнено.
+	Нужно доказать, что любая фундаментальная последовательность сходится. Возьмём фундаментальную последовательность $f_n$.
 	Тогда $\A x_0 \in K$ последовательность $f_n(x_0)$ --- фундоментальная, и она вещественная $\Rightarrow$ она сходится. Обозначим её предел $f(x_0)$. Определение фундоментальности $f_n(x)$:
 	\[\A \eps > 0 \E N: \A n, m > N\ \A x_0 \in K \text{ выполнено }|f_n(x_0) - f_m(x_0)| < \eps\]
 	При каждом фиксированном $x_0$ делаем предельный переход при $m \to \infty$, получаем
@@ -29,16 +29,29 @@
 	а сходимость последовательности в $C(X)$ --- это равномерная сходимость функциональных последовательностей.
 \end{prf} % Конец доказательства теоремы о полноте пространства непрерывных функций на компакте
 
+\newsavebox{\rav}
+\sbox{\rav}{\begin{tikzcd}[ampersand replacement=\&]
+		f_n \ar[yshift=2pt]{r}{X}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} \& f	\end{tikzcd}}
+	
 \begin{zam}[https://www.youtube.com/live/Ebv-BznzM6k?si=Xw76hi6ZJCzOc25G&t=9033]\begin{enumerate}
-	\item Пространство $\mathcal{F} = \{\,f \colon X \to Y \mid f\text{ --- ограничено},\}$, где $X$ --- множество, $Y$ --- полное метрическое пространство, тоже является полным.
+	\item Пространство $\mathcal{F} = \{\,f \colon X \to Y \mid f\text{ --- ограничено},\}$, где $X$ --- множество, $Y$ --- полное метрическое пространство, тоже является полным.\bigskip
+	\palka{\small
+	Доказательство останется тем же, только в конце нельзя будет применить теорему \ref{ст-зд}. Но если $f_n \in \mathcal{F}$ и\usebox{\rav}\!, то $f \in \mathcal F$. Доказательство: определение ограниченности $f_n$: 
+	\[\A n \E y_n \in Y, r_n \in \rr : \A x \in X \text{ выполнено } f_n(x) \in \B{y_n, r_n}\]
+	Определение равномерной сходимости:
+	\[\A \eps > 0 \E N : \A n > N\ \ \A x \in E \text{ выполнено } \bmetr{f_n(x), f(x)} < \eps\]
+	Тогда возьмём $\eps_0 > 0$, найдём соответствующее $N$, возьмём $n = N + 1$ и для них при любом $x \in X$ будет выполнено $\bmetr{f(x), f_{N + 1}(x)} < \eps_0$ и $\bmetr{y_{N+1}, f_{N+1}(x)} < r_{N + 1}$ $\Rightarrow$ по неравенству треугольника $\bmetr{f(x), y_{N + 1}} < r_{N + 1} + \eps_0$, то есть $f$ --- ограничено.}
 	
 	\item Пространство $C_M(K) = \{\, f \colon K \to Y  \mid f \text{ --- непрерывно}\,\}$, где $K$ --- компактное метрическое пространство, $Y$ --- полное метрическое пространство, тоже является полным.
 	
 	\item В $C(K)$ равномерная сходимость последовательности $f_n$ \eq\ $\A \eps > 0 \E N : \A n, m > N$ выполнено $\sup_K |f_n(x) - f_m(x)| < \eps$ 
 \end{enumerate}\end{zam} % Конец замечание про полноту других пространств
 
+\subsection{Предельный переход под знаком интеграла\slash производной для последовательностей, правило Лейбница}
+
 \begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=RuXzZttXQEEHu5uP&t=9695]{о предельном переходе под знаком интеграла для последовательностей}\label{пер.под инт.}
-	Пусть $f_n \in C[a, b]$ и\begin{tikzcd}
+	Пусть $f_n \in C[a, b]$ \uns{($f_n \colon [a, b] \to \rr$)} и\begin{tikzcd}
 		f_n \ar[yshift=2pt]{r}{[a, b]}
 		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & f
 	\end{tikzcd}\!, тогда $\int\limits_a^b f_n \xrightarrow[n \to \infty]{} \int\limits_a^b f$
@@ -48,20 +61,37 @@
 	Используя определение равномерной непрерывности, получаем
 	\[\left| \int_a^b f_n - \int_a^b f \right| \< \int_a^b |f_n - f| \< \sup_{[a, b]} |f_n - f| \cdot (b - a) \xrightarrow[n \to \infty]{} 0\]
 \end{prf} % Конец доказательства теоремы о предельном переходе под знаком интеграла для последовательностей
-
-\begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=iFyP1BR_34MXd5Q_&t=9897]{правило Лейбница дифференцирования интеграла по параметру}
+\pagebreak
+\begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=iFyP1BR_34MXd5Q_&t=9897]{правило Лейбница дифференцирования интеграла по параметру}\label{пр.лейб.}
 	Пусть $f \colon [a, b] \times [c, d] \to \rr$, $f$ и $f'_y$ --- непрерывны на $[a, b] \times [c, d]$, $\varPhi \colon [c, d] \to \rr$, $\varPhi(y) = \int\limits_a^bf(x, y) \, dx$, тогда $\varPhi$ --- дифференцируема на $[c, d]$ и $\varPhi '(y) = \int\limits_a^b f'_y(x, y)\,dx$ 
 \end{teor} % Конец правила Лейбница
 
 \begin{prf} % Доказательство правила лебница
-	По Гейне, возьмём последовательность $h_n \to 0$, тогда
-	\[\frac{\varPhi(y + h_n) - \varPhi(y)}{h_n} = \frac{\int_a^b f(x, y + h_n)\, dx - \int_a^b f(x, y)\, dx}{h_n} \stackrel{\text{т. Лагранжа}}{=} \int_a^b f'_y(x, y + \theta h_n)\,dx, \qquad \theta \in (0, 1)\]
-	По теореме Кантора \uns{(непрерывная функция на компакте равномерно непрерывна)} $f'_y$ равномерно непрерывнa, то есть 
+	% По Гейне, возьмём последовательность $h_n \to 0$, тогда
+	Производная $\varPhi$ по определению:
+	\small
+	\[\lim_{h \to 0}\frac{\varPhi(y + h) - \varPhi(y)}{h} = \lim_{h \to 0}\frac{\int_a^b f(x, y + h)\, dx - \int_a^b f(x, y)\, dx}{h} \stackrel{\text{т. Лагранжа}}{=} \int_a^b f'_y(x, y + \theta_h h)\,dx, \qquad \theta_h \in (0, 1)\]
+	\normalsize
+	По теореме Кантора \uns{(непрерывная функция на компакте равномерно непрерывна)} $f'_y$ равномерно непрерывнa на $[a, b] \times [c, d]$, то есть 
 	\[\A \eps > 0 \E \delta > 0 : \A x_1, x_2 \in [a, b] \times [c, d] \text{, если } \|x_1 - x_2\| < \delta \text{, то } |f'_y(x_1) - f'_y(x_2)| < \eps\]
-	Фиксируем $\eps > 0$, тогда$\E \delta > 0$ \uns{(из определения равномерной непрерывности)} и для этого $\delta \E N : \A n > N$ выполнено $|h_n| < \delta$ \uns{(из определения сходимости последовательности $h_n$ к 0)}.\linebreak
-	Тогда, из определения равномерной непрерывности, так как $\|(x, y + \theta h_n) - (x, y) \| < \delta$, то\linebreak
-	$\left|f'_y(x, y + \theta h_n) - f'_y(x, y)\right| < \eps$, или $\left|\int_a^b f'_y(x, y + \theta h_n)\,dx - \int_a^b f'_y(x, y)\,dx\right| \< \eps \cdot (b - a)$, значит 
-	\[\int_a^b f'_y(x, y + \theta h_n)\,dx \xrightarrow[n \to \infty]{} \int_a^b f'_y(x, y)\,dx, 
-	 \text{\ \ то есть \ \ } 
-	\varPhi'(y) = \lim_{h_n \to 0} \frac{\varPhi(y + h_n) - \varPhi(y)}{h_n} = \int_a^b f'_y(x, y)\,dx\]
+	Пользуясь этим определением, фиксируем $\eps > 0$, находим $\delta > 0$. 
+	% и для этого $\delta \E N : \A n > N$ выполнено $|h_n| < \delta$ \uns{(из определения сходимости последовательности $h_n$ к 0)}.\linebreak
+	\smallskip Тогда, при $h < \delta$, так как \linebreak $\|(x, y + \theta_h h) - (x, y) \| < \delta$, то
+	$\left|f'_y(x, y + \theta_h h) - f'_y(x, y)\right| < \eps$ или \small
+	\[\left|\int_a^b f'_y(x, y + \theta_h h)\,dx - \int_a^b f'_y(x, y)\,dx\right| \< \eps \cdot (b - a),\]
+	\normalsize потому что подынтегральная функция не превосходит \eps. Значит \small
+	\[\int_a^b f'_y(x, y + \theta_h h)\,dx \xrightarrow[h \to 0]{} \int_a^b f'_y(x, y)\,dx, 
+	\text{\ \ \normalsize то есть \ \ } 
+	\varPhi'(y) \uns{{}= \lim_{h \to 0} \frac{\varPhi(y + h) - \varPhi(y)}{h}} = \int_a^b f'_y(x, y)\,dx\]
 \end{prf} % Конец доказательства праила Лейбница
+
+\begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=sIF3m4zsCUBLspCI&t=10900]{о предельном пререходе под знаком производной}\label{пер.под призв.}
+	Пусть $f_n \in C^1\scal{a, b}$, $f_n \xrightarrow[n \to \infty]{} f_0$ поточечно на \scal{a, b},\begin{tikzcd}
+		f'_n \ar[yshift=2pt]{r}{\scal{a, b}}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & \varphi
+	\end{tikzcd}\!, тогда $f_0 \in C^1\scal{a, b}$ и $f'_0 = \varphi$ на \scal{a, b}
+\end{teor}
+
+\begin{prf}
+	$\A [x_0, x_1] \subset \scal{a, b}$ по теореме \ref{пер.под инт.} $\int_{x_0}^{x_1} f'_n \xrightarrow[n \to \infty]{} \int_{x_0}^{x_1} \varphi$, то есть $f_n(x_1) - f_n(x_0) \xrightarrow[n \to \infty]{} \int_{x_0}^{x_1} \varphi$, а по условию $f_n(x_1) - f_n(x_0) \xrightarrow[n \to \infty]{} f_0(x_1) - f_0(x_0)$, значит $f_0(x_1) - f_0(x_0) = \int_{x_0}^{x_1} \varphi$, то есть $f_0$ --- первообразная $\varphi$
+\end{prf}

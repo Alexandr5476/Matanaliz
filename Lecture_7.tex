@@ -1,4 +1,4 @@
-\subsection{Лемма о дифференцировании <<сдвига>>, формула Тейлора, n-ый дифференциал}
+\subsection{Лемма о дифференцировании <<сдвига>>, формула Тейлора, $n$-ый дифференциал}
 
 \begin{lem}[https://www.youtube.com/live/oWtiSJdhQV8?si=ldUCi49yVsxTBWWR&t=7819]{о дифференцировании <<сдвига>>} \label{лем. для форм. тейл.}
 	$E \subset \rmm$, $f \in C^r(E)$ \uns{($f \colon E \to \rr$)}, $a \in E$. 
@@ -50,12 +50,15 @@
 	В остатке формулы Тейлора есть множитель
 	\[h^k = \left(\frac{h_1}{\|h\|}\right)^{k_1} \cdot \left(\frac{h_2}{\|h\|}\right)^{k_2} \cdot \ldots \cdot \left(\frac{h_m}{\|h\|}\right)^{k_m} \cdot  \|h\|^{r + 1}\] 
 	А производная $f^k(a + \theta h)$
-    ограничена в некоторой окрестности точки $a$, замыкание которой сожержится в $E$, потому что $f^{(k)}$ непрерывна на $E$. Значит остаток в формуле Тейлора это \textit{огр.}${} \cdot \|h\|^r \cdot \|h\| = o\bigl(\|h\|^r\bigr)$, при $x \to a$. Он называется остатком в форме Пеано.
+    ограничена в некоторой окрестности точки $a$, замыкание которой сожержится в $E$, потому что $f^{(k)}$ непрерывна на $E$. Значит остаток в формуле Тейлора это \textit{огр.}${} \cdot \|h\|^r \cdot \|h\| = o\bigl(\|h\|^r\bigr)$, при $h \to 0$. Он называется остатком в форме Пеано.
 \end{slv} % Конец следствия про остаток в форме Пеано
 
 \begin{opr}
 	Однородный многочлен от $h$ степени $n$ 
-	\[d^{\,n} f(a, h) = \sum_{\substack{(i_1, \ldots, i_m) \\ i_1 + \ldots + i_m = k \\ i_1, \ldots, i_m \biger 0}} \frac{n!}{i_1! \cdot i_2! \cdot \ldots \cdot i_m!}\, \cdot \, \frac{\partial^nf}{(\partial x_1)^{i_1} (\partial x_2)^{i_2} \ldots (\partial x_m)^{i_m}} (a) \cdot h_1^{i_1} \cdot h_2^{i_2} \cdot \ldots \cdot h_m^{i_m}\] называется \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=im2RytH_7KDpHR2U&t=10235}{$n$-ым дифференциалом} функции $f$ в точке $a$.
+	\[d^{\,n} f(a, h) = \sum_{\substack{(i_1, \ldots, i_m) \\ i_1 + \ldots + i_m = n \\ i_1, \ldots, i_m \biger 0}} \frac{n!}{i_1! \cdot i_2! \cdot \ldots \cdot i_m!}\, \cdot \, \frac{\partial^nf}{(\partial x_1)^{i_1} (\partial x_2)^{i_2} \ldots (\partial x_m)^{i_m}} (a) \cdot h_1^{i_1} \cdot h_2^{i_2} \cdot \ldots \cdot h_m^{i_m}\]
+	называется
+	\urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=im2RytH_7KDpHR2U&t=10235}{$n$-ым дифференциалом}
+	функции $f$ в точке $a$.
 \end{opr} % Конец определения n-го дифференциала
  
-Тогда формулу Тейлора можно записать в виде $\displaystyle f(x) = f(a) + \sum_{k = 1}^r \frac{d^kf(a, x - a)}{k!} + o\bigl(\|h\|^r\bigl)$
+Тогда формулу Тейлора можно записать в виде $\displaystyle f(x) = f(a) + \sum_{k = 1}^r \frac{d^kf(a, h)}{k!} + o\bigl(\|h\|^r\bigl)$

@@ -4,7 +4,7 @@
 	Матрица оператора $f'(a)$, $a \in \Int E$ отображения $f \colon E \subset \rmm \to \rr^n$ \uns{\small(если $f$ --- дифференцируемо)} называется \urlybox{https://www.youtube.com/live/9KZRjeVTXNY?si=RUIUUSO5mIOmepUr&t=6609}{матрицой якоби} отображения $f$ в точке $a$.
 \end{opr}
 
-\begin{teor}[https://www.youtube.com/live/9KZRjeVTXNY?si=SCHLM5BcHQKABteV&t=6413]{необходимое условие дифференцируемости}\label{необх.усл.дефф.}
+\begin{teor}[https://www.youtube.com/live/9KZRjeVTXNY?si=SCHLM5BcHQKABteV&t=6413]{необходимое условие дифференцируемости}\label{необх.усл.дефф.}%
 	Пусть отображение $f \colon E \subset \rmm \to \rr^n$ --- дифференцируемо в точке $a \in \Int E$, тогда существуют все частные производные всех его координатных функций и 
 	\[\begin{pmatrix}\displaystyle
 		\pfrac{f_1}{x_1}(a) &\displaystyle \pfrac{f_1}{x_2}(a) & \dots &\displaystyle \pfrac{f_1}{x_m}(a)\\[12pt]
@@ -34,17 +34,17 @@
 		Пусть $g(x_2) = f(x_1, x_2),\ x_1$ --- фиксировано. Тогда $f(x_1, x_2) - f(x_1, a_2) = g(x_2) - g(a_2)$.\linebreak
 		Функция $g$ --- дифференцируема на $[a_2, x_2]$ ($g' = \pfrac{f}{x_2}$) $\Rightarrow$ по теореме Лагранжа\linebreak$\E x_0\text{ между $x_2$ и $a_2$}  : g(x_2) - g(a_2) = g'(x_0)(x_2 - a_2) = \pfrac{f}{x_2}(x_0)(x_2 - a_2)$. Поэтому:}
 	\begin{gather*}= \pfrac{f}{x_2}(x_1, x_0)\,(x_2 - a_2) + \pfrac{f}{x_1}(\bar x_0, a_2)\,(x_1 - a_1) = \\ 
-		= \pfrac{f}{x_1}(a)\,(x_1 - a_1) + \pfrac{f}{x_2}\,(x_2 - a_2) +\\
-		+\left(\pfrac{f}{x_1}(a) - \pfrac{f}{x_1}(\bar x_0, a_2)\right)(x_1 - a_1) +\left(\pfrac{f}{x_2}(x_1, x_0)- \pfrac{f}{x_2}(a)\right)(x_2 - a_2) 
+		= \pfrac{f}{x_1}(a)\,(x_1 - a_1) + \pfrac{f}{x_2}(a)\,(x_2 - a_2) +{}\\
+		{}+\left(\pfrac{f}{x_1}(\bar x_0, a_2) -  \pfrac{f}{x_1}(a)\right)(x_1 - a_1) +\left(\pfrac{f}{x_2}(x_1, x_0)- \pfrac{f}{x_2}(a)\right)(x_2 - a_2) 
 	\end{gather*}
 	Домножим и поделим на $\|x - a\|$ последнюю строку.
-	{\footnotesize$\left(\displaystyle\pfrac{f}{x_1}(a) - \pfrac{f}{x_1}(\bar x_0, a_2)\right)
+	{\footnotesize$\left(\displaystyle \pfrac{f}{x_1}(\bar x_0, a_2) - \pfrac{f}{x_1}(a) \right)
 	\xrightarrow[x \to a]{}0$}, т.к. $x_0$ между $x_1$ и $a_1$; и {\small$\left|\cfrac{x_1 - a_1}{\|x - a\|}\right| \< 1$}. Аналогично во втором слагаемом этой строки. \smallskip Значит теперь в ней написано \textit{б.м.}${}\cdot \|x-a\|$, то есть $o(x-a)$. Получилось определение дифференцируемости $f$. 
 \end{prf} % Конец доказательства теоремы  о достаточном условии дифференцируемости
 
 \addtocontents{toc}{\medskip\hrule\smallskip\hspace{7.5cm} \small\sffamily\bfseries\protect\rom{3} семестр \textdownarrow\normalfont\strut\hrule\medskip}
 
-\subsection{Правила дифференцирования}
+\subsection{Правила дифференцирования, теорема Лагранжа для векторнозначных функций}
 
 \begin{enumerate} % Линейность
 	\item \href{https://www.youtube.com/live/9KZRjeVTXNY?si=Hcxa5JDA7wVkfMRg&t=7995}{\textbf{Линейность:}}
@@ -106,6 +106,18 @@
 		\item $\scal{f, g}'(a)\cdot h = \left(\sum\limits_{i=1}^{n} f_i g_i\right)' (a) \cdot h \stackrel{\text{лин.}}{=} \sum\limits_{i=1}^{n} (f_i g_i)' (a)\cdot h \stackrel{\text{\circl{1}}}{=} \sum\limits_{i=1}^{n} (\unbr{f_i'(a) \cdot h}{\makebox[0pt][c]{\footnotesize$i$-ая координата $F'(a) \cdot h$}}) \cdot g_i(a) + f_i(a) \cdot g_i'(a) \cdot h = {}$ \linebreak ${}= \scal{f'(a) \cdot h, g(a)} + \scal{f(a), g'(a) \cdot h}$
 	\end{enumerate} % Конец доказательства про дифференцируемость призведений
 \end{enumerate} % Конец правил дифференцируемости
+
+\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=c7uqK7x7CuZSChAM&t=866]{Лагранжа для векторонозначных функций}\label{лагр.вект.ф.}
+	$f\colon [a, b] \subset \rr \to \rmm$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$. Тогда$\E c \in (a, b):$ \[\|f(b) - f(a)\| \< \|f'(c)\|\cdot\|(b-a)\|\]
+\end{teor} % Конец теоремы Лагранжа для векторнозначных функций
+
+\begin{prf} % Доказательство теоремы Лагранжа для векторнозначных функций
+	Пусть $\varphi \colon [a, b] \to \rr $,\quad$\varphi(t) = \bscal{f(b) - f(a), f(t) - f(a)}$. \smallskip Тогда $\varphi$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$ и $\varphi(a) = 0,\  \varphi(b) = \|f(b) - f(a)\|^2$. Поэтому
+	\begin{gather*} \|f(b) - f(a)\|^2 = \varphi(b) - \varphi(a) \stackrel{\parbox{2.35cm}{\tiny \uns{по обычной теореме Лагранжа$\hspace{-3.5pt}\E c \in~\!\!(a, b)$}}}{=} \varphi'(c)(b - a) \stackrel{\text{\circl{2}}}{=} \bscal{f(b) - f(a), f'(c)}(b-a) \stackrel{\parbox{1.57cm}{\tiny \uns{нер-во Коши-\\Буняковского}}}{\<}\\
+		\<\|f(b) - f(a)\|\cdot \|f'(c)\| \cdot (b - a)
+	\end{gather*}
+	Теперь, деля на $\|f(b) - f(a)\|$ \uns{(при $f(b) = f(a)$ доказываемое неравенство очевидно)} получаем то, что нужно. 
+\end{prf} % Конец доказательства теоремы Лагранжа для векторнозначных функций
 
 \begin{zam}[https://www.youtube.com/live/9KZRjeVTXNY?si=yUlxrO_ZzIAcIDOX&t=10779]
 	\textit{Общее правило дифференцирования функции одной переменной:}\\[5pt]

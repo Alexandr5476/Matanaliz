@@ -1,37 +1,9 @@
-\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=c7uqK7x7CuZSChAM&t=866]{Лагранжа для векторонозначных функций}
-	$f\colon [a, b] \subset \rr \to \rmm$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$. Тогда$\E c \in (a, b):$ \[\|f(b) - f(a)\| \< \|f'(c)\|\cdot\|(b-a)\|\]
-\end{teor} % Конец теоремы Лагранжа для векторнозначных функций
-
-\begin{prf} % Доказательство теоремы Лагранжа для векторнозначных функций
-	Пусть $\varphi \colon [a, b] \to \rr $,\quad$\varphi(t) = \bscal{f(b) - f(a), f(t) - f(a)}$. \smallskip Тогда $\varphi$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$ и $\varphi(a) = 0,\  \varphi(b) = \|f(b) - f(a)\|^2$. Поэтому
-	\begin{gather*} \|f(b) - f(a)\|^2 = \varphi(b) - \varphi(a) \stackrel{\parbox{2.35cm}{\tiny \uns{по обычной теореме Лагранжа$\hspace{-3.5pt}\E c \in~\!\!(a, b)$}}}{=} \varphi'(c)(b - a) \stackrel{\text{\circl{2}}}{=} \bscal{f(b) - f(a), f'(c)}(b-a) \stackrel{\parbox{1.57cm}{\tiny \uns{нер-во Коши-\\Буняковского}}}{\<}\\
-		\<\|f(b) - f(a)\|\cdot \|f'(c)\| \cdot (b - a)
-	\end{gather*}
-	Теперь, деля на $\|f(b) - f(a)\|$ \uns{(при $f(b) = f(a)$ доказываемое неравенство очевидно)} получаем то, что нужно. 
-\end{prf} % Конец доказательства теоремы Лагранжа для векторнозначных функций
 
 
 
-\begin{teor}{о предельном пререходе под знаком производной}
-	Пусть $f_n \in C^1\scal{a, b}$, $f_n \xrightarrow[n \to \infty]{} f_0$ поточечно на \scal{a, b},\begin{tikzcd}
-		f'_n \ar[yshift=2pt]{r}{\scal{a, b}}
-		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & \varphi
-	\end{tikzcd}\!, тогда $f_0 \in C^1\scal{a, b}$ и $f'_0 = \varphi$ на \scal{a, b}
-\end{teor}
 
-\begin{prf}
-	$\A [x_0, x_1] \subset \scal{a, b}$ по теореме \ref{пер.под инт.} $\int_{x_0}^{x_1} f'_n \xrightarrow[n \to \infty]{} \int_{x_0}^{x_1} \varphi$, то есть $f'_n(x_1) - f'_n(x_0) \xrightarrow[n \to \infty]{} \int_{x_0}^{x_1} \varphi$, а по условию $f'_n(x_1) - f'_n(x_0) \xrightarrow[n \to \infty]{} f_0(x_1) - f_0(x_0)$, значит $f_0(x_1) - f_0(x_0) = \int_{x_0}^{x_1} \varphi$, то есть $f_0$ --- первообразная $\varphi$
-\end{prf}
 
-\begin{opr}
-	Пусть $f_n \colon X \to \rr$, где $X$ --- множество, тогда \raisebox{0pt}[0pt][0pt]{$\sum\limits_{n = 1}^{\infty}$}$f_n(x)$ называется \ybox{функциональным} \ybox{рядом}. $S_k = \sum\limits_{n = 1}^{k}f_n(x)$ называется \ybox{частичной суммой} функционального ряда, $R_n = \sum\limits_{k = n + 1}^{\infty}f_k(x)$ называется \ybox{остатком} функционального ряда.
-\end{opr}
 
-\begin{opr}
-	Ряд $\sum\limits_{n = 1}^{\infty} f_n(x)$ \ybox{сходится поточечно} на $E \subset X$, если $\A x_0 \in E$ сходится числовой ряд  \raisebox{0pt}[10pt][0pt]{$\sum\limits_{n = 1}^{\infty}f_n(x_0)$}, то есть
-	\[\A x_0 \in E\ \A \eps > 0 \E N : \A n > N \text{ выполнено } \left| \sum_{k = 1}^{n}f_k(x_0) - S_k \right| < \eps\] 
-\end{opr}
 
-\begin{opr}
-	Ряд $\sum\limits_{n = 1}^{\infty} f_n(x)$ \ybox{сходится равномерно} на $E \subset X$, если
-\end{opr}
+
+
