@@ -1,0 +1,118 @@
+\subsection{Дифференцируемость гамма функции, теорема о предельном переходе в суммах, теорема о перестановке предельных переходов, признак Дирихле}
+
+\begin{slv}[https://youtu.be/x6Xwr0Rrjz8?si=CA7LSeSbAetkaL-V&t=10106]
+    \textit{Дифференцируемость гамма функции.} Запишем формулу Вейерштрасса:
+    \[\frac{1}{\Gamma(x)} = xe^{\gamma x} \prod_{k = 1}^{\infty}\left(1 + \frac xk\right) \cdot e^{-\frac xk} \qquad (x > 0)\]
+    Прологарифмируем её
+    \[-\ln \Gamma(x) = \ln x + \gamma x + \sum_{k = 1}^{\infty}\left(\ln \left( 1 + \frac xk \right) - \frac xk\right)\]
+    Равномерная сходимость ряда из производных есть по признаку Вейерштрасса (т. \ref{пр.вейер.}):
+    \[\left(\ln \left( 1 + \frac xk \right) - \frac xk\right)' = \frac{\sfrac 1k}{1 + \sfrac xk} - \frac 1k = - \frac{x}{(k + x)\cdot k}\]
+    Модуль этого выражения это возрастающая функция, поэтому $\A M \in \rr$
+    \[\left|- \frac{x}{(k + x)\cdot k}\right| = \frac{x}{(k + x)\cdot k} \stackrel{\text{на $[0, M]$}}{\<} \frac{M}{(k + M)\cdot k} \qquad \text{и} \text{ ряд }\sum_{k = 1}^{\infty}\frac{M}{(k + M)\cdot k} \text{ сходится.}\] 
+    Значит по теореме \ref{дифф.ряда} сумма ряда дифференцируема, тогда и гамма функция дифференцируема как композиция и произведение дифференцируемых функций:
+    \[\Gamma(x) = \left( xe^{\gamma x} + e^{\textstyle\left(\sum\limits_{k=1}^{\infty}\ln \left( 1 + \frac xk\right) + \frac xk\right)}\right)^{-1}\]
+\end{slv}
+
+\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=rGNYgaxD_qH5JbRt&t=1339]{о предельном переходе в суммах}\label{пред.пер.в сум.}
+	$u_n \colon E \subset X \to \rr$, $X$ --- метрическое пространство, $x_0 \in X$ --- предельная точка $E$. Пусть $\A n \E \lim\limits_{x \to x_0} u_n(x) = a_n$ (конечный), и $\sum\limits_{n = 1}^{\infty} u_n(x)$ равномерно сходится на $E$,
+	тогда \small \[ \text{ \normalsize ряд }\sum_{n = 1}^{\infty} a_n \text{ \normalsize --- сходится и } \sum_{n = 1}^{\infty} a_n = \lim_{x \to x_0} \left(\sum_{n = 1}^{\infty} u_n(x)\right)\]
+\end{teor}
+
+\begin{prf}
+	Чтобы доказать сходимость вещественного ряда $\sum\limits_{n = 1}^{\infty} a_n$ достаточно проверить фундаментальность \raisebox{0pt}[0pt][0pt]{$S_N^a = \sum\limits_{n = 1}^{N} a_n$} последовательности частичных сумм. Пусть \raisebox{0pt}[0pt][0pt]{$S_N(x) =  \sum\limits_{n = 1}^{N} u_n(x)$} --- функциональная последовательность частичных сумм ряда $\sum\limits_{n = 1}^{\infty} u_n(x)$, тогда из \ref{кр.бол.-кош.для ряд.} {\small(т.к. этот ряд равномерно сходится)} $\rselection{\A \eps > 0 \E N : \A n > N, \A p \in \mathbb{N}}, \A x \in E \text{ выполнено } |S_{n+p}(x) - S_n(x)| < \eps, \linebreak$ а для $x$ из некоторой окрестности точки $x_0$ выполнено $|S_{n + p}^a - S_{n+p}(x)| < \eps$ и $|S_n(x) - S_n^a| < \eps$. Тогда, используя неравенство треугольника, получаем 
+	\[\rselection{|S_{n + p}^a - S_n^a|} \< |S_{n + p}^a - S_{n + p}(x)| + |S_{n + p}(x) - S_n(x)| + |S_n(x) - S_n^a| \rselection{{}< 3 \cdot \eps}\] 
+	\rselection{Это определение фундаментальности $S_N^a$}. Теперь определим функции \[\tilde u_n(x) = \left[ \begin{array}{ll}
+		u_n(x), \quad & x \in E \\
+		a_n, & x = x_0
+	\end{array} \right.\]
+	$\tilde u_n(x)$ --- непрерывны в точке $x_0$ (потому что по условию $\lim\limits_{x \to x_0} u_n(x) = a_n$) и \raisebox{0pt}[0pt][0pt]{$\sum\limits_{n = 1}^{\infty} \tilde u_n(x)$} равномерно сходится на $E \cup \{\,x_0\,\}$, так как \[\sup\limits_{x \in E \cup \{\,x_0\,\}} \left|\sum\limits_{k = n + 1}^{\infty} \tilde u_k(x)\right| \< \sup\limits_{x \in E} \left|\sum\limits_{k = n + 1}^{\infty} u_k(x)\right| + \sum\limits_{k = n + 1}^{\infty} a_k \xrightarrow[n \to \infty]{} 0\] Значит по теореме Стокса-Зайдля для рядов (т. \ref{ст-зд ряды}) сумма ряда $\sum\limits_{n = 1}^{\infty} \tilde u_n(x) = \tilde S(x)$ непрерывна в точке $x_0$, поэтому $\lim\limits_{x \to x_0} \left(\sum\limits_{n = 1}^{\infty} u_n(x)\right) = \lim\limits_{x \to x_0}\tilde S(x) = \tilde S(x_0) = \sum\limits_{n = 1}^{\infty} \tilde u_n(x_0) =\sum\limits_{n = 1}^{\infty} a_n$
+\end{prf}
+
+\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=mBg2DX_lyz8KW2Lk&t=2844]{о перестановке предельных переходов}
+	$f_n \colon E \subset X \to \rr$, ($X$ --- метрическое пространство), $x_0$ --- предельная точка $E$, пусть 
+	\begin{enumerate}
+	\item $\A n\ \ f_n(x) \xrightarrow[x \to x_0]{} A_n$, \quad($A_n$ --- конечный предел)
+	\item \begin{tikzcd}
+		f_n(x) \ar[yshift=2pt]{r}{E}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & S(x)
+	\end{tikzcd}
+	\end{enumerate}%\hangindent=20cm
+	\hspace{20pt}Тогда
+	\begin{multicols}{2}
+	\begin{enumerate}[itemindent=20pt]
+		\item $\E \lim\limits_{n \to \infty} A_n = A$ (конечный)
+		
+		\item $S(x) \xrightarrow[x \to x_0]{} A$
+	\end{enumerate}
+	\rule{0pt}{25pt}
+	т.е. $\displaystyle \lim_{n \to \infty} \bigl(\lim_{x \to x_0} f_n(x) \bigr)
+	 = \lim_{x \to x_0} \bigl(\lim_{n \to \infty} f_n(x) \bigr)$
+	\end{multicols}
+\end{teor}
+
+\begin{prf}
+	Пусть $u_n = f_n - f_{n - 1}$ \uns{$(u_1 = f_1)$}, тогда $u_n(x) \xrightarrow[x \to x_0]{} a_n = A_n - A_{n-1}$ \uns{$(a_1 = A_1)$} и частичная сумма $S_n(x) = \sum\limits_{k = 1}^{n}u_n(x) ={}\!\!\!\begin{tikzcd}
+		f_n(x) \ar[yshift=2pt]{r}{E}
+		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & S(x)
+	\end{tikzcd}\Rightarrow{}$ ряд $\sum\limits_{n = 1}^{\infty} u_n(x)$ сходится равномерно на $E$, значит по теореме \ref{пред.пер.в сум.} 
+	\begin{enumerate}
+		\item Ряд $\sum\limits_{n = 1}^{\infty} a_n$ сходится, a $\sum\limits_{k = 1}^{n} a_n = A_n$, то есть последовательность $A_n$ сходится, обозначим её предел $A$.
+		
+		\item  $\sum\limits_{n = 1}^{\infty} a_n = \lim\limits_{x \to x_0} \left(\sum\limits_{n = 1}^{\infty} u_n(x)\right) = \lim\limits_{x \to x_0}S(x)$, а по первому пункту $\sum\limits_{n = 1}^{\infty} a_n = A$, значит $S(x) \xrightarrow[x \to x_0]{} A$.
+	\end{enumerate} 
+\end{prf}
+
+\begin{opr}
+	Пусть $f \colon E \times D \to \rr$, $E$ --- множество, $D \subset Y$ --- метрическое пространство, тогда функция $h \colon D \to \rr$ называется \urlybox{https://youtu.be/9qXOGgTLQH8?si=59zDIfOJ1HeQGlUt&t=3506}{равномерным пределом} функции $f$ при $t \to t_0$, если 
+	\[\A \eps > 0 \E U(t_0) : \text{ если } t \in U(t_0) \text{, то } \sup_{x \in E} |f(x, t) - h(x)| < \eps\]
+	Обозначается\begin{tikzcd}
+		f(x, t) \ar[yshift=2pt]{r}{}
+		\ar[yshift=-2pt]{r}[swap]{t \to t_0} & h(x)
+	\end{tikzcd}
+\end{opr}
+
+\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=J83eCa6QhcbamSmh&t=3797]{название}
+	$f \colon E \times D \to \rr$, \quad $E \subset X$, $D \subset Y$ --- метрические пространства, $x_0$ --- предельная точка $E$, $y_0$ --- предельная точка $D$. Пусть
+	\begin{enumerate}
+		\item $\E$ функция $A \colon D \to \rr : \A y \in D$\ \  $\lim\limits_{x \to x_0} = A(y)$
+		
+		\item \begin{tikzcd}
+			f(x, y) \ar[yshift=2pt]{r}{}
+			\ar[yshift=-2pt]{r}[swap]{y \to y_0} & S(x)
+		\end{tikzcd}, где $S \colon E \to \rr$ 
+	\end{enumerate}
+	\hspace{20pt}Тогда
+	\begin{enumerate}
+		\item $\E \lim\limits_{y \to y_0} A(y) = A$ (конечный)
+		
+		\item $\lim\limits_{x \to x_0} S(x) = A$
+	\end{enumerate}
+\end{teor}
+
+\begin{prf}
+	Отсутствует.
+\end{prf}
+
+\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=E0w_tbdu46L_96fs&t=4135]{Признак Дирихле}
+	Пусть $a_n, b_n \colon X \to \rr$ --- функциональные последовательности ($X$ --- множество) и
+	\begin{enumerate}
+		\item Частичные суммы $A_N(x) = \sum\limits_{n = 1}^{N}a_n(x)$ равномерно ограничены, то есть
+		\[\E C_A \uns{{}\in \rr} : \A x \uns{{}\in X},\ \A N \uns{{}\in \mathbb{N}}\ \ |A_N(x)| \< C_A\]
+		
+		\item $\A x_0 \in X\ \ b_n(x_0) \xrightarrow[n \to \infty]{} 0$ монотонно, и \begin{tikzcd}
+			b_n(x) \ar[yshift=2pt]{r}{X}
+			\ar[yshift=-2pt]{r}[swap]{n \to \infty} & 0
+		\end{tikzcd}
+	\end{enumerate}
+	\hspace{20pt}Тогда ряд $\sum\limits_{n = 0}^{\infty} a_n(x) \cdot b_n(x)$ сходится равномерно на $X$.
+\end{teor}
+
+\begin{prf} Есть равенство:
+	\[\sum_{k = N}^{M} a_k(x) \cdot b_k(x) = A_M(x) \cdot b_M(x) - A_{N-1}(x) \cdot b_{N-1}(x) + \sum_{k = N}^{M - 1}(b_k - b_{k+1}) \cdot A_k(x)\]
+	Оно верно, потому что\dots \quad Значит
+	\begin{gather*}
+	\left|\sum_{k = N}^{M} a_k(x) \cdot b_k(x)\right| \< |A_M(x)|\cdot |b_M(x)| + |A_{N-1}|\cdot |b_{N-1}(x)| \pm \sum_{k = N}^{M-1} (b_k - b_{k+1}) \cdot |A_k(x)| \<{} \\
+ 	{}\< C_A \cdot \bigl(|b_M(x)| + |b_{N-1}(x)| + |b_N(x)| + |b_M(x)|\bigr)
+	\end{gather*}
+	По признаку Коши равномерной сходимости ряда (\ref{кр.бол.-кош.для ряд.}) $\sum\limits_{n = 0}^{\infty} a_n(x) \cdot b_n(x)$ сходится равномерно, потому что $b_n(x)$ равномерно сходится.
+\end{prf}

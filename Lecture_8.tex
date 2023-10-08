@@ -1,6 +1,6 @@
 \subsection{Полнота пространства непрерывных функций на компакте}
 
-\begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=gnLVjEHuJSf6Zyq_&t=8043]{о полноте пространства непрерывных функций на компакте}
+\begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=gnLVjEHuJSf6Zyq_&t=8043]{о полноте пространства непрерывных функций на компакте}\label{полн.пр.непр.функ.}
 	Пусть $K$ --- компактное метрическое пространство, тогда $C(K) \uns{{} = \{\, f \colon K \to \rr \mid f  \text{ --- непрерывно\,\}}}$ есть полное метрическое пространство относительно метрики $\metr{f_1, f_2} = \sup_K|f_1(x) - f_2(x)|$\bigskip
 	\palka{\small \begin{enumerate}[leftmargin=15pt] % Напоминание определений
 	\item $\metr{f_1, f_2} = \sup_K|f_1(x) - f_2(x)|$ является метрикой по лемме \ref{метр.для отобр.}, т.к. непрерывные функции на компакте --- ограничены (теорема Вейерштрасса)
@@ -18,7 +18,7 @@
 	Получилось \rselection{определение фундаментальности}.
 	\end{enumerate}} % Конец напоминания определений
 \end{teor} % Конец теоремы о полноте пространства непрерывных функций на компакте
-\pagebreak
+
 \begin{prf} % Доказательство теоремы о полноте пространства непрерывных функций на компакте
 	Нужно доказать, что любая фундаментальная последовательность сходится. Возьмём фундаментальную последовательность $f_n$.
 	Тогда $\A x_0 \in K$ последовательность $f_n(x_0)$ --- фундоментальная, и она вещественная $\Rightarrow$ она сходится. Обозначим её предел $f(x_0)$. Определение фундоментальности $f_n(x)$:
@@ -34,7 +34,7 @@
 		f_n \ar[yshift=2pt]{r}{X}
 		\ar[yshift=-2pt]{r}[swap]{n \to \infty} \& f	\end{tikzcd}}
 	
-\begin{zam}[https://www.youtube.com/live/Ebv-BznzM6k?si=Xw76hi6ZJCzOc25G&t=9033]\begin{enumerate}
+\begin{zam}[https://www.youtube.com/live/Ebv-BznzM6k?si=Xw76hi6ZJCzOc25G&t=9033]\label{больц.-коши для посл.}\begin{enumerate}
 	\item Пространство $\mathcal{F} = \{\,f \colon X \to Y \mid f\text{ --- ограничено},\}$, где $X$ --- множество, $Y$ --- полное метрическое пространство, тоже является полным.\bigskip
 	\palka{\small
 	Доказательство останется тем же, только в конце нельзя будет применить теорему \ref{ст-зд}. Но если $f_n \in \mathcal{F}$ и\usebox{\rav}\!, то $f \in \mathcal F$. Доказательство: определение ограниченности $f_n$: 
@@ -45,7 +45,9 @@
 	
 	\item Пространство $C_M(K) = \{\, f \colon K \to Y  \mid f \text{ --- непрерывно}\,\}$, где $K$ --- компактное метрическое пространство, $Y$ --- полное метрическое пространство, тоже является полным.
 	
-	\item В $C(K)$ равномерная сходимость последовательности $f_n$ \eq\ $\A \eps > 0 \E N : \A n, m > N$ выполнено $\sup_K |f_n(x) - f_m(x)| < \eps$ 
+	\item \textbf{Критерий Больцано-Коши равномерной сходимости функциональной последовательности:}
+	\addcontentsline{toc}{subsection}{\thesubsection \hspace{1em} Критерий Больцано-Коши равномерной сходимости функциональной последовательности}
+	так как сходимость последовательности в $C(K)$ --- это равномерная сходимость функциональных последовательностей, и $C(K)$ --- полное пространство (по теореме \ref{полн.пр.непр.функ.}), то в $C(K)$ равномерная сходимость последовательности $f_n(x)$ \eq\ \[\A \eps > 0 \E N : \A n, m > N \text{ выполнено } \sup_{x \in K} |f_n(x) - f_m(x)| < \eps\] 
 \end{enumerate}\end{zam} % Конец замечание про полноту других пространств
 
 \subsection{Предельный переход под знаком интеграла\slash производной для последовательностей, правило Лейбница}
@@ -60,38 +62,40 @@
 \begin{prf} % Доказательство теоремы о предельном переходе под знаком интеграла для последовательностей
 	Используя определение равномерной непрерывности, получаем
 	\[\left| \int_a^b f_n - \int_a^b f \right| \< \int_a^b |f_n - f| \< \sup_{[a, b]} |f_n - f| \cdot (b - a) \xrightarrow[n \to \infty]{} 0\]
+	\uns{\hypersetup{linkcolor=mygray}По теореме \ref{ст-зд} $f$ непрерывна, значит $\int\limits_a^b f$ имеет смысл}
 \end{prf} % Конец доказательства теоремы о предельном переходе под знаком интеграла для последовательностей
-\pagebreak
+
 \begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=iFyP1BR_34MXd5Q_&t=9897]{правило Лейбница дифференцирования интеграла по параметру}\label{пр.лейб.}
 	Пусть $f \colon [a, b] \times [c, d] \to \rr$, $f$ и $f'_y$ --- непрерывны на $[a, b] \times [c, d]$, $\varPhi \colon [c, d] \to \rr$, $\varPhi(y) = \int\limits_a^bf(x, y) \, dx$, тогда $\varPhi$ --- дифференцируема на $[c, d]$ и $\varPhi '(y) = \int\limits_a^b f'_y(x, y)\,dx$ 
 \end{teor} % Конец правила Лейбница
 
 \begin{prf} % Доказательство правила лебница
 	% По Гейне, возьмём последовательность $h_n \to 0$, тогда
-	Производная $\varPhi$ по определению:
+	$\A y \in [c, d],\ \A h \in \rr : y + h \in [c, d]$ верно: 
 	\small
-	\[\lim_{h \to 0}\frac{\varPhi(y + h) - \varPhi(y)}{h} = \lim_{h \to 0}\frac{\int_a^b f(x, y + h)\, dx - \int_a^b f(x, y)\, dx}{h} \stackrel{\text{т. Лагранжа}}{=} \int_a^b f'_y(x, y + \theta_h h)\,dx, \qquad \theta_h \in (0, 1)\]
+	\[\frac{\varPhi(y + h) - \varPhi(y)}{h} = \frac{\int_a^b f(x, y + h)\, dx - \int_a^b f(x, y)\, dx}{h} \stackrel{\text{т. Лагранжа}}{=} \int_a^b f'_y(x, y + \theta_h h)\,dx, \quad \theta_h \in (0, 1)\]
 	\normalsize
 	По теореме Кантора \uns{(непрерывная функция на компакте равномерно непрерывна)} $f'_y$ равномерно непрерывнa на $[a, b] \times [c, d]$, то есть 
 	\[\A \eps > 0 \E \delta > 0 : \A x_1, x_2 \in [a, b] \times [c, d] \text{, если } \|x_1 - x_2\| < \delta \text{, то } |f'_y(x_1) - f'_y(x_2)| < \eps\]
 	Пользуясь этим определением, фиксируем $\eps > 0$, находим $\delta > 0$. 
 	% и для этого $\delta \E N : \A n > N$ выполнено $|h_n| < \delta$ \uns{(из определения сходимости последовательности $h_n$ к 0)}.\linebreak
-	\smallskip Тогда, при $h < \delta$, так как \linebreak $\|(x, y + \theta_h h) - (x, y) \| < \delta$, то
+	\smallskip Тогда, при $|h| < \delta$, так как \linebreak $\|(x, y + \theta_h h) - (x, y) \| < \delta$, то
 	$\left|f'_y(x, y + \theta_h h) - f'_y(x, y)\right| < \eps$ или \small
-	\[\left|\int_a^b f'_y(x, y + \theta_h h)\,dx - \int_a^b f'_y(x, y)\,dx\right| \< \eps \cdot (b - a),\]
-	\normalsize потому что подынтегральная функция не превосходит \eps. Значит \small
-	\[\int_a^b f'_y(x, y + \theta_h h)\,dx \xrightarrow[h \to 0]{} \int_a^b f'_y(x, y)\,dx, 
-	\text{\ \ \normalsize то есть \ \ } 
-	\varPhi'(y) \uns{{}= \lim_{h \to 0} \frac{\varPhi(y + h) - \varPhi(y)}{h}} = \int_a^b f'_y(x, y)\,dx\]
+	\[\left|\int_a^b f'_y(x, y + \theta_h h)\,dx - \int_a^b f'_y(x, y)\,dx\right| \uns{{}\< \int_a^b  \left|f'_y(x, y + \theta_h h)\,dx - f'_y(x, y)\,dx\right|} \<\eps \cdot (b - a),\]
+	\normalsize потому что подынтегральная функция не превосходит \eps. Значит
+	\[\left|\frac{\varPhi(y + h) - \varPhi(y)}{h} - \int_a^b f'_y(x, y)\,dx \right| \<\eps \cdot (b - a)
+	\text{,\quad то есть\quad} \lim_{h \to 0}\frac{\varPhi(y + h) - \varPhi(y)}{h} = \int_a^b f'_y(x, y)\,dx\]
+	И по определению производной $\varPhi '(y) = \int\limits_a^b f'_y(x, y)\,dx$.
 \end{prf} % Конец доказательства праила Лейбница
 
-\begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=sIF3m4zsCUBLspCI&t=10900]{о предельном пререходе под знаком производной}\label{пер.под призв.}
-	Пусть $f_n \in C^1\scal{a, b}$, $f_n \xrightarrow[n \to \infty]{} f_0$ поточечно на \scal{a, b},\begin{tikzcd}
+\begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=sIF3m4zsCUBLspCI&t=10900]{о предельном переходе под знаком производной}\label{пер.под призв.}
+	$f_n \in C^1\scal{a, b}$, $f_n \xrightarrow[n \to \infty]{} f$ поточечно на \scal{a, b},\begin{tikzcd}
 		f'_n \ar[yshift=2pt]{r}{\scal{a, b}}
 		\ar[yshift=-2pt]{r}[swap]{n \to \infty} & \varphi
-	\end{tikzcd}\!, тогда $f_0 \in C^1\scal{a, b}$ и $f'_0 = \varphi$ на \scal{a, b}
-\end{teor}
+	\end{tikzcd}\!, тогда $f \in C^1\scal{a, b}$ и $f' = \varphi$ на \scal{a, b}
+\end{teor} % Конец теоремы о предельном переходе под знаком производной
 
-\begin{prf}
-	$\A [x_0, x_1] \subset \scal{a, b}$ по теореме \ref{пер.под инт.} $\int_{x_0}^{x_1} f'_n \xrightarrow[n \to \infty]{} \int_{x_0}^{x_1} \varphi$, то есть $f_n(x_1) - f_n(x_0) \xrightarrow[n \to \infty]{} \int_{x_0}^{x_1} \varphi$, а по условию $f_n(x_1) - f_n(x_0) \xrightarrow[n \to \infty]{} f_0(x_1) - f_0(x_0)$, значит $f_0(x_1) - f_0(x_0) = \int_{x_0}^{x_1} \varphi$, то есть $f_0$ --- первообразная $\varphi$
-\end{prf}
+\begin{prf} % Доказательство теоремы о предельном переходе под знаком производной
+		Пусть $x_0 \in \scal{a, b}$, тогда $\A x \in \scal{a, b}$ по теореме \ref{пер.под инт.} $\int_{x_0}^{x} f'_n \xrightarrow[n \to \infty]{} \int_{x_0}^{x} \varphi$, то есть $f_n(x) - f_n(x_0) \xrightarrow[n \to \infty]{} \int_{x_0}^{x} \varphi$, а по условию $f_n(x) - f_n(x_0) \xrightarrow[n \to \infty]{} f(x) - f(x_0)$, значит $f(x) - f(x_0) = \int_{x_0}^{x} \varphi$, \linebreak тогда \uns{(так как интеграл с переменным верхнем пределом дифференцируем)} $f$ --- \smallskip дифференцируема и $f'(x) = \varphi(x)$, то есть $f' \in C^1 \scal{a, b}$ (по теореме \ref{ст-зд} $\varphi$ непрерывна).
+		% --- первообразная $\varphi$, и $f \in C^1 \scal{a, b}$, потому что при фиксированном $x_0$ и любом $x > x_0$ верно $\int_{x_0}^{x} \varphi = f(x)$
+\end{prf} % Конец доказательства теоремы о предельном переходе под знаком производной

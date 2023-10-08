@@ -1,0 +1,34 @@
+\subsection{Область, диффеоморфизм, лемма о приближённых значениях дифференцируемого отображения}
+
+\begin{opr}
+	\urlybox{https://www.youtube.com/live/Ebv-BznzM6k?si=QeoyVEUPuM7HhuDG&t=187}{Область} в \rmm\ это открытое, связное множество
+\end{opr}
+
+\begin{opr}
+	Отображение $f \colon O \subset \rmm \to \rmm$ ($O$ --- область) называется \urlybox{https://www.youtube.com/live/Ebv-BznzM6k?si=vjKM4epPGnqqJc-h&t=237}{диффеоморфизмом}, если оно дифференцируемо,$\E f^{-1}$ и $f^{-1}$ --- дифференцируемо.
+\end{opr}
+
+\begin{zam}
+	Если $f$ --- диффеоморфизм, то, дифференцируя равенство $(f^{-1} \circ f)(x) = x$, получаем $(f^{-1} \circ f)'(x) = 1_{m \times m}$ или $(f^{-1})'(f(x)) \cdot f'(x) = 1_{m \times m}$, то есть $(f^{-1})'(y) = (f'(x))^{-1}$, где $y = f(x)$, значит производный оператор диффеоморфизма обратим.
+\end{zam}
+
+\begin{lem}[https://www.youtube.com/live/Ebv-BznzM6k?si=RireGv1RXr_0TJBB&t=652]{о приближённых значениях дифференцируемого отображения}
+	Пусть $f \colon O \subset \rmm \to \rmm$, $f$ --- дифференцируемо в точке $x_0 \in O$ ($O$ --- открытое), тогда 
+	\begin{enumerate}
+	\item Если $\det f'(x_0) \ne 0$, то$\E \delta > 0, c >0 : \A h : \|h\| < \delta\ \ \|f(x_0 + h) - f(x_0)\| \biger c \cdot \|h\|$
+	
+	\item Если $f \in C^1(O)$, $\B{x_0, r} \in O$, то при $\|h\| < r$ выполнено $\|f(x_0 + h) - f(x_0) - f'(x_0)h\| \< A \cdot \|h\|$, где $A = \sup\limits_{x \in [x_0, x_0 + h]} \|f'(x) - f'(x_0)\|$, \uns{где $[x_0, x_0+h] = \{\, x \mid x = x_0 + th, t \in [0, 1] \,\}$} 
+	\end{enumerate} 
+\end{lem}
+
+\begin{prf}\begin{enumerate}
+	\item $\|h\| = \left\|\bigl(f'(x_0)\bigr)^{-1} \cdot f'(x_0) \cdot h\right\| \< \left\|\bigl(f'(x_0)\bigr)^{-1}\right\| \cdot \|f'(x_0)\cdot h\|$, значит 
+	\begin{gather*}
+	\|f(x_0 + h) - f(x_0)\| \stackrel{\text{\uns{опр. дифф-сти}}}{=} \|f'(x_0)h + o(h)\| \biger \|f'(x_0)h\| - \|o(h)\| \biger \\
+    \biger \frac{\|h\|}{\left\|\bigl(f'(x_0)\bigr)^{-1}\right\|} - \|\text{\textit{б.м}}\| \cdot \|h\| \biger \frac{\|h\|}{2\left\|\bigl(f'(x_0)\bigr)^{-1}\right\|}
+	\end{gather*}
+	из определения бесконечно малой$\E \delta : \text{если }\|h\| < \delta$, то $\displaystyle \|\text{\textit{б.м}}\| <{}${\small $\frac{1}{2\left\|\bigl(f'(x_0)\bigr)^{-1}\right\|}$}
+	
+	\item Пусть $H(x) = f(x) - f'(x_0) \cdot x$, тогда $H'(x) = f'(x) - f'(x_0)$ и \[H(x_0 + h) - H(x_0)= f(x_0 + h) - f'(x_0) \cdot (x_0 + h) - f(x_0) + f'(x_0) \cdot x_0 = f(x_0 + h) - f(x_0) - f'(x_0) \cdot h\]
+	То есть $\|f(x_0 + h) - f(x_0) - f'(x_0)h\| = \|H(x_0 + h) - H(x_0)\| \stackrel{\text{теор.\ref{теор.лагрнж.для отобр.}}}{\<} \|H'(x_0 + \theta h)\| \cdot \|h\| ={}$ \linebreak $= \|f'(x_0 + \theta h) - f'(x_0)\| \cdot \|h\| \< A \cdot \|h\|$
+\end{enumerate}\end{prf}

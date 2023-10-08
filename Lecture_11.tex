@@ -1,0 +1,140 @@
+\subsection{Теорема о непрерывно дифференцируемых отображениях, экстремум, теорема Ферма, Ролля, необходимое условие экстремума}
+
+\begin{teor}[https://www.youtube.com/live/4MoAp-Ts_Ig?si=_DYzvkvgcIWNzWfG&t=10988]{о непрерывно дифференцируемых отображениях}
+	Пусть $D\subset \rmm$ --- открытое, отображение $f \colon D \to \rr^n$ дифференцируемо на $D$, то есть\E отображение $f'\colon D \to Lin(\rmm, \rr^n)$. Тогда эквивалентно:
+	\begin{enumerate}
+		\item $f \in C^1(D)$, то есть\E все $\pfrac{f_i}{x_j}$ и они непрерывны на $D$ \uns{\small($i \in \{\,1, 2, \ldots, n\,\},\ j \in \{\,1, 2, \ldots, m\,\}$)}
+		
+		\item Отображение $f'$ непрерывно на $D$
+	\end{enumerate}
+\end{teor}
+
+\begin{prf}
+	\begin{itemize}[leftmargin=60pt]
+		\item[1 $\Rightarrow$ 2:] Из определения непрерывности всех $\pfrac{f_i}{x_j}$ на $D$ получаем, что
+		\rselection{$\A x \in D\ \A \eps > 0 \E \delta > 0 : 
+		\linebreak \A \bar x \in D$ если $\|x - \bar x\| < \delta$, то} $\A i$ \uns{\small${}\in \{\,1, 2, \ldots, n\,\}$},  $\A j$ \uns{\small${}\in \{\,1, 2, \ldots, m\,\}$} $\left\|\pfrac{f_i}{x_j}(x) - \pfrac{f_i}{x_j}(\bar x)\right\| < \frac{\eps}{\sqrt{mn}}$,
+		и с помощью \ref{зам к опр. норм.}.1 получаем
+		\[\rselection{\|f'(x) - f'(\bar x)\| \<} \sqrt{\sum_{i, j = 1}^{n,m} \left(\pfrac{f_i}{x_j}(x) - \pfrac{f_i}{x_j}(\bar x)\right)^2} \< \sqrt{\sum_{i, j = 1}^{n,m} \frac{\eps^2}{mn}} = \rselection{\eps}\] 
+		получилось \rselection{определение непрерывности $f'$ на $D$}.
+		
+		\item[2 $\Rightarrow$ 1:] Определение непрерывности $f'$ на $D$:
+		\[\rselection{\A x \in D\ \A \eps > 0 \E \delta > 0 : \A \bar x \in D \text{ если } \|x - \bar x\| < \delta \text{, то }} \|f'(x) - f'(\bar x)\| < \eps\]
+		И пусть $h = (0, \ldots, 0, 1, 0, \ldots, 0)^{\mathrm T} \in \rmm$, где 1 стоит на $k$-ом месте, тогда 
+		\[\left\|\bigl(f'(x) - f'(\bar x)\bigr)h\right\| \< \|f'(x) - f'(\bar x)\| \cdot \|h\| < \eps \text{, то есть } \sqrt{\sum_{l = 1}^m\left(\pfrac{f_l}{x_k}(x) - \pfrac{f_l}{x_k}(\bar x) \right)^2} < \eps\]
+		тогда и отдельное ($i$-ое) слагаемое \rselection{$\left|\pfrac{f_i}{x_k}(x) - \pfrac{f_i}{x_k}(\bar x) \right| < \eps$} 
+		получилось \rselection{определение непрерывности $\pfrac{f_i}{x_k}$ на $D$}.
+	\end{itemize}
+\end{prf}
+\pagebreak
+\begin{opr}
+	Пусть $f \colon E \subset \rmm \to \rr$, $a \in \Int E$, тогда $a$ называется
+	\urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=lBTr5P53h0j2sAge&t=1102}{точкой локального}
+	\urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=lBTr5P53h0j2sAge&t=1102}{максимума}, если$\E U(a)$ --- окрестность точки $a : \A x \in U(a) 
+	\cap E\ f(x) \< f(a)$,
+	\urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=lBTr5P53h0j2sAge&t=1102}{строгого локального} 
+	\urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=lBTr5P53h0j2sAge&t=1102}{максимума}, если $\E U(a)$ --- окрестность точки $a : \A x \in \dot U(a) \cap E\ f(x) < f(a)$. Аналогично определяется
+	\urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=lBTr5P53h0j2sAge&t=1102}{точка (строгого) локального минимума} (знак меняется на противоположный). Точка $a$ называется
+	\urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=lBTr5P53h0j2sAge&t=1102}{точкой (строгого) локального экстремума}, если она является точкой (строгого) локального максимума или точкой (строгого) локального минимума.
+\end{opr}
+
+\begin{teor}[https://www.youtube.com/live/oGN0SkfpZME?si=IUuLLNxy2ax4nH0N&t=1300]{Ферма}\label{ферма}
+	Пусть функция $f \colon E \subset \rmm \to \rr$ дифференцируема \smallskip на $E$, $a \in \Int E$ --- точка локального экстремума, тогда \A направления $l$ (\ref{опр:напр.}) \small$\displaystyle\pfrac{f}{l}(a) = 0$. 
+\end{teor}
+
+\begin{prf}
+	Определим функцию $g\colon U(0) \subset \rr \to \rr$, $g(t) = f(a + tl)$, тогда $g$ --- дифференцируема в окрестности нуля и $g'(0) = 0$, потому что $0$ --- точка локального экстремума функции $g$, при этом 
+	\[g'(t) = f'(a + tl) \cdot l = \left(\pfrac{f}{x_1}(a + tl), \pfrac{f}{x_2}(a + tl), \ldots, \pfrac{f}{x_m}(a + tl)\right) \cdot
+	\begin{pmatrix} l_1 \\ l_2 \\ \vdots \\ l_m \end{pmatrix} \stackrel{\text{\ref{зам:произв.по_вект.}}}{=} \pfrac{f}{l}(a + tl)\]
+	значит $\displaystyle\pfrac{f}{l}(a) = 0$.
+\end{prf}
+
+\begin{slv}[https://www.youtube.com/live/oGN0SkfpZME?si=B74TnyBQXKKDpNlM&t=1691]
+	\textit{Необходимое условие экстремума:} Если $a \in \Int E \subset \rmm$ --- точка локального экстремума функции $f\colon E \to \rr$, то $\A i \in \{\, 1, 2, \ldots, m \,\}$ $\pfrac{f}{x_i} = 0$ (в теореме Ферма (т. \ref{ферма}) можно взять $l = \{\,0, \ldots, 0, 1, 0, \ldots, 0\,\}$, где 1 на $i$-ом месте).
+\end{slv}
+
+\begin{slv}[https://www.youtube.com/live/oGN0SkfpZME?si=icr0a6IMCeINfjyk&t=1790]
+	\textit{Теорема Ролля:} Пусть $K \subset \rmm$ --- компакт, функция $f \colon K \to \rr$ непрерывна на $K$, дифференцируема на $\Int K$, сужение $f$ на границу $K$: $f\vp{\partial K} = const$, \smallskip тогда$\E a \in \Int K : \grad f(a) = 0$.\linebreak
+	\textit{Доказательство:} по теореме Вейерштрасса $f$ достигает $\max$ и $\min$ на $K$. Если точки $\max$ и $\min$ находятся на границе $K$, то $f = const$, значит $\grad f(a) = 0$. Если точка $\max$ или $\min$ находится в $\Int K$, то по теореме Ферма (т. \ref{ферма}) в этой точке $\grad f = 0$ (потому что все частные производные равны нулю в этой точке). 
+\end{slv}
+
+\subsection{Квадратичная форма, лемма об оценке квадратичной формы и об эквивалентных нормах, достаточное условие экстремума}
+\begin{opr}
+	Отображение $Q \colon \rmm \to \rr$ называется \urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=jBKcEadkoWScbAMt&t=2196}{квадратичной формой}, если $Q(h)$ это однонродный многочлен второй степени, то есть, если $Q(h) = \sum\limits_{i, j = 1}^m a_{ij}h_ih_j$, $a_{ij} \in \rr$.
+	\begin{enumerate}
+		\item Квадратичная форма называется \urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=s1VGOs2tD8Mble3j&t=2401}{положительно определённой}, если $\A h \ne 0_{\rmm}$ $Q(h) > 0$
+		
+		\item Квадратичная форма называется \urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=zKf2lsEkKEx4oQiB&t=2436}{отрицательно определённой}, если $\A h \ne 0_{\rmm}$ $Q(h) < 0$
+		
+		\item Квадратичная форма называется \urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=nS0cWjP8tcsMef2I&t=2460}{неопределённой} (незнакоопределённой), если$\E h, \bar h : Q(h) > 0, Q(\bar h) < 0$
+		
+		\item Квадратичная форма называется \urlybox{https://www.youtube.com/live/oGN0SkfpZME?si=RdOmeFtnNKfBw_Du&t=2510}{положительной полуопределённой} (положительно определённая, вырожденная), если $\A h\ Q(h) \biger 0$ и$\E h_0 \ne 0_{\rmm} : Q(h_0) = 0$ 
+	\end{enumerate}
+\end{opr}
+
+\begin{lem}[https://www.youtube.com/live/oGN0SkfpZME?si=Pxib3-X-SFLKfUU3&t=2752]{об оценке квадратичной формы и об эквивалентных нормах}\vspace{-15pt}
+	\begin{enumerate}
+			\item Пусть $Q \colon \rmm \to \rr$ --- положительно определнённая квадратичная форма, тогда$\E \gamma_Q > 0 : \A x \in \rmm\ Q(x) \biger \gamma_Q \cdot \|x\|^2$
+			\item Пусть $p \colon \rmm \to \rr$ --- норма, тогда$\E c_1, c_2 > 0 : \A x \in \rmm\ c_1 \cdot \|x\| \< p(x) \< c_2 \cdot \|x\|$
+	\end{enumerate}
+\end{lem}
+
+\begin{prf}\begin{enumerate}
+	\item Пусть $\gamma_Q = \min_{\substack{x \in \rmm : \\ \|x\| = 1}} Q(x)$ \uns{(по теореме Вейерштрасса минимум достигается)}, тогда $\gamma_Q > 0$ и \[Q(x) = \|x\|^2 \cdot Q\left(\frac{x}{\|x\|}\right) \biger \|x\|^2 \cdot \gamma_Q\]
+	
+	\item Пусть $c_1 = \min_{\substack{x \in \rmm : \\ \|x\| = 1}} p(x)$, $c_2 = \max_{\substack{x \in \rmm : \\ \|x\| = 1}} p(x)$. Чтобы min и max достигались по теореме Вейерштрасса, надо проверить непрерывноть функции $p$:
+	\begin{gather*}
+	|p(x) - p(y)| 
+	\stackrel{\parbox{1.15cm}{\tiny\uns{нер-во тр-\\ ка для $p$}}}{\<} 
+	p(x - y)
+	\stackrel{\parbox{1.25cm}{\tiny\uns{разлож. по\\базису $e_k$}}}{=}
+	p\left(\sum_{k = 1}^m (x_k - y_k) e_k\right)
+	\stackrel{\parbox{1.15cm}{\tiny\uns{нер-во тр-\\ ка для $p$}}}{\<} 
+	\sum_{k = 1}^m p\bigl((x_k - y_k)e_k\bigr)
+	\stackrel{\parbox{1.22cm}{\tiny\uns{$x_k - y_k$ ---\\ это скаляр}}}{=}\\
+	{}= \sum_{k = 1}^m |x_k - y_k| \cdot p(e_k)
+	\stackrel{\parbox{1.57cm}{\tiny \uns{нер-во Коши-\\Буняковского}}}{\<} 
+	\sqrt{\sum_{k = 1}^{m}|x_k - y_k|^2} \sqrt{\sum_{k = 1}^{m} \bigl(p(e_k)\bigr)^2} = M \cdot \|x - y\|
+	\end{gather*}
+	значит $\A x \in \rmm\ \A \eps > 0 \E \delta = \sfrac{\eps}{M}: \A y \in \rmm \text{ если } \|x - y\| < \delta \text{, то } |p(x) - p(y)| \< \eps$. Тогда \[p(x) = \|x\| \cdot p\left(\frac{x}{\|x\|}\right) \biger c_1 \cdot \|x\| \text {\quad и аналогично\quad} p(x)\< c_2 \cdot \|x\|\]
+\end{enumerate}\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/oGN0SkfpZME?si=qexLykbHb05US92W&t=4191]{Достаточное условие экстремума}
+	Пусть $E \subset \rmm$, $f \in C^2(E)$ \uns{($f \colon E \to \rr$)}, $a \in \Int E$, $\grad f(a) = 0_{\rmm}$, $Q$ --- квадратичная форма, $Q(h) = d^2f(a, h)$ \uns{\hypersetup{linkcolor=mygray}(\ref{опр:дифференциал})}, тогда 
+	\begin{enumerate}
+		\item Если $Q$ положительно определённая, то $a$ --- точка локального минимума 
+		
+		\item Если $Q$ отрицательно определённая, то $a$ --- точка локального максимума
+		
+		\item Если $Q$ неопределённая, то $a$ не является точкой локального экстремума
+		
+		\item Если $Q$ полуопределённая, то $a$ может быть, а может не быть точкой локального экстремума
+	\end{enumerate}
+\end{teor}
+
+\begin{prf}\begin{enumerate}
+	\item Из формулы Тейлора с остатком в форме Лагранжа (теорема \ref{фор.тейл.,ост.в форм.лагр.})$\E \theta \in (0, 1) :$
+	\begin{gather*}
+		f(a + h) - f(a) = df(a, h) + \frac{1}{2}d^2f(a + \theta h, h) = \\ =
+		\frac{1}{2}(d^2f(a + \theta h, h) = \frac{1}{2}\bigl(Q(h) + d^2f(a + \theta h, h) - Q(h)\bigr) = \\
+		 = \frac{1}{2} \bigl(Q(h) \rselection{{} + f''_{x_1 x_1}(a + \theta h) \cdot h_1 h_1} \textcolor[rgb]{0.204, 0.643, 0.961}{{}+ f''_{x_1 x_2}(a + \theta h) \cdot h_1 h_2} + \ldots \textcolor[rgb]{0.839, 0.424, 0.988}{{} + f''_{x_1 x_m}(a + \theta h) \cdot h_1 h_m} + \ldots +\\ 
+		 \textcolor[rgb]{0.086, 0.878, 0.086}{{}+ f''_{x_m x_1}(a + \theta h) \cdot h_m h_1} \textcolor[rgb]{1, 0.71, 0.11}{{}+ f''_{x_m x_2}(a+ \theta h) \cdot h_m h_2} + \ldots \textcolor[rgb]{0.561, 0.302, 0.302}{{}+ f''_{x_m x_m}(a + \theta h) \cdot h_m h_m} - \\
+		 \rselection{- f''_{x_1 x_1}(a) \cdot h_1 h_1} \textcolor[rgb]{0.204, 0.643, 0.961}{{} - f''_{x_1 x_2}(a) \cdot h_1 h_2} - \ldots \textcolor[rgb]{0.839, 0.424, 0.988}{{}- f''_{x_1 x_m}(a) \cdot h_1 h_m} - \ldots - \\
+		 \textcolor[rgb]{0.086, 0.878, 0.086}{{}- f''_{x_m x_1}(a) \cdot h_m h_1} \textcolor[rgb]{1, 0.71, 0.11}{{}- f''_{x_m x_2}(a) \cdot h_m h_2} - \ldots \textcolor[rgb]{0.561, 0.302, 0.302}{{}- f''_{x_m x_m}(a) \cdot h_m h_m}\bigr)  
+	\end{gather*}
+	Модуль выделенных слагаемых \< \textit{б.м.}${}\cdot \|h\|^2$ при $h \to 0_{\rmm}$ (так как $f''_{x_i x_j}$ --- непрерывна на $E$, то есть $f''_{x_i x_j}(a + \theta h) \xrightarrow[h \to 0_{\rmm}]{} f''_{x_i x_j}(a)$, а $|h_ih_j| \< \|h\|^2$). Тогда
+	\begin{gather*}
+	f(a + h) - f(a) \biger \frac 12 \bigl(Q(h) -
+	|\, \textcolor[rgb]{0.204, 0.643, 0.961}{.} \, \rselection{.}\, \textcolor[rgb]{0.839, 0.424, 0.988}{.} \, | \bigr) 
+	\biger \frac 12 \bigl(Q(h) - \text{\textit{б.м.}} \cdot \|h\|^2\bigr) \biger \frac 12 \bigl(\gamma_Q \cdot \|h\|^2  - \text{\textit{б.м.}} \cdot \|h\|^2 \bigr) = {}\\{} =
+	\frac 12 \cdot \|h\|^2\cdot (\gamma_Q - \text{\textit{б.м.}}) > 0 \qquad \uns{\text{ --- в некоторой окрестности точки $a$, т.к. $\gamma_Q > 0$}}
+	\end{gather*}
+	Значит $a$ --- точка строгого локального минимума по определению.
+	\item У функции $g = -f$ в точке $a$ локальный минимум (из пункта 1), значит у $f$ локальный максимум в точке $a$.
+	
+	\item По определению неопределённости квадратичной формы$\E h^* \in \rmm : Q(h^*) > 0$, тогда $\A t \in \rmm$ аналогично первому пункту получаем, что
+	\[f(a + th^*) - f(a) \biger \frac 12 \bigl(Q(th^*) - \text{\textit{б.м.}} \cdot \|th^*\|^2\bigr) = \frac 12 (Q(h^*) - \text{\textit{б.м.}}) \cdot t^2 \qquad\text{при $t \to 0_{\rmm}$}\]
+	значит при достаточно маленьком $t$ \quad $f(a + th^*) - f(a) > 0$. Аналогично для вектора $h^{\circ} \in \rmm : Q(h^{\circ}) < 0$ при маленьком $t$ \quad $f(a + th^{\circ}) - f(a) < 0$. Значит в любой окрестности точки $a$ есть точка \uns{($a + th^*$)}, в которой значение $> f(a)$ и точка \uns{($a + th^{\circ}$)}, в которой значение $< f(a)$, то есть локального экстремум в точке $a$ нет.
+	
+	\item \textit{Пример:} $f\colon \rr^2 \to \rr$, $f(x_1, x_2) = x_1^2 - x_2^4$, $a = (0, 0)$, тогда $\grad f(a) = 0$ и $Q(h) = 2h_1^2$ --- полуопределённая квадратичная форма, и в точке $a$ нет локального экстремума \uns{(потому что в любой окрестности точки a есть точки $(0, \eps)$ и $(\eps, 0)$, в первой значение отрицательное, во второй положительное)}, а для функции $f(x_1, x_2) = x_1^2 + x_2^4$ всё тоже самое, но есть локальный экстремум в точке $a$ \uns{(потому что функция положительная и только в нуле равна нулю)}.
+\end{enumerate}\end{prf}

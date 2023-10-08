@@ -61,13 +61,13 @@
 \end{teor} % Конец теоремы Стокса-Зайдля
 
 \begin{prf} % Доказательство теоремы Стокса-Зайдля
-	Применяя два раза неравенство треугольника к $\bmetr{f(x) - f(c)}$, получаем 
-	\[\bmetr{f(x) - f(c)} \< \bmetr{f(x) - f_n(x)} + \bmetr{f_n(x) - f(c)}\< \bmetr{f(x) - f_n(x)} + \bmetr{f_n(x) - f_n(c)} + \bmetr{f_n(c) - f(c)}\]
+	Применяя два раза неравенство треугольника к $\bmetr{f(x), f(c)}$, получаем 
+	\[\bmetr{f(x), f(c)} \uns{\< \bmetr{f(x), f_n(x)} + \bmetr{f_n(x), f(c)}}\< \bmetr{f(x), f_n(x)} + \bmetr{f_n(x), f_n(c)} + \bmetr{f_n(c), f(c)}\]
 	Из определения равномерной сходимости $f_n$ к $f$
-	\uns{\small($\A \eps > 0 \E N : \A n > N\ \sup_{x \in X} \bmetr{f_n(x) - f(x)} < \eps$)}\linebreak
+	\uns{\small($\A \eps > 0 \E N : \A n > N\ \sup_{x \in X} \bmetr{f_n(x), f(x)} < \eps$)}\linebreak
 	 получаем, что \rselection{$\A \eps > 0$} первое и последние слагаемое в правой части неравенства $< \eps$. Из определения непрерывности $f_n$ в точке $c$ 
-	 \uns{\small($\A \eps > 0 \E U(c) :{}$ если $x \in U(c)$, то $\bmetr{f_n(x) - f_n(c)} < \eps$)}
-	 получаем, что \rselection{$\E U(c)$ --- окрестность точки $x$ такая, что если $x \in U(c)$, то} второе слагаемое из правой части неравенства $< \eps$. Складывая, получаем, что \rselection{$\bmetr{f(x) - f(c)} < 3 \cdot \eps$}.
+	 \uns{\small($\A \eps > 0 \E U(c) :{}$ если $x \in U(c)$, то $\bmetr{f_n(x), f_n(c)} < \eps$)}
+	 получаем, что \rselection{$\E U(c)$ --- окрестность точки $x$ такая, что если $x \in U(c)$, то} второе слагаемое из правой части неравенства $< \eps$. Складывая, получаем, что \rselection{$\bmetr{f(x),f(c)} < 3 \cdot \eps$}.
 	 Получилось \rselection{определение непрервности $f$ в точке $c$.} 
 \end{prf} % Конец доказатлеьства теоремы Стокса-Зайдля 
 
