@@ -1,5 +1,5 @@
-\subsection{Теорема о пространстве линейных отображений, теорема Лагранжа для отображений}
-
+%\subsection{Теорема о пространстве линейных отображений, теорема Лагранжа для отображений}
+\subsection*{\S\ Линейные отображения}
 \vspace{7pt plus 2pt minus 2pt}
 \hangindent=20pt
 \colorbox[rgb]{0.973, 1, 0.588}{\sffamily\itshape Обозначения:}\begin{enumerate} % Обозначение множества линейных отображений и нормы отображения
@@ -8,24 +8,25 @@
 	--- множество линейных отображений из $X$ в $Y$. $X, Y$ --- линейные пространства над \rr. \uns{($Lin(X, Y)$ является линейным пространством над \rr\ c сложением: $(A + B)(x) = A(x) + B(x)$, умножение на скаляр:
 	$(\alpha A(x)) = \alpha A(x)$)}\bigskip
 	\palka{\small Отображение $A \colon X \to Y$ называется линейным, если \uns{\small $\A x_1, x_2 \in X,\ \A \alpha \in \rr$} выполнено $A(\alpha x_1 + x_2) = \alpha A(x_1) + A(x_2)$}
-	\item Пусть $A \in Lin(\rmm, \rr^n)$, тогда
+	\item\add*{Норма линейного оператора} Пусть {\small$A \in Lin(\rmm, \rr^n)$}, тогда
 	\urlybox{https://youtu.be/OazzLm0DJN4?si=JvWdSx7vQuzNPPfr&t=402}{$\|A\|$}
-	 \raisebox{0pt}[0pt][12pt]{${}\eqdef \sup\limits_{\substack{x \in \rmm: \\ \|x\| = 1}} \|Ax\|$}
+	\raisebox{0pt}[0pt][12pt]{${}\eqdef \sup\limits_{\substack{x \in \rmm: \\ \|x\| = 1}} \|Ax\|$} называется \urlybox{https://youtu.be/OazzLm0DJN4?si=JvWdSx7vQuzNPPfr&t=402}{нормой линейного оператора}
 \end{enumerate} % Конец обозначения множества линейных отображений и нормы отображения
 
-\begin{zam}[https://youtu.be/OazzLm0DJN4?si=PGiZPb67g0zgXEMt&t=547]\label{зам к опр. норм.} % Замечания про норму линейного отображения
-	\begin{enumerate} 
-		\item $\|A\| \in \rr$ (конечное), т.к. из леммы \ref{оц.нормы} $\|Ax\| \< C_A\|x\| = C_A$, где \raisebox{0pt}[0pt][0pt]{$C_A = \sqrt{\sum\limits_{i, j = 1}^{n, m}a_{ij}^2}\ ,\ a_{ij}$} --- элементы матрицы $A$.\medskip
+\begin{zam}[https://youtu.be/OazzLm0DJN4?si=PGiZPb67g0zgXEMt&t=547] % Замечания про норму линейного отображения
+	\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{зам.~\thezam.}\makeatother 
+		\item\label{зам к опр. норм.1}
+		$\|A\| \in \rr$ (конечное), т.к. из леммы \ref{оц.нормы} $\|Ax\| \< C_A\|x\| = C_A$, где \raisebox{0pt}[0pt][0pt]{$C_A = \sqrt{\sum\limits_{i, j = 1}^{n, m}a_{ij}^2}\ ,\ a_{ij}$} --- элементы матрицы $A$.\medskip
 		
 		\item По теореме Вейерштрасса непрерывная функция на компакте достигает своего максимального значения, и так как линейные отображения непрерывны и множество $\{\, x \mid x \in \rmm, \|x\| = 1 \,\}$ является компактом, то $\|A\| = \max_{\substack{x \in \rmm: \\ \|x\| = 1}} \|Ax\|$ \uns{(в конечномерном случае)} 
 		
-		\item $\A x \in \rmm$ выполнено $\|Ax\| \< \|A\| \cdot \|x\|$. Доказательство: для $x \ne 0_{\rmm}$ возьмём $\bar x = \sfrac{x}{\|x\|}$, тогда $\|A\bar x\| \< \|A\|$ \uns{\small(т.к. $\|A\bar x\|$ это одно из значений, по которым берётся sup в $\|A\|$)} и, домножая на $\|x\|$, получаем доказываемое неравенство \uns{\small($\|x\| \cdot \|A\bar x\| = \|x\|\cdot \|A \cdot \sfrac{x}{\|x\|}\|;\, \sfrac{1}{\|x\|}$ --- скаляр $\Rightarrow \,= \|Ax\|$)\linebreak}\vspace{-8pt}
+		\item\label{зам к опр. норм.2} $\A x \in \rmm$ выполнено $\|Ax\| \< \|A\| \cdot \|x\|$. Доказательство: для $x \ne 0_{\rmm}$ возьмём $\bar x = \sfrac{x}{\|x\|}$, тогда $\|A\bar x\| \< \|A\|$ \uns{\small(т.к. $\|A\bar x\|$ это одно из значений, по которым берётся sup в $\|A\|$)} и, домножая на $\|x\|$, получаем доказываемое неравенство \uns{\small($\|x\| \cdot \|A\bar x\| = \|x\|\cdot \|A \cdot \sfrac{x}{\|x\|}\|;\, \sfrac{1}{\|x\|}$ --- скаляр $\Rightarrow \,= \|Ax\|$)\linebreak}\vspace{-8pt}
 		
 		\item Если$\E C \in \rr : \A x \in \rmm$ $\|Ax\| \< C \cdot \|x\|$, то $\|A\| \< C$, потому что, поделив на $\|x\|$ первое неравенство, получаем второе \uns{\small(т.к. $\|A \cdot \sfrac{x}{\|x\|}\|$ это одно из значений, по которым берётся sup в $\|A\|$)\linebreak}
 		\end{enumerate}
 \end{zam} % Конец замечаний про норму линейного отображения
 \vspace{-1.5ex}
-\begin{lem}[https://youtu.be/OazzLm0DJN4?si=Qwpn9tVeLwf_T6DS&t=1617]{о норме линейного отображения}
+\begin{lem}[https://youtu.be/OazzLm0DJN4?si=Qwpn9tVeLwf_T6DS&t=1617]{об условиях, эквивалентных непрерывности линейного оператора}
 	Пусть $X, Y$ --- линейные пространства, $A \in Lin(X, Y)$, тогда эквивалентно:
 	\begin{multicols}{2}\begin{enumerate}[itemindent=20pt]
 		\item $A$ --- ограничено (т.е. $\|A\|$ --- конечна)
@@ -44,16 +45,16 @@
 		\item[2 $\Rightarrow$ 1:]  
 		Из определения непрерывности в $0_X$: возьмём $\eps = 1$, тогда$\E \delta > 0 :{}$если $\|x\| \< \delta$, то $\|Ax\| < 1$, поэтому для $\A x : \|x\| = 1$ выполнено $\|Ax\| = \sfrac{1}{\delta} \cdot \|A (\delta x)\| \< \sfrac{1}{\delta}$, значит $\sup\|Ax\| \< \sfrac{1}{\delta}$\medskip
 		
-		\item[1 $\Rightarrow$ 4:] $\A \eps > 0 \E \delta = \sfrac{\eps}{\|A\|} : \A x_1, x_2$ если $\|x_2 - x_1\| < \delta$, то $\|Ax_2 - Ax_1\| \< \eps$, потому что $\|Ax_2 - Ax_1\| = \|A(x_2 - x_1)\| \< \|A\| \cdot \|x_1 - x_2\|$
+		\item[1 $\Rightarrow$ 4:] $\A \eps > 0 \E \delta = \sfrac{\eps}{\|A\|} : \A x_1, x_2$ если $\|x_2 - x_1\| < \delta$, то $\|Ax_2 - Ax_1\| \< \eps$, потому что $\|Ax_2 - Ax_1\| = \|A(x_2 - x_1)\| \< \|A\| \cdot \|x_1 - x_2\| < \|A\| \cdot \delta = \eps$
 	\end{itemize}
 \end{prf}
 \vspace{-15pt}
-\begin{teor}[https://youtu.be/OazzLm0DJN4?si=rQwhPft7RLfNzztG&t=2414]{о пространстве линейных отображений}
+\begin{teor}[https://youtu.be/OazzLm0DJN4?si=rQwhPft7RLfNzztG&t=2414]{о пространстве линейных отображений}*
 	\vspace{-15pt}
-	\begin{enumerate}
+	\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{т.~\theteor.}\makeatother 
 		\item $\|\cdot\|$ это норма в $Lin(X, Y)$
 		
-		\item Если $A \in Lin(\rmm, \rr^n), B \in Lin(\rr^n, \rr^l)$, то $\|AB\|_{m,l} \< \|A\|_{m, n} \cdot \|B\|_{n,l}$
+		\item\label{оц.норм} Если $A \in Lin(\rmm, \rr^n), B \in Lin(\rr^n, \rr^l)$, то $\|AB\|_{m,l} \< \|A\|_{m, n} \cdot \|B\|_{n,l}$
 	\end{enumerate}
 \end{teor}
 
@@ -83,23 +84,24 @@
 	\end{enumerate}
 \end{zam}
 
-\begin{teor}[https://youtu.be/OazzLm0DJN4?si=JvVhDSiKtEYa2cTH&t=3281]{Лагранжа для отображений}\label{теор.лагрнж.для отобр.}
-	Пусть отображение $F \colon E \subset \rmm \to \rr^n$ дифференцируемо на $E$ ($E$ --- открытое), $[a, b] = \{\, x \in \rmm \mid \linebreak x = a + \theta (b - a),\ \theta \in [0, 1]\,\} \subset E$, тогда$\E c \in (a, b)$, т.е.$\E \theta \in (0, 1) : c = a + \theta(b - a)$ такое что
+\begin{teor}[https://youtu.be/OazzLm0DJN4?si=JvVhDSiKtEYa2cTH&t=3281]{Лагранжа для отображений}\label{теор.лагрнж.для отобр.}%
+	Пусть отображение $F \colon E \subset \rmm \to \rr^n$ дифференцируемо на $E$ ($E$ --- открытое), $[a, b] = \{\, a + \theta (b - a)\mid \theta \in [0, 1]\,\} \subset E$, тогда$\E c \in (a, b)$, \uns{то есть $\E \theta \in (0, 1) : c = a + \theta(b - a)$} такое что
 	\[\|F(b) - F(a)\| \< \|F'(c)\| \cdot \|b - a\|\] 
 \end{teor}           
 
 \begin{prf}
-	Пусть $f \colon [0, 1] \to \rmm$, $f(t) = F\bigl(a + t(b - a)\bigr)$, тогда $f$ --- дифференцируема \smallskip на $[0, 1]$ и $f'(t) = F'\bigl(a + t(b-a)\bigr)(b - a)$. По теореме \ref{лагр.вект.ф.}$\E \theta \in [0, 1] : \|f(1) - f(0)\| \< \|f'(\theta)\| \cdot (1 - 0)$, {то есть\linebreak} \[\|F(b) - F(a)\| \< \|F'\bigl(a + \theta(b - a)\bigr)\cdot (b - a)\| \< \|F'(c)\|\cdot\|b - a\| \] 
+	Пусть $f \colon [0, 1] \to \rmm$, $f(t) = F\bigl(a + t(b - a)\bigr)$, тогда $f$ --- дифференцируема \smallskip на $[0, 1]$ и $f'(t) = F'\bigl(a + t(b-a)\bigr)(b - a)$. По теореме \ref{лагр.вект.ф.}$\E \theta \in (0, 1) : \|f(1) - f(0)\| \< \|f'(\theta)\| \cdot (1 - 0)$, {то есть\linebreak} \[\|F(b) - F(a)\| \< \|F'\bigl(a + \theta(b - a)\bigr)\cdot (b - a)\| \< \|F'(c)\|\cdot\|b - a\| \] 
 \end{prf}
 
-\subsection{Лемма об условиях, эквивалентных непрерывности линейного оператора, теорема об обратимости линейного оператора, близкого к обратимому}
-\begin{lem}[https://youtu.be/OazzLm0DJN4?si=OJoKFMQENlqrOntk&t=3846]{об условиях, эквивалентных непрерывности линейного оператора}\label{лем.усл.экв.непр.лин.оп.}
-	Пусть $B \in Lin(\rmm, \rr^n), \E c > 0 : \A x \in \rmm\ \ \|Bx\| \biger c\|x\|$, тогда $B$ --- обратим и $\|B^{-1}\|< \sfrac{1}{c}$
+%\subsection{Лемма об условиях, эквивалентных непрерывности линейного оператора, теорема об обратимости линейного оператора, близкого к обратимому}
+
+\begin{lem}[https://youtu.be/OazzLm0DJN4?si=OJoKFMQENlqrOntk&t=3846]{о норме обратного отображения}*\label{лем.усл.экв.непр.лин.оп.}
+	Пусть $B \in Lin(\rmm, \rmm), \E c > 0 : \A x \in \rmm\ \ \|Bx\| \biger c\|x\|$, тогда $B$ --- обратим и $\|B^{-1}\|< \sfrac{1}{c}$
 \end{lem}
-	
+
 \begin{prf}
 	$\mathrm{Ker}\,B = \{0\}$, значит $B$ --- обратим.\\[2pt]
-	Возьём $y \in \rr^n : \|y\| = 1$, тогда$\E x \in \rmm : y = Bx$, тогда $x = B^{-1}y$, и так \smallskip как $\|Bx\| \biger c\|x\|$, то $c \|B^{-1} y\| \< \|B B^{-1} y\| = \|y\|$. Это выполнено $\A y : \|y\| = 1$, поэтому $\sup_{\substack{y \in \rr^n: \\ \|y\| = 1}} \|B^{-1}y\|\< \sfrac{1}{c}$. 
+	Возьмём $y \in \rmm : \|y\| = 1$, тогда$\E x \in \rmm : y = Bx$, тогда $x = B^{-1}y$, и так \smallskip как $\|Bx\| \biger c\|x\|$, то $c \|B^{-1} y\| \< \|B B^{-1} y\| = \|y\|$. Это выполнено $\A y : \|y\| = 1$, поэтому $\sup_{\substack{y \in \rr^n: \\ \|y\| = 1}} \|B^{-1}y\|\< \sfrac{1}{c}$. 
 \end{prf}
 
 \begin{zam}[https://youtu.be/OazzLm0DJN4?si=xy8ay2_pL9GdhmF6&t=4135]\label{зам:оц.норм.}
@@ -110,7 +112,7 @@
 \colorbox[rgb]{0.973, 1, 0.588}{\sffamily\itshape Обозначение:} \urlybox{https://youtu.be/OazzLm0DJN4?si=xy8ay2_pL9GdhmF6&t=4135}{$\Omega_m$} 
 ${}= \{\,A \in Lin(\rmm, \rmm) \mid A \text{ --- обратим} \,\} $
 
-\begin{teor}[https://youtu.be/OazzLm0DJN4?si=h5S4HbHpa4kiqYCI&t=4443]{об обратимости линейного оператора, близкого к обратимому}\label{обр.близ.к обр.}
+\begin{teor}[https://youtu.be/OazzLm0DJN4?si=h5S4HbHpa4kiqYCI&t=4443]{об обратимости линейного отображения, близкого к обратимому}\label{обр.близ.к обр.}
 	\setlength\columnsep{-10pt}
 	Пусть $L \in \Omega_m$, $M \in Lin(\rmm, \rmm)$ --- <<близкий к обратимому>>, то есть $\|M - L\| < \frac{1}{\|L^{-1}\|}$, тогда:
 	\begin{multicols}{2}\begin{enumerate}[itemindent=20pt]
@@ -123,14 +125,16 @@ ${}= \{\,A \in Lin(\rmm, \rmm) \mid A \text{ --- обратим} \,\} $
 	\end{enumerate}\end{multicols}
 \end{teor}
 
-\begin{prf} Первые два пункта получаются c помощью леммы \ref{лем.усл.экв.непр.лин.оп.}:
+\begin{prf} Первые два пункта получаются c помощью леммы \ref{лем.усл.экв.непр.лин.оп.}: \vspace{-10pt}
 	\begin{gather*}
-	\|Mx\| = \|Lx - (L - M)x\| \stackrel{\parbox{.8cm}{\tiny нер-во\\тр-ка}}{\biger} \|Lx\| - \|(L - M) x\| \stackrel{\text{\ref{зам:оц.норм.}}}{\biger}\\ \biger \frac{1}{\|L^{-1}\|}\|x\| - \|L - M\| \cdot \|x\| = \left(\frac{1}{\|L^{-1}\|} - \|L - M\|\right)\cdot \|x\|
-	\end{gather*}
-	3. $\|M^{-1} - L^{-1}\| = \|M^{-1}(L - M)L^{-1}\| \< \|M^{-1}\| \cdot \|L - M\| \cdot \|L^{-1}\| \<{}$ {\small$\frac{\|L^{-1}\|}{\|L^{-1}\|^{-1} - \|M - L\|}$}$\|M - L\|\linebreak$
+	\|Mx\| = \|Lx - (L - M)x\| \stackrel{\parbox{.8cm}{\tiny нер-во\\тр-ка}}{\biger} \|Lx\| - \|(L - M) x\| \stackrel{\text{\ref{зам:оц.норм.}}}{\biger}\\ \biger \frac{1}{\|L^{-1}\|}\|x\| - \|L - M\| \cdot \|x\| = \left(\frac{1}{\|L^{-1}\|} - \|L - M\|\right)\cdot \|x\| 
+	\end{gather*}%
+	Третий пункт:\\
+	$\|M^{-1} - L^{-1}\| = \|M^{-1}(L - M)L^{-1}\| \stackrel{\text{\ref{оц.норм}}}{\<} \|M^{-1}\| \cdot \|L - M\| \cdot \|L^{-1}\| \<{}$ {\small$\frac{\|L^{-1}\|}{\|L^{-1}\|^{-1} - \|M - L\|}$}$\|M - L\|$
 \end{prf}
 
-\begin{slv}
+\begin{slv}[https://youtu.be/OazzLm0DJN4?si=jcJT02o6rUzSbaNd&t=5155]\add{Непрерывность вычисления обратного оператора}
+	\textit{Непрерывность вычисления обратного оператора.}\\[3pt]
 	Отображение $f\colon \Omega_m \to \Omega_m, \ f(L) = L^{-1}$ --- непрерывно, так как выполнено определение непрерывности: из последнего пункта теоремы \ref{обр.близ.к обр.} получаем
-	\[\A \eps > 0 \E \delta = \eps \cdot \frac{\|L^{-1}\|^{-1} - \|M - L\|}{\|L^{-1}\|} : \A M \in \Omega_m \text{ если } \|M - L\| < \delta \text{, то } \|M^{-1} - L^{-1}\| < \eps \]  
+	\[\A \eps > 0 \E \delta = \eps \cdot \left(\|L^{-1}\|\cdot(\|L^{-1}\| + \eps)\right)^{-1} : \A M \in \Omega_m \text{ если } \|M - L\| < \delta \text{, то } \|M^{-1} - L^{-1}\| < \eps \]  
 \end{slv}

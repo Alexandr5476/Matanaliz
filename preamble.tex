@@ -88,6 +88,8 @@
 \renewcommand{\thesubsection}{\arabic{subsection}}
 \newcommand*{\grad}{\ensuremath{\mathrm{grad\,}}}
 
+
+
 \newlength{\shirina} % Параметр \shirina со здачением длины
 \newlength{\raznost} % Параметр \raznost со здачением длины
 \newcommand{\palka}[1]{% Новая команда
@@ -172,12 +174,28 @@
 {\qed\par\vspace{5pt plus 2pt minus 2pt}} % Квадратик, который обозначает конец доказательства, и новый абзац
 
 
+\newcounter{nteor}
+\newcounter{nform}
+\setcounter{nteor}{2}
+\renewcommand{\thenteor}{\textcolor[rgb]{0, 0.902, 0}{\arabic{nteor}}\quad}
+\renewcommand{\thenform}{\textcolor[rgb]{1, 0.62, 0}{\arabic{nform}}\quad}
+\NewDocumentCommand{\add}{s m}{\IfBooleanTF{#1}
+{\refstepcounter{nform}\addcontentsline{toc}{subsection}{\thenform #2}}
+{\refstepcounter{nteor}\addcontentsline{toc}{subsection}{\thenteor #2}}}
+
 \newcounter{teor} % Создание нового счётчика teor
-\NewDocumentEnvironment{teor}{o m}{% Создание нового окружения teor (для теорем)
-	\refstepcounter{teor} % Увеличение счётчика teor на 1
-	\par % Новый абзац 
-	\vspace{7pt plus 2pt minus 3pt} % Отступ до теоремы
-	\hangindent=20pt % Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
+\NewDocumentEnvironment{teor}{o m o s}{% Создание нового окружения teor (для теорем)
+	\IfBooleanF{#4}{% Если нет звёздочки, то добавляем в оглавление
+	\refstepcounter{nteor}%
+	\IfNoValueTF{#3}{% Если нет третьего аргумента
+		\addcontentsline{toc}{subsection}{\thenteor Теорема #2}}%
+	{% Если есть третий агрумент
+		\addcontentsline{toc}{subsection}{\thenteor #3}}}%
+	
+	\refstepcounter{teor}% Увеличение счётчика teor на 1
+	\par% Новый абзац 
+	\vspace{7pt plus 2pt minus 3pt}% Отступ до теоремы
+	\hangindent=20pt% Дополнительный отступ по горизонтали всех строк абзаца, кроме первой
 	\IfNoValueTF{#1}%
 	{\colorbox[rgb]{1, 0.784, 0.376}{\sffamily\itshape Теорема \theteor\normalfont\textit{ (#2)}\sffamily\itshape:}}% Текст на оранжевом фоне, если нет необязательного аргумента
 	{%
@@ -186,8 +204,8 @@
 		\hypersetup{urlcolor=urlcolor}% Возвращение цвета ссылок
 	}%
 	\\[4pt plus 1pt minus 2pt]% Новая строка
-}
-{\par\vspace{5pt plus 2pt minus 2pt}} % Новый абзац и отступ
+}%
+{\par\vspace{5pt plus 2pt minus 2pt}}% Новый абзац и отступ
 
 
 \newcounter{zam} % Создание нового счётчика zam
@@ -209,7 +227,15 @@
  
 
 \newcounter{lem} % Создание нового счётчика teor
-\NewDocumentEnvironment{lem}{o m}{% Создание нового окружения teor (для теорем)
+\NewDocumentEnvironment{lem}{o m o s}{% Создание нового окружения teor (для теорем)
+	\IfBooleanF{#4}{% Если нет звёздочки, то добавляем в оглавление
+		\refstepcounter{nteor}
+		\IfNoValueTF{#3}{% Если нет третьего аргумента
+			\addcontentsline{toc}{subsection}{\thenteor Лемма #2}}
+		{% Если есть третий агрумент
+			\addcontentsline{toc}{subsection}{\thenteor #3}}}
+
+	
 	\refstepcounter{lem} % Увеличение счётчика teor на 1
 	\par % Новый абзац 
 	\vspace{7pt plus 2pt minus 3pt} % Отступ до теоремы

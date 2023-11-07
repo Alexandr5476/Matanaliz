@@ -1,10 +1,10 @@
-\subsection{Матрица якоби, необходимое, достаточное условия дифференцируемости, правила дифференцирования}
+%\subsection{Матрица якоби, необходимое, достаточное условия дифференцируемости, правила дифференцирования}
 
 \begin{opr}
 	Матрица оператора $f'(a)$, $a \in \Int E$ отображения $f \colon E \subset \rmm \to \rr^n$ \uns{\small(если $f$ --- дифференцируемо)} называется \urlybox{https://www.youtube.com/live/9KZRjeVTXNY?si=RUIUUSO5mIOmepUr&t=6609}{матрицой якоби} отображения $f$ в точке $a$.
 \end{opr}
 
-\begin{teor}[https://www.youtube.com/live/9KZRjeVTXNY?si=SCHLM5BcHQKABteV&t=6413]{необходимое условие дифференцируемости}\label{необх.усл.дефф.}%
+\begin{teor}[https://www.youtube.com/live/9KZRjeVTXNY?si=SCHLM5BcHQKABteV&t=6413]{необходимое условие дифференцируемости}*\label{необх.усл.дефф.}%
 	Пусть отображение $f \colon E \subset \rmm \to \rr^n$ --- дифференцируемо в точке $a \in \Int E$, тогда существуют все частные производные всех его координатных функций и 
 	\[\begin{pmatrix}\displaystyle
 		\pfrac{f_1}{x_1}(a) &\displaystyle \pfrac{f_1}{x_2}(a) & \dots &\displaystyle \pfrac{f_1}{x_m}(a)\\[12pt]
@@ -24,7 +24,7 @@
 	То есть компонентами $l_k$ матриц якоби координатных функций $f_i$ в точке $a$ являются соответствующие частные производные $\pfrac{f_i}{x_k}$ координатных функций $f_i$ в точке $a$. И по лемме \ref{дефф.коорд.ф.} строки матрицы якоби отображения $f$ состоят из матриц якоби координатных функций.
 \end{prf} % Конец доказательства теоремы о необходимом условии дифференцируемости
 
-\begin{teor}[https://www.youtube.com/live/9KZRjeVTXNY?si=iCflPfdznvnvoohO&t=7174]{достаточное условие дифференцируемости}
+\begin{teor}[https://www.youtube.com/live/9KZRjeVTXNY?si=iCflPfdznvnvoohO&t=7174]{достаточное условие дифференцируемости}*
 	$f\colon E \subset \rmm \to \rr,\quad a \in \Int E,\quad \E r : \text{в шаре }\B{a, r}\subset E \E$все частные производные $ \displaystyle\pfrac{f}{x_k}$\linebreak ({\small$k \in \{1, 2, \dots, m\}$}) и они непрерывны в точке $a$. Тогда функция $f$ --- дифференцируема в точке~$a$
 \end{teor} % Конец теоремы  о достаточном условии дифференцируемости
 
@@ -43,9 +43,11 @@
 \end{prf} % Конец доказательства теоремы  о достаточном условии дифференцируемости
 
 \addtocontents{toc}{\medskip\hrule\smallskip\hspace{7.5cm} \small\sffamily\bfseries\protect\rom{3} семестр \textdownarrow\normalfont\strut\hrule\medskip}
+\addtocontents{toc}{\textbf{Теоремы:}}
 
-\subsection{Правила дифференцирования, теорема Лагранжа для векторнозначных функций}
-
+%\subsection{Правила дифференцирования, теорема Лагранжа для векторнозначных функций}
+\vspace{10pt}
+\textbf{Правила дифференцирования:}
 \begin{enumerate} % Линейность
 	\item \href{https://www.youtube.com/live/9KZRjeVTXNY?si=Hcxa5JDA7wVkfMRg&t=7995}{\textbf{Линейность:}}
 	$f, g\colon E\subset\rmm \to \rr^n$ --- дифференцируемы в точке $a \in \Int E$,
@@ -55,7 +57,7 @@
 	$(\lambda g)'(a) = \lambda g'(a)$.
 \end{enumerate}
 
-\begin{lem}[https://www.youtube.com/live/9KZRjeVTXNY?si=-WLmW4M02oNemOzS&t=8181]{об оценке нормы линейного оператора}\label{оц.нормы}
+\begin{lem}[https://www.youtube.com/live/9KZRjeVTXNY?si=-WLmW4M02oNemOzS&t=8181]{об оценке нормы линейного оператора}*\label{оц.нормы}
 	$f\colon \rmm \to \rr^n$ --- линейное отображение с матрицей $A$. Тогда $\A x \in \rmm$ $\|Ax\|\< C_A \|x\|$, где $C_A = \sqrt{\sum\limits_{i, j = 1}^{n, m}a_{ij}^2}\ ,\ a_{ij}$ --- элементы матрицы $A$
 \end{lem} % Конец леммы об оценке нормы линейного оператора
 
@@ -65,8 +67,8 @@
 \begin{enumerate}
 	\setcounter{enumi}{1}
 	
-	\item \href{https://www.youtube.com/live/9KZRjeVTXNY?si=r5unaEu1pKHe5bBm&t=8637}{\textbf{Дифференцируемость композиции:}}
-	$f\colon E \subset \rmm \to \rr^l$, $g\colon I \subset \rr^l \to \rr^n$, 
+	\item\add{Дифференцируемость композиции} \href{https://www.youtube.com/live/9KZRjeVTXNY?si=r5unaEu1pKHe5bBm&t=8637}{\textbf{Дифференцируемость композиции:}}
+	$f\colon E \subset \rmm \to \rr^l$, $g\colon I \subset \rr^l \to \rr^n$, $f(E) \subset I$,
 	$f$ --- диффиренцируемо в точке $a \in \Int E $, $g$ --- диффиренцируемо в точке $b = f(a) \in \Int I$.
 	Тогда отображение $g \circ f$ --- дифференцируемо в точке $a$ и его производный оператор $g(f(a))' = g'(f(a))\,f'(a)$\linebreak
 	\textbf{Доказательство:} определения дифференцируемости отображений $f$ и $g$:
@@ -89,7 +91,7 @@
 		Тогда $\rom{1} + \rom{2}$ это \textit{б.м.}${}\cdot \|h\|\Rightarrow$ получилось определение дифференцируемости отображения $g \circ f$.
 	% Конец дифференцируемости композиции
 	
-	\item  \href{https://www.youtube.com/live/9KZRjeVTXNY?si=_NtmCaxF_H4MnOV3&t=11178}{\textbf{Дифференцирование произведений:}}
+	\item\add{Дифференцирование произведений} \href{https://www.youtube.com/live/9KZRjeVTXNY?si=_NtmCaxF_H4MnOV3&t=11178}{\textbf{Дифференцирование произведений:}}
 	Отображения $f, g \colon E\subset \rmm \to \rr^n, \quad \lambda\colon E \to \rr$ --- дифференцируемы в точке $a \in \Int E$.
 	Тогда отображения $\lambda f(x)= \lambda(x)f(x)$ и $\scal{f, g}(x)={}$\linebreak ${}=\scal{f(x), g(x)}$ дифференцируемы в точке $a$ . Они действуют на вектор $h \in \rmm$ так:
 	\begin{itemize}
@@ -108,7 +110,7 @@
 \end{enumerate} % Конец правил дифференцируемости
 
 \begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=c7uqK7x7CuZSChAM&t=866]{Лагранжа для векторонозначных функций}\label{лагр.вект.ф.}
-	$f\colon [a, b] \subset \rr \to \rmm$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$. Тогда$\E c \in (a, b):$ \[\|f(b) - f(a)\| \< \|f'(c)\|\cdot\|(b-a)\|\]
+	$f\colon [a, b] \subset \rr \to \rmm$ --- непрерывна на $[a, b]$, дифференцируема на $(a, b)$. Тогда$\E c \in (a, b):$ \[\|f(b) - f(a)\| \< \|f'(c)\|\cdot |b-a|\]
 \end{teor} % Конец теоремы Лагранжа для векторнозначных функций
 
 \begin{prf} % Доказательство теоремы Лагранжа для векторнозначных функций

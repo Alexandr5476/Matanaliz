@@ -1,17 +1,16 @@
-\subsection{Градиент, производная по вектору, по направлению, экстремальное свойство градиента}
-
-\begin{opr} % Определение градиента
-	Пусть функция $f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$. Тогда матрица якоби функции $f$ имеет размер $1 \times m$ (строка). Если её транспонировать и считать, что это вектор из \rmm, то определение дифференцируемости можно записать так:
-	\[f(a + h) = f(a) + \scal{f'(a), h} + o(h), \quad \text{ при } h \to 0_{\rmm} \]
-	и тогда вектор $f'(a) \in \rmm$ называется \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=0R7V2OPxS-nBZmFw&t=1658}{градиентом} функции $f$ в точке $a$, обозначается $\grad f(a)$. 
-\end{opr} % Конец определения градиента
-
-\begin{opr}\label{опр:произв.по_вект.} % Определение производной по верктору
-	\urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=rxn2tFpsv1v4kt0u&t=1943}{Производной по вектору}\label{опр:напр.} $h \in \rmm$ функции $f\colon E \subset \rmm \to \rr$ в точке $a$ называется
+%\subsection{Градиент, производная по вектору, по направлению, экстремальное свойство градиента}
+\begin{opr}\label{опр:произв.по_вект.}\label{опр:напр.}\add*{Производная по направлению} % Определение производной по верктору
+	\urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=rxn2tFpsv1v4kt0u&t=1943}{Производной по вектору} $h \in \rmm$ функции $f\colon E \subset \rmm \to \rr$ в точке $a$ называется
 	\[\lim_{t \to 0} \frac{f(a + th) - f(a)}{t}\]
 	обозначение: $\displaystyle\pfrac{f}{h}(a)$. \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=veALxjYiQ6bewYkp&t=2054}{Напрвлением} в \rmm\ называется вектор $l \in \rmm : \|l\| = 1$.
 	Можно\smallskip\ рассматривать производную по направлению.
 \end{opr} % Конец определения производной по ветору
+
+\begin{opr}\add*{Градиент} % Определение градиента
+	Пусть функция $f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$. Тогда матрица якоби функции $f$ имеет размер $1 \times m$ (строка). Если её транспонировать и считать, что это вектор из \rmm, то определение дифференцируемости можно записать так:
+	\[f(a + h) = f(a) + \scal{f'(a), h} + o(h), \quad \text{ при } h \to 0_{\rmm} \]
+	и тогда вектор $f'(a) \in \rmm$ называется \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=0R7V2OPxS-nBZmFw&t=1658}{градиентом} функции $f$ в точке $a$, обозначается $\grad f(a)$. 
+\end{opr} % Конец определения градиента
 
 \begin{zam}[https://www.youtube.com/live/oWtiSJdhQV8?si=yPj-7gaxv1RXGnDk&t=2189]\label{зам:произв.по_вект.}
 	$f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$, тогда
@@ -23,18 +22,18 @@
 	= \scal{\grad f(a), h}\]
 \end{zam} % Конец замечания про выражение производной по вектору через градиент
 
-\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=nwBS8xFjs_GBMoRl&t=2418]{Экстремальное свойство градиента}
+\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=nwBS8xFjs_GBMoRl&t=2418]{экстремальное свойство градиента}[Экстремальное свойство градиента]
 	Пусть $f\colon E \subset \rmm \to \rr$ --- дифференцируема в точке $a \in \Int E$\quad и\quad$\grad f(a) \ne 0$. 
 	Тогда \linebreak$l =$ {\small$\cfrac{\grad f(a)}{\|\grad f(a) \|}$} 
 	\uns{\small(направление в \rmm)} 
 	--- направление наискорейшего возрастания\medskip\ функции $f$, 
 	т.е. $\A h \in \rmm$ такого, что $\|h\| = 1$ выполнено:
-	\[\uns{-\|\grad f(a)\| ={}} -\pfrac{f}{l} \< \pfrac{f}{h}(a) \< \pfrac{f}{l} \uns{{} = \|\grad f(a)\|}\]
+	\[\uns{-\|\grad f(a)\| ={}} -\pfrac{f}{l}(a) \< \pfrac{f}{h}(a) \< \pfrac{f}{l}(a) \uns{{} = \|\grad f(a)\|}\]
 	и равенство достигается при $h = l$ (справа) и $h = -l$ (слева)
 \end{teor} % Конец теоремы об экстремальном свойстве градиента
 
 \begin{prf} % Доказательство теоремы об экстремальном свойстве градиента
-	Так как {\small$\displaystyle\pfrac{f}{h}$} $= \scal{\grad f(a), h}$ (\ref{зам:произв.по_вект.}), 
+	Так как {\small$\displaystyle\pfrac{f}{h}(a)$} $= \scal{\grad f(a), h}$ (\ref{зам:произв.по_вект.}), 
 	то из неравенства Коши-Буняковского (\ref{кош.-бун.}) следует доказываемое неравенство: 
 	$-\|\grad f(a)\| \cdot 1 \< \scal{\grad f(a), h} \< \|\grad f(a)\| \cdot 1$.
 	Если в неравенстве Коши-Буняковского \uns{\small$|\scal{x, y}| \< \|x\| \cdot \|y\|$} $y = \alpha x$, 
@@ -42,7 +41,7 @@
 	$h = l$, то $\alpha$ это $\sfrac{1}{\|\grad f(a)\|}$.
 \end{prf} % Доказательство теоремы об экстремальном свойстве градиента
 
-\subsection{Производные высших порядков, их независимость от порядка дифференцирования, класс $C^r(E)$, мультииндекс, полиномиальная формула}
+%\subsection{Производные высших порядков, их независимость от порядка дифференцирования, класс $C^r(E)$, мультииндекс, полиномиальная формула}
 
 \begin{opr}
 	$f\colon E \subset \rmm \to \rr$. Пусть$\E k \in \{1, 2, \dots, m\}$ и$\E U(a)$ --- окрестность точки $a \in \Int E$\linebreak
@@ -58,8 +57,8 @@
 	
 \end{opr}
 
-\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=YUdpoEusMGWZikUh&t=3917]{о независимости частной производной от порядка дифференцирования}
-	Пусть $f\colon E \subset \rr^2 \to \rr$, точка $(x_0, y_0) \in E, \E r > 0 :{}$ в шаре $\BB{(x_0, y_0), r} \E f''_{xy}$, $f''_{yx}$
+\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=YUdpoEusMGWZikUh&t=3917]{о независимости частной производной от порядка дифференцирования}[Независимость частных производных от порядка дифференцирования]
+	Пусть $f\colon E \subset \rr^2 \to \rr$, точка $(x_0, y_0) \in \Int E, \E r > 0 :{}$ в шаре $\BB{(x_0, y_0), r} \subset E \E f''_{xy}$, $f''_{yx}$
 	и они непрерывны в точке $(x_0, y_0)$. Тогда$f''_{xy}(x_0, y_0) = f''_{yx}(x_0, y_0)$
 \end{teor} % Конец теоремы о независимости часнтой производной от порядка дифференцирования
 
@@ -77,7 +76,7 @@
 	так как $\bar h, \hat h \in (0, h)$, и $\bar k, \hat k \in (0, k)$, то есть $\bar h, \hat h, \bar k, \hat k$ стремятся к нулю при $h \to 0$ и $k \to 0$).
 \end{prf} % Конец доказательство теоремы о независимости часнтой производной от порядка дифференцирования
 
-\begin{opr} % Определение класса Cr
+\begin{opr}\add*{Классы $C^r(E)$} % Определение класса Cr
 	Пусть множество $E \subset \rmm$ --- открытое, $r \in \mathbb N$, тогда
 	\urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=zMQOzR1WkX6NOiHN&t=4842}{класс $C^r(E)$}
 	 --- это множество всех функций $f\colon E \to \rr$ таких, что у них\E все возможные частные производные порядка $r$ и все эти производные непрерывны. 
@@ -85,7 +84,7 @@
 	\ybox{$C^{\infty}(E)$} \eqdef $\bigcap\limits_{r=1}^{\infty}C^r(E)$  
 \end{opr} % Конец определения класса Cr
 
-\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=LFgYagKyLkzC1ud5&t=5714]{\small общая теорема о независимости частной производной от порядка дифференцирования}
+\begin{teor}[https://www.youtube.com/live/oWtiSJdhQV8?si=LFgYagKyLkzC1ud5&t=5714]{\small общая теорема о независимости частной производной от порядка дифференцирования}*
 	Пусть функция $f \in C^r(E)$, $E \subset \rmm$, $r, k \in \mathbb{N}$, $k \< r$, и наборы индексов $i_1, i_2, \dots i_k$ и $j_1, j_2, \dots j_k$ отличаются друг от друга перестановкой. Тогда
 	\[\pfrac{^rf}{x_{i_k}, \partial x_{i_{k-1}}, \dots, \partial x_{i_1}} =
 	\pfrac{^rf}{x_{j_k}, \partial x_{j_{k-1}}, \dots, \partial x_{j_1}}\qquad \text{на множестве }E\]
@@ -98,8 +97,8 @@
 \begin{zam}[https://www.youtube.com/live/oWtiSJdhQV8?si=qeunLkiJvv3wlB5T&t=6011]
 	Классы $ C^r(E), r \in \mathbb{N}$ замкнуты относительно сложения, умножения на скаляр (и образуют линейное пространство) и композиции.
 \end{zam} % Конец замечания о классах Cr
-
-\begin{opr}\label{мульт.} % Определение мультииндекса
+\pagebreak
+\begin{opr}\label{мульт.}\add*{Мультииндекс и обозначения с ним} % Определение мультииндекса
 	Вектор $k = (k_1, k_2, \dots, k_m) \in \rmm$, где все $k_i \in \mathbb{Z}, k_i \biger 0$ называется \urlybox{https://www.youtube.com/live/oWtiSJdhQV8?si=LbLURPgdsm3mJ5cq&t=6178}{мультииндексом}
 	\begin{enumerate}
 		\item $|k| \eqdef k_1 + k_2 + \ldots + k_m$ --- называется \ybox{высотой мультииндекса}
@@ -113,7 +112,7 @@
 	\end{enumerate}
 \end{opr} % Конец определения мультииндекса
 
-\begin{lem}[https://www.youtube.com/live/oWtiSJdhQV8?si=ZUudcpGU4TMfwAMh&t=6500]{полиномиальная формула}\label{полин.форм.}
+\begin{lem}[https://www.youtube.com/live/oWtiSJdhQV8?si=ZUudcpGU4TMfwAMh&t=6500]{полиномиальная формула}[Полиномиальная формула]\label{полин.форм.}
 	Пусть $r \in \mathbb{N},\ a_1, a_2, \dots, a_m \in \rr$, т.е $a = (a_1, a_2, \dots, a_m) \in \rmm$, тогда
 	\begin{gather*}
 		(a_1 + a_2 + \dots a_m)^r 
@@ -153,4 +152,4 @@
 		
 		Множитель $(j_1 + j_2 + \dots + j_m)$ это по определению высота мультииндекса, то есть он равен $r + 1$. Значит последняя полученная сумма и есть $S_{r + 1}$
 	\end{description}
-\end{prf} % Конец доказательства леммы про полиномиальную формулу
+\end{prf}\pagebreak % Конец доказательства леммы про полиномиальную формулу

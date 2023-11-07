@@ -1,0 +1,62 @@
+%\subsection{Степенные ряды}
+
+\begin{opr}
+	Пусть $z_0 \in \cc,\ r \in (0, +\infty)$, тогда $\B{z, r} = \{\,z \in \cc \mid |z - z_0| < r \,\} \uns{{}\subset \cc}$ называется \urlybox{https://youtu.be/zgKkH3Nr6-4?si=xUG7X81RzS13Xsfz&t=1919}{кругом} c центром в точке $z_0$ и радиуса $r$.
+\end{opr}
+
+\begin{opr}\add*{Степенной ряд, радиус сходимости степенного ряда, формула Адамара}
+	Пусть $a_n$ --- комплексная последовательность, $z_0 \in \cc$, тогда $A(z) = \sum\limits_{n = 0}^{\infty} a_n(z - z_0)^n$ называется \urlybox{https://youtu.be/zgKkH3Nr6-4?si=ldfvxbmy3ue68QgP&t=1971}{степенным рядом} \uns{\small($A \colon E \subset \cc \to \cc$)}. Ряд \urlybox{https://youtu.be/zgKkH3Nr6-4?si=cGk4nMm0Rx1cQrFJ&t=2001}{сходится}, если сходится последовательность частичных сумм. \urlybox{https://youtu.be/zgKkH3Nr6-4?si=aSiEvDMGSJV_7FoE&t=2453}{Сходится абсолютно}, если сходится вещественный ряд $\sum\limits_{n = 0}^{\infty} |a_n(z - z_0)^n|$
+\end{opr}
+
+\begin{zam}
+	Комплексный ряд \raisebox{0pt}[0pt][5pt]{$\sum\limits_{n = 0}^{\infty} a_n$} сходится \eq\ сходятся вещественные ряды \raisebox{0pt}[0pt][0pt]{$\sum\limits_{n = 0}^{\infty} \mathrm{Re}\, a_n$} и $\sum\limits_{n = 0}^{\infty} \mathrm{Im}\, a_n$ \uns{\hypersetup{linkcolor=mygray}(это покоординатная сходимость, \ref{покоорд.сход.})}. 
+	Если ряд $\sum\limits_{n = 0}^{\infty} |a_n|$ сходится, то и $\sum\limits_{n = 0}^{\infty} a_n$ сходится, так как |$\mathrm{Re}\, a_n| \< |a_n|$ и $|\mathrm{Im}\, a_n| \< |a_n|$, значит ряды из вещественных и мнимых \medskip частей сходятся абсолютно $\Rightarrow$ сходятся. 
+\end{zam}
+
+\begin{teor}[https://youtu.be/zgKkH3Nr6-4?si=MvlhhJxcgF8KG0Mf&t=2204]{о круге сходимости степенного ряда}\label{круг сходимости}
+	Пусть $A(z) = \sum\limits_{n = 0}^{\infty} a_n(z - z_0)^n$ --- степенной ряд, тогда возможно
+	\begin{enumerate}
+		\item Ряд сходится абсолютно при любом $z \uns{{} \in \cc}$
+		
+		\item Ряд сходится абсолютно только при $z = z_0$, иначе расходится
+		
+		\item \hspace{-5pt}$\E R \in (0, +\infty) : {}$ ряд сходится абсолютно при $|z - z_0| < R$ и расходится при $|z - z_0| > R$ 
+	\end{enumerate}
+\end{teor}
+
+\begin{prf}\\
+	\palka{\small\begin{enumerate}[leftmargin=15pt]
+		\item Верхний предел вещественной последовательности $x_n$ это \[\varlimsup\limits_{n \to \infty} x_n = \lim\limits_{n \to \infty} y_n \text{,\qquad где } y_n = \sup\{\, x_n, x_{n+1}, x_{n+ 2}, \dots \,\}\]
+		
+		\item \textit{Признак Коши сходимости вещественного ряда.} Пусть $\sum\limits_{n = 1}^{\infty} x_n$ --- неотрицательный вещественный ряд, тогда он сходится, если $\varlimsup\limits_{n \to \infty} \sqrt[n]{x_n} < 1$, и расходится, если $\varlimsup\limits_{n \to \infty} \sqrt[n]{x_n} > 1$, причём $x_n \xrightarrow[n\to \infty]{}0$ \raisebox{-8pt}[0pt][0pt]{\makebox[0pt]{\hspace{-55pt} \begin{picture}(10,10)\thicklines\put(0,0){\line(1,2){9}}\end{picture}}}
+		\end{enumerate}}\\
+	По признаку Коши ряд $\sum\limits_{n = 0}^{\infty} |a_n(z - z_0)^n|$ сходится, если 
+	\[\varlimsup\limits_{n \to \infty} \sqrt[n]{|a_n(z - z_0)^n|} \uns{{} = \varlimsup\limits_{n \to \infty} |z - z_0| \cdot \sqrt[n]{|a_n|}} = |z - z_0| \cdot \varlimsup\limits_{n \to \infty} \sqrt[n]{|a_n|} < 1\] То есть может быть 3 случая:
+	\begin{enumerate}
+		\item Если $\varlimsup\limits_{n \to \infty} \sqrt[n]{|a_n|} = 0$, то ряд $A$ сходится при любом $z \uns{{} \in \cc}$ 
+		
+		\item Если $\varlimsup\limits_{n \to \infty} \sqrt[n]{|a_n|} = +\infty$, то ряд $A$ сходится только при $z = z_0$, и расходится в остальных случаях, т.к. слагаемые не стремятся к 0
+		
+		\item Если $|z - z_0| <{}$ {\small$\cfrac{1}{\varlimsup\limits_{n \to \infty} \sqrt[n]{|a_n|}}$}, то ряд $A$ сходится абсолютно
+	\end{enumerate}
+	\hspace{20pt}Таким образом  в последнем пункте $R ={}$ {\small$\cfrac{1}{\varlimsup\limits_{n \to \infty} \sqrt[n]{|a_n|}}$} --- это формула Коши-Адамара.
+\end{prf}
+
+\begin{zam}[https://youtu.be/zgKkH3Nr6-4?si=DDcTOSeonrxbvb41&t=3079]
+	Был ещё \textit{признак Даламбера: Пусть $\sum\limits_{n = 1}^{\infty} x_n$ --- положительный вещественный ряд и$\E \lim\limits_{n \to \infty}\frac{x_{n + 1}}{x_n} = D$, тогда ряд сходится, если $D < 1$, и расходится, если $D > 1$.} Поэтому в теореме \ref{круг сходимости} радиус круга сходимости можно считать по формуле $R = \lim\limits_{n \to \infty}\frac{|a_n|}{|a_{n + 1}|}$ (если этот предел существует).
+\end{zam}
+
+\begin{teor}[https://youtu.be/zgKkH3Nr6-4?si=Reb0bWLxxqPReBy9&t=3976]{о равномерной сходимости и непрерывности степенного ряда}
+		Пусть $f(z) = \sum\limits_{n = 0}^{\infty} a_n(z - z_0)^n$ --- степенной ряд и $R$ --- радиус его круга сходимости. Тогда:
+		\begin{enumerate}
+			\item $\A r \in (0, R)$\quad $\sum\limits_{n = 0}^{\infty} a_n(z - z_0)^n$ равномерно сходится на $\overline{\B{z_0, r}}$
+			
+			\item $f(z)$ непрерывна на $\B{z_0, R}$
+		\end{enumerate}
+\end{teor}
+
+\begin{prf}\begin{enumerate}
+	\item Так как на $\overline{\B{z_0, r}}$ $ a_n(z - z_0)^n \< a_n r^n$ и ряд \raisebox{0pt}[0pt][5pt]{$\sum\limits_{n = 0}^{\infty} a_n r^n$} сходится на $\overline{\B{z_0, r}}$\uns{, потому что $\sum\limits_{n = 0}^{\infty} a_n r^n = \sum\limits_{n = 0}^{\infty}a_n\bigl((z_0 + r) - z_0\bigr)$ и $(z_0 + r) \in \B{z_0, R}$}, то по признаку Вейерштрасса (теорема~\ref{пр.вейер.}) на $\overline{\B{z_0, r}}$ равномерно сходится ряд \raisebox{0pt}[10pt][10pt]{$\sum\limits_{n = 0}^{\infty} a_n(z - z_0)^n$}.
+	
+	\item $\A z \in \B{z_0, R}$ возьмём $r \in \bigl(|z - z_0|, R\bigr)$, тогда в шаре $\overline{\B{z_0, r}}$ есть равномерная сходимость ряда $\sum\limits_{n = 0}^{\infty} a_n(z - z_0)^n$ \uns{(из пункта 1)}, и $a_n(z - z_0)^n$ непрерывна, значит по теореме Стокса-Зайдля (теорема \ref{ст-зд ряды}) $f$ непрерывна в точке $z$.
+\end{enumerate}\end{prf}

@@ -1,0 +1,78 @@
+%\subsection{Теорема о сохранении области}
+
+\begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=3Atsj-07Hm2T04HF&t=1318]{о сохранении области}\label{сохр.обл.}%
+	Пусть отображение $f \colon O \subset \rmm \to \rmm$ дифференцируемо на $O$ ($O$ --- открытое), $\A x \in O$ $\det f'(x) \ne 0$, тогда $f(O)$ \uns{(образ $O$)} --- открытое множество
+\end{teor}
+
+\begin{prf}
+	Возьмём $x_0 \in O$. Нужно доказать, что $f(x_0) \in \Int f(O)$. По лемме \ref{лем.о приб. знач.}$\E c, \delta > 0 :{}$\linebreak $\A h \in \overline{\B{0, \delta}}\ \ \  \|f(x_0 + h) - f(x_0)\| \biger c \cdot \|h\|$.
+	Пусть $r$ это половина расстояния от $f(x_0)$ до $f\bigl(\mathrm S (x_0, \delta)\bigr)$ \uns{(расстояние от точки $w$ до сферы $\mathrm S$ это $\inf_{s \in \mathrm S}\metr{w, s}$)}, тогда $r > 0$, потому что функция $\varphi \colon f\bigl(\mathrm S (x_0, \delta)\bigr) \to \rr_{+}$, $\varphi(y) = \bmetr{y, f(x_0)}$ непрерывна \uns{(т.к. $|\varphi(a) - \varphi(b)| = |\bmetr{a, f(x_0)} - \bmetr{b, f(x_0)}| \< \metr{a, b}$)}, задана на компакте \uns{(т.к. сфера --- компактное множество в \rmm, и $f$ --- непрерывная функция)} и непрерывная функция достигает минимального значение по теореме Вейерштрасса, и оно больше нуля (пусть минимальное значение достигается в точке $y^* = f(x^*)$, тогда $\varphi(y^*) = \|f(x^*) - f(x_0)\| \biger c \cdot \|x^* - x_0\| = c \delta > 0$). \\ 
+	Проверим, что $\B{f(x_0), r} \subset f(O)$, то есть что $\A y \uns{{}\in \rmm} : \|y - f(x_0)\| < r \E x \uns{{}\in O} : f(x) = y$. Зафиксируем $y$\uns{${}: \|y - f(x_0)\| < r$} и определим функцию \[g\colon \overline{\B{x_0, \delta}} \to \rr_+ \qquad g(x) = \|f(x) - y\|^2\] Тогда $g(x_0) = \|f(x_0) - y\|^2 < r^2$, а
+	на $\mathrm S(x_0, \delta)$ $g(x) \biger r^2$ (т.к. $\|f(x) - y\| \biger \|f(x) - f(x_0)\| - \|f(x_0) - y\| \biger 2r - r = r$). То есть $g$ достигает минимального значения (т.к. это непрерывная функция, заданная на компакте) внутри шара. По теореме Ферма (т. \ref{ферма}) в этой точке все частные производные равны нулю.
+	Так как $g(x) = (f_1(x) - y_1)^2 + (f_2(x) - y_2)^2 + \ldots + (f_m(x) - y_m)^2$, то, вычисляя производные, получаем
+	\[\begin{cases}
+		\uns{g'_{x_1}(x) ={}} 2(f_1(x) - y_1) \cdot \pfrac{f_1}{x_1}(x) + 2(f_2(x) - y_2) \cdot \pfrac{f_2}{x_1}(x) + \ldots + 2(f_m(x) - y_m) \cdot \pfrac{f_m}{x_1}(x) = 0\\[8pt]
+		\uns{g'_{x_2}(x) ={}} 2(f_1(x) - y_1) \cdot \pfrac{f_1}{x_2}(x) + 2(f_2(x) - y_2) \cdot \pfrac{f_2}{x_2}(x) + \ldots + 2(f_m(x) - y_m) \cdot \pfrac{f_m}{x_2}(x) = 0\\[3pt] \quad \vdots\\
+		\uns{g'_{x_m}(x) ={}}2(f_1(x) - y_1) \cdot \pfrac{f_1}{x_m}(x) + 2(f_2(x) - y_2) \cdot \pfrac{f_2}{x_m}(x) + \ldots + 2(f_m(x) - y_m) \cdot \pfrac{f_m}{x_m}(x) = 0 \\
+	\end{cases}\]
+	То есть столбец $2(f(x) - y)^{\mathrm T} \cdot f'(x)$ --- нулевой. Тогда, домножая $2(f(x) - y)^{\mathrm T} \cdot f'(x) = 0$ на $\frac12(f'(x))^{-1}$ \uns{(обратная матрица существует, т.к. по условию $\det f'(x) \ne 0$)}, получаем, что $f(x) = y$. Таким образом, $x : f(x) = y$ это точка, в которой $g(x)$ принимает минимальное значение.
+\end{prf}
+
+\begin{slv}[https://www.youtube.com/live/Ebv-BznzM6k?si=daWzbbhBembXmSqh&t=3329]\add{Следствие о сохранении области для отображений в пространство меньшей размерности}
+	Пусть $f \colon O \subset \rmm \to \rr^l$, $O$ --- открытое, $m > l$, $f \in C^1(O)$, $\A x \in O$ $rank\bigl(f'(x)\bigr) = l$\smallskip, тогда $f(O)$ --- открытое множество.
+\end{slv}
+
+\begin{prf}
+	Фиксируем $x_0 \in O$. Будем считать, что первые $l$ столбцов производной в точке $x_0$ линейно не зависимы (иначе можно перенумеровать координаты, чтобы это было так), то есть 
+	\[\det \Biggl(\underbrace{\pfrac{f_i}{x_j} (x_0)}_{A_l}\Biggr)_{\substack{i \in \{\,1, 2, \ldots, l \, \} \\ j \in \{\,1, 2, \ldots, l \, \}}} \ne 0\]
+	 Тогда\!\E окрестность $U(x_0)$, в которой этот определитель не равен нулю \uns{(так как определитель --- это \vspace{1pt} непрерывная функция, потому что он является суммой и произведение непрерывных функций --- частных производных)}. Пусть $\widetilde f \colon O \to \rmm$, $\widetilde f(x) = (f(x), x_{l + 1}, x_{l + 2}, \ldots, x_{m})$, тогда\linebreak
+	 \[ \det \widetilde f'(x_0) = \det \begin{pmatrix}
+	 	A_l & A_{m-l}\\
+	 	0 & E\\
+	 \end{pmatrix} = \det A_l \ne 0\]
+	 Значит по теореме \ref{сохр.обл.} $\widetilde f(O)$ --- открытое множество. А $f(O)$ это проекция $\widetilde f(O)$ на $\rr^l$ \uns{(т.е. ото\-бра\-же\-ние, сопоставляющее точке $(x_1, x_2, \dots, x_l, x_{l + 1}, \dots, x_m) \in \widetilde f(O)$ точку $(x_1, x_2, \dots, x_l) \in \rr^l$)}, и при проекции открытость множества сохраняется (потому что проекция шара это шар и если $B \subset A$, то проекция $B$ содержится в проекции $A$)
+\end{prf}
+\pagebreak
+
+\begin{teor}[https://www.youtube.com/live/Ebv-BznzM6k?si=DqPdyVd2mmBt4CqQ&t=4595]{о гладкости обратимого отображения}*\label{т. о лок.обр.}\add*{Формулировка теоремы о гладкости обратного отображения}
+	Пусть $f \colon O \subset \rmm \to \rmm$, $f \in  C^r(O)$ \uns{($r \in \mathbb N$)}, $f$ --- обратимо и $\A x \in O\ \det f'(x) \ne 0$. Тогда $f^{-1} \in C^r\bigl(f(O)\bigr)$  
+\end{teor}
+
+\begin{prf}
+	Нету (нужна только формулировка)
+\end{prf}
+
+\begin{teor}[https://youtu.be/x6Xwr0Rrjz8?si=pXJT-Ozb7d9aW7NH&t=2682]{о локальной обратимости}\label{лок.обр.}
+	$f \colon O \subset \rmm \to \rmm$, $f \in C^1(O)$, $x_0 \in O$, $\det f'(x_0) \ne 0$, тогда$\E U(x_0) : f\vp{U(x_0)}$ --- диффеоморфизм.
+\end{teor}
+
+\begin{prf}
+	Если проверить обратимость $f$, то по теор. \ref{т. о лок.обр.} обратное отображение будет дифференцируемым. Так как $f'(x_0)$ --- обратимый линейный оператор, то (по \ref{зам:оц.норм.})$\E c > 0 : \A h \in \rmm$\linebreak $\|f'(x_0) \cdot h\| \biger c \cdot \|h\|$. Возьмём окрестность $U(x_0) = \B{x_0, r} \subset O : \A x \in U(x_0)\ \det f'(x) \ne 0$ \uns{(такая окрестность существует, т.к. $\det f'(x)$ --- это непрерывная функция, потому что является суммой и произведение непрерывных функций --- частных производных)} и $\|f'(x) - f'(x_0)\| < \sfrac c4$ \uns{\hypersetup{linkcolor=mygray}(это можно сделать по определению непрерывности отображения $f'$, оно непрерывно по т. \ref{непр.произв.})}. Пусть $x, y \in U(x_0)$, $y = x + h$, тогда 
+	\[f(y) - f(x) = f(x + h) - f(x) - f'(x)h + f'(x)h - f'(x_0)h + f'(x_0)h\]
+	Значит по неравенству треугольника:
+	\[\|f(y) - f(x)\| \biger \|f'(x_0)h\| - \|f(x + h) - f(x) - f'(x)h\| - \|f'(x)h - f'(x_0)h\|\]
+	По т.\hspace{2.1pt}\ref{оц.б.м.} $\|f(x + h) - f(x) - f'(x)h\| \< A \cdot \|h\|$, где $A = \makebox[24pt]{$\sup\limits_{t \in [x, x + h]}$} \|f'(t) - f'(x)\|$ и так как по неравенству треугольника $ A \< \makebox[24pt]{$\sup\limits_{t \in [x, x + h]}$} \bigl(\|f'(t) - f'(x_0)\| + \|f'(x_0) - f'(x)\|\bigr)\< \sfrac c4 + \sfrac c4 = \sfrac c2$, значит
+	\[\|f(y) - f(x)\| \biger  c \cdot \|h\| - \sfrac c2 \cdot \|h\| - \sfrac c4\ \cdot \|h\| = \sfrac c4 \cdot \|x - y\|\]
+	То есть $f\vp{U(x_0)}$ инъективно, поэтому\E\ обратное\uns{, заданное на $f\bigl(U(x_0)\bigr)$}
+\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=dyQKDlOGFnTn7A1c&t=1101]{о локальной обратимости в терминах систем уравнений}*\add*{Формулировка теоремы о локальной обратимости в терминах систем уравнений}%
+	Пусть $f \colon O \subset \rmm \to \rmm$, $f \in C^1(O)$, $x^0 \in O$, $\det f'(x^0) \ne 0$, $f_1, f_2, \ldots f_m$ --- координатные функции отображения $f$, $y^0 = f(x^0)$. Тогда$\E U(y^0)$ такая, что система
+	\[\begin{cases}
+		f_1(x_1, x_2, \ldots, x_m) = y_1 \\
+		f_2(x_1, x_2, \ldots, x_m) = y_2 \\
+		\vdots \\
+		f_m(x_1, x_2, \ldots, x_m) = y_m \\
+	\end{cases}\]
+	имеет решение при любом $y \in U(y^0)$ и $x_1 = g_1 (y_1, y_2, \ldots, y_m)$, $x_2 = g_2 (y_1, y_2, \ldots, y_m)$, \dots, $x_m = g_m (y_1, y_2, \ldots, y_m)$, где $g = f^{-1} \uns{{}\in C^1\bigl(U(y^0)\bigr)}$ 
+\end{teor}
+
+\begin{teor}{о неявном отображении}
+	Пусть $f \colon O \subset \rr^{m+n} \to \rr^n$, $O$ --- открытое, $f \in C^r(O)$, точка $(a, b) \in O$ такая, что $f(a, b) = 0$, $\det f'_y(a, b) \ne 0$, тогда$\E P(a) \subset \rmm, Q(b) \subset \rr^n$ --- окрестности точек $a$ и $b$ такие, что\E единствен\-ное отображение $\varphi \colon P \to Q$ такое, что $\A x \in P$ $f(x, \varphi(x)) = 0$, при этом $\varphi \in C^r(P)$
+\end{teor}
+
+\begin{prf}
+	Пусть $\varPhi \colon O \to \rr^{m+n}$\!, $\varPhi(x, y) = \bigl(x, f(x, y)\bigr)$, тогда $\det \varPhi'(x) = \! \begin{pmatrix}
+		\! E_m & 0 \\ \! f'_x & f'_y
+	\end{pmatrix}\! = \det f'_y \ne 0$,\linebreak значит по теореме \ref{лок.обр.} существует окрестность точки $(a, b)$, в которой $f$ --- диффеоморфизм класса $C^r$. Возьмём подмножество $\widetilde U = P_1(a) \times Q(b)$ \uns{($P_1(a), Q(b)$ --- окрестности точек $a, b$)}, содержащееся в этой окрестности. Пусть $P = \varPhi(\widetilde U) \cap (\rmm \times \{0_{\rmm}\})$ \dots
+\end{prf}

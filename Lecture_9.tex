@@ -1,6 +1,6 @@
-\subsection{Следствия для рядов, признаки Вейерштрасса, критерий Больцано-Коши равномерной сходимости функционального ряда}
+%\subsection{Следствия для рядов, признаки Вейерштрасса, критерий Больцано-Коши равномерной сходимости функционального ряда}
 
-\begin{opr}\label{опр:равн.сх.ряда} % Определение сходимости ряда
+\begin{opr}\label{опр:равн.сх.ряда}\add*{Равномерная сходимость функционального ряда}% Определение сходимости ряда
 	Пусть $u_n \colon X \to \rr$, где $X$ --- множество, тогда
 	\urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=ZMomj6U3_OK2CNNm&t=7696}{функциональный ряд}
 	{\small $\sum\limits_{n = 1}^{\infty} u_n(x)$}
@@ -28,7 +28,7 @@
 	\end{tikzcd} \uns{\small(т. к. $u_k(x) = R_{k - 1}(x) - R_k(x)$)}	
 \end{enumerate}\end{zam} % Конец замечаний к опредлению сходимости ряда
 
-\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=vIjDFMc8UzpC7diY&t=8564]{признак Вейерштрасса сходимости ряда}\label{пр.вейер.}
+\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=vIjDFMc8UzpC7diY&t=8564]{Признак Вейерштрасса равномерной сходимости функционального ряда}\label{пр.вейер.}
 	Пусть $u_n\colon X \to \rr$ \uns{(X --- множество)}, $C_n \in \rr : |u_n| \< C_n\ \uns{\A n \in \mathbb N}$ и  \raisebox{0pt}[0pt]{$\sum\limits_{n = 1}^{\infty} C_n$} --- сходится. Тогда функциональный ряд \raisebox{0pt}[0pt][0pt]{$\sum\limits_{n = 1}^{\infty} u_n(x)$} --- сходится равномерно на $X$.
 \end{teor} % Конец теоремы признака Вейерштрасса
 
@@ -37,7 +37,7 @@
 	\[\sup_{x \in X}\left|\sum_{k = n + 1}^{\infty} u_k(x) \right| \< \sup_{x \in X} \sum_{k = n + 1}^{\infty} |u_k(x)| \< \sum_{k = n + 1}^{\infty} C_n \xrightarrow[k \to \infty]{} 0\]
 \end{prf} % Конец доказательства признака Вейетштрасса
 
-\begin{zam}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=0lZiyn6N9I6rSJEM&t=9401]\label{кр.бол.-кош.для ряд.} % Замечание: критерий Больцано-Коши
+\begin{zam}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=0lZiyn6N9I6rSJEM&t=9401]\label{кр.бол.-кош.для ряд.}\add*{Формулировка критерия Больцано-Коши для равномерной сходимости рядов} % Замечание: критерий Больцано-Коши
 	\textit{Критерий Больцано-Коши:} ряд $\sum\limits_{n = 1}^{\infty} u_n(x)$ равномерно сходится на $E$\eq
 	\[\A \eps > 0 \E N : \A n > N,\ \A k \in \mathbb N,\ \A x \in E \text{ выполнено } |u_{n + 1}(x) + u_{n + 2}(x) + \ldots + u_{n + k}(x)| < \eps \]\vspace{-7pt}
 	\palka{\small Это верно, потому что это критерий Больцано-Коши сходимости функциональной последовательности (\ref{больц.-коши для посл.}), записанный для частичных сумм, а равномерная сходимость ряда это равномерная сходимость последовательности из его частичных сумм.}\\[5pt]
@@ -45,7 +45,10 @@
 	\[\E \eps > 0 : \A N \E n > N, \E k \in \mathbb N, \E x \in E : \text{ выполнено } |u_{n + 1}(x) + u_{n + 2}(x) + \ldots + u_{n + k}(x)| > \eps \]
 \end{zam} % Конец замечания: критерий Больцано-Коши
 
-\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=p-ZJAVhu-jWLePNZ&t=10612]{Стокса-Зайдля для рядов}\label{ст-зд ряды}
+\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=p-ZJAVhu-jWLePNZ&t=10612]{Стокса-Зайдля для рядов}[]*\label{ст-зд ряды}%
+	\addtocounter{nteor}{-5}%
+	\addcontentsline{toc}{subsection}{\textcolor[rgb]{1, 0.478, 0.612}{\arabic{nteor}}\quad Следствие для рядов (из теоремы Стокса-Зайдля для последовательностей)}%
+	\addtocounter{nteor}{5}%
 	Пусть $u_n \colon X \to \rr$ --- непрерывны в точке $x_0 \in X$ \uns{($X$ --- метрическое пространство)} и  $\sum\limits_{n = 1}^{\infty}u_n(x)$ сходится равномерно к функции $S(x)$. Тогда $S(x)$ --- непрерывна в точке $x_0$
 \end{teor} % Конец теоремы Стокса-Зайдля для рядов
 
@@ -56,7 +59,10 @@
 	\end{tikzcd}\! по определению равномерной сходимости ряда (\ref{опр:равн.сх.ряда}). Тогда по теореме Стокса-Зайдля для последовательностей (т. \ref{ст-зд}) $S(x)$ непрерывна в точке $x_0$. 
 \end{prf} % Конец доказательства теоремы Стокса-Зайдля для рядов
 
-\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=GEu4QG3yGOvet_UK&t=10772]{об интегрировании функционального ряда}
+\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=GEu4QG3yGOvet_UK&t=10772]{об интегрировании функционального ряда}[]*%
+	\addtocounter{nteor}{-3}%
+	\addcontentsline{toc}{subsection}{\textcolor[rgb]{1, 0.478, 0.612}{\arabic{nteor}}\quad Следствие для рядов (интегрирование функционального ряда)}%
+	\addtocounter{nteor}{3}%
 	Пусть $u_n \in C[a, b]$ \uns{($u_n \colon [a, b] \to \rr$)}, ряд $\sum\limits_{n = 1}^{\infty}u_n(x)$ сходится равномерно к функции $S(x)$, тогда \[\sum_{n = 1}^{\infty} \int_a^b u_n(x) = \int_a^b S(x)\]
 \end{teor} % Конец теоремы об интегрировании функционалного ряда
 
@@ -70,7 +76,10 @@
 		По теореме \ref{ст-зд} $\int_a^bS(x)$ имеет смысл, т.к. $S_K$ непрерывны и сходятся равномерно к $S(x)$.\linebreak}
 \end{prf} % Конец доказательства теоремы об интегрировании функционального ряда
 
-\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=VKzpWKydqsZrl_u4&t=12003]{о дифференцировании ряда}\label{дифф.ряда}
+\begin{teor}[https://www.youtube.com/live/g4Zgeu8xe-Q?si=VKzpWKydqsZrl_u4&t=12003]{о дифференцировании ряда}[]*\label{дифф.ряда}%
+	\addtocounter{nteor}{-1}%
+	\addcontentsline{toc}{subsection}{\textcolor[rgb]{1, 0.478, 0.612}{\arabic{nteor}}\quad Дифференцирование функционального ряда}%
+	\addtocounter{nteor}{1}%
 	Пусть $u_n\in C^1 \scal{a, b}$, ряд $\sum\limits_{n = 1}^{\infty} u_n(x)$ сходится поточечно к $S(x)$ на \scal{a, b}, и $\sum\limits_{n = 1}^{\infty} u'_n(x)$ равномерно сходится к $\varphi(x)$ на \scal{a, b}. Тогда $S(x) \in C^1\scal{a,b}$ и $S'(x) = \varphi$.
 \end{teor} % Конец теоремы  о дифференцировании ряда
 

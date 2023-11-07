@@ -1,34 +1,38 @@
-\subsection{Область, диффеоморфизм, лемма о приближённых значениях дифференцируемого отображения}
-
+%\subsection{Область, диффеоморфизм, лемма о приближённых значениях дифференцируемого отображения}
+\subsection*{\S\ Диффеоморфизм}
 \begin{opr}
 	\urlybox{https://www.youtube.com/live/Ebv-BznzM6k?si=QeoyVEUPuM7HhuDG&t=187}{Область} в \rmm\ это открытое, связное множество
 \end{opr}
 
-\begin{opr}
+\begin{opr}\add*{Диффеоморфизм}
 	Отображение $f \colon O \subset \rmm \to \rmm$ ($O$ --- область) называется \urlybox{https://www.youtube.com/live/Ebv-BznzM6k?si=vjKM4epPGnqqJc-h&t=237}{диффеоморфизмом}, если оно дифференцируемо,$\E f^{-1}$ и $f^{-1}$ --- дифференцируемо.
 \end{opr}
 
-\begin{zam}
+\begin{zam}[https://www.youtube.com/live/Ebv-BznzM6k?si=kWW6QO-IYsTzRTVU&t=354]
 	Если $f$ --- диффеоморфизм, то, дифференцируя равенство $(f^{-1} \circ f)(x) = x$, получаем $(f^{-1} \circ f)'(x) = 1_{m \times m}$ или $(f^{-1})'(f(x)) \cdot f'(x) = 1_{m \times m}$, то есть $(f^{-1})'(y) = (f'(x))^{-1}$, где $y = f(x)$, значит производный оператор диффеоморфизма обратим.
 \end{zam}
 
 \begin{lem}[https://www.youtube.com/live/Ebv-BznzM6k?si=RireGv1RXr_0TJBB&t=652]{о приближённых значениях дифференцируемого отображения}
 	Пусть $f \colon O \subset \rmm \to \rmm$, $f$ --- дифференцируемо в точке $x_0 \in O$ ($O$ --- открытое), тогда 
-	\begin{enumerate}
-	\item Если $\det f'(x_0) \ne 0$, то$\E \delta > 0, c >0 : \A h : \|h\| < \delta\ \ \|f(x_0 + h) - f(x_0)\| \biger c \cdot \|h\|$
+	\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{\thelem.}\makeatother
+	\item\label{лем.о приб. знач.}
+	Если $\det f'(x_0) \ne 0$, то$\E \delta > 0, c >0 : \A h : \|h\| < \delta\ \ \|f(x_0 + h) - f(x_0)\| \biger c \cdot \|h\|$
 	
-	\item Если $f \in C^1(O)$, $\B{x_0, r} \in O$, то при $\|h\| < r$ выполнено $\|f(x_0 + h) - f(x_0) - f'(x_0)h\| \< A \cdot \|h\|$, где $A = \sup\limits_{x \in [x_0, x_0 + h]} \|f'(x) - f'(x_0)\|$, \uns{где $[x_0, x_0+h] = \{\, x \mid x = x_0 + th, t \in [0, 1] \,\}$} 
+	\item\label{оц.б.м.} Если $f \in C^1(O)$, $\B{x_0, r} \subset O$, то при $\|h\| < r$ выполнено $\|f(x_0 + h) - f(x_0) - f'(x_0)h\| \< A \cdot \|h\|$, где $A = \sup\limits_{x \in [x_0, x_0 + h]} \|f'(x) - f'(x_0)\|$, \uns{где $[x_0, x_0+h] = \{\, x_0 + th \mid t \in [0, 1] \,\}$} 
 	\end{enumerate} 
 \end{lem}
 
 \begin{prf}\begin{enumerate}
-	\item $\|h\| = \left\|\bigl(f'(x_0)\bigr)^{-1} \cdot f'(x_0) \cdot h\right\| \< \left\|\bigl(f'(x_0)\bigr)^{-1}\right\| \cdot \|f'(x_0)\cdot h\|$, значит 
+	\item Так как производная --- это линейный оператор, то \[\|h\| = \left\|\bigl(f'(x_0)\bigr)^{-1} \cdot f'(x_0) \cdot h\right\| \< \left\|\bigl(f'(x_0)\bigr)^{-1}\right\| \cdot \|f'(x_0)\cdot h\| 
+	\quad \Rightarrow \quad
+	\|f'(x_0)\cdot h\| \biger \frac{\|h\|}{\left\|\bigl(f'(x_0)\bigr)^{-1}\right\|}\] значит \vspace{-5pt}
 	\begin{gather*}
-	\|f(x_0 + h) - f(x_0)\| \stackrel{\text{\uns{опр. дифф-сти}}}{=} \|f'(x_0)h + o(h)\| \biger \|f'(x_0)h\| - \|o(h)\| \biger \\
-    \biger \frac{\|h\|}{\left\|\bigl(f'(x_0)\bigr)^{-1}\right\|} - \|\text{\textit{б.м}}\| \cdot \|h\| \biger \frac{\|h\|}{2\left\|\bigl(f'(x_0)\bigr)^{-1}\right\|}
+	\|f(x_0 + h) - f(x_0)\| \stackrel{\text{\uns{опр. дифф-сти}}}{=} \|f'(x_0)h + o(h)\| \stackrel{\parbox{.8cm}{\tiny \uns{нер-во\\тр-ка}}}{\biger} \|f'(x_0)h\| - \|o(h)\| \biger 
+	\uns{\raisebox{10pt}[0pt][0pt]{\makebox[0pt]{\hspace{32pt}\begin{picture}(50,50)\put(0,0){\vector(-1,3){10}}\end{picture}}}}\\
+    \biger \frac{\|h\|}{\left\|\bigl(f'(x_0)\bigr)^{-1}\right\|} - \|\text{\textit{б.м}}\| \cdot \|h\| \biger \frac{1}{2\left\|\bigl(f'(x_0)\bigr)^{-1}\right\|} \cdot \|h\| \qquad \text{\uns{при $h \to 0_{\rmm}$}}
 	\end{gather*}
-	из определения бесконечно малой$\E \delta : \text{если }\|h\| < \delta$, то $\displaystyle \|\text{\textit{б.м}}\| <{}${\small $\frac{1}{2\left\|\bigl(f'(x_0)\bigr)^{-1}\right\|}$}
+	потому что из определения бесконечно малой$\E \delta : \text{если }\|h\| < \delta$, то $\displaystyle \|\text{\textit{б.м}}\| < ${\small $\cfrac{1}{2} \left\|\bigl(f'(x_0)\bigr)^{-1}\right\|^{-1}$}
 	
-	\item Пусть $H(x) = f(x) - f'(x_0) \cdot x$, тогда $H'(x) = f'(x) - f'(x_0)$ и \[H(x_0 + h) - H(x_0)= f(x_0 + h) - f'(x_0) \cdot (x_0 + h) - f(x_0) + f'(x_0) \cdot x_0 = f(x_0 + h) - f(x_0) - f'(x_0) \cdot h\]
-	То есть $\|f(x_0 + h) - f(x_0) - f'(x_0)h\| = \|H(x_0 + h) - H(x_0)\| \stackrel{\text{теор.\ref{теор.лагрнж.для отобр.}}}{\<} \|H'(x_0 + \theta h)\| \cdot \|h\| ={}$ \linebreak $= \|f'(x_0 + \theta h) - f'(x_0)\| \cdot \|h\| \< A \cdot \|h\|$
-\end{enumerate}\end{prf}
+	\item Пусть $H(x) = f(x) - f'(x_0) \cdot x$, тогда $H'(x) = f'(x) - f'(x_0)$. Поэтому \[H(x_0 + h) - H(x_0)= f(x_0 + h) - f'(x_0) \cdot (x_0 + h) - \vspace{-6pt} f(x_0) + f'(x_0) \cdot x_0 = f(x_0 + h) - f(x_0) - f'(x_0) \cdot h\]\vspace{3pt}%
+	То есть $\|f(x_0 + h) - f(x_0) - f'(x_0)h\| = \|H(x_0 + h) - H(x_0)\| \stackrel{\text{теор.\ref{теор.лагрнж.для отобр.}}}{\<} \|H'(x_0 + \theta h)\| \cdot \|h\| ={}$ \linebreak $= \|f'(x_0 + \theta h) - f'(x_0)\| \cdot \|h\| \< A \cdot \|h\|$ \uns{\qquad(т.к. sup${}\<{}$значений по которым он берётся)}
+\end{enumerate}\end{prf}\pagebreak

@@ -1,6 +1,6 @@
-\subsection{Дифференцируемость гамма функции, теорема о предельном переходе в суммах, теорема о перестановке предельных переходов, признак Дирихле}
+%\subsection{Дифференцируемость гамма функции, теорема о предельном переходе в суммах, теорема о перестановке предельных переходов, признак Дирихле}
 
-\begin{slv}[https://youtu.be/x6Xwr0Rrjz8?si=CA7LSeSbAetkaL-V&t=10106]
+\begin{slv}[https://youtu.be/x6Xwr0Rrjz8?si=CA7LSeSbAetkaL-V&t=10106]\add{Дифференцируемость гамма-функции}
     \textit{Дифференцируемость гамма функции.} Запишем формулу Вейерштрасса:
     \[\frac{1}{\Gamma(x)} = xe^{\gamma x} \prod_{k = 1}^{\infty}\left(1 + \frac xk\right) \cdot e^{-\frac xk} \qquad (x > 0)\]
     Прологарифмируем её
@@ -62,7 +62,7 @@
 	\end{enumerate} 
 \end{prf}
 
-\begin{opr}
+\begin{opr}\add*{Равномерный предел функции двух переменных}
 	Пусть $f \colon E \times D \to \rr$, $E$ --- множество, $D \subset Y$ --- метрическое пространство, тогда функция $h \colon D \to \rr$ называется \urlybox{https://youtu.be/9qXOGgTLQH8?si=59zDIfOJ1HeQGlUt&t=3506}{равномерным пределом} функции $f$ при $t \to t_0$, если 
 	\[\A \eps > 0 \E U(t_0) : \text{ если } t \in U(t_0) \text{, то } \sup_{x \in E} |f(x, t) - h(x)| < \eps\]
 	Обозначается\begin{tikzcd}
@@ -71,7 +71,7 @@
 	\end{tikzcd}
 \end{opr}
 
-\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=J83eCa6QhcbamSmh&t=3797]{название}
+\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=J83eCa6QhcbamSmh&t=3797]{о перестановке двух предельных переходов}*\add*{Теорема о перестановке двух предельных переходов}
 	$f \colon E \times D \to \rr$, \quad $E \subset X$, $D \subset Y$ --- метрические пространства, $x_0$ --- предельная точка $E$, $y_0$ --- предельная точка $D$. Пусть
 	\begin{enumerate}
 		\item $\E$ функция $A \colon D \to \rr : \A y \in D$\ \  $\lim\limits_{x \to x_0} = A(y)$
@@ -90,10 +90,10 @@
 \end{teor}
 
 \begin{prf}
-	Отсутствует.
+	Отсутствует (нужна только формулировка)
 \end{prf}
 
-\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=E0w_tbdu46L_96fs&t=4135]{Признак Дирихле}
+\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=E0w_tbdu46L_96fs&t=4135]{признак Дирихле}*\add{Признак Дирихле равномерной сходимости функционального ряда}
 	Пусть $a_n, b_n \colon X \to \rr$ --- функциональные последовательности ($X$ --- множество) и
 	\begin{enumerate}
 		\item Частичные суммы $A_N(x) = \sum\limits_{n = 1}^{N}a_n(x)$ равномерно ограничены, то есть
@@ -104,7 +104,7 @@
 			\ar[yshift=-2pt]{r}[swap]{n \to \infty} & 0
 		\end{tikzcd}
 	\end{enumerate}
-	\hspace{20pt}Тогда ряд $\sum\limits_{n = 0}^{\infty} a_n(x) \cdot b_n(x)$ сходится равномерно на $X$.
+	\hspace{20pt}Тогда ряд $\sum\limits_{n = 1}^{\infty} a_n(x) \cdot b_n(x)$ сходится равномерно на $X$.
 \end{teor}
 
 \begin{prf} Есть равенство:
@@ -114,5 +114,5 @@
 	\left|\sum_{k = N}^{M} a_k(x) \cdot b_k(x)\right| \< |A_M(x)|\cdot |b_M(x)| + |A_{N-1}|\cdot |b_{N-1}(x)| \pm \sum_{k = N}^{M-1} (b_k - b_{k+1}) \cdot |A_k(x)| \<{} \\
  	{}\< C_A \cdot \bigl(|b_M(x)| + |b_{N-1}(x)| + |b_N(x)| + |b_M(x)|\bigr)
 	\end{gather*}
-	По признаку Коши равномерной сходимости ряда (\ref{кр.бол.-кош.для ряд.}) $\sum\limits_{n = 0}^{\infty} a_n(x) \cdot b_n(x)$ сходится равномерно, потому что $b_n(x)$ равномерно сходится.
+	По признаку Коши равномерной сходимости ряда (\ref{кр.бол.-кош.для ряд.}) $\sum\limits_{n = 1}^{\infty} a_n(x) \cdot b_n(x)$ сходится равномерно, потому что $b_n(x)$ равномерно сходится.
 \end{prf}
