@@ -1,0 +1,72 @@
+\begin{opr}
+	$M \subset \rmm$ называется \urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=0lksu0aSw13A2zx_&t=4311}{простым $k$-мерным (непрерывным) многообразием в $\rmm$}, если$\E O \subset \rr^k$ --- открытое,$\E \varPhi \colon O \to M$ --- гомеоморфизм \uns{(и сюръекция)}. Отображение $\varPhi$ тогда называется \urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=0lksu0aSw13A2zx_&t=4311}{параметризацией} 
+\end{opr}
+
+\begin{opr}
+	$M \subset \rmm$ называется \urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=gcGhm6CbM70GO5hO&t=5004}{простым $k$-мерным $C^r$-гладким многообразием в $\rmm$}, если $\E O \subset \rr^k$ --- открытое,$\E \varPhi \colon O \to \rmm$ --- гомеоморфизм $O$ и $M$, при этом $\varPhi \in C^r(O)$, и $\A x \in O$ $rank\, \varPhi'(x) = k$.
+	Отображение $\varPhi$ тогда называется \urlybox{https://www.youtube.com/live/g4Zgeu8xe-Q?si=gcGhm6CbM70GO5hO&t=5004}{гладкой параметризацией}  
+\end{opr}
+
+\begin{teor}[https://www.youtube.com/live/12hotjT3VcQ?si=G2LAmlGqb9J-Vqow&t=974]{о задании гладкого многообразия системой уравнений}
+	Пусть $M \subset \rmm$, $1 \< k < m$, $1 \< r \< +\infty$, тогда $\A p \in M$ эквивалентно:
+	\begin{enumerate}
+		\item $\E U(p) \subset \rmm$ --- окрестность точки $p$ такая, что $M \cap U(p)$ --- простое $C^r$-гладкое многообразие
+		
+		\item $\E \widetilde U(p) \subset \rmm$ --- окрестность точки $p$,$\E \text{функции } f_1, f_2, \ldots, f_{m - k} \colon \widetilde U(p) \to R$ класса $C^r\bigl(\widetilde U(p)\bigr)$ такие, что $x \in M \cap \widetilde U(p)$\quad \eq\quad $f_1(x) = f_2(x) = \ldots = f_{m - k} = 0$ и система векторов $\grad f_1(p),\linebreak\grad f_2(p), \ldots \grad f_{m - k}(p)$ линейно независима
+	\end{enumerate}
+\end{teor}
+
+\begin{prf}
+	$1 \Rightarrow 2$: Из определения простого $C^r$ гладкого многообразия$\E \varPhi \colon O \subset \rr^k \to \rmm$, $\varPhi \in C^r$ --- параметризация. Пусть $\varphi_1, \varphi_2, \ldots, \varphi_m$ --- её координатные функции, $p = \varPhi(t^0)$. Можно считать, что первые $k$ строк матрицы Якоби функции $f$ линейно не зависимы (в определении многообразия ранг равен $k$), т.е.\[\det \Biggl(\pfrac{f_i}{t_j} (x_0)\Biggr)_{\substack{i \in \{\,1, 2, \ldots, k \, \} \\ j \in \{\,1, 2, \ldots, k \, \}}} \ne 0\]
+	Пусть $L \colon \rmm \to \rr^k$ --- проекция, тогда $L \circ \varPhi$ --- класса $C^r$ и $\det (L \circ \varPhi)'(t_0) \ne 0$, значит по теореме \ref{лок.обр.} оно является диффеоморфизмом в некоторой окрестности точки $t_0$, то есть$\E W(t_0), V(L\varPhi(t^0))$ --- окрестности точек $t_0, L\varPhi(t^0)$ такие, что $L \circ \varPhi \colon W \to V$ --- диффеоморфизм. Пусть $\Psi \colon V \to W$ --- обратное отображение. Тогда $\varPhi(W)$ это график некоторого отображения $H \colon V \to \rr^{m - k}$. Возьмём точку $x' \in V$, тогда $(x', H(x')) = \varPhi(\Psi(x'))$. Композиция $\varPhi$ и $\Psi$, значит $H$ --- класса $C^r$. Рассмотрим открытое множество $V \times \rr^{m - k}$. $\varPhi$ --- гомеоморфизм множеств $W$ и $\varPhi(W) \subset M$, $\varPhi(W)$ --- открыто в $M$, значит$\E G \subset \rmm$ --- открытое, такое, что $\varPhi(W) = G \cap M$. Пусть $\widetilde U(p) = G \cap (V \times \rr^{m - k})$. Определим для $j \in {1, 2, \ldots, m - k}$ функции $f_j \colon \widetilde U(p) \to \rr$ так: $f_j(x) = H_j(L(x)) - x_{k + j}$.
+	Получается, что $x \in M \cap \widetilde U(p)$ \eq\ 
+	$\A j\ f_j(x) = 0$. И так как
+	\[\begin{pmatrix}
+		\grad f_1(p) \\
+		\grad f_2(p) \\
+		\vdots \\
+		\grad f_{m - k}(p) \\
+	\end{pmatrix} = \begin{pmatrix}
+	\pfrac{H_1}{x_1} & \dots & \pfrac{H_1}{k} & \vline& \\
+	\vdots & \ddots & \vdots & \vline & -E_{m - k}\\
+	\pfrac{H_{m - k}}{x_1} & \dots & \pfrac{H_{m - k}}{k} & \vline&\\
+	\end{pmatrix}\]
+	Ранг этой матрицы равен $m - k$, значит градиенты линейно независимы\\
+	$2 \Rightarrow 1$: Нам дана система из $m - k$ уравнений: $f_1(x) = f_2(x) = \ldots = f_{m - k} = 0$. Так как градиенты (строки матрицы Якоби отображения $F$) линейно независимы, можно считать, что 
+	\[\det \Biggl(\pfrac{f_i}{x_{k + j}}(p)\Biggr)_{\substack{i \in \{\,1, 2, \ldots, m - k \, \} \\ j \in \{\,1, 2, \ldots, m - k \, \}}} \ne 0\]
+	Тогда по теореме \ref{неявн.отобр.сист.}$\E \varphi \colon U(p_1, p_2, \ldots, p_k) \to V(p_{k + 1}, p_{k + 2}, \ldots, p_m)$ такое, что все решения уравнения $f = 0$ имеют вид $(x', \varphi(x'))$, тогда $\varPhi \colon U(p_1, p_2, \ldots, p_k) \to \rmm$, $x' \mapsto (x', \varphi(x'))$ --- параметризация. То есть $M \cap \widetilde U \cap (U \times V)$ ---график отображения $\varphi$ и $\varphi$ --- гомеоморфизм. Значит по определению $M \cap U(p)$ --- простое $C^r$-гладкое многообразие
+ \end{prf}
+ 
+\begin{slv}[https://www.youtube.com/live/12hotjT3VcQ?si=1Y-eMslNFh6KOyKt&t=4413]\label{две параметр.}\add{Следствие о двух параметризациях}
+	\textit{Следствие о двух параметризациях:} Пусть $M \subset \rmm$ --- $k$-мерное $C^r$-гладкое многообразие, $p \in M$,$\E U(p)$ --- окрестность точки $p$, в которой есть две параметризации класса $C^r$ $\varPhi_1 \colon O_1 \subset \rr^k \to U(p)$,
+	$\varPhi_2 \colon O_2 \subset \rr^k \to U(p)$, тогда\E диффеомомрфизм $\Theta \colon O_1 \to O_2$ такой, что $\varPhi_1 = \varPhi_2 \circ \Theta$
+\end{slv}
+
+\begin{prf}
+	Для обоих параметризаций сделаем тоже самое, что в начале доказательства теоремы (до проекции). Обозначим проекции $L_1, L_2$, и обратные отображения $\Psi_1, \Psi_2$. Так как $\varPhi_1(t) = \varPhi_2(\Psi_2(L_2(\varPhi_1(t))))$, то $\Theta = \Psi_2 \circ L_2 \circ \varPhi_1$ --- отображение класса $C^r$, т.к. составлено из отображений класса $C^r$, и оно обратимо, и обратное аналогично является отображением класса $C^r$: $\Theta^{-1} = \Psi_1 \circ L_1 \circ \varPhi_2$, значит оно является диффеоморфизмом.
+\end{prf}
+
+\begin{lem}[https://www.youtube.com/live/fxcRXGVCVFE?si=btHq7rqK3PNeKCDR&t=691]{о корректности определения касательного пространства}
+	Пусть отображение $\varPhi \colon O \subset \rr^k \to \rmm$ --- параметризация $C^r$-гладкого многообразия $M$ в окрестности точки $p \in M$. $\varPhi(t_0) = p$, тогда $\varPhi'(t_0) \colon \rr^k \to \rmm$ --- линейные оператор, его образ --- это $k$-мерное подпространство в $\rmm$, не зависящее от $\varPhi$
+\end{lem}
+
+\begin{prf}
+	Образ $k$-мерный так как $\varPhi$ --- параметризация и по определению $rank\, \varPhi'(t_0) = k$. По следствию о двух параметризациях (\ref{две параметр.}), если существует какая-нибудь параметризация $\varPhi_2$, то существует диффеоморфизм $\Theta$ такой, что $\varPhi_2 = \varPhi \circ \Theta$. Тогда $\varPhi_2' = \varPhi' \Theta'$, где $\Theta'$ непрерывен и невырожден, значит образ $\varPhi'$ равен образу $\varPhi_2'$ 
+\end{prf}
+
+\begin{opr}\add*{Касательное пространство к $k$-мерному многообразию в $R^m$}
+	$k$-мерное подпространство --- образ $\varPhi'(t_0)$ \uns{(из леммы)}, называется \urlybox{https://www.youtube.com/live/fxcRXGVCVFE?si=Cag6EPqEvZf-lh_G&t=1149}{касательным} \urlybox{https://www.youtube.com/live/fxcRXGVCVFE?si=Cag6EPqEvZf-lh_G&t=1149}{пространством} к многообразию $M$ в точке $p$. Обозначение: $\mathrm TpM$
+\end{opr}
+
+\textbf{Свойства:}
+\begin{enumerate}\add{Касательное пространство в терминах векторов скорости гладких путей}
+	\item Пусть вектор $v \in \mathrm TpM$, тогда\E  гладкий путь $\gamma \colon [-\eps, \eps] \to M$ такой, что $\gamma(0) = p$ и $\gamma'(0) = v$\\[3pt]
+	\textit{Доказательство:} пусть $\varPhi$ --- параметризация $U(p) \cap M$, $\varPhi(t_0) = p$. Возьмём $u = \bigl(\varPhi'(t_0)\bigr)^{-1}v$\linebreak\uns{ --- прообраз вектора $v$}, $\widetilde{\gamma}(s) = t_0 + su$, где $s \in [-\eps; \eps]$, тогда для $\gamma(s) = \varPhi(\widetilde{\gamma}(s))$ будет выполнено то, что нужно: $\gamma(0) = \varPhi(t_0) = p$ и $\gamma'(0) = \varPhi'(\widetilde{\gamma}(0)) \cdot \widetilde{\gamma}'(0) = \varPhi'(t_0) \cdot u = v$
+	
+	\item Пусть $\gamma \colon [-\eps; \eps] \to M$ --- гладкий путь такой, что $\gamma(0) = p$, тогда $\gamma'(0) \in \mathrm TpM$\\[3pt]
+	\textit{Доказательство:} Так как $\gamma(s) = \varPhi(\Psi(L(\gamma(s))))$, то $\gamma' = \varPhi' \circ \Psi' \circ L' \circ \gamma'$ и тогда $\gamma'(0)$ принадлежит образу $\varPhi'$, т.е. принадлежит $\mathrm TpM$
+	
+	\item \add{	Касательное пространство к графику функции и к поверхности уровня}Пусть $f \colon O \subset \rmm \to \rr$, $f \in C^1(O)$, $O$ --- открытое, $f(x) = 0$ и $f(x^0) = 0$, тогда касательное пространство в точке $x^0$ задаётся уравнением \[f'_{x_1}(x^0)(x_1 - x_1^0) + f'_{x_2}(x^0)(x_2 - x_2^0) + \ldots + f'_{x_m}(x^0)(x_m - x_m^0) = 0\]
+	\textit{Доказательство:} пусть $f'_{x_m}(x^0) \ne 0$ по теореме \ref{неявн.отобр.} $x_m = \varphi(x_1, x_2, \ldots, x_{m - 1})$; $(x_1, x_2, \ldots, x_m) \mapsto (x_1, x_2, \ldots, x_{m-1}, \varphi(x_1, \ldots, x_{m- 1 }))$ --- параметризация в окрестности точки $x^0$ многообразия $f(x) = 0$.
+	Касательная плоскость: $\sum\limits_{i = 1}^{m - 1} \varphi'_{x_i}(x_i - x^0_i) - (x_m - x^0_m) = 0$ $\Rightarrow$ $f(x_1, x_2, \ldots, x_{m - 1}, \varphi(x_1, \ldots, x_{m-1}))$, то есть $f'_{x_1} + f'_{x_m} \cdot \varphi'_{x_1} = 0$ $\Rightarrow$ $\varphi'_{x_1} = -\frac{f'_{x_1}}{f'_{x_m}}$
+\end{enumerate}

@@ -1,0 +1,61 @@
+\subsection*{\S\ Экспонента}
+
+\begin{opr} 
+	Сумму ряда $\displaystyle \exp(z) = \sum_{n = 0}^{\infty} \frac{z^n}{n!}$ будем называть \urlybox{https://www.youtube.com/live/F2g5eXOh4dk?si=UCA9WzjMZLM5tPxm&t=2768}{экспонентой}
+\end{opr}
+
+Свойства экспоненты:
+\begin{enumerate}\add{Свойства экспоненты}
+	\item По формуле Коши-Адамара радиус сходимости ряда $\sum\limits_{n = 0}^{\infty} \frac{z^n}{n!}$ равен $\lim\limits_{n \to \infty} \left(\sqrt[n]{\sfrac{1}{n!}}\right)^{-1} = +\infty$
+	
+	\item $\exp(0) = 1 + 0 + 0 + \ldots = 1$
+	
+	\item $(\exp(z))' = \left(\sum\limits_{n = 0}^{\infty} \frac{z^n}{n!}\right)' = \sum\limits_{n = 1}^{\infty} \frac{z^{n - 1}}{(n - 1)!} = \sum\limits_{k = 0}^{\infty} \frac{z^k}{k!} = \exp(z)$
+	
+	\item $\overline{\exp(z)} = \overline {\sum\limits_{n = 0}^{\infty} \frac{z^n}{n!}} = \sum\limits_{n = 0}^{\infty} \frac{\overline z^n}{n!} = \exp(\overline z)$ (сопряжённая к экспоненте равна экспоненте от сопряжённого аргумента).
+	
+	\item $\exp(z + w) = \exp(z) \cdot \exp (w)$. \textit{Доказательство:}
+	\[\sum_{n = 0}^{\infty} \frac {z^n}{n!} \cdot \sum_{n = 0}^{\infty} \frac {w^n}{n!} = \sum_{k = 0}^{\infty}\left(\frac{z^k}{k!} \cdot \frac{w^0}{0!} + \frac{z^{k - 1}}{(k - 1!)} \cdot \frac{w^1}{1!} + \ldots +\frac{z^0}{0!} \cdot \frac{w^k}{k!}  \right) = \sum_{k = 0}^{\infty}\sum_{m = 0}^{k} \frac{z^m \cdot w^{k - m}}{m! \cdot (k - m)!}\]
+	Домножая и деля на $k!$, получаем
+	\[\sum_{k = 0}^{\infty}\frac{1}{k!}\sum_{m = 0}^{k} C_k^m \cdot z^m \cdot w^{k - m} = \sum_{k = 0}^{\infty} \frac{(z + w)^k}{k!} = \exp(z + w)\]
+	
+	\item $\A z \in \cc \quad \exp(z) \ne 0$, т.к. если$\E z \in \cc : \exp(z) = 0$, то $\A w \in \cc$ $\exp(w) = \exp (w - z + z) = \exp(w - z) \cdot \exp(z) = 0$, но $\exp(0) = 1$
+	
+	\item Так как производная в нуле равна 1, то $\lim\limits_{z \to 0} \frac {e^z - 1}{z} = 1$ (из определения производной в точке 0)
+\end{enumerate}
+
+\begin{teor}[https://www.youtube.com/live/F2g5eXOh4dk?si=nifxzPZPzYrPLx5c&t=4224]{метод Абеля суммирования рядов}*\add{Mетод Абеля суммирования рядов}%
+	Пусть вещественный ряд $\sum\limits_{n = 0}^{\infty} c_n$ сходится. Определим функцию $f(x) = \sum\limits_{n = 0}^{\infty} c_nx^n$ при $x \in (-1, 1)$, тогда \raisebox{0pt}[10pt][0pt]{$\lim\limits_{x \to 1 - 0}f(x) = \sum\limits_{n = 0}^{\infty} c_n$}
+\end{teor}
+
+\begin{prf}
+	По признаку Абеля ряд $\sum\limits_{n = 0}^{\infty} c_nx^n$ равномерно сходится на промежутке $[0, 1]$, потому что ряд \raisebox{0pt}[0pt]{$\sum\limits_{n = 0}^{\infty} c_n$} сходится (по условию), и последовательность $x^n$ монотонна и равномерно ограничена единицей (при $x \in [0, 1]$). И ряд $\sum\limits_{n = 0}^{\infty} c_nx^n$ состоит из непрерывных функций, равномерно сходится, значит предельная функция тоже непрерывна. Поэтому, получаем то, что нужно, делая предельный переход 
+\end{prf}
+
+\begin{slv}[https://www.youtube.com/live/F2g5eXOh4dk?si=mbBgS7VGI0ACUieA&t=4747]
+	Пусть $\sum\limits_{n = 0}^{\infty} a_n = A$, $\sum\limits_{n = 0}^{\infty} b_n = B$, $c_n = a_nb_0 + a_{n - 1}b_1 + \ldots + a_1b_{n-1} + a_0b_n$, $\sum\limits_{n = 0}^{\infty} c_n = C$, тогда $C = AB$
+\end{slv}
+
+\begin{prf}
+	Пусть $f(x) = \sum\limits_{n = 0}^{\infty} a_nx^n$, $g(x) = \sum\limits_{n = 0}^{\infty} b_nx^n$, $h(x) = \sum\limits_{n = 0}^{\infty} c_n$. Эти ряды сходятся абсолютно при $|x| < 1$, значит $h(x) = f(x)g(x)$ при $|x| < 1$. По теореме можно сделать предельный переход при $x \to 0-1$, и получим, что $C = AB$
+\end{prf}
+
+\subsection*{\S\ Ряды Тейлора}
+
+\begin{opr}\add*{Функция, разложимая в степенной ряд в окрестности точки}
+	\urlybox{https://www.youtube.com/live/OdDauqCjZt0?si=2vCwTX4fK5U1tY01&t=961}{Функция раскладывается в степенной ряд} в точке $x_0$, если$\E \eps > 0, \E c_n \in \rr \text{ ---} \\ \text{последовательность} : \A x \in \B{x_0, \eps}\ f(x) = \sum\limits_{n = 0}^{\infty} c_n (x - x_0)^n$
+\end{opr}
+
+\begin{zam}
+	Если функция $f$ разложима в ряд на $\B{x_0, \eps}$, то $f \in C^{\infty} \bigl(\B{x_0, \eps}\bigr)$ (т.к. степенной ряд можно дифференцировать бесконечно)
+\end{zam}
+
+\begin{teor}[https://www.youtube.com/live/OdDauqCjZt0?si=LIoWv_Gjy4NYWsU4&t=1096]{Единственность разложения функции в ряд}
+	Если функция $f$ раскладывается в ряд, то этот ряд определён однозначно 
+\end{teor}
+
+\begin{prf}
+	$k$-ая производная функции $f$:
+	\[f^{(k)}(x) = \sum_{n = k}^{\infty} c_n \frac{n!}{(n - k)!}(x - x_0)^{(n - k)}\]
+	В точке $x_0$ все слагаемые будут равны нулю, кроме первого, то есть $f^{(k)}(x_0) = n! \cdot c_k$. Коэффициент $c_k$ однозначно выражается: $c_k = \frac{f^{(k)}(x_0)}{n!}$, значит ряд определён однозначно
+\end{prf}

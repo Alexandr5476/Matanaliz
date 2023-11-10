@@ -1,4 +1,4 @@
-%\subsection{Степенные ряды}
+\subsection*{\S\ Степенные ряды}
 
 \begin{opr}
 	Пусть $z_0 \in \cc,\ r \in (0, +\infty)$, тогда $\B{z, r} = \{\,z \in \cc \mid |z - z_0| < r \,\} \uns{{}\subset \cc}$ называется \urlybox{https://youtu.be/zgKkH3Nr6-4?si=xUG7X81RzS13Xsfz&t=1919}{кругом} c центром в точке $z_0$ и радиуса $r$.
@@ -60,3 +60,44 @@
 	
 	\item $\A z \in \B{z_0, R}$ возьмём $r \in \bigl(|z - z_0|, R\bigr)$, тогда в шаре $\overline{\B{z_0, r}}$ есть равномерная сходимость ряда $\sum\limits_{n = 0}^{\infty} a_n(z - z_0)^n$ \uns{(из пункта 1)}, и $a_n(z - z_0)^n$ непрерывна, значит по теореме Стокса-Зайдля (теорема \ref{ст-зд ряды}) $f$ непрерывна в точке $z$.
 \end{enumerate}\end{prf}
+
+\begin{lem}[https://www.youtube.com/live/AWZbCBfOlt4?si=T48B5aabxehlgrPt&t=11387]{просто}*\label{просто}
+	Если $w, w_0 \in \cc$,$\uns{\E r \in \rr :{}} |w|, |w_0| \< r$, тогда \uns{$\A n \in \mathbb N$} $|w^n - w_0^n| \< n \cdot r^{n - 1} \cdot |w - w_0|$
+\end{lem}
+
+\begin{prf}
+	Раскладываем на множители \uns{(и пользуемся неравенством треугольника)}:\\
+	$|w^n - w_0^n| = \bigl|(w - w_0) \cdot (w^{n - 1} + w^{n - 2} \cdot w_0 + w^{n - 3} \cdot w_0^2 + \ldots + w \cdot w_0^{n - 2} + w_0^{n - 1})\bigr| \<{}$ \\
+	${}\<|w - w_0| \cdot \bigl(|w^{n - 1}| + |w^{n - 2} \cdot w_0| + |w^{n - 3} \cdot w_0^2| + \ldots + |w \cdot w_0^{n - 2}| +|w_0^{n - 1}|\bigr) \< |w - w_0| \cdot n \cdot r^{n - 1}$
+\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/F2g5eXOh4dk?si=duGVAZL42TPq1fYe&t=502]{о дифференцировании степенного ряда}
+	Пусть радиус круга сходимости степенного ряда $f(z) = \sum\limits_{n = 0}^{\infty} a_n (z-z_0)^n$ равен $R$, тогда радиус круга сходимости ряда \raisebox{0pt}[0pt][0pt]{$\sum\limits_{n = 1}^{\infty} n \cdot a_n (z-z_0)^{n - 1}$} тоже равен $R$ и \raisebox{0pt}[12pt][0pt]{$f'(z) = \sum\limits_{n = 1}^{\infty} n \cdot a_n (z-z_0)^{n - 1}$}
+\end{teor}
+
+\begin{prf}\begin{enumerate}
+	\item Радиусы кругов сходимости рядов $\sum\limits_{n = 1}^{\infty} n \cdot a_n (z-z_0)^{n - 1}$ и $\sum\limits_{n = 1}^{\infty} n \cdot a_n (z-z_0)^{n}$ одинаковые 
+	\uns{(при $z = t$ частичные суммы первого ряда сходятся к $g$ \eq\ частичные суммы второго ряда сходятся к $(t - z_0)g$)}, тогда по формуле Коши-Адамара (т. \ref{круг сходимости}) радиус круга сходимости этого ряда равен $(\varlimsup\limits_{n \to \infty} \sqrt[n]{|a_n| \cdot n})^{-1} = (\varlimsup\limits_{n \to \infty} \sqrt[n]{|a_n|})^{-1} = R$, \uns{т.к. $\varlimsup\limits_{n \to \infty} \sqrt[n] n = 1$} 
+	
+	\item Будем искать производную \uns{(комплексную)} $f$ в точке $a \in \B{z_0, R}$ по определению:
+	\[\frac{f(z) - f(a)}{z - a} = \sum_{n = 0}^{\infty} a_n \frac{(z - z_0)^n - (a - z_0)^n}{z - a} \quad\text{\uns{--- подставили $f$}}\]
+	Пусть $w = z - z_0$, $w_0 = a - z_0$, тогда $w - w_0 = z - a$, значит в шаре $\B{z_0, r}$ ($r < R$ такое, что $|w|, |w_0| \< r$) по лемме \ref{просто} 
+	\[\left| a_n \frac{w^n - w_0^n}{w - w_0}\right| \< a_n \cdot n \cdot r^{n - 1} \] 
+	Тогда по признаку Вейерштрасса (т. \ref{пр.вейер.}) ряд $\sum\limits_{n = 1}^{\infty} a_n \frac{w^n - w_0^n}{w - w_0}$ сходится, т.к. ряд $\sum\limits_{n = 1}^{\infty} a_n \cdot n \cdot r^{n - 1}$\linebreak сходится, потому что это ряд \raisebox{0pt}[10pt]{$\sum\limits_{n = 1}^{\infty} n \cdot a_n (z-z_0)^{n - 1}$}, в который подставлено $z = z_0 + r \uns{{}\in \B{z_0, R}}$, а он сходится по пункту 1 (и сходится абсолютно по т. \ref{круг сходимости}). Значит по теореме \ref{пред.пер.в сум.}
+	\[\lim_{w \to w_0}\sum_{n = 1}^{\infty} a_n \frac{w^n - w_0^n}{w - w_0} = \sum_{n = 1}^{\infty} \lim_{w \to w_0} a_n \frac{w^n - w_0^n}{w - w_0} = \sum_{n = 1}^{\infty}  a_n \cdot n \cdot w_0^{n - 1}\]
+	Последнее равенство получается, раскладывая $w^n - w_0^n$ на множители как в лемме \ref{просто} и сокращая $w - w_0$. B подставляя то, чему равно $w_0$, получаем, что
+	\[f'(a) = \sum_{n = 1}^{\infty} n \cdot a_n (a - z_0)^{n - 1}\]
+\end{enumerate}\end{prf}
+
+\begin{slv}[https://www.youtube.com/live/F2g5eXOh4dk?si=d9I5R8WwiUjJdq_V&t=1918]
+	\begin{enumerate}
+		\item Если радиус круга сходимости степенного ряда $f(z) = \sum\limits_{n = 0}^{\infty} a_n (z-z_0)^n$ равен $R$, тогда $f \in C^{\infty}\bigl(\B{z_0, R}\bigr)$ \uns{(после дифференцирования степенного ряда получается степенной ряд, который можно опять дифференцировать)}\pagebreak
+		
+		\item Для вещественных степенных рядов $f(x) = \sum\limits_{n = 0}^{\infty} a_n (x - x_0)^n$ (т.е. $a_n, z, z_0 \in \rr$) выполнено:
+		\[\int_{x_0}^x f(t) \,dt = \sum_{n = 0}^{\infty} \frac{a_n}{n + 1}(x - x_0)^{n + 1}\]
+		Потому что беря производную от этого ряда, получаем $f(x)$. Слева и справа написаны первообразные функции $f$, они могут отличаться на константу, но в точке $x_0$ они обе равны нулю, значит они совпадают.\\[5pt]
+		\textit{Пример:} $-\frac 1 {1 + x^2} = -1 + x^2 - x^4 + x^6 - \ldots$\quad \uns{(сумма геометрической прогрессии)}, тогда
+		\[\int_{0}^x -\frac 1 {1 + t^2} \,dt = - x + \frac{x^3}{3} - \frac{x^5}{5} + \ldots \quad \text{\small(под интегралом стоит производная $\arcctg t$), значит}\] 
+		\[\arcctg t \bigg|^x_0 = \arcctg x - \frac{\pi}{2} \quad \Rightarrow \quad \arcctg x = \frac{\pi}{2} - x + \frac{x^3}{3} - \frac{x^5}{5} + \ldots\] 
+	\end{enumerate}
+\end{slv}

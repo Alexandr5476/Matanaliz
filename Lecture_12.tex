@@ -28,8 +28,8 @@
 	$\tilde u_n(x)$ --- непрерывны в точке $x_0$ (потому что по условию $\lim\limits_{x \to x_0} u_n(x) = a_n$) и \raisebox{0pt}[0pt][0pt]{$\sum\limits_{n = 1}^{\infty} \tilde u_n(x)$} равномерно сходится на $E \cup \{\,x_0\,\}$, так как \[\sup\limits_{x \in E \cup \{\,x_0\,\}} \left|\sum\limits_{k = n + 1}^{\infty} \tilde u_k(x)\right| \< \sup\limits_{x \in E} \left|\sum\limits_{k = n + 1}^{\infty} u_k(x)\right| + \sum\limits_{k = n + 1}^{\infty} a_k \xrightarrow[n \to \infty]{} 0\] Значит по теореме Стокса-Зайдля для рядов (т. \ref{ст-зд ряды}) сумма ряда $\sum\limits_{n = 1}^{\infty} \tilde u_n(x) = \tilde S(x)$ непрерывна в точке $x_0$, поэтому $\lim\limits_{x \to x_0} \left(\sum\limits_{n = 1}^{\infty} u_n(x)\right) = \lim\limits_{x \to x_0}\tilde S(x) = \tilde S(x_0) = \sum\limits_{n = 1}^{\infty} \tilde u_n(x_0) =\sum\limits_{n = 1}^{\infty} a_n$
 \end{prf}
 
-\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=mBg2DX_lyz8KW2Lk&t=2844]{о перестановке предельных переходов}
-	$f_n \colon E \subset X \to \rr$, ($X$ --- метрическое пространство), $x_0$ --- предельная точка $E$, пусть 
+\begin{teor}[https://youtu.be/9qXOGgTLQH8?si=mBg2DX_lyz8KW2Lk&t=2844]{о перестановке предельных переходов}*\add*{теорема о перестановке предельных переходов}%
+	$f_n \colon E \subset X \to \rr$, ($X$ --- метрическое пространство), $x_0$ --- предельная точка $E$, пусть
 	\begin{enumerate}
 	\item $\A n\ \ f_n(x) \xrightarrow[x \to x_0]{} A_n$, \quad($A_n$ --- конечный предел)
 	\item \begin{tikzcd}
@@ -63,18 +63,18 @@
 \end{prf}
 
 \begin{opr}\add*{Равномерный предел функции двух переменных}
-	Пусть $f \colon E \times D \to \rr$, $E$ --- множество, $D \subset Y$ --- метрическое пространство, тогда функция $h \colon D \to \rr$ называется \urlybox{https://youtu.be/9qXOGgTLQH8?si=59zDIfOJ1HeQGlUt&t=3506}{равномерным пределом} функции $f$ при $t \to t_0$, если 
+	Пусть $f \colon E \times D \to \rr$, $E$ --- множество, $D \subset Y$ --- метрическое пространство, тогда функция $h \colon E \to \rr$ называется \urlybox{https://youtu.be/9qXOGgTLQH8?si=59zDIfOJ1HeQGlUt&t=3506}{равномерным пределом} функции $f$ при $t \to t_0$ {\small($t_0$ --- пре\-дель\-ная точка $D$)}, если 
 	\[\A \eps > 0 \E U(t_0) : \text{ если } t \in U(t_0) \text{, то } \sup_{x \in E} |f(x, t) - h(x)| < \eps\]
 	Обозначается\begin{tikzcd}
 		f(x, t) \ar[yshift=2pt]{r}{}
 		\ar[yshift=-2pt]{r}[swap]{t \to t_0} & h(x)
-	\end{tikzcd}
+	\end{tikzcd} 
 \end{opr}
 
 \begin{teor}[https://youtu.be/9qXOGgTLQH8?si=J83eCa6QhcbamSmh&t=3797]{о перестановке двух предельных переходов}*\add*{Теорема о перестановке двух предельных переходов}
 	$f \colon E \times D \to \rr$, \quad $E \subset X$, $D \subset Y$ --- метрические пространства, $x_0$ --- предельная точка $E$, $y_0$ --- предельная точка $D$. Пусть
 	\begin{enumerate}
-		\item $\E$ функция $A \colon D \to \rr : \A y \in D$\ \  $\lim\limits_{x \to x_0} = A(y)$
+		\item $\E$ функция $A \colon D \to \rr : \A y \in D$\ \  $\lim\limits_{x \to x_0} f(x, y) = A(y)$
 		
 		\item \begin{tikzcd}
 			f(x, y) \ar[yshift=2pt]{r}{}
