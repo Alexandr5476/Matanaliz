@@ -1,0 +1,183 @@
+\subsection*{\S\ Регулярность меры Лебега}
+
+\begin{teor}[https://www.youtube.com/live/FFhHi8qwuDM?si=c0fvjAdQVddCFwdh&t=10791]{регулярность меры Лебега}\label{рег.мер.леб.}
+	Пусть $A \in \m$, тогда $\A \eps > 0 \E $ открытое $G_\eps \supset A : \lambda(G_\eps \setminus A) < \eps$ и\E замкнутое $F_\eps \subset A : \lambda (A \setminus F_\eps) < \eps$ 
+\end{teor}
+
+\begin{prf}
+	\begin{enumerate}
+		\item Если $\lambda(A)$ конечная. Тогда по теореме \ref{прод.меры} $\lambda(A) = \inf\left\{\sum\limits_{i = 1}^\infty \lambda(P_i) \mid A \subset \bigcup\limits_{i = 1}^\infty P_i \uns{, P_i \text{ --- ячейки}}\right\}$, то есть $\A \eps > 0 \E P_k \text{ --- ячейки} : A \subset \bigcup\limits_{k = 1}^\infty P_k \text{ и } \sum\limits_{k = 1}^\infty \lambda(P_k) < \lambda(A) + \sfrac{\eps}{2}$. Пусть $\widetilde{P_k}$ --- открытые параллелепипеды такие, что $A \subset \bigcup\limits_{k = 1}^\infty P_k \subset \bigcup\limits_{k = 1}^\infty \widetilde{P_k}$ и $\lambda(P_k) < \lambda(\widetilde{P_k}) < \lambda(P_k) + \frac{\eps}{2^{k+1}}    $. Возьмём $G_\eps = \bigcup\limits_{k = 1}^\infty \widetilde{P_k}$, тогда $\lambda(G_\eps) \< \sum\limits_{k = 1}^\infty \lambda(\widetilde{P_k})\!< \sfrac{\eps}{2} + \sum\limits_{k = 1}^\infty \lambda(P_k)\!<\!\lambda(A) + \eps$, т.е. $\lambda (G_\eps \setminus A) = \lambda(G_\eps) - \lambda(A)\!<\!\eps$ 
+		
+	\item Если $\lambda(A) = \infty$, то используем $\sigma$-конечность $\lambda$ (т.е.$\E Q_i : \rmm = \bigsqcup\limits_{i=1}^\infty Q_i$, где $Q_i$ --- ячейки с конечной мерой): $A  = \bigsqcup\limits_{i=1}^\infty (A \cap Q_i)$. Тогда$\E G_{\eps_k} \supset (A \cap Q_k) : \lambda\bigl(G_{\eps_k} \setminus (A \cap Q_k) \bigr) < \frac{\eps}{2^k}$, и можно взять $G_\eps = \bigcup\limits_{k = 1}^\infty G_{\eps_k}$. Тогда $\lambda(G_\eps \setminus A) \< \sum\limits_{k = 1}^\infty \lambda\bigl(G_{\eps_k} \setminus (A \cap Q_k) \bigr) < \eps$, так как $G_\eps \setminus A  = \left(\bigcup\limits_{k = 1}^\infty G_{\eps_k}\right) \setminus \left(\bigsqcup\limits_{i=1}^\infty (A \cap Q_i)\right) \subset \bigcup\limits_{k = 1}^\infty \bigl(G_{\eps_k} \setminus (A \cap Q_k)\bigr)$
+	\end{enumerate}
+	\hspace{20pt}Про замкнутые: для $A^\complement \E$ открытое $G_\eps \supset A\sct: \lambda(G_\eps \setminus A^\complement) < \eps$, тогда можно взять $F_\eps = (G_\eps)^\complement$, так как $G_\eps \setminus A^\complement = A \setminus (G_\eps)^\complement$
+\end{prf}
+
+\begin{opr}
+	Наименьшая $\sigma$-алгебра $\mathcal{B} \subset \m$, содержащая все открытые множества, называется \urlybox{https://www.youtube.com/live/Y10gq1j3ADI?si=isuxZs3OM-hWTIL8&t=2248}{Борелевской $\sigma$-алгеброй}.
+\end{opr}
+
+\begin{slv}[https://www.youtube.com/live/Y10gq1j3ADI?si=pi4XrF5pr-6Jlsva&t=2510]\label{первое сл.}
+	$\A A \in \m \E B, C \in \mathcal B$ такие, что $B \subset A \subset C$ и $\lambda(A \setminus B)  = \lambda(C \setminus A) = 0$. \textit{Доказательство:} в качестве $B$ и $C$ можно из теоремы \ref{рег.мер.леб.} взять соответственно $\bigcup\limits_{n = 1}^\infty F_{\frac 1n}$ и $\bigcap\limits_{n = 1}^\infty G_{\frac 1n}$, тогда $\lambda(A \setminus B) \< \lambda(A \setminus F_{\frac 1n}) < \frac 1n \xrightarrow[n \to \infty]{} 0$ и $\lambda(C \setminus A) \< \lambda(G_{\frac 1n} \setminus C) < \frac 1n \xrightarrow[n \to \infty]{} 0$.
+\end{slv}
+
+\begin{slv}\label{изм.в виде компакт.}
+	Сразу из предыдущего следствия получается, что любое измеримое множество $A$ можно представить в виде $A = \bigcap\limits_{n = 1}^\infty E_n \setminus N_1 = \bigcup\limits_{n = 1}^\infty D_n \cup N_2$, где $E_n$ --- открытые, $D_n$ --- замкнутые, $N_1, N_2$ --- множества меры 0. Так как любое замкнутое множество $D_n$ представимо в виде объединения компактных множеств $D_n = \bigcup\limits_{k = 1}^\infty D_n \cap Q_{2k}$ (где $Q_{2k}$ --- куб с центром в точке 0 и длиной стороны $2k$), то ещё получаем, что $A = \bigcup\limits_{n = 1}^\infty K_n \cup N_2$, где $K_n$ --- компакты.
+\end{slv}
+
+\begin{slv}[https://www.youtube.com/live/Y10gq1j3ADI?si=rFm4joBm1-0psrIl&t=2776]
+	 Любое $A \in \m$ представимо в виде $A = B \cup N$, где $B \in \mathcal{B}$, $N$ --- множество меры 0 (подходит $B$ из следствия \ref{первое сл.}, $N = A \setminus B$).
+\end{slv}
+
+\begin{slv}[https://www.youtube.com/live/Y10gq1j3ADI?si=4Ad_ti-hop1CSjfp&t=2973]
+	\textit{Регулярность меры Лебега:} пусть $A$ --- измеримо, тогда\\ \[\lambda(A) \stackrel{1}{=} \hspace{-10pt}\inf\limits_{\substack{G: A \subset G \\ G \text{ --- откр.}}}\hspace{-5pt}\{\,\lambda(G)\,\} \stackrel{2}{=} \hspace{-10pt}\sup\limits_{\substack{F: F \subset A \\ F \text{ --- замкн.}}}\hspace{-8pt}\{\,\lambda(F)\,\} \stackrel{3}{=} \hspace{-13pt}\sup\limits_{\substack{F: F \subset A \\ F \text{ --- компакт.}}}\hspace{-12pt}\{\,\lambda(F)\,\}\] \textit{Доказательство:}
+	\begin{enumerate}
+		\item $\lambda(A) = \hspace{-10pt}\inf\limits_{\substack{G: A \subset G \\ G \text{ --- откр.}}}\hspace{-5pt}\{\,\lambda(G)\,\}$ \eq\ $\A \eps > 0 \E \text{ открытое } G \supset A : \lambda(G) - \lambda(A) < \eps$. Такое $G$ существует\vspace{-10pt} \hspace*{14.7cm}по теореме \ref{рег.мер.леб.}.
+		
+		\item $ \lambda(A) = \hspace{-10pt}\sup\limits_{\substack{F: F \subset A \\ F \text{ --- замкн.}}}\hspace{-8pt}\{\,\lambda(F)\,\}$ \eq\ $\A \eps > 0 \E \text{ замкнутое } F \subset A : \lambda(A) - \lambda(F) < \eps$. Такое $F$ существует\vspace{-10pt} \hspace*{14.7cm}по теореме \ref{рег.мер.леб.}.
+		
+		\item Если $A$ --- ограничено, то это пункт 2. Если $A$ --- не ограничено, то из пункта 2 для $\eps_0$ возьмём замкнутое $F \subset A : \lambda(A) - \lambda(F) < \eps_0$ и рассмотрим компактные множества $B_n = F \cap Q_{2n}$, где $Q_{2n}$ --- куб с центром в точке 0 и длиной стороны $2n$. Тогда из непрерывности меры снизу (теорема \ref{непр.меры снизу}) $\lambda(B_n) \xrightarrow[n \to \infty]{} \lambda(F)$, то есть $\A \eps > 0 \E n : \lambda(F) - \lambda(B_n) < \eps$. Значит$\E n_0 : \lambda(F) - \lambda(B_{n_0}) < \eps_0$ и тогда $\lambda(A) - \lambda(B_{n_0}) < 2\eps_0$. Это выполнено для любого $\eps_0$, поэтому $\lambda(A) = \hspace{-13pt}\sup\limits_{\substack{F: F \subset A \\ F \text{ --- компакт.}}}\hspace{-12pt}\{\,\lambda(F)\,\}$
+	\end{enumerate}
+\end{slv}
+
+\subsection*{\S\ Преобразование меры Лебега при сдвигах и линейных отображениях}
+\palka{
+Пусть $f \colon X \to Y$, $X$ и $Y$ --- множества, тогда $\A A, B \subset X$, \ $ \A C, D \subset Y$ верно: \columnsep=40pt
+\begin{multicols}{2}\begin{enumerate}
+	\item Если $A \subset B$, то $f(A) \subset f(B)$
+	
+	\item\label{форм.объед.} $f(A \cup B) = f(A) \cup f(B)$
+	
+	\item $f(A \cap B) \subset f(A) \cap f(B)$\uns{;} \parbox{4cm}{\uns{\small если $f$ --- инъекция,\vspace{-5pt}\\\hspace*{1.5pt}то будет равенство}}
+	
+	\item $f\left(A\sct\right) = \bigl(f(A)\bigr)\sct$, если $f$ --- биекция
+	
+	\item Если $C \subset D$, то $f^{-1}(C) \subset f^{-1}(D)$
+	
+	\item $f^{-1}(C \cup D) = f^{-1}(C) \cup f^{-1}(D)$ 
+	
+	\item $f^{-1}(C \cap D) = f^{-1}(C) \cap f^{-1}(D)$
+	
+	\item $f^{-1}\left(C\sct\right) = \bigl(f^{-1}(C)\bigr)\sct$
+\end{enumerate}\end{multicols}
+Доказательства: \small\uns{(буквы $\Lambda$ и $\Pi$ обозначают левые и правые части доказываемых равенств)}
+\begin{enumerate}[leftmargin=20pt]
+	\item $\Lambda = \{\,f(x) \mid x \in A \subset B\,\} \subset \{\,f(x) \mid x \in B\,\} = \Pi$
+	
+	\item $\Lambda = \{\, f(x) \mid x \in A \text{ или } x \in B \,\} = \{\, f(x) \mid x \in A\,\} \cup \{\, f(x) \mid x \in B\,\} = \Pi$
+	
+	\item $\Lambda = \{\, y \in Y \mid \!\!\!\E t \in A : t \in B \text{ и } f(t) = y\,\}
+	\stackrel{\text{\uns{\hspace{-6.2cm}\raisebox{-1cm}[0pt][0pt]{\makebox[0pt]{\parbox{5.7cm}{\footnotesize если $f$ инъекция, то тут равенство \raisebox{-.27cm}[0pt][0pt]{\makebox[0pt]{\hspace{1cm}\begin{picture}(50,50)\put(10,10){\vector(1,2){8}}\end{picture}}}}}}}}}{\subset}
+	\{\, y \in Y \mid \!\!\!\E t \in A : f(t) = y\,\} \cap \{\, y \in Y \mid \!\!\!\E t \in B : f(t) = y\,\} = \Pi$
+	
+	\item $\Lambda = \{\, y \in Y \mid \!\!\! \E t \in A\sct : f(t) = y\,\} = \{\, y \in Y \mid \!\!\! \E t \notin A : f(t) = y\,\}
+	\stackrel{\text{\uns{\raisebox{.51cm}[0pt][0pt]{\makebox[0pt]{\hspace{7.03cm}\parbox{5.4cm}{\raisebox{-.27cm}[0pt][0pt]{\makebox[0pt]{\begin{picture}(50,50)\put(10,10){\vector(-1,-2){8}}\end{picture}}}\hspace{-.41cm}\footnotesize тут нужно, чтобы $f$ была биекцией}}}}}}{=} 
+	\{\, y \in Y \mid \A t \in A\ f(t) \ne y\,\} = \Pi$
+	
+	\item $\Lambda = \{\,x \in X \mid f(x) \in C \subset D\,\} \subset \{\,x \in X \mid f(x) \in D\,\} = \Pi$
+	
+	\item $\Lambda = \{\,x \in X \mid f(x) \in C \text{ или } f(x) \in D \,\} = \{\,x \in X \mid f(x) \in C\,\} \cup \{\,x \in X \mid f(x) \in D\,\} = \Pi$
+	
+	\item $\Lambda = \{\,x \in X \mid f(x) \in C \text{ и } f(x) \in D \,\} = \{\,x \in X \mid f(x) \in C\,\} \cap \{\,x \in X \mid f(x) \in D\,\} = \Pi$
+	
+	\item $\Lambda = \{\,x \in X \mid f(x) \in A\sct \,\} = \{\,x \in X \mid f(x) \notin A \,\} = \{\,x \in X \mid x \in A \,\}\sct = \Pi$
+\end{enumerate}
+}
+
+\begin{lem}[https://www.youtube.com/live/Y10gq1j3ADI?si=dH5YwUPGm-AOcG8D&t=3682]{первая}\label{перв.лемма}%
+	Пусть $X', X$ --- множества, $\mathcal{A', A}$ --- соответствующие $\sigma$-алгебры, $\mu'$ --- мера на $\mathcal A'$, отображение $T\colon X \to X'$ --- биекция такая, что $\A A \in \mathcal{A}\ T(A) \in \mathcal A'$ (и $T(\no) = \no$), тогда функция $\mu \colon \mathcal A \to \rr$ $\mu(A) = \mu'\bigl(T(A)\bigr)$ является мерой на $\mathcal A$
+\end{lem}
+
+\begin{prf}
+	Проверим счётную аддитивность $\mu$ {\small(\ref{опр.меры})}. Пусть $A, A_1, A_2, \ldots \in \mathcal{A} : A = \bigsqcup\limits_{i = 1}^\infty A_i$,\vspace*{-5pt} тогда используя формулу \ref{форм.объед.} и счётную аддитивность $\mu'$, получаем
+	\[\mu(A) = \mu'\bigl(T(A)\bigr) = \mu'\left(T\left(\bigsqcup_{i = 1}^\infty A_i\right)\right) \stackrel{\text{(\raisebox{-1.5pt}{\large\textasteriskcentered})}}{=} \mu'\left(\bigsqcup_{i = 1}^\infty T(A_i)\right) = \sum_{i = 1}^\infty \mu'\bigl(T(A_i)\bigr) = \sum_{i = 1}^\infty \mu(A_i)\]
+	(\raisebox{-1pt}{\Large\textasteriskcentered}) --- формула \ref{форм.объед.} используется с дизъюнктным объединением, поэтому $T$ должно быть биекцией
+\end{prf}
+
+%\begin{zam}
+%	Если $T$ --- не биекция, то $\{\,T(A) \mid A \in \mathcal A \,\} \subset \mathcal A'$ может не образовывать $\sigma$-алгебру
+%\end{zam}
+
+\begin{lem}[https://www.youtube.com/live/Y10gq1j3ADI?si=-TzW_Myt1TIwVTsR&t=4307]{о сохранении измеримости при непрерывном отображении}\label{сохр.изм.гл.отобр.}%
+	Пусть $T \colon \rmm \to \rr^n$ --- непрерывное отображение, $\A E \in \m : \lambda(E) = 0$ \ $T(E)$ --- измеримо. Тогда $\A A \in \m$ \ $T(A)$ --- измеримо
+\end{lem}
+
+\begin{prf}
+	Любое $A \in \m$ представимо в виде \raisebox{0pt}[0pt][0pt]{$A = \bigcup\limits_{i = 1}^\infty K_i \cup N$}, где $K_i$ --- компакты, $N$ --- множество меры 0 (следствие \ref{изм.в виде компакт.}). Тогда $T(A) = \bigcup\limits_{i = 1}^\infty T(K_i) \cup T(N)$ (формула \ref{форм.объед.}). Множества $T(K_i)$ --- измеримы, т.к. являются компактами, потому что при непрерывном отображении образ компакта --- компакт. 
+\end{prf}
+
+\begin{lem}[https://www.youtube.com/live/Y10gq1j3ADI?si=IRliD795RU_1fBzG&t=6832]{о сохранении измеримости при гладком отображении}\label{о сохр.изм.при гл.отобр.}
+	Пусть $\varPhi \colon O \subset \rmm \to \rmm \in C^1(O)$, $O$ --- область. Тогда $\A A \in \m$ $\varPhi(A) \in \m$
+\end{lem}
+
+\begin{prf}
+	Пусть $E$ --- множество меры 0.
+	\begin{enumerate}
+	\item \label{п.1}Если$\E P$ --- ячейка такая, что $E \subset P \subset \overline P \subset O$, то возьмём $L = \max\limits_{x \in \overline{P}} \|\varPhi'(x)\|$ \uns{($\overline P$ --- компакт и по условию $\varPhi'$ непрерывна на $\overline P$, поэтому $\max$ достигается)}, тогда по теореме Лагранжа $\A x, y \in P$ $\|\varPhi(x) - \varPhi(y) \|\< L\cdot \|x - y\|$, значит $\A \B{a, r} \subset P$ $\varPhi\bigl(\B{a, r}\bigr) \subset \BB{\varPhi(a), L \cdot r}$. Фиксируем $\eps > 0$. По лемме \ref{стр.мн.мер.0}$\E Q(a_i, r_i)$ --- кубические ячейки такие, что $E \subset \bigcup\limits_{i = 1}^\infty Q(a_i, r_i)$ и $\sum\limits_{i = 1}^\infty \lambda\bigl(Q(a_i, r_i)\bigr) = \sum\limits_{i = 1}^\infty(2r_i)^m < \eps$. Тогда $E \subset \bigcup\limits_{i = 1}^\infty \B{a_i, \sqrt m r_i}$ \uns{(шары, описанные вокруг ячеек)}. Значит $\varPhi(E) \subset \bigcup\limits_{i = 1}^\infty \varPhi\bigl( \B{a_i, \sqrt m r_i}\bigr) \subset \bigcup\limits_{i = 1}^\infty \BB{\varPhi(a_i), L \cdot \sqrt m r_i} \subset \bigcup\limits_{i = 1}^\infty Q\bigl(\varPhi(a_i), L \cdot \sqrt m r_i\bigr)$. И $\sum\limits_{i = 1}^\infty \lambda \Bigl(Q\bigl(\varPhi(a_i), L \cdot \sqrt m r_i\bigr)\Bigr) = \sum\limits_{i = 1}^\infty (2r_iL\sqrt{m})^m < (L\sqrt m)^m \cdot\eps$, т.е. $\lambda\bigl(\varPhi(E)\bigr) = 0$
+	
+	\item Если $E$ --- любое, то $O$ можно представить в виде дизъюнктного объединения ячеек $D_j$ (лемма \ref{изм.откр.мн.}). Пусть $E_j = E \cap D_j$, тогда  $\lambda\bigl(\varPhi(E_j)\bigr) = 0$ по пункту \ref{п.1}, и $\varPhi(E) = \bigsqcup\limits_{j = 1}^\infty \varPhi(E_j)$, значит  $\lambda\bigl(\varPhi(E)\bigr) = 0$
+	\end{enumerate}
+	\hspace{20pt}Поэтому из леммы \ref{сохр.изм.гл.отобр.} получаем, что $\A A \in \m$ $A$ --- измеримо.
+\end{prf}
+
+\begin{slv}[https://www.youtube.com/live/Y10gq1j3ADI?si=jLLGymkDBW3xE0TH&t=8149]\label{инв.отн.сдв.}
+	Инвариантность меры Лебега относительно сдвигов: $\A A \in \m$, $\A a \in \rmm$ выполнено $(a + A) \in \m$ (т.к. отображение $x \mapsto x + a$ гладкое) и $\lambda(a+ A) = \lambda(A)$ (т.к. из формулы \ref{форм.меры} меру множества $A$ можно посчитать как inf сумм мер ячеек $P_i$ по всем покрытиям $A$ ячейками, тогда для множества $a + A$ покрытия будут состоять из ячеек $a + P_i$, и очевидно, что мера ячейки не меняется при сдвиге).
+\end{slv}
+
+\begin{teor}[https://www.youtube.com/live/Y10gq1j3ADI?si=PWNijQFbbR0Ia10-&t=8306]{о мерах, инвариантных относительно сдвигов}\label{меры инв.отн.сдв.}
+	Пусть $\mu$ --- мера \uns{(не Лебега)} на \m\ и 
+	\begin{enumerate}
+		\item $\mu$ инвариантна относительно сдвигов (т.е. $\A A \in \m, a \in \rmm$ $(a + A) \in \m$ и $\mu(a + A) = \mu(A)$)
+		
+		\item Мера ограниченного множества конечна
+	\end{enumerate}
+	\hspace{20pt}Тогда$\E k \in [0, \infty) : \A E \in \m$ $\mu(E) = k \cdot \lambda (E)$ \uns{($\lambda$ --- мера Лебега)}
+\end{teor}
+
+\begin{prf}
+	Без доказательства.
+\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/Y10gq1j3ADI?si=7KD9370OVRWXYlc7&t=8780]{инвариантность меры Лебега при ортогональном преобразовании}\label{мера при орт. преобр.}
+	Пусть $T \colon \rmm \to \rmm$ --- линейное ортогональное преобразование (т.е. линейное отображение, сохраняющее скалярное произведение). Тогда $\A E \in \m$ $T(E) \in \m$ и $\lambda(T(E)) = \lambda(E)$
+\end{teor}
+
+\begin{prf}
+	По лемме \ref{о сохр.изм.при гл.отобр.} измеримость множеств сохраняется (т.к. линейное отображение --- гладкое). Для $A \in \m$ определим $\mu(A) = \lambda\bigl(T(A)\bigr)$.Тогда по лемме \ref{перв.лемма} \ $\mu$ --- мера, и она инвариантна относительно сдвигов: $\mu(A + a) = \lambda\bigl(T(A + a)\bigr) = \lambda\bigl(T(A) + T(a)\bigr) = \lambda\bigl(T(A)\bigr) = \mu(A)$, значит по теореме \ref{меры инв.отн.сдв.} $\mu$ пропорциональна мере Лебега. Коэффициент пропорциональности равен 1, т.к. для шара $A = B(0, r)$ \ $T(A) = A$ ($T$ --- сохраняет расстояние между векторами), т.е. $\lambda\bigl(T(A)\bigr) = \lambda(A)$
+\end{prf}
+
+\begin{slv}\label{мера подпр.}
+	Пусть $L \subset \rmm$ --- линейное подпространство, $\dim L = m - 1$, тогда $\lambda(L) = 0$ (и $\A A \subset L\ \lambda(A) = 0$ из-за монотонности меры). \textit{Доказательство:} Применим к $L$ такое ортагональное преобразование $T$, что $T(L) = \{\, x \in \rmm \mid x_m = 0\,\}$. Разобьём $T(L)$ на единичные ячейки $Q_k$: $T(L) = \bigcup\limits_{k = 1}^\infty Q_k$. \uns{Длина их $m$-ой стороны равна 0; немного увеличим её:} возьмём $\eps > 0$ $T(L) \subset \bigcup\limits_{k = 1}^\infty Q_k \times \left[\left.-\frac{\eps}{2^{k+1}}, \frac{\eps}{2^{k+1}}\right)\right.$. Тогда $\lambda\bigl(T(L)\bigr) \< \sum\limits_{k = 1}^\infty 1 \cdot \frac{\eps}{2^k} = \eps$. Это верно для любого $\eps > 0$, значит $\lambda\bigl(T(L)\bigr) = 0$, поэтому $\lambda(L) = 0$ по теореме \ref{мера при орт. преобр.}.
+\end{slv}
+
+\begin{lem}[https://www.youtube.com/live/Y10gq1j3ADI?si=-pbDvy1lH1-gYVgV&t=9992]{<<о структуре компактного оператора>>}\label{стр.комп.опер.}%
+	Пусть $V \colon \rmm \to \rmm$ --- линейный оператор, $\det V \ne 0$, тогда\E ортонормированные базисы $g_1, g_2, \ldots, g_m$; $h_1, h_2, \ldots, h_m$ и числа $s_1, s_2, \ldots, s_m > 0$ такие, что $\A x \in \rmm$ $V(x) = \sum\limits_{k = 0}^{m} s_k \cdot \scal{x, g_k} \cdot h_k$ и $|\det V| = s_1 \cdot s_2 \cdot \ldots \cdot s_m$ \uns{(в стандартном базисе)}
+\end{lem}
+
+\begin{prf}
+	Пусть $c_1, c_2, \ldots c_m$ --- собственные числа оператора $W = V^{\mathrm T}V$. В качестве $g_1, g_2, \ldots g_m$ возьмём собственные вектора оператора $W$, составляющие ортонормированный базис \rmm. Тогда $\A i \in \{\,1, 2, \ldots, m\,\}\ c_i >0$, т.к.
+	\[c_i = c_i \cdot \|g_i\|^2 = \scal{W(g_i), g_i} = \scal{(V^\mathrm T V)(g_i), g_i} \stackrel{(\raisebox{-1.5pt}{\large\textasteriskcentered})}{=} \scal{V(g_i), V(g_i)} = \|\bigl(V(g_i)\bigr)\|^2\]
+	(\raisebox{-1pt}{\Large\textasteriskcentered}) --- $V^{\mathrm T}$ является матрицей сопряжённого к $V$ оператора, а по определению оператор $A$ называется сопряжённым к $V$, если $\A x \in \rmm$ $\scal{x, V(x)} = \scal{A(x), x}$
+	\\[5pt]
+	Поэтому возьмём $s_i = \sqrt{c_i}$, $h_i = \frac {1}{s_i} V(g_i)$. Проверим ортогональность векторов $h_1, h_2, \ldots, h_m$: $\A i, j \in \{\,1, 2, \ldots, m\,\}, i \ne j$
+	\[\scal{h_i, h_j} = \frac{1}{s_i s_j} \scal{V(g_i), V(g_j)} = \frac{1}{s_i s_j} \scal{W(g_i), g_j} = \frac{1}{s_i s_j} \scal{c_i g_i, g_j} = 0\]
+	Проверим формулу для вычисления значения $V$ в точке $x$
+	\[V(x) = V\left(\sum_{i = 1}^m \scal{x, g_i} g_i\right) = \sum_{i = 1}^m \scal{x, g_i} V(g_i) = \sum_{i = 1}^m s_i \scal{x, g_i} h_i\]
+	Посчитаем определитель $V$
+	\[(\det V)^2 = \det V^\mathrm T V = c_1 \cdot c_2 \cdot \ldots \cdot c_m \quad \Rightarrow \quad \det V = s_1 \cdot s_2 \cdot \ldots \cdot s_m\]
+	Это определитель матрицы оператора $V$ в базисе $g_1, g_2, \ldots, g_m$, но так как этот базис и стандартный базис ортонормированные, то определители матриц оператора $V$ в этих базисах совпадают. 
+\end{prf}
+
+\begin{teor}{преобразование меры Лебега при линейных отображениях}
+	Пусть $T \colon \rmm \to \rmm$ --- линейное отображение. Тогда $\A A \in \m$ $T(A) \in \m$ и $\lambda\bigl(T(A)\bigr) = |\det T| \cdot \lambda(A)$
+\end{teor}
+
+\begin{prf} По лемме \ref{о сохр.изм.при гл.отобр.} измеримость множеств сохраняется (т.к. линейное отображение --- гладкое)
+	\begin{enumerate}
+		\item Если $\det T = 0$, то образ $L$ отображения $T$ лежит в \rmm\ и не совпадает с ним. Образ является линейным подпространством, значит по следствию \ref{мера подпр.} $\lambda(L) = 0$. %Поэтому, так как мера Лебега является полной (\ref{полная мера}, \ref{мера лебега}), то $\A A \in \m\ T(A) \in \m$ (потому что $T(A) \subset L$).
+		Из-за монотонности меры $\A A \in \m$ $\lambda\bigl(T(A)\bigr) = 0$, что соответствует формуле $\lambda\bigl(T(A)\bigr) = |\det T| \cdot \lambda(A)$
+		
+		\item Если $\det T \ne 0$, то для $A \in \m$ определим $\mu(A) = \lambda\bigl(T(A)\bigr)$.Тогда по лемме \ref{перв.лемма} $\mu$ --- мера и она инвариантна относительно сдвигов: $\mu(A + a) = \lambda\bigl(T(A + a)\bigr) = \lambda\bigl(T(A) + T(a)\bigr) = \lambda\bigl(T(A)\bigr) = \mu(A)$, значит по теореме \ref{меры инв.отн.сдв.} $\mu$ пропорциональна мере Лебега. Чтобы найти коэффициент пропорциональности, используя лемму \ref{стр.комп.опер.} (и обозначения из неё), посчитаем меру образа единичного куба $Q$ построенного на векторах $g_1, g_2, \ldots, g_m$. Из этой леммы получаем, что $\A i \in \{\,1, 2, \ldots, m\,\}$ $T(g_i) = s_i h_i$, значит $\lambda\bigl(T(Q)\bigr) = s_1 \cdot s_2 \cdot \ldots \cdot s_m = |\det T|$ \uns{(длина векторов $h_i$ равна 1)}, а $\lambda(Q) = 1$. То есть коэффициент пропорциональности равен $|\det T|$.
+		\end{enumerate}
+\end{prf}
+

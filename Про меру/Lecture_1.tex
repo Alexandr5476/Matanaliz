@@ -1,0 +1,139 @@
+\subsection*{\S\ Системы множеств}
+
+\begin{opr}
+	 Если множества $A_1, A_2, \ldots, A_n$ попарно не пересекаются (не имеют общих точек), то говорят, что они образуют \urlybox{https://www.youtube.com/live/F2g5eXOh4dk?si=VIsRrZHrI3wsUB3W&t=8531}{дизъюнктный набор множеств}. Объединение таких множеств обозначается: $\bigsqcup\limits_{i = 1}^n A_i$ (\urlybox{https://www.youtube.com/live/F2g5eXOh4dk?si=VmLzDSnQ7Fw8shv8&t=8566}{дизъюнктное объединение})
+\end{opr}
+
+\begin{opr}
+	Пусть $X$ --- множество, $\p \subset 2^X$ называется \urlybox{https://www.youtube.com/live/F2g5eXOh4dk?si=p4sYQP4cOmGPyMc-&t=8626}{полукольцом} \uns{($2^X$ означает множество всех подмножеств $X$)}, если оно удовлетворяет аксиомам:
+	\begin{enumerate}
+		\item $\no \in \p$
+		
+		\item\label{акс.2 полук.} Если $A, B \in \p$, то $A \cap B \in \p$
+		
+		\item\label{акс.3 полук.} Если $A, B \in \p$, то$\E D_1, D_2, \ldots, D_n \in \p$ (дизъюнктные) такие, что $A \setminus B = \bigsqcup\limits_{i = 1}^n D_i$
+	\end{enumerate}
+\end{opr}\vspace{-10pt}
+
+\begin{opr}
+	\urlybox{https://www.youtube.com/live/F2g5eXOh4dk?si=rBNqSmFNy34A0Y3o&t=8961}{Ячейка в \rmm} это множество $[a, b) = \{\, x \in \rmm \mid \uns{\small\A i \in \{\,1, 2, \ldots, m\,\}}\ a_i \< x_i < b_i \,\}$. Множество ячеек (обозначим его $\p^m$) является полукольцом:
+	\begin{enumerate}
+		\item Если $a, b \in \rmm$ такие, что $\uns{\small\A i \in \{\,1, 2, \ldots, m\,\}}\ a_i > b_i$, то $[a,b) = \no$
+		
+		\item $[a, b) \cap [c, d) = [u, v)$, где $\uns{\small\A i \in \{\,1, 2, \ldots, m\,\}}, u_i = \max\{\,a_i, c_i\,\}, v_i = \min\{\,a_i, d_i\,\}$
+		
+		\item Можно увидеть на каритинке\dots
+	\end{enumerate}
+\end{opr}
+
+\begin{zam}[https://www.youtube.com/live/F2g5eXOh4dk?si=5Zsc0uaBiObTYIN9&t=10040]
+	Полукольцо ячеек показывает, что если \p\ --- любое полукольцо, то
+\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{\thezam.}\makeatother
+	\item Из того что $A \in \p$ не следует, что $A^\complement \in \p$ \uns{($A^\complement$ означает дополнение к $A$)}
+	
+	\item Из того, что $A, B \in \p$ не следует, что $A \cup B \in \p$, $A \setminus B \in \p$
+	
+	\item\label{акс.3 мод.} И из аксиомы \ref{акс.3 полук.} следует, что если $A, B_1, B_2, \ldots, B_k \in \p$, то\raisebox{0pt}[0pt][0pt]{$\E \uns{\underbrace{\textcolor[rgb]{0, 0, 0}{D_1, D_2, \ldots, D_n}}_{\text{дизъюнктные}}} \in \p$} такие, что 
+	\[A \setminus \left(\bigcup_{i = 1}^k B_i\right) = \bigsqcup_{i = 1}^n D_i\]
+	\textit{Доказательство:} Индукция по $k$. База: аксиома \ref{акс.3 полук.} полукольца. Переход (от $k$ к $k + 1$):\vspace{.6cm}
+	\[A \setminus \left(\bigcup_{i = 1}^{k + 1} B_i\right) =
+	\left(A \setminus \left(\bigcup_{i = 1}^k B_i\right)\right) \setminus B_{k + 1}
+	\stackrel{\text{\uns{\hspace{-4.9cm}\raisebox{.9cm}[0pt][0pt]{\makebox[0pt]{\parbox{6cm}{по индукционному предположению\\[-5pt]$\E D_1, D_2, \ldots D_l \in \p$ (дизъюнктные):\raisebox{-.3cm}[0pt][0pt]{\makebox[0pt]{\hspace{1.2cm}
+	 \begin{picture}(50,50)
+	 		\put(10,10){\vector(1,-2){12}}
+	 \end{picture}}}}}}}}}{=}
+	 \left( \bigsqcup_{i = 1}^l D_i \right) \setminus B_{k + 1} = \bigsqcup_{i = 1}^l (D_i \setminus B_{k+1}) 
+	 \stackrel{\text{\hypersetup{  linkcolor=mygray}\uns{\hspace{-2.3cm}\raisebox{.9cm}[0pt][0pt]{\makebox[0pt]{\parbox{6cm}{по аксеоме \ref{акс.3 полук.}\!\!\!$\E D_1, \ldots D_{l_i} \in \p$\\[-5pt] (дизъюнктные) такие, что\raisebox{-.3cm}[0pt][0pt]{\makebox[0pt]{\hspace{1.2cm}
+	 							\begin{picture}(50,50)
+	 								\put(10,10){\vector(1,-2){12}}
+	 					\end{picture}}}\hypersetup{  linkcolor=linkcolor}
+	 }}}}}}{=} \bigsqcup_{i = 1}^l \bigsqcup_{j = 1}^{l_i}D_j\]
+\end{enumerate}
+\end{zam}
+
+\begin{opr}
+	Пусть $X$ --- множество, $\mathcal{A} \subset 2^X$ называется \urlybox{https://www.youtube.com/live/F2g5eXOh4dk?si=wo6N_TCZlLdAwTsZ&t=10368}{алгеброй} \uns{($2^X$ означает множество всех подмножеств $X$)}, если оно удовлетворяет аксиомам:
+	\begin{enumerate}
+		\item $X \in \mathcal{A}$
+		\item\label{акс.2 алг} Если $A, B \in \mathcal{A}$, то $A \setminus B \in \mathcal{A}$
+	\end{enumerate}
+	\hspace{20pt}Свойства алгебры:
+	\begin{enumerate}
+		\item\label{св-во1алг} $\no \in \mathcal{A}$, так как $\no = X \setminus X$
+		
+		\item\label{св-во про доп.} Если $A \in \mathcal{A}$, то $A^\complement \in \mathcal{A}$, так как $A^\complement = X \setminus A$
+		
+		\item\label{св-во3алг} Если $A, B \in \mathcal A$, то $A \cap B \in 
+		\mathcal A$, так как $A \cap B = A \setminus (A \setminus B)$
+		
+		\item Если $A, B \in \mathcal A$, то $A \cup B \in 
+		\mathcal A$, так как $A \cup B = \left(A^\complement \cap B^\complement\right)^\complement$ 
+		
+		\item Если $A_1, A_2, \ldots, A_n \in \mathcal{A}$, то $\bigcup\limits_{i = 1}^n A_i \in \mathcal{A}$ и $\bigcap\limits_{i = 1}^n A_i \in \mathcal{A}$ \uns{(по индукции)}
+		
+		\item Алгебра является полукольцом \uns{\hypersetup{  linkcolor=mygray}(\ref{акс.3 полук.} аксиома полукольца следует из \ref{акс.2 алг} аксиомы алгебры, а остальные аксиомы полукольца это свойства \ref{св-во1алг} и \ref{св-во3алг} алгебры)\hypersetup{ linkcolor=linkcolor}}
+	\end{enumerate}
+\end{opr}\pagebreak
+
+\begin{opr}
+	Алгебра $\mathcal A$ называется \urlybox{https://www.youtube.com/live/F2g5eXOh4dk?si=_MJ87daog-yEsv6b&t=10852}{$\sigma$-алгеброй}, если $\A A_1, A_2, \ldots \in \mathcal{A}$ --- счётного набора множеств, выполнено, что $\bigcup\limits_{i = 1} ^{\infty} A_i \in \mathcal A$ 
+\end{opr}
+
+\begin{zam}[https://www.youtube.com/live/F2g5eXOh4dk?si=-4vhdJ7JrbftgzG7&t=10938]
+	Пересечение счётного набора множеств из $\sigma$-алгебры $\mathcal A$ тоже принадлежит $\mathcal A$, т.к. \[X \setminus \bigcap_{i = 1}^{\infty}A_i = \bigcup_{i = 1}^{\infty}(X\setminus A_i) \in \mathcal{A} \quad \Rightarrow\quad \bigcap_{i = 1}^{\infty}A_i \text{\quad(по \ref{св-во про доп.} свойству алгебры)}\]
+\end{zam}
+
+\subsection*{\S\ Объём}
+
+\begin{opr}\label{адд.}
+	Пусть \p --- полукольцо, тогда функция $\mu \colon \p \to \overline\rr$ называется \urlybox{https://www.youtube.com/live/OdDauqCjZt0?si=Hxu8RhvaLbYkaV4O&t=7786}{\uns{конечно-}аддитивной}, если
+	\begin{enumerate}
+		\item $\mu(\no) = 0$
+		
+		\item В образе $\mu$ нет одновременно $+\infty$ и $-\infty$ \vspace{-7pt}
+		
+		\item $\A A_1, A_2, \ldots, A_n \in \p$ (дизъюнктные), если $\bigsqcup\limits_{i = 1}^n A_i \in \p$, то $\mu\left(\bigsqcup\limits_{i = 1}^n A_i\right) = \sum\limits_{i = 1}^n \mu(A_i)$
+	\end{enumerate}
+\end{opr}
+
+\begin{opr}
+	Аддитивная функция $\mu \colon \p \to \overline\rr$ \uns{\small(\p --- полукольцо на мн-ве $X$)} называется \urlybox{https://www.youtube.com/live/OdDauqCjZt0?si=Utop7-fhmAUGEKVV&t=8102}{объёмом}, если $\A A \in \p\ \ \mu(A) \biger 0$. Если $X \in \p$ и  $\mu(X)$ конечный, то $\mu$ называется \urlybox{https://www.youtube.com/live/OdDauqCjZt0?si=JKa6wyImoLqhElM4&t=8170}{конечным объём}. \bigskip\medskip
+	\palka{Если объём $\mu$ конечный, то и $\A A \in \p$ $\mu(A)$ --- конечен, потому что по аксиоме \ref{акс.3 полук.} по\-лу\-кольца $X = A \sqcup (X \setminus A) = A \sqcup \bigsqcup\limits_{i = 1}^n D_i$, то есть всё это объединение принадлежит полукольцу,\linebreak значит \raisebox{0pt}[11pt]{$\mu(X) = \mu(A) + \sum\limits_{i = 1}^n \mu(D_i) \biger \mu (A)$}.\hspace{-.8pt} Такое свойство (что если $B \subset C$, то $\mu(B) \< \mu(C)$)\linebreak называется \urlybox{https://www.youtube.com/live/OdDauqCjZt0?si=Iv5F1ceXPME22J3F&t=8999}{монотонностью объёма}.
+	}
+\end{opr}
+
+\begin{zam}[https://www.youtube.com/live/OdDauqCjZt0?si=FAQVHL0Lo4sE8G_G&t=8241]
+	\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{\thezam.}\makeatother
+	\item Если объём $\mu$ задан на алгебре $\mathcal A$, то аксиома 3 (объёма) \eq\ $\A A, B \in \mathcal A$ (не пересекающихся) \[\mu(A \sqcup B) = \mu(A) + \mu(B)\]
+	
+	\item\label{класс.объем} Классический объём в \rmm: в полукольце ячеек $\A [a, b) \in \p^m$ определим \raisebox{0pt}[0pt][0pt]{$\mu[a, b) = \prod\limits_{i = 1}^m (b_i - a_i)$} и $\mu(\no) = 0$. \uns{(Вообще нужно проверять аддитивность\dots)}
+	\end{enumerate}
+\end{zam}
+
+\begin{teor}[https://www.youtube.com/live/OdDauqCjZt0?si=Av9fCZaatH1AcJRM&t=9130]{Свойства объема}\label{св-ва объёма}
+	Объём $\mu \colon \p \to \overline\rr$ \uns{(\p --- полукольцо)} имеет свойства:
+	\begin{enumerate}
+		\item\label{св-во1объёма} $\A A,{}$\raisebox{0pt}[0pt][0pt]{$ \uns{\underbrace{\textcolor[rgb]{0, 0, 0}{A_1, A_2, \ldots, A_n}}_{\text{дизъюнктные}}} \in \p$}${}: \bigsqcup\limits_{k = 1}^n A_k \subset A$ выполняется $\sum\limits_{k = 1}^n \mu(A_n) \< \mu(A)$\quad {\small (усиленная монотонность)}
+		
+		\item\label{св-во2объёма} $\A A_1, A_2, \ldots, A_n \in \p, A \subset \bigcup\limits_{k = 1}^n A_k$ выполняется $\mu(A) \< \sum\limits_{k = 1}^n \mu(A_k)$ {\small(конечная полуаддитивность)}
+		
+		\item Пусть $A, B, A \setminus B \in \p$, $\mu(B)$ --- конечный, тогда $\mu(A \setminus B) \biger \mu(A) - \mu(B)$
+	\end{enumerate}
+\end{teor}
+\pagebreak
+\begin{prf}
+\begin{enumerate}
+	\item Из замечания \ref{акс.3 мод.}\quad $A \setminus \left(\bigsqcup\limits_{k = 1}^n A_k\right) = \bigsqcup\limits_{k = 1}^m D_k$, где все $D_k \in \p$, тогда по аддитивности объёма (\ref{адд.})
+	\[\mu(A) = \mu\Biggl(\uns{\underbrace{\textcolor[rgb]{0, 0, 0}{\bigsqcup\limits_{k = 1}^n A_k \sqcup \bigsqcup\limits_{k = 1}^m D_k}}_{=\, A, \text{ то есть }\in\, \p}} \Biggr) = \sum\limits_{k = 1}^n \mu(A_k) + \sum\limits_{k = 1}^m \mu(D_k) \biger \sum\limits_{k = 1}^n \mu(A_k)\]
+	
+	\item Пусть $\uns{\A k \in \{\,1, 2, \ldots, m\,\}}\ B_k = A \cap A_k$, тогда $A = \bigcup\limits_{k = 1}^m B_k$ (убрали из объединения точки не входящие в $A$), и все $B_k \in \p$ по \ref{акс.2 полук.} аксиоме полукольца. Но множества $B_k$ могут пересекаться, поэтому пусть \uns{$C_1 = B_1$ и $\A k \in \{\,2, 3, \ldots, m\,\}$} $C_k = B_k \setminus \bigcup\limits_{i = 1}^{k - 1} B_i \stackrel{\text{зам.\ref{акс.3 мод.}}}{=} \bigsqcup\limits_{i_k = 1}^{l_k} D_{i_k}  $, тогда $A = 
+	\bigsqcup\limits_{k = 1}^m C_k = \bigsqcup\limits_{\substack{k = 1,\\ i_k = 1}}^{m, l_k} D_{i_k}$, где все $D_{i_k} \in \p$. Значит по аддитивности объёма (\ref{адд.}) $\mu(A) = \sum\limits_{\substack{k = 1,\\ i_k = 1}}^{m, l_k} \mu(D_{i_k}) $ и по пункту \ref{св-во1объёма} $\uns{\A k \in \{\,1, 2, \ldots, m\,\}}$ $\sum\limits_{i_k = 1}^{l_k} \mu(D_{i_k}) \< \mu(A_k)$ (т.к. $\bigsqcup\limits_{i_k = 1}^{l_k}D_{i_k} = C_k \subset B_k \subset A_k$), то есть получаем, что $\mu(A) \< \sum\limits_{k = 1}^m \mu(A_k)$
+	
+	\item \begin{enumerate}
+		\item\label{св-во3а} Пусть $B \subset A$, тогда $A = B \sqcup (A \setminus B)$, значит \uns{\hypersetup{linkcolor=mygray}(по аддитивности объёма --- \ref{адд.})\hypersetup{linkcolor=linkcolor}} $\mu(A) = \mu(B) + \mu(B \setminus A)$ и так как $\mu(B)$ конечен, то можно перенести его через знак равенства.
+		
+		\item Пусть $B \not\subset A$, тогда $A \setminus B = A \setminus (A \cap B)$ и тут $(A \cap B) \subset A, (A \cap B) \subset B, (A \cap B) \in\p$, значит по пунктам \ref{св-во3а} и \ref{св-во1объёма} получаем $\mu(A \setminus B) = \mu(A) - \mu(A \cap B) \biger \mu(A) - \mu(B)$
+	\end{enumerate}
+\end{enumerate}
+\end{prf}
+

@@ -1,0 +1,57 @@
+\pagebreak
+\subsection*{\S\ Метод Лапласа}
+
+\begin{lem}[https://www.youtube.com/live/FFhHi8qwuDM?si=iHyH8mtnJoT33k5f&t=3385]{о локализации} \label{о лок.}
+	Пусть функция $f \colon [a, b) \to \rr$ положительна, непрерывна на $[a, b)$, \raisebox{0pt}[0pt][0pt]{$\int\limits_a^b f(x)\, dx  > 0$} и$\E$ окрестность $U(a)$ точки $a$ такая, что $\A x_0 \in U(a)$ $\int\limits_a^{x_0} f(x)\, dx \ne 0$. Пусть функция $g \colon [a, b) \to \rr$ положительна, убывает на $[a, b)$, непрерывна в точке $a$ и $\A t \in (a, b) \E t_1 \in (a, t) : g(t) < g(t_1) $, тогда $\A c \in (a, b)$
+	\[\int_a^c f(t) e^{A \cdot g(t)} \, dt \; \thicksim  \int_a^b f(t) e^{A \cdot g(t)} \, dt \qquad \text{при $A \to \infty$}\]
+\end{lem}
+
+\uns{\palka{%
+	Функции $\alpha(x)$ и $\beta(x)$ эквивалентны при $x \to x_0$  означает, что$\E \varphi(x) : \alpha(x) = \beta(x) \cdot \varphi(x)$ и $\varphi(x) \xrightarrow[x \to x_0]{} 1$ или ещё, если $\beta(x) \ne 0$, что $\frac{\alpha(x)}{\beta(x)}\xrightarrow[x \to x_0]{} 1$
+}}
+
+\begin{prf} обозначим $M = \int\limits_a^b f(x) \, dx \uns{{}>0}$, тогда
+	\[\int_c^b f(t) e^{A \cdot g(t)} \, dt \< e^{A \cdot g(c)} \int_c^b f(t) \, dt \< e^{A \cdot g(c)} \cdot M\]
+	Возьмём $c_1 \in (a, c) : g(c) < g(c_1)$, обозначим $ N = \int\limits_a^{c_1} f(t) \, dt \uns{{} > 0}$, тогда
+	\[\int_a^c f(t) e^{A \cdot g(t)} \, dt \biger \int_a^{c_1} f(t) e^{A \cdot g(t)} \,dt \biger e^{A \cdot g(c_1)} \int_a^{c_1} f(t) \, dt\ = e^{A \cdot g(c_1)} \cdot N\]
+	Получили то, что нужно доказать, потому что 
+	\[\frac{\int_c^b f(t) e^{A \cdot g(t)} \, dt} {\int_a^c f(t) e^{A \cdot g(t)} \, dt} \< \frac{e^{A \cdot g(c)} \cdot M}{e^{A \cdot g(c_1)} \cdot N} \xrightarrow[A \to \infty]{} 0, \text { так как } g(c_1) > g(c). \text{ Тогда}\] 
+	
+	\[\frac{\int_a^c f(t) e^{A \cdot g(t)} \, dt}{\int_a^b f(t) e^{A \cdot g(t)} \, dt} = \frac{\int_a^c f(t) e^{A \cdot g(t)} \, dt}{\int_a^c f(t) e^{A \cdot g(t)} + \int_c^b f(t) e^{A \cdot g(t)} \, dt} = 1 + \frac{\int_c^b f(t) e^{A \cdot g(t)} \, dt} {\int_a^c f(t) e^{A \cdot g(t)} \, dt} \xrightarrow[A \to \infty]{} 1\]
+\end{prf}
+
+\begin{slv}[https://www.youtube.com/live/FFhHi8qwuDM?si=cAXs4KQm5gw610TF&t=4495]
+	В обозначениях леммы из определения сходимости частного этих интегралов к 1 получаем, что $\A \eps > 0 \E A_0 : \A A > A_0$ выполнено
+	\[(1 - \eps)\int_a^c f(t) e^{A \cdot g(t)} \, dt < \int_a^b f(t) e^{A \cdot g(t)} \, dt < (1 + \eps) \int_a^c f(t) e^{A \cdot g(t)} \, dt\]
+\end{slv}
+
+\uns{\palka{%
+		Гамма функцией называется функция $\displaystyle \Gamma(p) = \int_0^\infty x^{p-1} e^{-x} \,dx$
+}}
+
+
+\begin{zam} Пусть $q > -1, p > 0, A > 0, s > 0$, тогда
+	\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{\thezam.}\makeatother
+		\item $\displaystyle \int_0^\infty t^q e^{-At^p} \, dt = \left[\parbox{1.64cm}{Замена:\\$x = At^p\\t = \left(\frac xA\right)^{\frac 1p}$}\right] = \int_0^\infty \left(\frac xA\right)^{\frac qp} e^{-x} \frac{1}{pA^{\frac 1p}} \phantom{\ensuremath{\cdot}} x^{\frac 1p - 1} \, dx = \frac{1}{pA^{\frac {q + 1}{p}}} \cdot \Gamma\left(\frac{q + 1}{p}\right)$
+		
+		\item\label{вт.форм.} $\displaystyle \int_0^s t^q e^{-At^p} \, dt = \frac{1}{pA^{\frac {q + 1}{p}}} \int_0^{As^p} x^{\frac{q+1}{p}}e^{-x} \, dx$ и так как $\displaystyle\int_0^{As^p} x^{\frac{q+1}{p}}e^{-x} \, dx \xrightarrow[A \to \infty]{} \Gamma\left(\frac{q + 1}{p}\right)$, то из определения сходимости получается, что $\A s > 0, \A \eps > 0 \E A_0 : \A A > A_0$ выполнено
+		\[(1 - \eps) \frac{1}{pA^{\frac {q + 1}{p}}} \cdot \Gamma\left(\frac{q + 1}{p}\right) < \int_0^s t^q e^{-At^p} \, dt < (1 + \eps) \frac{1}{pA^{\frac {q + 1}{p}}} \cdot \Gamma\left(\frac{q + 1}{p}\right)\] Тогда, заменяя везде $A$ на $(1 - \eps) A$, получаем, что  $\A s > 0, \A \eps > 0 \E A_1 = \frac{A_0}{1 - \eps} : \A A > A_1$
+		\[\frac{1 - \eps}{(1 - \eps)^{\frac{q + 1}{p}}} \cdot \frac{1}{pA^{\frac {q + 1}{p}}} \cdot \Gamma\left(\frac{q + 1}{p}\right) < \int_0^s t^q e^{-(1 - \eps)At^p} \, dt < \frac{1 + \eps}{(1 - \eps)^{\frac{q + 1}{p}}} \cdot\frac{1}{pA^{\frac {q + 1}{p}}} \cdot \Gamma\left(\frac{q + 1}{p}\right)\]
+	\end{enumerate}
+\end{zam}
+
+\begin{teor}{метод Лапласа}
+	Пусть функция $f \colon [a, b) \to \rr$ положительна на $[a, b)$, $\int\limits_a^b f(t) \, dt > 0$ и $f(t) \sim L \cdot (t - a)^q$ при $t \to a$, где $q > -1, L \in \rr$. Пусть функция $g \colon [a, b) \to \rr$ строго убывает на $[a, b)$ и $g(a) - g(t) \sim C \cdot (t - a)^p$ при $t \to a$, где $C, p > 0$. Тогда
+	\[\int_a^b f(t) e^{A \cdot g(t)} \, dt \thicksim \frac Lp \cdot \frac{\Gamma\left(\frac{q + 1}{p}\right)}{(CA)^{\frac{q+1}{p}}} \cdot e^{A\cdot g(a)} \qquad \text{при $A \to \infty$} \]
+\end{teor}
+
+\begin{prf}
+	Фиксируем $\eps > 0$, выберем $s \in (a, b)$ такое, что $\A t \in [a, a + s]$ выполнено
+	\[(1 - \eps) < \frac{f(t)}{L\cdot(t - a)^q}<(1 + \eps) \quad \text{и} \quad (1 - \eps) < \frac{g(a) - g(t)}{C \cdot (t - a)^p}< (1 + \eps)\]
+	Выберем $A_0$ так, чтобы при $A > A_0$ выполнялись формулы из леммы \ref{о лок.} и замечания \ref{вт.форм.}, тогда
+	\begin{gather*}
+	\int_a^b f(t) e^{A \cdot g(t)} \, dt \stackrel{\ref{о лок.}}{<} (1 + \eps) \int_a^{a + s} \!\!\!\! f(t) e^{A \cdot g(t)} \, dt \< (1 + \eps) \cdot e^{A \cdot g(a)}\int_a^{a + s} \!\!\!\!(1 + \eps)\cdot L \cdot (t - a)^q \cdot e^{-A \cdot (g(a) - g(t))} \, dt < \\
+	< (1 + \eps)^2 \cdot e^{A \cdot g(a)}\int_0^{s} L t^q \cdot e^{-A \cdot (1 - \eps) \cdot Ct^p} \, dt \stackrel{\ref{вт.форм.}}{<} \frac{(1 + \eps)^3}{(1 - \eps)^{\frac{q + 1}{p}}} \cdot e^{A \cdot g(a)} \cdot\frac{L}{p(CA)^{\frac {q + 1}{p}}} \cdot \Gamma\left(\frac{q + 1}{p}\right)
+	\end{gather*}
+	Аналогично $\displaystyle \int_a^b f(t) e^{A \cdot g(t)} \, dt > \frac{(1 - \eps)^3}{(1 - \eps)^{\frac{q + 1}{p}}} \cdot e^{A \cdot g(a)} \cdot\frac{L}{p(CA)^{\frac {q + 1}{p}}} \cdot \Gamma\left(\frac{q + 1}{p}\right)$, то есть получили эквивалентность.
+\end{prf}

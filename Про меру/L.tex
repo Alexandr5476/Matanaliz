@@ -1,0 +1,47 @@
+
+Пусть $f \colon X \to Y$, $X$ и $Y$ --- множества, тогда $\A A, B \subset X$, \ $ \A C, D \subset Y$ верно:
+\begin{enumerate}
+	\item Если $A \subset B$, то $f(A) \subset f(B)$
+	
+	\item $f(A \cup B) = f(A) \cup f(B)$
+	
+	\item $f(A \cap B) \subset f(A) \cap f(B)$, если $f$ --- инъекция, то будет равенство.
+	
+	\item $f\left(A\sct\right) = \bigl(f(A)\bigr)\sct$, если $f$ --- биекция.
+	
+	\item $f^{-1}(C \cup D) = f^{-1}(C) \cup f^{-1}(D)$ 
+	
+	\item $f^{-1}(C \cap D) = f^{-1}(C) \cap f^{-1}(D)$
+	
+	\item $f^{-1}\left(C\sct\right) = \bigl(f^{-1}(C)\bigr)\sct$
+	
+	\item Если $C \subset D$, то $f^{-1}(C) \subset f^{-1}(D)$
+\end{enumerate}
+\small
+Доказательство: \uns{(буквы $\Lambda$ и $\Pi$ обозначают левые и правые части)}
+\begin{enumerate}
+	\item $\Lambda = \{\,f(x) \mid x \in A \subset B\,\} \subset \{\,f(x) \mid x \in B\,\} = \Pi$
+	
+	%\item $\Lambda = \{\, y \in Y \mid \!\!\!\E t \in A \text{ или } t \in B : f(t) = y\,\} = \{\, y \in Y \mid \!\!\!\E t \in A : f(t) = y\,\} \cup \{\, y \in Y \mid \!\!\!\E t \in B : f(t) = y\,\} = \Pi$
+	
+	\item $\Lambda = \{\, f(x) \mid x \in A \text{ или } x \in B \,\} = \{\, f(x) \mid x \in A\,\} \cup \{\, f(x) \mid x \in A\,\} = \Pi$
+	
+	\item $\Lambda = \{\, y \in Y \mid \!\!\!\E t \in A \text{ и } t \in B : f(t) = y\,\}
+	%\stackrel{\text{\uns{\raisebox{-.8cm}[0pt][0pt]{\makebox[0pt]{\hspace{7.1cm}\parbox{5.4cm}{\raisebox{-.27cm}[0pt][0pt]{\makebox[0pt]{\begin{picture}(50,50)\put(10,10){\vector(-1,-2){8}}\end{picture}}}\hspace{-.37cm}\footnotesize если $f$ инъекция, то тут равенство}}}}}}{\subset}
+	\stackrel{\text{\uns{\hspace{-6.2cm}\raisebox{-1cm}[0pt][0pt]{\makebox[0pt]{\parbox{5.7cm}{\footnotesize если $f$ инъекция, то тут равенство \raisebox{-.27cm}[0pt][0pt]{\makebox[0pt]{\hspace{1cm}\begin{picture}(50,50)\put(10,10){\vector(1,2){8}}\end{picture}}}}}}}}}{\subset}
+	\{\, y \in Y \mid \!\!\!\E t \in A : f(t) = y\,\} \cap \{\, y \in Y \mid \!\!\!\E t \in B : f(t) = y\,\} = \Pi$
+	
+	\item $\Lambda = \{\, y \in Y \mid \!\!\! \E t \in A\sct : f(t) = y\,\} = \{\, y \in Y \mid \!\!\! \E t \notin A : f(t) = y\,\}
+	%\stackrel{\text{\uns{\hspace{-6.3cm}\raisebox{.45cm}[0pt][0pt]{\makebox[0pt]{\parbox{5.7cm}{\footnotesize тут нужно, чтобы $f$ была биекцией \raisebox{-.27cm}[0pt][0pt]{\makebox[0pt]{\hspace{1cm}\begin{picture}(50,50)\put(10,10){\vector(1,-2){8}}\end{picture}}}}}}}}}{=}
+	\stackrel{\text{\uns{\raisebox{.51cm}[0pt][0pt]{\makebox[0pt]{\hspace{7.03cm}\parbox{5.4cm}{\raisebox{-.27cm}[0pt][0pt]{\makebox[0pt]{\begin{picture}(50,50)\put(10,10){\vector(-1,-2){8}}\end{picture}}}\hspace{-.41cm}\footnotesize тут нужно, чтобы $f$ была биекцией}}}}}}{=} 
+	\{\, y \in Y \mid \A t \in A\ f(t) \ne y\,\} = \Pi$
+
+	
+	\item $\Lambda = \{\,x \in X \mid f(x) \in C \text{ или } f(x) \in D \,\} = \{\,x \in X \mid f(x) \in C\,\} \cup \{\,x \in X \mid f(x) \in D\,\} = \Pi$
+	
+	\item $\Lambda = \{\,x \in X \mid f(x) \in C \text{ и } f(x) \in D \,\} = \{\,x \in X \mid f(x) \in C\,\} \cap \{\,x \in X \mid f(x) \in D\,\} = \Pi$
+	
+	\item $\Lambda = \{\,x \in X \mid f(x) \in A\sct \,\} = \{\,x \in X \mid f(x) \notin A \,\} = \{\,x \in X \mid x \in A \,\}\sct = \Pi$
+	
+		\item $\Lambda = \{\,x \in X \mid f(x) \in C \subset D\,\} \subset \{\,x \in X \mid f(x) \in D\,\} = \Pi$
+\end{enumerate}
