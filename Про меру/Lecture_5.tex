@@ -1,0 +1,154 @@
+\subsection*{\S\ Измеримые функции}
+
+\begin{opr}
+	Пусть $X$ --- множество, $\mathcal A \subset 2^X$ --- $\sigma$-алгебра, $\mu \colon \mathcal A \to \overline\rr$ --- мера. Тогда тройка $(X, \mathcal A, \mu)$ называется \ybox{пространством с мерой}.
+\end{opr}
+
+\begin{opr}
+	Пусть $X$ --- множество, тогда совокупность подмножеств $E_1, E_2, \ldots, E_n \subset X$ называется \urlybox{https://www.youtube.com/live/D_Nn53jVQxE?si=uGolwwyt-HPwiaQV&t=7815}{разбиением} множества $X$, если $X = \bigsqcup\limits_{i = 1}^n E_i$
+\end{opr}
+
+\begin{opr}\label{ступ.ф.}
+	Функция $f \colon X \to \rr$ \uns{($X$ --- множество)} называется \urlybox{https://www.youtube.com/live/D_Nn53jVQxE?si=sp7YSdP4u3r9AvCO&t=7850}{ступенчатой}, если\E\ разбиение $E_1, E_2, \ldots, E_n$ множества $X$ такое, что \uns{$\A k \in \{\,1, 2, \ldots n \,\}$} \raisebox{0pt}[0pt][0pt]{$f \su{E_k} = c_k$}, где $c_k \in \rr$. Это разбиение называется \ybox{допустимым}.
+\end{opr}
+
+\begin{zam}[https://www.youtube.com/live/D_Nn53jVQxE?si=TLomW6CsIG2IkY16&t=7983]\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{\thezam.}\makeatother
+	\item\label{характ.функц.} \textit{Пример ступенчатой функции:} пусть $X$ --- множество, $E \subset X$, тогда \ybox{характеристическая} \ybox{функция} множества $E$ $\chi_E  \colon X \to \{\,0, 1\,\}$, где $\chi_E(x) = 1$, если $x \in E$ и $\chi_E(x) = 0$, если $x \notin E$ является ступенчатой \uns{(разбиение: $E, X \setminus E$)}
+	
+	\item Общий вид ступенчатой функции: \uns{\hypersetup{  linkcolor=mygray}(обозначения из \ref{ступ.ф.})\hypersetup{ linkcolor=linkcolor}} $f(x) = \sum\limits_{k = 1}^n \chi_{E_k} (x) \cdot c_k$ \uns{($x$ принадлежит какому-то одному $E_k$, поэтому все слагаемые будут равны 0, кроме одного, которое соответствует этому $E_k$, и на нём значение $f$ равно $c_k$)}
+	
+	\item Если $f, g \colon X \to \rr$ --- две ступенчатые функции \uns{(X --- множество)}, то\E\ \uns{(общее для них)} разбиение $E_1, E_2, \ldots E_n$ множества $X$ такое, что \uns{$\A k \in \{\,1, 2, \ldots n \,\}$} $f \su{E_k} =  c_k,\ g\su{E_k} = h_k$ \uns{($c_k, h_k \in \rr$)}\linebreak \textit{Доказательство:} из \ref{ступ.ф.}\E\ разбиения $A_1, A_2, \ldots A_s$ и $B_1, B_2, \ldots B_l$ множества $X$ такие, что \uns{$\A i \in \{\,1, 2, \ldots s \,\}$, $\A j \in \{\,1, 2, \ldots l \,\}$} $f \su{A_i} = c_i,\ g\su{B_j} = h_j$, значит $E_k = A_i \cap B_j$ 
+	
+	\item\label{произв.ступ.} Если $f, g \colon X \to \rr$ --- две ступенчатые функции \uns{(X --- множество)}, $\alpha \in \rr$, то функции $f + g,\ fg,\ \alpha f,\ \max(f, g),\ |f|$ тоже ступенчатые \uns{(общее разбиение для $f$ и $g$ (из предыдущего пункта) будет нужным разбиением для всех этих функций)}
+\end{enumerate}\end{zam}
+
+\begin{opr}\label{лебег.мн.}
+	\!Пусть $f \colon E \subset X \to \overline \rr$ \uns{\small($X$ --- множество)}, $a \in \rr$.\! \urlybox{https://www.youtube.com/live/D_Nn53jVQxE?si=4_HSB1mD_eyG1Mjm&t=8369}{Лебеговыми множествами}\! функции $f$ называются множества \!$\{\, x \in E \mid f(x) < a\,\}$ \!(и аналогично с $\<,\ >,\ \biger$).\! Обозначение: $E(f < a)$
+\end{opr}
+
+\begin{zam}[https://www.youtube.com/live/D_Nn53jVQxE?si=SY2s0GtN3PMQn9R_&t=8496]\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{\thezam.}\makeatother
+	\item\label{1.лёгк.} $E(f > a) = E \setminus E(f \< a)$ \uns{(так как $\{\, x \in E \mid f(x) > a\,\} = \{\, x \in E \mid f(x) \< a \text{ --- не верно}\,\}$)}
+	
+	\item\label{2.лёгк.} $E(f \< a) = \bigcap\limits_{n = 1}^\infty E(f < a + \frac 1n)$
+\end{enumerate}\end{zam}
+\vspace{-5pt}
+\begin{opr}\label{изм.ф.}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f \colon X \to \overline \rr$, $E \in \mathcal{A}$. Функция $f$ называется \urlybox{https://www.youtube.com/live/D_Nn53jVQxE?si=NhdQRgAbbDncOgsB&t=8638}{измеримой на множестве} $E$, если $\A a \in \rr\ E(f < a) \in \mathcal A$. Функция $f$ называется \urlybox{https://www.youtube.com/live/D_Nn53jVQxE?si=NhdQRgAbbDncOgsB&t=8638}{измеримой}, если она измерима на множестве $X$. Если $X = \rmm$, $\mathcal{A} = \m$, $\mu$ --- мера Лебега, то измеримая функция называется \urlybox{https://www.youtube.com/live/D_Nn53jVQxE?si=NhdQRgAbbDncOgsB&t=8638}{измеримой по Лебегу}.
+\end{opr}
+
+\begin{zam}[https://www.youtube.com/live/D_Nn53jVQxE?si=HKSNoYsQLxpORzYv&t=8885]
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f \colon X \to \overline \rr$, $E \in \mathcal{A}$, тогда эквивалентно:
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item $\A a \in \rr\ E(f < a) \in \mathcal A$
+			
+			\item $\A a \in \rr\ E(f \< a) \in \mathcal A$
+			
+			\item $\A a \in \rr\ E(f > a) \in \mathcal A$
+			
+			\item $\A a \in \rr\ E(f \biger a) \in \mathcal A$
+		\end{enumerate}
+	\end{multicols}
+	\textit{Доказательство:} \rpr{1}{2}, \rpr{3}{4} Из замечания \ref{2.лёгк.} \uns{($\mathcal{A}$ замкнута относительно счётных пересечений)}. 
+	\rpr{2}{3}, \rpr{4}{1} Из замечания \ref{1.лёгк.} \uns{(разность двух множеств из $\mathcal{A}$ принадлежит $\mathcal{A}$)}.
+\end{zam}
+\pagebreak
+\begin{zam}[https://www.youtube.com/live/D_Nn53jVQxE?si=j9uDPlcRlLJ8BXNJ&t=9133] \textit{Пример измеримых функций:}
+	\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{зам.~\thezam.}\makeatother
+	\item Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f \colon X \to \overline \rr$, $E \in \mathcal{A}$. Характеристическая функция множества $E$ (зам. \ref{характ.функц.}) измерима на $E$ \uns{(т.к. $\A a \in \rr\ E(\chi_E < a) = X \in \mathcal A$, если $a > 1$, $E(\chi_E < a) = E\sct \in \mathcal A$, если $0 < a \< 1$ и $E(\chi_E < a) = \no \in \mathcal A$, если $a \< 0$)}
+	
+	\item\label{непр.ф.изм.} Если $f \colon \rmm \to \rr$ непрерывна в \rmm, то $f$ измерима по Лебегу \uns{(т.к. при непрерывном отображении прообраз открытого множества открыт, и $\A a \in \rr\ \ \rmm(f < a)$ --- прообраз открытого множества $\{\, y \in \rr \mid y < a\,\}$, а открытые множества измеримы)}
+	\end{enumerate}
+\end{zam}
+
+\begin{zam}[https://www.youtube.com/live/D_Nn53jVQxE?si=X-z7DBB2PacR-e1V&t=9380]
+	\textit{Свойства измеримых функций:} пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f \colon X \to \overline \rr$, $E \in \mathcal{A}$, тогда
+	\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{зам.~\thezam.}\makeatother
+		\item Если $f$ измерима на $E$, то $\A a \in \rr\ E(f = a) \in \mathcal A$ \uns{\small(т.к. $E(f = a) = E(f \< a) \cap E(f \biger a) \in \mathcal{A}$)}
+		
+		\item Если $f$ измерима на $E$, то $-f$ и $\alpha f$ ($\A \alpha > 0$) измеримы на $E$ \uns{\small(т.к. $\A a \in \rr\ E(-f > a) = \{\, x \in E \mid -f(x) > a\,\} = \{\, x \in E \mid f(x) < -a\,\} = E(f < -a) \in \mathcal A$ и $E(\alpha f > a) = E(f > \frac a\alpha)$)}
+		
+		\item Если $f$ измерима на $E_k \in \mathcal A$ \uns{\small($k = 1, 2, \ldots$)}, то $f$ измерима на $\bigcup\limits_{k = 1}^\infty E_k$ \uns{\small(т.к.  $\A a \in \rr\ \left(\bigcup\limits_{k = 1}^\infty E_k\right)(f < a)\linebreak = \{\, x \in \raisebox{0pt}[0pt]{$\bigcup\limits_{k = 1}^\infty$} E_k \mid f(x) < a\,\} = \raisebox{0pt}[0pt]{$\bigcup\limits_{k = 1}^\infty$} \{\, x \in E_k \mid f(x) < a\,\} = \raisebox{0pt}[0pt]{$\bigcup\limits_{k = 1}^\infty$} \bigl(E_k(f < a)\bigr) \in \mathcal A$)} 
+		
+		\item\label{ф.изм.на подмнож.} Если $f$ измерима на $E$, $E'\!\subset E, E'\! \in \mathcal{A}$, то $f$ измерима на $E'$ \uns{\small(т.к. $E'(f < a) = E(f < a) \cap E') \in \mathcal{A}$)}
+		
+		\item Если $f$ измерима на $E$ и $f \ne 0$ на $E$, то $\frac 1f$ измерима на $E$ \uns{\small(т.к. для $a > 0$ $E(\frac 1f < a) = \bigl(E(f > \frac 1a) \cap E(f > 0)\bigr) \cup \bigl(E(f < \frac 1a) \cap E(f < 0)\bigr) \in \mathcal A$) --- т.е. разные множества при $f > 0$ и $f < 0$; аналогично для $a < 0, a = 0$}
+		
+		\item Если $f$ измерима на $E$, $f \biger 0$ на $E$, то $\A \alpha > 0$ $f^\alpha$ измерима на $E$ \uns{\small(т.к. $\A a \in \rr\ E(f^\alpha < a) = E(f < a^\frac 1\alpha) \in \mathcal{A}$)}
+	\end{enumerate}
+\end{zam}
+
+\uns{\palka{
+	Определение верхнего и нижнего предела последовательности $x_n \in \rr$:\\
+	$\varlimsup\limits_{n \to \infty} x_n = \lim\limits_{n \to \infty} \sup\{\, x_n, x_{n + 1}, \ldots\,\}$\hspace{1.5cm}$\varliminf\limits_{n \to \infty} x_n = \lim\limits_{n \to \infty} \inf \{\, x_n, x_{n + 1}, \ldots\,\}$ 
+}}
+
+\begin{teor}[https://www.youtube.com/live/D_Nn53jVQxE?si=W2eSV2WkULR551h2&t=10108]{об измеримости пределов и супремумов}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $E \in \mathcal{A}$, функции $f_n \colon X \to \rr$ измеримы на $E$, тогда
+	\begin{enumerate} \makeatletter\renewcommand{\p@enumi}{\theteor.}\makeatother
+	\item $\sup\limits_n f_n(x)$, $\inf\limits_n f_n(x)$ измеримы на $E$
+		
+	\item $\varlimsup\limits_{n \to \infty} f_n(x)$, $\varliminf\limits_{n \to \infty} f_n(x)$ измеримы на $E$
+	
+	\item\label{изм.пред.} Если$\E \lim\limits_{n \to \infty} f_n(x)$, то он измерим на $E$
+	\end{enumerate} 
+\end{teor}
+
+\begin{prf}
+	\begin{enumerate}
+		\item $E\bigl(\sup\limits_n f_n(x) > a\bigr) = \{\, x \in E \mid \sup\limits_n f_n(x) > a \,\} = \{\,x \in E \mid \!\!\!\E N : a < f_N(x) \uns{{}\< \sup\limits_n f_n(x)}\,\} = \bigcup\limits_{n = 1}^\infty \{\, x \in E \mid f_n(x) > a \,\} = \bigcup\limits_{n = 1}^\infty E (f_n > a) \in \mathcal A$. Аналогично с inf.
+		
+		\item $\varlimsup\limits_{n \to \infty} x_n = \inf\limits_n \sup \{\, f_n(x), f_{n + 1}(x), \ldots\,\}$. По первому пункту эта функция измерима на $E$.
+		
+		\item Если предел существует, то он совпадает с верхним пределом, который измерим на $E$ по второму пункту.
+	\end{enumerate}
+\end{prf}
+
+\uns{\palka{%
+	Определение положительной и отрицательной срезки для функции $f \colon X \to \rr$ ($X$ --- множество):\\
+	\hspace*{3cm}$f_+(x) = \max\{\,f(x), 0\,\}\hspace{4cm} f_-(x) = \max\{\,-f(x), 0\,\}$
+}}
+
+\begin{slv}[https://www.youtube.com/live/D_Nn53jVQxE?si=-ruvK9hIfLccwsL8&t=10730]\label{изм.ср.}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f \colon X \to \rr$ измерима на $E \in \mathcal{A}$, тогда $f_-, f_+, |f|$ измеримы на $E$ \uns{(т.к. $f_+(x) = \max\{\,f(x), 0\,\}, f_-(x) = \max\{\,-f(x), 0\,\}, |f(x)| = \max\{\,f(x), -f(x)\,\}$), т.е. по первому пункту теоремы они измеримы на $E$, потому что функции 0 и $f$ измеримы на $E$}
+\end{slv}
+
+\begin{teor}[https://www.youtube.com/live/D_Nn53jVQxE?si=JtFCmDrkbkpkwKzS&t=10835]{характеризация измеримых функций с помощью ступенчатых}\label{изм.ф.ступ.}%
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f \colon X \to \overline \rr$ --- неотрицательная, измеримая функция, тогда\E\ последовательность ступенчатых функций $f_n$ такая, что $\A x \in X$ $\uns{0 \<{}} f_n(x) \< f_{n + 1}(x) \< \ldots \< f(x)$ и $\lim\limits_{n \to \infty} f_n(x) = f(x)$
+\end{teor}
+
+\begin{prf}
+	$\A n \in \{\,1, 2, \ldots \,\}$ построим функцию $g_n$. Для этого разобьём отрезок $[0, n]$ на $n^2$ равных частей длины $\frac 1n$ каждая. Обозначим $\A k \in \{\,1, 2, \ldots, n^2 - 1\,\}$ $E_k = X(\frac kn \< f < \frac{k + 1}{n}) \uns{{}\subset X}$ и $E_{n^2} = X(f \biger n)$, тогда $\{E_k\}_{k = 1}^{n^2}$ это разбиение множества $X$. Теперь $\A x \in X$ определим $g_n(x) = \sum\limits_{k = 0}^{n^2} \frac kn \chi_{E_k}(x)$, тогда $0 \< g_n(x) \< f(x)$ \uns{(т.к. $g_n(x) = \frac{k_0}{n} \biger 0$, где $k_0 \in \{\,1, 2, \ldots, n^2\,\} : x \in E_{k_0}$, и по определению множества $E_{k_0}$ на нём $\frac{k_0}{n} \< f$)}. Проверим, что $\A x \in X$ $\lim\limits_{n \to \infty}g_n(x) = f(x)$. Если $f(x)$ --- конечное число, то при $n > f(x)\ |f(x) - g_n(x)| < \frac 1n \xrightarrow[n \to \infty]{} 0$ \uns{(т.к. $x$ принадлежит некоторому $E_{k_0}$ и $k_0 \ne n^2$ (потому что $f(x) < n$), то по определению множества $E_{k_0}$ на нём $f < \frac{k_0 + 1}{n}$, значит $f(x) - g_n(x) < \frac{k_0 + 1}{n} - \frac{k_0}{n} = \frac 1n$)}, а если $f(x)$ --- бесконечность \uns{(т.е. $x \in E_{n^2}$)}, то $g_n(x) = n \xrightarrow[n \to \infty]{} \infty = f(x)$. В качестве $f_n(x)$ \uns{($\A n \in \{1, 2, \ldots\}$)} можно взять функцию $\max\{\, g_1(x), g_2(x), \ldots, g_n(x)\,\}$. Тогда  очевидно, выполняется свойство $\A x \in X$ $f_n(x) \< f_{n + 1}(x) \< \ldots \< f(x)$ и $f_n(x) \xrightarrow[n \to \infty]{} f(x)$, т.к. $g_n(x) \< f_n(x) \< f(x)$.
+\end{prf}
+
+\begin{zam}\label{зам. про изм. ступ. функц.}
+	Из доказательства ясно, что все эти ступенчатые функции $f_n$ измеримы, так как допустимые разбиения для этих функций состоят из таких множеств $E_k$, что $E_k \in \mathcal A$. \uns{(в доказательстве $E_k = X(\frac kn \< f < \frac{k + 1}{n})$ и это принадлежит $\mathcal A$, т.к. $f$ --- измеримая функцию)}. То, что любая ступенчатая функция, у которой допустимое разбиение состоит из измеримых множеств, измерима, получается просто из определения измеримой функции, потому что любое множество Лебега для такой ступенчатой функции будет состоять из объединения этих измеримых множеств.
+\end{zam}
+
+\begin{slv}[https://www.youtube.com/live/D_Nn53jVQxE?si=BWWH7fyNDeDPB5yH&t=11690]
+	Пусть $f \colon X \to \rr$ --- измерима \uns{($(X, \mathcal A, \mu)$ --- пространство с мерой)}, тогда\E\ ступенчатые функции $f_n \colon X \to \rr$ такие, что $\A x \in X\ \lim\limits_{n \to \infty} f_n(x) = f(x)$ и $\A n\ |f_n(x)| \< |f(x)|$ \textit{Доказательство:} $f$ можно разложить в разность положительных измеримых функций $f = f_+ - f_-$ (сл. \ref{изм.ср.}) и взять $f_n = (f_+)_n - (f_-)_n$, где $(f_+)_n$ и $(f_-)_n$ --- соответствующие последовательности ступенчатых функций, полученные из теоремы  \ref{изм.ф.ступ.}. В этой разности, при $x$, в которых $f$ отрицательна, слагаемое $(f_+)_n(x)$ нулевое, а когда $f$ положительна, то второе слагаемое 0)
+\end{slv}
+
+\begin{slv}[https://www.youtube.com/live/3LvgYceATKY?si=f2_NDoyMYDquQWRc&t=7926]
+	Пусть $f, g \colon X \to \rr$ --- измеримы \uns{($(X, \mathcal A, \mu)$ --- пространство с мерой)}, тогда функция $f \cdot g$ измерима (и считаем, что $0 \cdot \infty = 0$). \textit{Доказательство:} из предыдущего следствия\E\ ступенчатые функции $f_n, g_n \colon X \to \rr$ такие, что $\A x \in X\ \lim\limits_{n \to \infty}f_n(x) = f(x)$ и $\lim\limits_{n \to \infty}g_n(x) = g(x)$), значит $\lim\limits_{n \to \infty}f_n(x)g_n(x) = f(x)g(x)$. Произведение ступенчатых функций --- ступенчатая функция (зам.~\ref{произв.ступ.}), поэтому получилось, что $fg$ это предел последовательности ступенчатых функций, которые измеримы (\ref{зам. про изм. ступ. функц.}). Значит $fg$ --- измерима, как предел измеримых функций (т. \ref{изм.пред.}).
+\end{slv}
+
+\begin{slv}[https://www.youtube.com/live/3LvgYceATKY?si=7WMGceaqVhikXnEY&t=8177]
+	Пусть $f, g \colon X \to \rr$ --- измеримы \uns{($(X, \mathcal A, \mu)$ --- пространство с мерой)}, тогда функция $f + g$ измерима (и считаем, что $\A x \in X \{\,f(x), g(x)\,\} \ne \{\,+\infty, -\infty\,\}$). Доказывается аналогично предыдущему следствию.
+\end{slv}
+\pagebreak
+\begin{teor}[https://www.youtube.com/live/3LvgYceATKY?si=ZYlgdvhg-6AVMtL_&t=8408]{измеримость функции непрерывной на множестве полной меры}
+	Пусть функция $f \colon E \subset \rmm \to \overline{\rr}$ непрерывна на $E' = E \setminus e$, где $e \subset E$ и $\lambda(e) = 0$ \uns{($E,e$ --- множества измеримые по Лебегу)}. Тогда функция $f$ измерима на $E$.
+\end{teor}
+
+\begin{prf}
+	Нужно доказать, что $\A a \in \rr$ множество $E(f < a)$ --- измеримо (\ref{лебег.мн.}, \ref{изм.ф.}). Оно измеримо, т.к. $E(f < a) = E'(f < a) \cup e(f < a)$. Первое из этих множеств измеримо, потому что $f$ непрерывна на $E'$ по условию (\ref{непр.ф.изм.}), второе измеримо, потому что оно содержится в $e$ и $\lambda(e) = 0$ \uns{\hypersetup{  linkcolor=mygray}(мера Лебега является полной --- \ref{полная мера}, \ref{мера лебега})\hypersetup{ linkcolor=linkcolor}}.
+\end{prf}
+
+\begin{slv}[https://www.youtube.com/live/3LvgYceATKY?si=gOwssnHN2eKqCbab&t=9162]\label{изм. на e}
+	Если $(X, \mathcal A, \mu)$ --- пространство с мерой, $E, e, \in \mathcal A : e \subset E, \mu(e) = 0$, и функция $f \colon E \to \overline{\rr}$ измерима на $E' = E \setminus e$, то $f$ можно изменить на $e$ так, чтобы она стала измеримой (например, определить $f \su{e} = 0$, и доказать измеримость новой $f$ аналогично тому, как в теореме)
+\end{slv}
+
+\begin{slv}
+	Монотонная функция измерима \dots 
+\end{slv}

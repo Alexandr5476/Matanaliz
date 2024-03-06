@@ -1,6 +1,6 @@
 \subsection*{\S\ Регулярность меры Лебега}
 
-\begin{teor}[https://www.youtube.com/live/FFhHi8qwuDM?si=c0fvjAdQVddCFwdh&t=10791]{регулярность меры Лебега}\label{рег.мер.леб.}
+\begin{teor}[https://www.youtube.com/live/FFhHi8qwuDM?si=c0fvjAdQVddCFwdh&t=10791]{регулярность меры Лебега}\label{рег.мер.леб.}%
 	Пусть $A \in \m$, тогда $\A \eps > 0 \E $ открытое $G_\eps \supset A : \lambda(G_\eps \setminus A) < \eps$ и\E замкнутое $F_\eps \subset A : \lambda (A \setminus F_\eps) < \eps$ 
 \end{teor}
 
@@ -85,7 +85,7 @@
 }
 
 \begin{lem}[https://www.youtube.com/live/Y10gq1j3ADI?si=dH5YwUPGm-AOcG8D&t=3682]{первая}\label{перв.лемма}%
-	Пусть $X', X$ --- множества, $\mathcal{A', A}$ --- соответствующие $\sigma$-алгебры, $\mu'$ --- мера на $\mathcal A'$, отображение $T\colon X \to X'$ --- биекция такая, что $\A A \in \mathcal{A}\ T(A) \in \mathcal A'$ (и $T(\no) = \no$), тогда функция $\mu \colon \mathcal A \to \rr$ $\mu(A) = \mu'\bigl(T(A)\bigr)$ является мерой на $\mathcal A$
+	Пусть $X', X$ --- множества, $\mathcal{A', A}$ --- соответствующие $\sigma$-алгебры, $\mu'$ --- мера на $\mathcal A'$, отображение $T\colon X \to X'$ --- биекция такая, что $\A A \in \mathcal{A}\ T(A) \in \mathcal A'$ (и $T(\no) = \no$), тогда функция $\mu \colon \mathcal A \to \overline \rr$ $\mu(A) = \mu'\bigl(T(A)\bigr)$ является мерой на $\mathcal A$
 \end{lem}
 
 \begin{prf}
@@ -124,7 +124,7 @@
 	Инвариантность меры Лебега относительно сдвигов: $\A A \in \m$, $\A a \in \rmm$ выполнено $(a + A) \in \m$ (т.к. отображение $x \mapsto x + a$ гладкое) и $\lambda(a+ A) = \lambda(A)$ (т.к. из формулы \ref{форм.меры} меру множества $A$ можно посчитать как inf сумм мер ячеек $P_i$ по всем покрытиям $A$ ячейками, тогда для множества $a + A$ покрытия будут состоять из ячеек $a + P_i$, и очевидно, что мера ячейки не меняется при сдвиге).
 \end{slv}
 
-\begin{teor}[https://www.youtube.com/live/Y10gq1j3ADI?si=PWNijQFbbR0Ia10-&t=8306]{о мерах, инвариантных относительно сдвигов}\label{меры инв.отн.сдв.}
+\begin{teor}[https://www.youtube.com/live/Y10gq1j3ADI?si=PWNijQFbbR0Ia10-&t=8306]{о мерах, инвариантных относительно сдвигов}\label{меры инв.отн.сдв.}%
 	Пусть $\mu$ --- мера \uns{(не Лебега)} на \m\ и 
 	\begin{enumerate}
 		\item $\mu$ инвариантна относительно сдвигов (т.е. $\A A \in \m, a \in \rmm$ $(a + A) \in \m$ и $\mu(a + A) = \mu(A)$)
@@ -138,7 +138,7 @@
 	Без доказательства.
 \end{prf}
 
-\begin{teor}[https://www.youtube.com/live/Y10gq1j3ADI?si=7KD9370OVRWXYlc7&t=8780]{инвариантность меры Лебега при ортогональном преобразовании}\label{мера при орт. преобр.}
+\begin{teor}[https://www.youtube.com/live/Y10gq1j3ADI?si=7KD9370OVRWXYlc7&t=8780]{инвариантность меры Лебега при ортогональном преобразовании}\label{мера при орт. преобр.}%
 	Пусть $T \colon \rmm \to \rmm$ --- линейное ортогональное преобразование (т.е. линейное отображение, сохраняющее скалярное произведение). Тогда $\A E \in \m$ $T(E) \in \m$ и $\lambda(T(E)) = \lambda(E)$
 \end{teor}
 
@@ -146,7 +146,7 @@
 	По лемме \ref{о сохр.изм.при гл.отобр.} измеримость множеств сохраняется (т.к. линейное отображение --- гладкое). Для $A \in \m$ определим $\mu(A) = \lambda\bigl(T(A)\bigr)$.Тогда по лемме \ref{перв.лемма} \ $\mu$ --- мера, и она инвариантна относительно сдвигов: $\mu(A + a) = \lambda\bigl(T(A + a)\bigr) = \lambda\bigl(T(A) + T(a)\bigr) = \lambda\bigl(T(A)\bigr) = \mu(A)$, значит по теореме \ref{меры инв.отн.сдв.} $\mu$ пропорциональна мере Лебега. Коэффициент пропорциональности равен 1, т.к. для шара $A = B(0, r)$ \ $T(A) = A$ ($T$ --- сохраняет расстояние между векторами), т.е. $\lambda\bigl(T(A)\bigr) = \lambda(A)$
 \end{prf}
 
-\begin{slv}\label{мера подпр.}
+\begin{slv}[https://www.youtube.com/live/Y10gq1j3ADI?si=uhzBA3g_HLU0F6X-&t=9260]\label{мера подпр.}
 	Пусть $L \subset \rmm$ --- линейное подпространство, $\dim L = m - 1$, тогда $\lambda(L) = 0$ (и $\A A \subset L\ \lambda(A) = 0$ из-за монотонности меры). \textit{Доказательство:} Применим к $L$ такое ортагональное преобразование $T$, что $T(L) = \{\, x \in \rmm \mid x_m = 0\,\}$. Разобьём $T(L)$ на единичные ячейки $Q_k$: $T(L) = \bigcup\limits_{k = 1}^\infty Q_k$. \uns{Длина их $m$-ой стороны равна 0; немного увеличим её:} возьмём $\eps > 0$ $T(L) \subset \bigcup\limits_{k = 1}^\infty Q_k \times \left[\left.-\frac{\eps}{2^{k+1}}, \frac{\eps}{2^{k+1}}\right)\right.$. Тогда $\lambda\bigl(T(L)\bigr) \< \sum\limits_{k = 1}^\infty 1 \cdot \frac{\eps}{2^k} = \eps$. Это верно для любого $\eps > 0$, значит $\lambda\bigl(T(L)\bigr) = 0$, поэтому $\lambda(L) = 0$ по теореме \ref{мера при орт. преобр.}.
 \end{slv}
 
@@ -168,7 +168,7 @@
 	Это определитель матрицы оператора $V$ в базисе $g_1, g_2, \ldots, g_m$, но так как этот базис и стандартный базис ортонормированные, то определители матриц оператора $V$ в этих базисах совпадают. 
 \end{prf}
 
-\begin{teor}{преобразование меры Лебега при линейных отображениях}
+\begin{teor}[https://www.youtube.com/live/Y10gq1j3ADI?si=iW2xO121rYjf-JDV&t=11142]{преобразование меры Лебега при линейных отображениях}
 	Пусть $T \colon \rmm \to \rmm$ --- линейное отображение. Тогда $\A A \in \m$ $T(A) \in \m$ и $\lambda\bigl(T(A)\bigr) = |\det T| \cdot \lambda(A)$
 \end{teor}
 

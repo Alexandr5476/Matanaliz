@@ -1,0 +1,54 @@
+\subsection*{\S\ Сходимость почти везде и сходимость по мере}
+
+\begin{opr}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $\omega(x)$ --- утверждение, зависящее от точки $x \in X$. Будем говорить, что $\omega(x)$ выполняется \urlybox{https://www.youtube.com/live/3LvgYceATKY?si=xvx6C_w285luRJxd&t=9987}{почти везде} на $E \in \mathcal A$, если$\E e \subset E$, $e \in \mathcal A$, $\mu(e) = 0$ такое, что $\omega(x)$ выполняется $\A x \in E \setminus e$.
+\end{opr}
+
+\begin{zam}[https://www.youtube.com/live/3LvgYceATKY?si=Y10776hYpa0q9DXw&t=10987]
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $\A n \in \{\, 1, 2, \ldots\,\}$ утверждения $u_n(x)$ выполнены почти везде на $X$. Тогда утверждение $\bigl(\A n\ u_n(x)\bigr)$ выполнено почти везде на $X$ \uns{(пусть $u_n(x)$ нарушается при $x \in e_n$, где $e_n \in \mathcal A, \mu(e_n) = 0$, тогда утверждение $\bigl(\A n\ u_n(x)\bigr)$ нарушается на множестве $\bigcup\limits_{n = 1}^\infty e_n$, и оно тоже имеет нулевую меру)}
+\end{zam}
+
+\begin{zam}[https://www.youtube.com/live/3LvgYceATKY?si=4BDap_maNQ8Eydlh&t=10412]
+	\begin{enumerate}
+		\item Пусть $f_n, f \colon X \to \rr$ \uns{($(X, \mathcal A, \mu)$ --- пространство с мерой)}, $\mu$ --- полная, $f_n$ --- измеримы, $f_n \xrightarrow[n \to \infty]{} f$ почти везде на $E \in \mathcal{A}$. Тогда $f$ --- измерима. \textit{Доказательство:} нужно проверить, что $\A a \in \rr\ E(f < a) \in \mathcal A$ (\ref{изм.ф.}). Известно, что $\A x \in E' = E \setminus e\ f_n(x) \xrightarrow[n \to \infty]{} f(x)$ \uns{(где $e \subset E, e \in \mathcal A, \mu(e) = 0$)}, значит из теоремы \ref{изм.пред.} $E'(f < a) \in \mathcal A$. А множество $e(f < a)$ содержится в $e$, значит $e(f < a) \in \mathcal{A}$ \uns{\hypersetup{  linkcolor=mygray}(т.к. $\mu$ полная по условию --- \ref{полная мера})\hypersetup{ linkcolor=linkcolor}}, поэтому $E(f < a) \in \mathcal A$ \uns{(т.к. $E(f < a)$ = $E'(f < a) \cup e(f < a)$)}  
+	
+	
+	\item  Пусть $f_n, f \colon X \to \rr$ \uns{($(X, \mathcal A, \mu)$ --- пространство с мерой)}, $f_n$ --- измеримы, $f_n \xrightarrow[n \to \infty]{} f$ почти везде на $E \in \mathcal{A}$. Тогда $f$ можно изменить на множестве меры 0 так, чтобы она стала измеримой (доказывается аналогично сл. \ref{изм. на e}${}+{}$предыд. пункт замечания)
+	
+	\item Пусть $f, g \colon X \to \rr$ \uns{($(X, \mathcal A, \mu)$ --- пространство с мерой)}, $f$ ---измерима на $E \in \mathcal A$, $\mu$ --- полная, $g = f$ почти везде на $E$, тогда $g$ --- измерима на $E$. \uns{\hypersetup{linkcolor=mygray} (т.к. $\A a \in \rr$ $E(g < a) = E'(f < a) \cup e(g < a)$, где $e$ --- множество меры 0, на котором $g \ne f$, $E' = E \setminus e$, тогда $e(g < a) \subset e$, поэтому измеримо, и из \ref{ф.изм.на подмнож.} $f$ измерима на $E' \subset E$)\hypersetup{ linkcolor=linkcolor}}
+\end{enumerate}
+\end{zam}
+
+\begin{opr}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $E \in \mathcal A$, $f, g \colon X \to \rr$, тогда функции $f$ и $g$ называются \urlybox{https://www.youtube.com/live/3LvgYceATKY?si=ng_TPSDlqXsBMqus&t=10912}{эквивалентными}, если $f = g$ почти везде на $E$.
+\end{opr}
+
+\begin{opr}\label{сход. по мере}
+		Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, функции $f_n, f \colon X \to \overline \rr$ измеримы и почти везде конечны. Тогда \urlybox{https://www.youtube.com/live/3LvgYceATKY?si=p9ZKcAwYJUcc4WTA&t=11387}{$f_n$ сходится к $f$ по мере $\mu$} на $X$ при $n \to \infty$ $\left(\text{обозначение: }f_n\xRightarrow[n \to \infty]{\mu} f\right)$, если  $\A \eps > 0 \ \mu\bigl(X(|f_n - f| \biger \eps) \bigr)\xrightarrow[n \to \infty]{} 0$
+\end{opr}
+
+\begin{zam}\label{замена ф. почти нигде}
+	%Если $f = g$ почти везде, и $f_n\xRightarrow[n \to \infty]{\mu} f$, то $f_n\xRightarrow[n \to \infty]{\mu} g$ (обратно тоже верно и $f_n = g_n$ почти везде тоже можно заменить) \dots
+	На самом деле в этом определении мы не можем записать $f_n - f$ на множестве точек, где обе эти функции принимают бесконечное значение. Но они принимают его только на множестве меры 0. Поэтому вообще можно записать $\mu\bigl((X\setminus E)(|f_n - f| \biger \eps) \bigr)$, где $\mu(E) = 0$. Но так как мера не будет меняться, если включать или не включать множество нулевой меры, поэтому записываем без $E$. И мы имеем в виду, что любое множество меры 0 может так же не учитываться в определении, поэтому если $f = g$ почти везде, и $f_n\xRightarrow[n \to \infty]{\mu} f$, то $f_n\xRightarrow[n \to \infty]{\mu} g$ или, если $\A n\ f_n = g_n$ почти везде, то  $g_n\xRightarrow[n \to \infty]{\mu} f$ тоже.
+\end{zam}
+
+\begin{teor}[https://www.youtube.com/live/fVyBKDoy3EM?si=IFWzSZgbqopjeikc&t=2368]{Лебега о сходимости почти везде и сходимости по мере}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $\mu(X)$ --- конечна, $f_n, f \colon X \to \overline{\rr}$ измеримы и почти везде конечны, $f_n \xrightarrow[n \to \infty]{} f$ почти везде. Тогда $f_n\xRightarrow[n \to \infty]{\mu} f$.
+\end{teor}
+
+\begin{prf}
+	Заменив $f_n$ и $f$ (например на 0) на множестве меры 0 (на котором $f_n \notar{n \to \infty} f$ или $f_n = \infty$ или $f = \infty$), можно считать, что $f_n(x) \xrightarrow[n \to \infty]{} f(x)$ $\A x \in X$ (\ref{замена ф. почти нигде}).
+	\begin{enumerate}
+		\item Пусть $\A x \in X\ f(x) = 0$, последовательность $f_n(x)$ монотонна (по $n$) и $\A n\ f_n(x) \biger 0$. Тогда \uns{(из-за убывания $f_n$)} $\A \eps > 0$ будет выполнено, что $X(f_n \biger \eps) \supset X(f_{n + 1} \biger \eps) \supset \ldots$ Значит по теореме о непрерывности меры сверху (т. \ref{непр.меры сверху}) $\mu\bigl(X(f_n \biger \eps)\bigr) \xrightarrow[n \to \infty]{}\mu\left(\bigcap\limits_{n = 1}^\infty X(f_n \biger \eps)\right) = \mu(\no)= 0$ \uns{(так как если этому пересечению принадлежит хотя бы одна точка $x_0$, то $\A n\ f_n(x_0) \biger \eps$, то есть $f_n(x_0) \notar{n \to \infty} 0$)}. То есть по определению $f_n$ сходится по мере к $0 \uns{{}= f}$ (\ref{сход. по мере}).
+		
+		\item Пусть $f_n, f$ --- любые. Тогда возьмём $\varphi_n(x) = \sup\limits_{k > n}\{\,|f_k(x) - f(x)|\,\}$. Для этой функции будет выполнено, что $\A x \in X$ $\varphi_n(x) \xrightarrow[n \to \infty]{} 0$ (т.к. по условию $f_n(x) \xrightarrow[n \to \infty]{} f(x)$), последовательность $\varphi_n(x)$ монотонна (по $n$) \uns{(каждый раз sup берётся по меньшему множеству)} и $\A n\ \varphi_n(x) \biger 0$. Поэтому, применяя первый пункт к последовательности функций $\varphi_n$, получаем, что она сходится по мере к нулю. И так как $\A n\ X\bigl(|f_n - f| \biger \eps \bigr) \subset X(\varphi_n \biger \eps)$ \uns{(из определения $\varphi_n$, т.к. sup больше или равен значений, по которым он берётся, т.е. если $\varphi_n < \eps$, то тем более $|f_n - f| < \eps$)}. Значит \uns{(из-за монотонности меры)}, $f_n$ сходится по мере к $f$ по определению (\ref{сход. по мере}): $\mu\bigl(X(|f_n - f|\biger \eps )\bigr) \< \mu\bigl(X(\varphi_n \biger \eps)\bigr) \xrightarrow[n \to \infty]{} 0$.
+	\end{enumerate}
+\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/fVyBKDoy3EM?si=ihinyw9t2JTrKa9V&t=3118]{Рисса о сходимости по мере и сходимости почти везде}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f_n, f \colon X \to \overline{\rr}$ измеримы и почти везде конечны, $f_n \xRightarrow[n \to \infty]{\mu} f$ на $X$. Тогда\E\ подпоследовательность $f_{n_k}$ такая, что $f_{n_k} \xrightarrow[n_k \to \infty]{} f$ почти везде на $X$.
+\end{teor}
+
+\begin{prf}
+	Из определения сходимости по мере $\A k > 0\ \mu\bigl(X(|f_n - f|\biger \frac 1k )\bigr) \xrightarrow[n \to \infty]{} 0$, т.е. по определению сходимости к нулю$\E n_k : \A n > n_k\ \mu\bigl(X(|f_n - f|\biger \frac 1k )\bigr) < \frac{1}{2^k}$. Возьмём $E_k = \bigcup\limits_{j = k}^\infty X \bigl(|f_{n_j} - f| \biger \frac 1j\bigr)$, $E = \bigcap\limits_{k = 1}^\infty E_k$, тогда $\A k\ E_k \supset E_{k + 1}$ \uns{(в $E_{k + 1}$ включено меньше множеств)}, то есть \raisebox{0pt}[0pt]{$\mu(E_k) \< \sum\limits_{j = k}^\infty \mu \bigl(X(|f_{n_j} - f| \biger \frac 1j)\bigr) \< \sum\limits_{j = k}^\infty \frac {1}{2^j} = \frac{2}{2^k}$} \uns{\hypersetup{linkcolor=mygray}(счётная полуаддитивность меры --- т. \ref{полуадд.меры})\hypersetup{ linkcolor=linkcolor}}. По теореме о непрерывности меры сверху (т. \ref{непр.меры сверху}) $\mu(E_k) \xrightarrow[k \to \infty]{} \mu(E)$, при этом $\mu(E_k) = \frac{2}{2^k} \xrightarrow[k \to \infty]{} 0$, значит $\mu(E) = 0$. Проверим, что $\A x \notin E$ $f_{n_j} \xrightarrow[n_j \to \infty]{} f$. Возьмём $x \notin E$, тогда$\E k : x \notin E_k$ \uns{(из определения $E$)}, значит $x$ не принадлежит ни одному из множеств $X \bigl(|f_{n_j} - f| \biger \frac 1j\bigr)$ при $j \biger k$ \uns{(из определения $E_k$)}, то есть для этого $x$ $|f_{n_j}(x) - f(x)| < \frac 1j$. Это и значит, что $f_{n_j} \xrightarrow[n_j \to \infty]{} f$ на $X \setminus E$.
+\end{prf}
