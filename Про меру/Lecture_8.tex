@@ -1,0 +1,57 @@
+\subsection*{\S\ Предельный переход под знаком интеграла}
+
+\begin{teor}[https://www.youtube.com/live/fVyBKDoy3EM?si=zJ2pF8EZ8K5EST4n&t=10491]{Леви}\label{т.Леви}
+	 $(X, \mathcal A, \mu)$ --- пространство с мерой, $f_n, f \colon X \to \overline{\rr}$ --- измеримы, такие, что $\A n\ 0 \< f_n \< f_{n + 1}$ почти везде, и $\lim\limits_{n \to \infty} f_n = f$ почти везде \uns{(кроме тех множеств, где\E $n$, для которого не выполнено $0 \< f_n \< f_{n+1}$)}. Тогда $\lim\limits_{n \to \infty} \int\limits_X f_n \, d\mu = \int\limits_X f \, d\mu$.
+\end{teor}
+
+\begin{prf}
+	Заменив $f_n$ и $f$ (например на 0) на множестве меры 0 (которое состоит из объединения (по $n$) множеств, где не выполнено $0 \< f_n \< f_{n+1}$), можно считать, что $f_n(x) \xrightarrow[n \to \infty]{} f(x)$ $\A x \in X$.
+	Проверим, что $\lim\limits_{n \to \infty} \int\limits_X f_n \, d\mu \< \int\limits_X f \, d\mu$. Так как $\A n\ f_n \< f$, то $\int\limits_X f_n \, d\mu \<\int\limits_X f \, d\mu$ (зам. \ref{мон.инт.}), значит $\lim\limits_{n \to \infty} \int_X f_n \, d\mu \< \int_X f \, d\mu$.\\
+	Теперь проверим, что  $\lim\limits_{n \to \infty} \int\limits_X f_n \, d\mu \biger \int\limits_X f \, d\mu$. Для этого возьмём ступенчатую функцию $g \colon X \to \rr$ такую, что $0 \< g \< f$, число $c \in (0, 1)$ и множества $X_n = X (f_n \biger cg)$, тогда т.к. $f_n$ возрастают, то $X_n \subset X_{n + 1} \subset \ldots$ и $\bigcup\limits_{n = 1}^\infty X_n = X$ \uns{(если $x_0 \in X$, то $cg(x_0) < f(x_0)$ и т.к. $f_n(x_0) \xrightarrow[n \to \infty]{} f(x_0)$, то$\E n : f_n(x_0) \biger cg(x_0)$, т.е. $\E n : x_0 \in X_n$)}. Значит $\int_X f_n \, d\mu \biger \int_{X_n} f_n \, d\mu \biger \int_{X_n} cg \, d\mu = c \int_{X_n} g \, d\mu$. Поэтому $\lim\limits_{n \to \infty}\int_X f_n \, d\mu \biger c \cdot\lim\limits_{n \to \infty} \int_{X_n} g \, d\mu = c\int_{X} g \, d\mu$ (по непрерывности меры из сл. \ref{мера через инт.} сверху (т. \ref{непр.меры сверху})). Это верно $\A c \in (0, 1)$, значит верно и для $c = 1$, т.е. $\lim\limits_{n \to \infty}\int_X f_n \, d\mu \biger \int_{X} g \, d\mu$. Переходя в этом неравенстве к sup по всем таким и $g$ получаем, что $\lim\limits_{n \to \infty} \int\limits_X f_n \, d\mu \biger \int\limits_X f \, d\mu$.
+\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/fVyBKDoy3EM?si=aweqdxkzFWu_OKWd&t=11778]{линейность интеграла Лебега}\label{лин.инт.}
+	 $(X, \mathcal A, \mu)$ --- пространство с мерой, пусть $f, g \colon X \to \overline\rr$ --- неотрицательные, измеримые на $E \in \mathcal{A}$ функции, тогда $\int_E (f + g) \, d\mu = \int_E f \, d\mu + \int_E g \, d\mu$. 
+\end{teor}
+
+\begin{prf}
+	Возьмём последовательности $f_n$ и $g_n$ такие, что $\A n\ 0 \< f_n \< f_{n + 1}$, $\lim\limits_{n \to \infty} f_n = f$ и $0 \< g_n \< g_{n + 1}$, $\lim\limits_{n \to \infty} g_n = g$ (теорема \ref{изм.ф.ступ.}). Тогда $\A n$ будет выполнено, что $f_n + g_n \< f_{n + 1} + g_{n + 1}$ и $\lim\limits_{n \to \infty} f_n + g_n = f + g$. Для ступенчатых функций из определения интеграла понятно, что $\int_E (f_n + g_n) \, d\mu = \int_E f_n \, d\mu + \int_E g_n \, d\mu$, поэтому, делая предельный переход в этом равенстве (или переходя к sup --- это тоже самое, т.к. последовательность возрастает), получаем, что $\int_E (f + g) \, d\mu = \int_E f \, d\mu + \int_E g \, d\mu$.
+\end{prf}
+
+\begin{slv}\label{сумм.-инт.кон.}
+	$(X, \mathcal A, \mu)$ --- пространство с мерой, пусть $f \colon X \to \overline\rr$ --- измерима, тогда $f$ --- суммируема \eq\ $\int_X |f| \, d\mu$ --- конечен. \textit{Доказательство:} %\lpr{}{} так как $f_+ \< |f|$ и $f_- \< |f|$, то $\int_X f_+ \< \int_X |f|$ и  $\int_X f_- \< \int_X |f|$. \rpr{\,}{} 
+	$\int_X |f| = \int_X (f_+ + f_-) \, d\mu = \int_X f_+ \, d\mu + \int_X f_- \, d\mu$, значит, если с одной стороны конечное число, то и с другой тоже.
+\end{slv}
+
+\begin{slv}[https://www.youtube.com/live/fVyBKDoy3EM?si=4IK0f3bvhnMC-4It&t=12073]
+	$(X, \mathcal A, \mu)$ --- пространство с мерой, пусть $f, g \colon X \to \overline\rr$ --- суммируемые на $E \in \mathcal{A}$ функции, тогда $f + g$ --- суммируема на $E$ и $\int_E (f + g) \, d\mu = \int_E f \, d\mu + \int_E g \, d\mu$. \textit{Доказательство:} суммируемость получается, если проинтегрировать неравенство $(f + g)_\pm \< |f + g| \< f_+ + g_+ - f_ + + g_-$. Обозначим $h = f + g$ и запишем это через срезки: $h_+ - h_- = f_+ - f_- + g_+ - g_-$. Перенесём слагаемые, чтобы везде был плюс: $h_+ + f_- + g_- = f_+ + g_+ + h_-$. Проинтегрируем это равенство: $\int_E h_+ \, d\mu + \int_E f_- + \, d\mu \int_E g_- \, d\mu = \int_E f_+ \, d\mu + \int_E g_+ \, d\mu + \int_E h_- \, d\mu$. И перенесём всё обратно: $\int_E h_+ \, d\mu -\int_E h_- \, d\mu = \int_E f_+ \, d\mu - \int_E f_- \, d\mu + \int_E g_+ \, d\mu - \int_E g_- \, d\mu$, получили $\int_E (h_+ - h_-) \, d\mu = \int_E (f_+ - f_-) \, d\mu + \int_E (g_+ - g_-) \, d\mu$, т.е. то, что нужно.	
+\end{slv}
+
+\begin{teor}[https://youtu.be/GUSonewbqy0?si=jEW_rOFeVWjcXLsx&t=967]{Теорема об интегрировании положительных рядов}
+	$(X, \mathcal A, \mu)$ --- пространство с мерой, пусть $f_n \colon X \to \overline\rr$ --- неотрицательные, измеримые на $E \in \mathcal A$ функции. Тогда \[\int_E \left(\sum_{n = 1}^\infty f_n (x)\right) \, d\mu = \sum_{n = 1}^\infty \left(\int_E f_n \, d\mu\right)\]	
+\end{teor}
+
+\begin{prf}
+	Частичные суммы $S_N(x) = \sum\limits_{n = 1}^N f_n(x)$ образуют возрастающую последовательность \uns{(т.к. ряд положительный)}, и $S_N \xrightarrow[N \to \infty]{} S$ \uns{(где $S$ --- сумма ряда)}, значит по теореме Леви (т.\ref{т.Леви}) $\int_E S_N \, d\mu \xrightarrow[N \to \infty]{} \int_E S \, d\mu$. С другой стороны $\lim\limits_{N \to \infty} \int_E S_N \, d\mu= \lim\limits_{N \to \infty} \int_E \sum\limits_{n = 1}^N f_n \, d\mu\stackrel{\text{т.\ref{лин.инт.}}}{=}   \lim\limits_{N \to \infty} \sum\limits_{n = 1}^N \int_E f_n \, d\mu = \sum\limits_{n = 1}^\infty \int_E f_n \, d\mu$. Значит $\int_E S \, d\mu = \sum\limits_{n = 1}^\infty \int_E f_n \, d\mu$.
+\end{prf}
+
+\begin{slv}[https://youtu.be/GUSonewbqy0?si=FS7M6vYDJeShiUwr&t=1379]\label{сл.сх.ряда}
+	$(X, \mathcal A, \mu)$ --- пространство с мерой, $f_n \colon X \to \overline\rr$ --- измеримые на $E \in \mathcal A$ функции, $\sum\limits_{n = 1}^\infty \int_E |f_n| \, d\mu$ --- сходится \uns{(т.е. $ < \infty$)}, тогда ряд $\sum\limits_{n = 1}^\infty |f_n| \, d\mu$ сходится почти везде на $E$. \textit{Доказательство:} пусть $S(x) = \sum\limits_{n = 1}^\infty |f_n| \, d\mu$, тогда по теореме $\int_E S(x) \, d\mu = \sum\limits_{n = 1}^\infty \int_E |f_n| \, d\mu$ и этот ряд сходится \uns{(т.е. $ < \infty$)}. Значит по следствию \ref{сумм.-инт.кон.} и замечанию \ref{сумм.-п.в.кон.} сумма ряда $S(x)$ почти везде конечна на $E$.
+\end{slv}
+
+\begin{zam}[https://youtu.be/GUSonewbqy0?si=E69Fo7vCv8IfzgSo&t=1734]
+	\textit{Пример:} пусть $x_n$ --- вещественная последовательность, ряд \raisebox{0pt}[0pt][0pt]{$\sum\limits_{n = 1}^\infty a_n$} сходится абсолютно, тогда функциональный ряд $\sum\limits_{n = 1}^\infty \frac{a_n}{\sqrt{|x - x_n|}}$ сходится абсолютно почти везде. \textit{Доказательство:} проверим, что $\A A \in \rr$ ряд $\sum\limits_{n = 1}^\infty \frac{|a_n|}{\sqrt{|x - x_n|}}$ сходится почти везде на $[-A, A]$: \uns{$\lambda$ --- мера Лебега}
+	\[\int\limits_{[-A, A]} \frac{|a_n|}{\sqrt{|x - x_n|}} \, d\lambda \stackrel{1}{=} \int_{-A}^A \frac{|a_n|}{\sqrt{|x - x_n|}} \, d x \stackrel{2}{=} |a_n|\!\!\!\int\limits_{-A - x_n}^{A - x_n}\!\!\frac{dx}{\sqrt{|x|}} \stackrel{3}{\<} |a_n|\int_{-A}^{A}\frac{dx}{\sqrt{|x|}} = 2|a_n|\sqrt{x} \vp[A]{-A} \!\!= 4 |a_n| \sqrt{A}\]
+	\begin{enumerate}
+		\item Интеграл по мере равен обычному интегралу, доказательство потом
+		
+		\item Замена $x - x_n$ на $x$
+		
+		\item Можно посмотреть на картинке\dots
+	\end{enumerate}
+	\hspace{20pt}Ряд $\sum\limits_{n = 1}^\infty 4\sqrt{A}\,|a_n| = 4\sqrt{A}\sum\limits_{n = 1}^\infty|a_n|$ сходится почти везде (на $[-A, A]$) по условию, значит ряд $\sum\limits_{n = 1}^\infty\int\limits_{[-A, A]} \frac{|a_n|}{\sqrt{|x - x_n|}} \, d\lambda$ тоже сходится почти везде на $[-A, A]$, тогда по следствию \ref{сл.сх.ряда} $\A A \in \rr$ ряд $\sum\limits_{n = 1}^\infty \frac{|a_n|}{\sqrt{|x - x_n|}}$ сходится почти везде на $[-A, A]$. Это выполнено $\A A \in \rr$, поэтому он сходится почти везде на $\rr$.
+\end{zam}
+
+\begin{teor}{абсолютная непрерывность интеграла}
+	
+\end{teor}

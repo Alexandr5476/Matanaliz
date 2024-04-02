@@ -1,19 +1,102 @@
 \subsection*{\S\ Интеграл Лебега}
 
-\begin{opr}
-	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f\colon X \to \rr$. Интегралом Лебега $\int\limits_X f\, d\mu$ функции $f$ называется
+\begin{opr}\label{инт.лебега}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f\colon X \to \rr$. \urlybox{https://www.youtube.com/live/fVyBKDoy3EM?si=JzXqHu79ITD7AF0f&t=4365}{Интегралом Лебега} $\int\limits_X f\, d\mu$ функции $f$ называется
 	\begin{enumerate}
-		\item Если $f$ --- ступенчатая функция, то $\displaystyle\int_X f\, d\mu \eqdef \sum_{k = 1}^n \alpha_k \cdot \mu(X_k)$, где $X_1, X_2, \ldots, X_n$ --- допустимое разбиение для $f$, и $\alpha_k$ --- значение, которое $f$ принимает на $X_k$
+		\item Если $f$ --- ступенчатая функция\uns{, $X_1, X_2, \ldots, X_n$ --- допустимое разбиение для $f$, и $\alpha_k$ --- значение, которое $f$ принимает на $X_k$)}, то \[\int_X f\, d\mu \eqdef \sum_{k = 1}^n \alpha_k \cdot \mu(X_k)\]  
 		
-		\item Если $f \colon X \to \overline{\rr}$ --- неотрицательная, измеримая функция, то $\displaystyle\int_X f\, d\mu \eqdef  \sup\{\, \int_X g \, d\mu \mid g \text{ --- ступенчатая функция} : 0 \< g \< f\,\}$
+		\item Если $f \colon X \to \overline{\rr}$ --- неотрицательная, измеримая функция, то \[\int_X f\, d\mu \eqdef  \sup \left\{\, \int_X g \, d\mu \mid g \text{ --- ступенчатая функция} : 0 \< g \< f\,\right\}\]
 		
-		\item Если $f \colon X \to \overline{\rr}$ --- измеримая функция, то $\displaystyle\int_X f\,
-		\ d\mu \eqdef \int_X f_+\, d\mu - \int_X f_-\, d\mu$
+		\item Если $f \colon X \to \overline{\rr}$ --- измеримая функция и хотя бы один из $\int\limits_X f_+\, d\mu$, $\int\limits_X f_-\, d\mu$ --- конечен, то \[\int_X f\,
+		\ d\mu \eqdef \int_X f_+\, d\mu - \int_X f_-\, d\mu\]
 		
-		\item Если $E \subset X$, то $\displaystyle\int_E f\, d\mu \eqdef \int_X \chi_E \cdot f \, d\mu$
+		\item Если $E \in \mathcal A$, $f \colon X \to \overline \rr$ --- измерима на $E$, то $\displaystyle\int_E f\, d\mu \eqdef \int_X f \cdot \chi_E \, d\mu$
 	\end{enumerate}  
 \end{opr}
 
+\begin{zam} \textit{Корректность определения (\ref{инт.лебега}): } \uns{$(X, \mathcal A, \mu)$ --- пространство с мерой}
+	\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{\thezam.}\makeatother
+		\item В первом пункте интеграл не зависит от представления $f$: если $f = \sum\limits_{k = 1}^n \alpha_k \cdot \chi_{X_k} = \sum\limits_{l = 1}^m \beta_l \cdot \chi_{E_l}$, то \raisebox{0pt}[0pt][7pt]{$f = \sum\limits_{k, l = 1}^{n, m} \alpha_k \cdot \chi_{X_k \cap E_l} = \sum\limits_{k, l = 1}^{n, m} \beta_k \cdot \chi_{X_k \cap E_l}$} (на множествах $X_k \cap E_l$ $\alpha_k = \beta_l$), т.е.каждое $X_k$ разбиваем на множества $X_k \cap E_l$, тогда $\mu(X_k) = \sum\limits_{l = 1}^m X_k \cap E_l$, значит \[\int_X f\, d\mu = \sum\limits_{k = 1}^n \alpha_k \cdot \mu(X_k) = \sum\limits_{k, l = 1}^{n, m} \alpha_k \cdot \mu(X_k \cap E_l) = \sum\limits_{k, l = 1}^{n, m} \beta_l \cdot \mu(X_k \cap E_l) = \sum\limits_{l = 1}^m \beta_l \cdot \mu(E_l)\]
+		
+		\item\label{мон.инт.ступ.} Если $f \colon X \to \rr$ --- ступенчатая функция, то её интеграл из второго пункта совпадает с интегралом из первого пункта. \uns{(из определения интеграла для ступенчатых функций очевидно, что для $g$, $h$ --- ступенчатых, если $g < h$, то $\int_X g \, d\mu < \int_X h \, d\mu$, так как на каждом множестве из общего допустимого разбиения (зам. \ref{общ.разб.}) будет $f < g$); тогда в пункте 2 определения интеграла sup равен $\int f \, d\mu$, потому что этот интеграл есть в множестве, по которому берётся sup, и он наибольший)}
+		
+		\item Если $f \colon X \to \overline{\rr}$ --- неотрицательная измеримая функция, то её интеграл из третьего пункта совпадает с интегралом из второго пункта \uns{(положительная срезка совпадает с самой $f$, а отрицательная срезка --- нулевая функция, её интеграл равен нулю по 1 пункту определения)}
+		
+		\item Интеграл в пункте 4 не зависит от значений $f$ вне множества $E$
+	\end{enumerate}
+\end{zam}
+
+\begin{opr}\label{сумм.ф.}
+	Пусть $f \colon X \to \overline \rr$ --- измеримая функция, тогда она называется \urlybox{https://www.youtube.com/live/fVyBKDoy3EM?si=oPuvHZsZ6_gt2FK5&t=5268}{суммируемой} на $X$, если $\int_X f_+ \,d\mu$ и $\int_X f_- \, d\mu$ конечны.
+\end{opr}
+
+\begin{zam}[https://www.youtube.com/live/fVyBKDoy3EM?si=LgENIvc4Pq6wo4Vq&t=7600] \textit{Свойства интеграла:} $(X, \mathcal A, \mu)$ --- пространство с мерой, $f, g\colon X \to \overline\rr$ --- измеримые\
+\begin{enumerate}\makeatletter\renewcommand{\p@enumi}{\thezam.}\makeatother
+	\item\label{мон.инт.} Если $f \< g$ на $X$, то $\int_X f \, d\mu \< \int_X g \, d\mu$
+	
+	\item Пусть $E \in \mathcal A$, тогда $\int_E 1 \, d\mu = \mu(E)$ и $\int_E 0 \, d\mu = 0$
+	
+	\item Пусть $E \in \mathcal A : \mu(E) = 0$, тогда $\int_E f \, d\mu = 0$
+	
+	\item Пусть $\alpha > 0$, тогда $\int_X \alpha f \, d\mu = \alpha \int_X f \, d\mu$
+	
+	\item $\int_X -f \, d\mu = -\int_X f \, d\mu$
+	
+	\item Пусть $E \in \mathcal A$, тогда $\left| \int_E f \, d\mu \right| \< \int_E |f| \, d\mu$
+	
+	\item Если $a, b \in \rr : a \< f(x) \< b$ на $E \in \mathcal A$, то $a \cdot \mu(E) \< \int_E f \, d\mu \< b \cdot \mu(E)$
+	
+	\item\label{сумм.-п.в.кон.} Если $f$ --- суммируема на $E \in \mathcal A$, то $f$ почти везде конечна на $E$
+\end{enumerate}
+\textit{Доказательство:}
+\begin{enumerate}
+	\item Для неотрицательных функций из второго пункта определения интеграла (\ref{инт.лебега}) видно, что это свойство выполняется, т.к. в sup для большей функции будут находится ступенчатые, которые больше либо равны ступенчатых для меньшей функции (для ступенчатых функций это свойство есть в доказательстве зам. \ref{мон.инт.ступ.}), поэтому мы знаем, что $\int_X f_+ \,d\mu \< \int_X g_+\, d\mu$ и $\int_X f_- \,d\mu \biger \int_X g_-\, d\mu$, значит, вычитая эти неравенства получаем $\int_X f \, d\mu = \int_X f_+ \, d\mu - \int_X f_- \, d\mu \< \int_X g_+ \, d\mu - \int_X g_- \, d\mu = \int_X g \, d\mu$.
+	
+	\item По определению интеграла для ступенчатой функции (первый пункт \ref{инт.лебега}).
+	
+	\item Идём по пунктам определения интеграла (\ref{инт.лебега}): для ступенчатых функций $\mu(X_k \cap E) = 0$, значит и интеграл равен нулю, для неотрицательных измеримых функций sup = 0, т.к. он будет браться по нулевому множеству, тогда для измеримой $f$ будет $\int_E f_+ \, d\mu = \int_E f_- \, d\mu = 0$, значит $\int_E f \, d \mu = 0$.
+	
+	\item Идём по пунктам определения интеграла (\ref{инт.лебега}): для ступенчатых функций $\alpha$ можно вынести из суммы, для неотрицательных измеримых множества, по которым берётся sup, (для $f$ и $\alpha f$) различаются тем, что их элементы домножаются на $\alpha$, которое можно вынести из sup, для измеримых функций тогда, просто просто выносим $\alpha$ из интеграла неотрицательной функции и за скобку.
+	
+	\item Так как $(-f)_+ = f_-$ и $(-f)_- = f_+$), тогда из определения (третий пункт \ref{инт.лебега}) получаем это свойство.
+	
+	\item $-\int_E |f| \, d\mu \< \int_E f \, d\mu \< \int_E |f| \, d\mu$, т.к. $-|f| \< f \< |f|$, то есть $\left| \int_E f \, d\mu \right| \< \int_E |f| \, d\mu$.
+	
+	\item Получается, если проинтегрировать неравенство $a\cdot \chi_E \< f \< b \cdot \chi_E$.
+	
+	\item Для $f \biger 0$, если $f = \infty$ на некотором множестве $A \in \mathcal A : \mu(A) \ne 0$, то $\A n \in \rr\ f \biger n$, значит $\int_E f \,d\mu\biger n\cdot\mu(E)$, то есть $\int_E f \,d\mu = \infty$ и сейчас $f = f_+$ (противоречит определению суммируемой функции --- \ref{сумм.ф.}). A если $f$ любого знака, то применяем это рассуждение для $f_+$ или $f_-$ и получаем, что один из этих интегралов не будет конечным, если $f$ принимает бесконечное значение на каком-нибудь множестве не нулевой меры.
+\end{enumerate}
+\end{zam}
+
+\begin{slv}[https://www.youtube.com/live/fVyBKDoy3EM?si=sETo23yD0_fs-eX7&t=8268]
+	$f$ --- измерима и ограничена на $E \in \mathcal A$, $\mu(E)$ --- конечна, тогда $f$ --- суммируема на $E$
+\end{slv}
+
+\begin{lem}[https://www.youtube.com/live/fVyBKDoy3EM?si=EMYfzcqXvHHocmli&t=8683]{о счётной аддитивности интеграла ступенчатой функции (по множеству)}\label{адд.инт.ступ.}%
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $A, A_i \in \mathcal A : A = \bigsqcup\limits_{i = 1}^\infty A_i$, $g \colon X \to \rr$ --- неотрицательная, ступенчатая функция. Тогда $\int\limits_A g\, d\mu = \raisebox{0pt}[0pt]{$\sum\limits_{i = 1}^\infty$} \int\limits_{A_i}g\,d\mu$.
+\end{lem}
+
+\begin{prf} Пусть $X_1, X_2, \ldots, X_n$ --- допустимое разбиение для функции $g$, $\alpha_k$ --- значение, которое $g$ принимает на $X_k$, тогда
+	\[\int_A g\, d\mu = \sum_{k = 1}^n \alpha_k \cdot \mu(X_k \cap A) = \sum_{k = 1}^n \sum_{i = 1}^\infty \alpha_k \cdot \mu(X_k \cap A_i) = \sum_{i = 1}^\infty \sum_{k = 1}^n \alpha_k \cdot \mu(X_k \cap A_i) = \sum_{i = 1}^\infty \int_{A_i}g \, d\mu\]
+\end{prf}
+
+\begin{teor}[https://www.youtube.com/live/fVyBKDoy3EM?si=BsHPBYeMrdkKp5Z7&t=8902]{Счетная аддитивность интеграла (по множеству)}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $A, A_i \in \mathcal A : A = \bigsqcup\limits_{i = 1}^\infty A_i$, $f \colon X \to \overline \rr$ --- неотрицательная, измеримая (на $A$) функция. Тогда $\int\limits_A f\, d\mu = \raisebox{0pt}[0pt]{$\sum\limits_{i = 1}^\infty$} \int\limits_{A_i}f\,d\mu$ 
+\end{teor}
+
+\begin{prf}
+	Проверим, что $\int\limits_A f\, d\mu \< \sum\limits_{i = 1}^\infty \int\limits_{A_i}f\,d\mu$. Возьмём ступенчатую $g \colon X \to \rr$ такую, что $g \< f$ на $A$, тогда $\int\limits_A g \, d\mu = \sum\limits_{i = 1}^\infty \int\limits_{A_i} g \, d\mu$ (из леммы \ref{адд.инт.ступ.}) и \uns{$\A i \in \{\,1, 2, \ldots\,\}$} $\int\limits_{A_i} g \, d\mu \< \int\limits_{A_i} f \, d\mu$ (зам. \ref{мон.инт.}), значит $\int\limits_A g \, d\mu \< \sum\limits_{i = 1}^\infty \int\limits_{A_i} f \, d\mu$. Переходя к sup по всем таким ступенчатым функциям $g$ в последнем неравенстве, получаем $\int\limits_A f\, d\mu \< \sum\limits_{i = 1}^\infty \int\limits_{A_i}f\,d\mu$ (из второго пункта определения интеграла (\ref{инт.лебега})).\\
+	Теперь проверим, что $\int\limits_A f\, d\mu \biger \sum\limits_{i = 1}^\infty \int\limits_{A_i}f\,d\mu$. Для двух множеств, то есть если $A = A_1 \sqcup A_2$, возьмём ступенчатые функции $g_1, g_2 \colon X \to \rr$ такие, что $g_1 \< f$ на $A_1$, $g_2 \< f$ на $A_2$ (можно считать, что\E ступенчатая функция $g \colon X \to \rr$ такая, что $g_1= g \cdot \chi_{A_1},\ g_2 = g \cdot \chi_{A_2}$, тогда $g = g_1 + g_2$), значит $g = g_1 + g_2 \< f$ на $A$, и тогда $\int_{A_1} g_1 \, d\mu+ \int_{A_2} g_2\, d\mu \< \int_A f \, d\mu$ \uns{(используем тут лемму \ref{адд.инт.ступ.} и зам. \ref{мон.инт.})}. Переходя к sup в последнем неравенстве сначала по $g_1$, потом по $g_2$, получаем по второму пункту определения интеграла, что  $\int_{A_1} f \, d\mu+ \int_{A_2} f\, d\mu \< \int_A f \, d\mu$. То есть по индукции имеем, что для конечного числа множеств $A_1, A_2, \ldots A_n$ выполняется $\sum\limits_{i = 1}^n \int_{A_i} f \, d\mu \< \int_A f \, d\mu$. Чтобы получить то же самое для бесконечного числа множеств, возьмём $B_n = \bigsqcup\limits_{i = n + 1}^\infty A_i$, и запишем $A = A_1 \sqcup \ldots \sqcup A_n \sqcup B_n$ --- конечное объединение. Тогда $\int\limits_A f \, d\mu \biger \sum\limits_{i = 1}^n \int\limits_{A_i}f \, d\mu + \int\limits_{B_n} f \, d\mu \biger \sum\limits_{i = 1}^n \int\limits_{A_i}f \, d\mu$. Получилось, что $\A n$ интеграл $\int\limits_A f \, d\mu$ больше или равен, чем \uns{(любая)} частичная сумма ряда $ \sum\limits_{i = 1}^\infty \int\limits_{A_i}f \, d\mu$, значит он больше либо равен суммы самого ряда.
+\end{prf}
+
+\begin{slv}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f \colon X \to \overline\rr$ --- суммируема на $A$ и $A = \bigsqcup\limits_{i = 1}^\infty A_i$, где все $A_i \in \mathcal A$. Тогда $\int\limits_A f\, d\mu = \raisebox{0pt}[0pt]{$\sum\limits_{i = 1}^\infty$} \int\limits_{A_i}f\,d\mu$. \uns{(получаем, применяя теорему к положительной и отрицательной срезки, и суммируя ряды для них)}
+\end{slv}
+
+\begin{slv}\label{мера через инт.}
+	Пусть $(X, \mathcal A, \mu)$ --- пространство с мерой, $f \colon X \to \overline{\rr}$ --- любая неотрицательная, измеримая функция. В теореме проверена счётная аддитивность функции $\nu \colon \mathcal A \to \overline \rr$, $\nu(A) = \int_A f \, d\mu$. Значит эта функция является мерой на $\mathcal A$ (по определению).
+\end{slv}
+
 \begin{zam}
-	содержимое...
+	Если $(X, \mathcal A, \mu)$ --- пространство с мерой, $A, B \in \mathcal{A} : B \subset A$, $f, g \colon X \to \overline{\rr}$ --- неотрицательные, измеримые функции такие, что $f \< g$ на $A$, тогда $\int_B f \, d\mu \< \int_A g \, d\mu$ \uns{(т.к. $\int_B f \, d\mu = \int_A f \, d\mu - \int_{A \setminus B} f \, d\mu \< \int_A f \, d\mu \< \int_A g \, d\mu$)}
 \end{zam}
